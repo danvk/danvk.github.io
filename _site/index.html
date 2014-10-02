@@ -1,9 +1,23 @@
----
-layout: default
-title: danvk.org
----
+<!doctype html>
+<html>
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>danvk.org</title>
+   <meta name="author" content="Dan Vanderkam" />
 
-<div id="home">
+   <link rel="stylesheet" type="text/css" href="/stylesheets/syntax.css" />
+   <link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" />
+</head>
+
+<body>
+
+<div class="site">
+  <div class="title">
+    <a href="/">danvk.org</a>
+    <a class="extra" href="/">home</a>
+  </div>
+
+  <div id="home">
   <section id="main_content" class="inner">
     <h3>Projects</h3>
 
@@ -58,9 +72,9 @@ title: danvk.org
 
     <h3>Blog Posts</h3>
     <ul class="posts">
-      {% for post in site.posts %}
-        <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-      {% endfor %}
+      
+        <li><span>01 Oct 2014</span> &raquo; <a href="/2014/10/01/post.html">Trying out GitHub Pages</a></li>
+      
     </ul>
     <p>See also my <a href="http://www.danvk.org/wp/">older blog</a> (2006&ndash;2014)</p>
 
@@ -101,3 +115,13 @@ title: danvk.org
 
   </section>
 </div>
+
+
+</div>
+
+<div class="footer">
+</div>
+
+</body>
+
+</html>

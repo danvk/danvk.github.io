@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Tom Preston-Werner</title>
+ <link href="http://danvk.github.io/atom.xml" rel="self"/>
+ <link href="http://danvk.github.io/"/>
+ <updated>2014-10-02T00:26:28-04:00</updated>
+ <id>http://danvk.github.io/</id>
+ <author>
+   <name>Dan Vanderkam</name>
+   <email>danvdk@gmail.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>Trying out GitHub Pages</title>
+   <link href="http://danvk.github.io//2014/10/01/post.html"/>
+   <updated>2014-10-01T00:00:00-04:00</updated>
+   <id>http://danvk.github.io//2014/10/01/post</id>
+   <content type="html">&lt;p&gt;I’m going to try hosting my site and blog on GitHub pages. My hope is that
+blogging using GitHub and Markdown will lower the barrier to writing, and that
+GitHub pages will eliminate any worries about hosting this site.&lt;/p&gt;
+</content>
+ </entry>
+ 
+
+</feed>
