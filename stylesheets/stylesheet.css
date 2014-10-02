@@ -15,3 +15,7 @@
 .imaged-links li p a {
     font-size: small
 }
+
+#post {
+  max-width: 800px;
+}
