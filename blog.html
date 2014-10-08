@@ -1,0 +1,32 @@
+---
+layout: default
+title: danvk.org &raquo; blog
+---
+
+<div id="blog">
+  {% for post in site.posts %}
+  <div class="row">
+    <div class="col-sm-3">
+      <div>
+        <span class="post-title">&nbsp;</span> <!-- force vert align w/ title -->
+        {{ post.date | date_to_long_string }}
+      </div>
+      {% if post.time %}
+      <div class="post-time">@ {{ post.time }}</div>
+      {% endif %}
+    </div>
+    <div class="col-sm-9">
+      <div class="post-title"><a href="{{post.url}}">{{ post.title }}</a></div>
+      <p class="post-summary">
+      {% if post.summary %}
+        {{ post.summary }}
+      {% elsif post.content contains '<!--more-->' %}
+        {{ post.content | split:'<!--more-->' | first }}
+      {% else %}
+        {{ post.content | truncatewords:50 | strip_html }}
+      {% endif %}
+      </p>
+    </div>
+  </div>
+  {% endfor %}
+</div>

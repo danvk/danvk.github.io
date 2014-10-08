@@ -2,12 +2,15 @@
 layout: default
 ---
 
-<div class='date'>{{ page.date | date: '%Y.%m.%d' }}</div>
-<h2 class='post-title'>{{ page.title }}</h2>
-<div id="post">
-{{ content }}
+<div class='post-page'>
+  <div class='date'>{{ page.date | date: '%Y.%m.%d' }}</div>
+  <h2 class='post-title'>{{ page.title }}</h2>
+  <div id="post">
+  {{ content }}
+  </div>
 </div>
 
+<p class='please'>Please leave comments! It's what makes blogging worthwhile.</p>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">
