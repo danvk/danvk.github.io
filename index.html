@@ -7,6 +7,37 @@ title: danvk.org
   <section id="main_content" class="inner">
     <p>I'm Dan, a Software Engineer at Mt. Sinai's hammerlab, formerly at Google.</p>
     <p>I use computers to solve problems.</p>
+
+    <div id="blog">
+      {% for post in site.posts %}
+      <div class="row">
+        <div class="col-sm-3">
+          <div>
+            <span class="post-title">&nbsp;</span> <!-- force vert align w/ title -->
+            {{ post.date | date_to_long_string }}
+          </div>
+          {% if post.time %}
+          <div class="post-time">@ {{ post.time }}</div>
+          {% endif %}
+        </div>
+        <div class="col-sm-9">
+          <div class="post-title"><a href="{{post.url}}">{{ post.title }}</a></div>
+          <p class="post-summary">
+          {% if post.summary %}
+            {{ post.summary }}
+          {% elsif post.content contains '<!--more-->' %}
+            {{ post.content | split:'<!--more-->' | first }}
+          {% else %}
+            {{ post.content | truncatewords:50 | strip_html }}
+          {% endif %}
+          </p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <p>See <a href="/blog.html">all blog posts</a>, or content from my <a href="#old-blog">old blog</a>.</p>
+
     <h3>Projects</h3>
 
     <div class="row">
@@ -90,13 +121,10 @@ title: danvk.org
 
     </div>
 
-    <h3>Blog Posts</h3>
-    <ul class="posts">
-      {% for post in site.posts %}
-        <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}#disqus_thread">{{ post.title }}</a></li>
-      {% endfor %}
-    </ul>
-    <p>See also my <a href="http://www.danvk.org/wp/">older blog</a> (2006&ndash;2014). Some highlights:</p>
+    <h3 id="old-blog">Blog Posts</h3>
+
+    <p>See <a href="/blog.html">all blog posts</a>, or highlights from my <a href="http://www.danvk.org/wp/">old blog</a> (2006&ndash;2014):</p>
+
     <ul>
       <li>{{'2014-01-25' | date_to_string }} &raquo; <a href="http://www.danvk.org/wp/2014-01-25/what-up-with-boggle/">boggle survey</a>
       <li>{{'2013-02-23' | date_to_string }} &raquo; <a href="http://www.danvk.org/wp/2013-02-23/how-many-living-people-were-born-in-the-1800s/">How many living people were born in the 1800s?</a>
@@ -122,22 +150,23 @@ title: danvk.org
 
     <h4>Libraries/Developer Tools</h4>
     <ul>
-      <li><a href="https://github.com/danvk/codediff.js">codediff.js</a>
-      <li><a href="https://github.com/danvk/reactjs-prop-validation">ReactJS prop validation</a>
-      <li><a href="https://github.com/bslatkin/dpxdt">dpxdt</a> (contributor)
-      <li><a href="https://github.com/danvk/localturk">localturk</a>, discussed in this <a href="http://www.danvk.org/wp/2013-04-20/generating-training-data/">blog post</a>
+      <li><a href="https://github.com/danvk/codediff.js">codediff.js</a>, diffing library which backs github-syntax and git webdiff
+      <li><a href="https://github.com/danvk/pyjsonselect">pyjsonselect</a>, a fully-conformant implementation of <a href="http://jsonselect.org/">JSONSelect</a> in Python.
+      <li><a href="https://github.com/danvk/reactjs-prop-validation">ReactJS prop validation</a>, a library to enforce APIs on ReactJS components.
+      <li><a href="https://github.com/bslatkin/dpxdt">dpxdt</a> (contributor), a screenshot capture and diff tool.
+      <li><a href="https://github.com/danvk/localturk">localturk</a>, an implementation of the Mechanical Turk API which runs on your own machine. Discussed in this <a href="http://www.danvk.org/wp/2013-04-20/generating-training-data/">blog post</a>
     </ul>
 
     <h4>Google Projects</h4>
     <ul>
-      <li><a href="">Sunrise/Sunset Onebox</a>: <a href="http://www.google.com/search?q=sunset+nyc">[sunset nyc]</a>
+      <li><a href="http://www.danvk.org/wp/2010-06-28/sunrisesunset-onebox/">Sunrise/Sunset Onebox</a>: <a href="http://www.google.com/search?q=sunset+nyc">[sunset nyc]</a>
       <li><a href="http://www.danvk.org/wp/2014-06-14/googles-new-finance-onebox/">Finance Onebox</a>: <a href="http://www.google.com/search?q=goog">[goog]</a>
       <li><a href="http://www.danvk.org/wp/2013-08-18/statistics-knowledge-panel/">Statistics Knowledge Panel</a>: <a href="https://www.google.com/search?q=population+france">[population france]</a>
       <li><a href="http://www.danvk.org/wp/2014-02-24/fact-comparisons/">Fact Comparisons</a>: <a href="https://www.google.com/search?q=distance+from+the+sun+to+mars">[distance from the sun to mars]</a>
       <li><a href="http://techcrunch.com/2013/03/19/google-march-madness-bracket/">March Madness Onebox</a>
       <li>Entity Comparisons: <a href="https://www.google.com/search?q=olive+oil+vs+margarine">[olive oil vs margarine]</a>
       <li><a href="http://www.google.com/trends/correlate">Google Correlate</a>, <a href="http://googleblog.blogspot.com/2011/05/mining-patterns-in-search-data-with.html">blog post</a>
-      <li>Google Flu Trends
+      <li><a href="http://www.google.org/flutrends/us/#US">Google Flu Trends</a>, international launch <a href="http://googleblog.blogspot.com/2009/10/google-flu-trends-expands-to-16.html">blog post</a>
     </ul>
 
     <h4>Papers</h4>
@@ -157,6 +186,7 @@ title: danvk.org
     <p>Email: danvdk [at] gmail</p>
     <p>Twitter: <a href="https://github.com/danvk">@danvdk</a></p>
     <p>github: <a href="https://github.com/danvk">danvk</a></p>
+    <p>StackOverflow: <a href="stackoverflow.com/users/388951/danvk">danvk</a></p>
     <p>Facebook: <a href="https://www.facebook.com/danvdk">danvdk</a></p>
     <p>Google+: <a href="https://plus.google.com/+DanVanderkam">+DanVanderkam</a></p>
     <p>LinkedIn: <a href="https://www.linkedin.com/profile/view?id=340204755">340204755</a></p>
