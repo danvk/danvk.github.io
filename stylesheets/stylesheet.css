@@ -39,8 +39,13 @@
 }
 
 /* bootstrap templates */
+/* these give enough clearance to cover the top nav */
 body {
   padding-top: 50px;
+}
+h3[id] {
+  padding-top: 50px;
+  margin-top: -20px;
 }
 
 .panel img {
