@@ -1,0 +1,51 @@
+- (derat) Write an lmnowave robot
+  Automatically linkify clue references in the wave.
+  Notify when puzzle is complete
+  Fill in answers when someone says "I give up"?
+
+- (danvk) An "Add Crossword" button
+  Will need to write a .puz parser in JS.
+  http://joshisanerd.com/puz/
+
+- (derat) Figure out a way to source from HEAD via an http request (ala cgit)
+  (github URLs include a commit hash)
+  Probably use cgit on evan's machine, add an apache rewrite rule.
+  Would be nice to have a "danvk" branch for me to test on w/o affecting HEAD.
+  (it may already be possible to do this with github)
+
+
+- Switch to a standard library for event-handling code
+  There's lots of weirdness re: onkeypress vs. onkeydown, arrow keys, Safari, etc.
+  This code from closure is what we should be using:
+  http://doctype.googlecode.com/svn/trunk/goog/events/keyhandler.js
+  Or: get Julie or Ojan to fix this =)
+
+- (danvk) Replace the lmnopuz console
+  Should be able to use the firebug console in both FF and Chrome.
+
+- Add back keyboard shortcuts like "?". (if possible)
+
+- (danvk) Delete all roster-related code.
+
+- Assign colors to people.
+- Store which user filled in a square in the wave state.
+- Show other players' cursors (store in wave state).
+
+- A way to check errors/reveal answers
+
+- End game
+  Announce when the puzzle is complete.
+  Make it immutable when completed correctly.
+  Show colors at the end.
+
+- Double-click doesn't change orientation back in Chrome.
+
+- Type a number to go to that clue.
+
+- Some way to automatically get a new wave w/ a new puzzle each day.
+
+- Deal w/ incorrect answer stealing
+  imagine A has typed in CORRECT and B comes over and types in MYGUESS; then
+  once they realize that CORRECT was correct, B will get credit for all of
+  that except the E.  (maybe we could track for each cell who was the first
+  to get it right?)

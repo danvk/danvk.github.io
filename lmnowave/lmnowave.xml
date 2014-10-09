@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- lonely
+{
+  rewrites: [
+    {
+      from: "https://puzzle-plus.appspot.com",
+      to: "wave"
+    }
+  ]
+}
+-->
+
+<Module>
+  <ModulePrefs
+    title="puzzle+"
+    title_url="http://www.danvk.org/wp/2012-05-17/puzzle-crosswords-for-google/"
+    author="Dan Vanderkam"
+    author_email="danvdk@gmail.com"
+    description="Solve crossword puzzles with friends in Google+"
+    >
+   <Require feature="rpc"/>
+  </ModulePrefs>
+
+  <Content type="html">
+  <![CDATA[
+<html>
+  <link rel="stylesheet" type="text/css" href="https://puzzle-plus.appspot.com/crossword.css"/>
+
+<script src="https://puzzle-plus.appspot.com/common.js"></script>
+<script src="https://puzzle-plus.appspot.com/console.js"></script>
+<script src="https://puzzle-plus.appspot.com/crosswordui.js"></script>
+<script src="https://puzzle-plus.appspot.com/cluesui.js"></script>
+<script src="https://puzzle-plus.appspot.com/focusbox.js"></script>
+<script src="https://puzzle-plus.appspot.com/color.js"></script>
+<script src="https://puzzle-plus.appspot.com/puzparser.js"></script>
+<script src="https://puzzle-plus.appspot.com/lmnowave.js"></script>
+<script src="https://puzzle-plus.appspot.com/builtins.js"></script>
+<script src="https://puzzle-plus.appspot.com/roster.js"></script>
+<script src="https://puzzle-plus.appspot.com/browser-detect.js"></script>
+
+<!-- lonely <prodonly> -->
+<script src="https://hangoutsapi.talkgadget.google.com/hangouts/api/hangout.js?v=1.0" ></script>
+<!-- lonely </prodonly> -->
+
+<body>
+
+<div id="scroll-wrapper">
+<div class="centering-outer">
+<div class="centering-middle">
+<div class="centering-inner gray-bubble">
+
+<div id="upload" style="display:none">
+  <div id="upload_supported" style="display:none;">
+    <div id="upload-interface">
+      <div id="dropbox" class="dropbox" >
+        <img src="https://puzzle-plus.appspot.com/220x140.png" />
+        <p><b>Drag a .puz file here to start playing.</b></p>
+      </div>
+      <p id="file-chooser">Or choose a file:
+        <input type="file" id="puz" onchange="addPuzToWave(this.files)" />
+      </p>
+    </div>
+
+    <p>You can find links to many .puz files <a
+    href="http://www.fleetingimage.com/wij/xyzzy/nyt-links.html">here</a>.
+    <br/>Or, try one of these puzzles from the <a
+    href="http://www.avclub.com/">A.V. Club</a>:</p>
+  </div>
+
+  <div id="upload_unsupported" style="display:none;">
+    <table><tr>
+    <td valign="top">
+      <img src="https://puzzle-plus.appspot.com/220x140.png" />
+    </td><td valign="middle">
+      <p><b>Your browser does not support puzzle upload.</b></p>
+      <p>Try loading this wave in a browser that does, such as <a
+      href="http://www.mozilla.com/firefox/" target="_blank">Firefox</a> or
+      <a href="https://www.google.com/chrome">Chrome</a>.<br/>
+      Or, try one of these puzzles from the <a
+      href="http://www.avclub.com/">A.V. Club</a>:</p>
+    </td>
+    </tr></table>
+  </div>
+
+  <div id="builtins">
+  </div>
+
+  <script type="text/javascript">
+  for (var i = 0; i < Builtins.length; i++) {
+    var p = Builtins[i];
+    var str = '<div class=builtin><a href="javascript:setBuiltInPuz(' + i + ')"><img src="https://github.com/danvk/lmnowave/raw/master/wave/puzzle_16.png" />' + p['title'] + '</a> (by ' + p['author'] + '; <a href="' + p['link'] + '">original</a>)</div>';
+    document.getElementById("builtins").innerHTML += str;
+  }
+
+  function setBuiltInPuz(i) {
+    gapi.hangout.data.submitDelta({'crossword': Builtins[i].data});
+  }
+  </script>
+</div>
+
+<!-- do onblur and onfocus mean anything to a table? -->
+<div id="crossword_container" style="display:none">
+
+<table cellspacing='0' cellpadding='0' id='toptable' >
+  <tr valign="top">
+  <td>&nbsp;</td>
+  <td colspan=2>
+    <table id="puzzle_info" width="100%"><tr>
+      <td id="title"></td>
+      <td id="author"></td>
+      <td id="copyright"></td>
+    </tr></table>
+  </td>
+  </tr>
+
+  <tr valign='top'>
+    <td id='left'>
+      <div id='roster'></div>
+      <div id='controls'>
+        <div id="puzzle-done" class="endgame">
+          <img src="https://puzzle-plus.appspot.com/176x109.png" width=160 height=99 border=0 />
+          <b>You're done!</b>
+          <p>&hellip; but did you get everything right?</p>
+          <p>Want to <a href="#" onClick="newPuzzle()">do another</a>?</p>
+          <div class="rex-url">(or <a target="_blank" href="#">check Rex</a>?)</div>
+        </div>
+
+        <div id="puzzle-correct" class="endgame">
+          <img src="https://puzzle-plus.appspot.com/happy_pencil.png" />
+          <b>Congratulations!</b>
+          <p>You've filled in the puzzle correctly.</p>
+          <p>Want to <a href="#" onClick="newPuzzle()">do another</a>?</p>
+          <div class="rex-url">(or <a target="_blank" href="#">check Rex</a>?)</div>
+        </div>
+
+        <div id="fullscreen-tip">
+          Tip: Go full screen! Choose
+          <span class="Chrome">View&rarr;Enter Presentation Mode</span>
+          <span class="Firefox">View&rarr;Full Screen</span>
+          <span class="Safari">View&rarr;Enter Full Screen</span>
+        </div>
+        <div>
+          <a href='#' onClick="$('help').style.visibility = 'visible';">Help</a>
+        </div>
+      </div>
+    </td>
+    <td id='middle'>
+      <div id='current_clue'></div>
+      <div id='crossword' style='margin-right: 2ex'></div>
+    </td>
+    <td id='right'>
+      <div id='clues'></div>
+    </td>
+  </tr>
+</table>
+
+<div id='rebus-form' style='visibility: hidden;'>
+  <input type=text size=6 id=rebus-text />
+</div>
+
+</div>  <!-- #crossword_outer -->
+
+<div id='help' onmousedown="$('help').style.visibility='hidden'">
+  <div class="centering-outer">
+  <div class="centering-middle">
+  <div class="centering-inner">
+  <div id='help-inner'>
+    <img src="https://puzzle-plus.appspot.com/220x140.png" style="float:right;"/>
+    <h2>Basics</h2>
+    <ul>
+      <li>Move the cursor using the mouse and arrow keys.</li>
+      <li>Enter answers with the keyboard.</li>
+      <li>Switch direction (between across and down) using the space bar.</li>
+    </ul>
+    <h2>Advanced</h2>
+    <ul>
+      <li>Hit tab to advance to the next clue along the current axis.</li>
+      <li>Hold shift while typing letters to mark an entry you're unsure of; the
+      <li>Hit "esc" to enter rebus (multiletter) answers.</li>
+    </ul>
+    <p style="clear: both;">(Click to hide this window.)</p>
+  </div>  <!-- #help-inner -->
+  </div>  <!-- .centering-inner -->
+  </div>  <!-- .centering-middle -->
+  </div>  <!-- .centering-outer -->
+</div>
+
+<div style="display:none;">
+<table cellspacing='0' cellpadding='0' style='padding-top: 1ex' id='bottomtable'>
+  <tr valign='top'>
+    <td style='width:100%'><div id='console'></div></td>
+  </tr>
+</table>
+</div>
+
+</div>  <!-- .centering-inner -->
+</div>  <!-- .centering-middle -->
+</div>  <!-- .centering-outer -->
+</div>  <!-- .scroll-wrapper -->
+
+<script type="text/javascript">
+  gadgets.util.registerOnLoadHandler(function() {
+    gapi.hangout.onApiReady.add(
+      function(eventObj) {
+        if (eventObj.isApiReady) {
+          realInit();
+        }
+      }
+    );
+  });
+
+  function realInit() {
+    gapi.hangout.data.onStateChanged.add(stateUpdated);
+    gapi.hangout.onEnabledParticipantsChanged.add(usersChanged);
+    stateUpdated();  // initialize state
+  }
+
+  // Set up the drag-and-drop interface.
+  if (supportsUpload()) {
+    var dropbox = document.getElementById("dropbox");
+    var stop = function(e) { e.stopPropagation(); e.preventDefault(); };
+    dropbox.addEventListener("dragenter", stop, false);
+    dropbox.addEventListener("dragover", stop, false);
+    dropbox.addEventListener("drop", function(e) {
+      stop(e);
+      addPuzToWave(e.dataTransfer.files);
+    }, false);
+    $('upload_supported').style.display = 'block';
+  } else {
+    $('upload_unsupported').style.display = 'block';
+  }
+
+  var els = document.getElementsByClassName(BrowserDetect.browser);
+  for (var i = 0; i < els.length; i++) {
+    els[i].style.display = 'inline';
+  }
+
+  window.onresize = handleLiveResize;
+
+</script>
+
+<!-- lonely <prodonly> -->
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31936036-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- lonely </prodonly> -->
+
+</body>
+</html>
+  ]]>
+  </Content>
+</Module>

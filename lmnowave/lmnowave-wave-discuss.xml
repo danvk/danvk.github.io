@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Module>
+  <ModulePrefs title="lmnowave" height="250">
+   <Require feature="rpc"/>
+   <Require feature="wave" />
+   <Require feature="dynamic-height" />
+  </ModulePrefs>
+
+  <Content type="html">
+  <![CDATA[
+    <script type="text/javascript"
+      src="http://wave-api.appspot.com/public/wave.js"></script>
+        <link rel="stylesheet" type="text/css" href="http://danvk.org/lmnowave/crossword.css"/>
+<style type='text/css'>
+body {
+  margin: 0ex 1ex;
+}
+body, td, input {
+  font-family: serif;
+}
+
+h3 {
+  font-size: 100%;
+  margin: 0;
+}
+</style>
+
+<script src='http://danvk.org/lmnowave/common.js'></script>
+<script src='http://danvk.org/lmnowave/console.js'></script>
+<script src='http://danvk.org/lmnowave/crosswordui.js'></script>
+<script src='http://danvk.org/lmnowave/cluesui.js'></script>
+<script src='http://danvk.org/lmnowave/focusbox.js'></script>
+<script src='http://danvk.org/lmnowave/roster.js'></script>
+<script src='http://danvk.org/lmnowave/puzparser.js'></script>
+<script src='http://danvk.org/lmnowave/lmnowave.js'></script>
+
+<div id="upload" style="display:none">
+  <div id="dropbox" class="dropbox" >
+  <b>Drag a .puz file here to start playing.</b>
+  </div>
+  <p>Or: <input type="file" id="puz" onchange="addPuzToWave(this.files)" /></p>
+  </form>
+</div>
+
+<!-- do onblur and onfocus mean anything to a table? -->
+<div id="crossword_container" style="display:none">
+<table cellspacing='0' cellpadding='0' id='toptable' >
+  <tr valign='top'>
+    <td><div id='crossword' style='margin-right: 2ex'></div></td>
+    <td><div id='clues'></div></td>
+  </tr>
+</table>
+</div>
+
+<div style="display:none;">
+<table cellspacing='0' cellpadding='0' style='padding-top: 1ex' id='bottomtable'>
+  <tr valign='top'>
+    <td style='width:100%'><div id='console'></div></td>
+  </tr>
+</table>
+</div>
+
+<script type="text/javascript">
+  gadgets.util.registerOnLoadHandler(function() {
+    if (wave && wave.isInWaveContainer()) {
+      wave.setStateCallback(stateUpdated);
+      // wave.setParticipantCallback(stateUpdated);
+    }
+  });
+
+  // Set up the drag-and-drop interface.
+  var dropbox = document.getElementById("dropbox");
+  var stop = function(e) { e.stopPropagation(); e.preventDefault(); };
+  dropbox.addEventListener("dragenter", stop, false);
+  dropbox.addEventListener("dragover", stop, false);
+  dropbox.addEventListener("drop", function(e) {
+    stop(e);
+    addPuzToWave(e.dataTransfer.files);
+  }, false);
+</script>
+  ]]>
+  </Content>
+</Module>

@@ -1,0 +1,380 @@
+/*
+Crossword cells are stuck in a big table.  They look like this:
+  td, 1px black border -- crossword cell
+    div, 3ex width/height, relative pos -- holds the cell content
+    div, absolute, small font -- number, if there is one
+The focus is attached to a cell by making it a child of the cell:
+  div, absolute, bordered, sized 100%x100%
+*/
+
+/*
+The net effect of these three styles is to horizontally & vertically center
+the crossword on the page.
+*/
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+body, td, input {
+  font-family: sans-serif;
+}
+
+h3 {
+  font-size: 100%;
+  margin: 0;
+}
+
+body {
+  background: rgb(245,245,245);  /* matches Google+ gray */
+}
+
+#scroll-wrapper {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  overflow: auto;
+  position: relative;
+}
+.centering-outer {
+  width: 100%;
+  height: 100%;
+  display: table;
+}
+.centering-middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+.centering-inner {
+  display: table;
+  margin: 0 auto;
+}
+.gray-bubble {
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  background: white;
+  padding: 10px;
+}
+
+#crosswordui {
+  font-family: sans-serif;
+  border-top: solid 1px #333;
+  border-left: solid 1px #333;
+
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+#crosswordui td.filled {
+  background: #333;
+}
+#crosswordui td.highlighted {
+  background: #ccf !important;
+}
+
+#crosswordui td div.number {
+  z-index: 1;
+  position: absolute;
+  font-size: 7pt;
+  font-family: sans-serif;
+  margin-left: 1px;  /* gives a bit of separation from left cell edge */
+}
+
+#crosswordui div.letter {
+  z-index: 2;
+  font-family: sans-serif;
+  font-weight: bold;
+  text-align: center;
+  line-height: 32px;    /* vertical centering! */
+  width:       25px;
+  height:      25px;
+  position: relative;
+  border-right: solid 1px #333;
+  border-bottom: solid 1px #333;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+#crosswordui div.rebus {
+  font-size: x-small;
+}
+
+#crosswordui div.guess {
+  color: #999;
+}
+
+div.focusbox {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 0px;
+  height: 0px;
+}
+
+#clues {
+  width: 100%;
+  text-align: left;
+}
+#clues div.scroller {
+  overflow: auto;
+  border: solid 1px #ccc;
+  height: 10em;
+}
+#clues div.primaryhighlighted {
+  color: rgb(162,0,0);
+  border-top: #ccf solid 1px;
+  border-bottom: #ccf solid 1px;
+  background: #ccf;
+}
+#clues div.otherhighlighted {
+  color: rgb(162,0,0);
+  border-top: #ccf dashed 1px;
+  border-bottom: #ccf dashed 1px;
+}
+#clues div.clue {
+  padding: 0 0.1em;
+  cursor: pointer;
+}
+#clues h3.down {
+  padding-top: 0.5em;
+}
+
+#current_clue {
+  font-size: 140%;
+  /* border: solid 1px black; */
+  margin-bottom: 3px;
+  padding-left: 2px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  height: 1.1em;
+  white-space: nowrap;
+  position: relative;
+  /* color: rgb(162,0,0); */
+}
+
+#current_clue div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* hide the console for now */
+#bottomtable {
+  display: none;
+}
+#console div.container {
+  border: solid 1px #ccc;
+}
+#console div.containerhighlighted {
+  border: solid 1px #f20;
+  background: #fffaf7;
+}
+#console div.scroller {
+  min-height: 3em;
+}
+#console div.scroller div {
+  padding: 0.1em 0.1em;
+}
+#console div.scroller span.time {
+  color: #aaa;
+}
+#console div.scroller span.name {
+  padding: 0 0.2em;
+}
+#console div.scroller span.correct {
+  padding: 0 0.2em;
+  background: #d00;
+  color: #fff;
+  font-weight: bold;
+}
+#console input.entry {
+  border: none;
+  border-top: solid 1px #ccc;
+  padding: 0.1em;
+}
+#console input.entryfocused {
+  border: solid 2px blue;
+}
+
+#roster {
+  width: 10em;
+  margin-right: 1ex;
+}
+#roster div.namediv {
+  padding: 0.3em;
+  overflow: hidden;
+}
+#roster div.namedivhl {
+  border: solid 2px #f40;
+}
+#roster span.nametext {
+  margin-right: 0.25em;
+}
+#roster a.namelink {
+  padding: 0 0.2em 0.1em 0.2em;
+}
+#roster input.nameinput {
+  border: solid 1px gray;
+}
+#roster div.container {
+}
+#roster div.line {
+  padding: 0.3em 0.2em;
+}
+#roster div.line span.name {
+  padding: 0.2em;
+}
+
+#left {
+  position: relative;
+}
+#controls {
+  position: absolute;
+  bottom: 0px;
+}
+
+.dropbox {
+  width: 100%;
+  height: 150px;
+  border: 3px dashed black;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  text-align: center;
+  display: table;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#upload {
+  font-family: serif;
+}
+
+#upload-interface {
+  display: table;
+  margin: 1ex auto;
+}
+
+#puzzle_info {
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
+  font-size: 100%;
+}
+
+#title {
+  border-right: 1px solid black;
+  padding-right: 5px;
+}
+#author {
+  border-right: 1px solid black;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+#copyright {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#builtins a {
+  text-decoration: none;
+}
+
+#builtins img {
+  border: 0;
+}
+
+#fullscreen-tip {
+  font-style: italic;
+  font-size: small;
+}
+
+.Chrome { display: none; }
+.Firefox { display: none; }
+.Safari { display: none; }
+
+.endgame {
+  display: none;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.endgame img {
+  padding-bottom: 10px;
+}
+.rex-url {
+  visibility: hidden;
+  margin-top: -1ex;
+}
+
+.circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid black;
+  border-radius: 12px;
+  margin: -1px;
+}
+
+#help {
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  visibility: hidden;
+  background: rgba(255,255,255,0.75);
+}
+
+#help-inner {
+  display: block;
+  max-width: 32em;
+  border: solid 1px black;
+  /*
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  */
+  background: #ffc;
+  padding: 2em;
+  overflow: auto;
+  -moz-box-shadow: 0 0 10px 3px gray;
+  -webkit-box-shadow: 0 0 10px 3px gray;
+  box-shadow: 0 0 10px 3px gray;
+}
+#help ul, dl {
+  margin-top: 1ex;
+}
+#help dt {
+  font-weight: bold;
+  margin-top: 1ex;
+}
+#help dd {
+}
+
+.focused {
+  z-index: 10;
+  -webkit-box-radius: 0 0 5px 2px blue;
+}
+
+#rebus-form {
+  position: absolute;
+  display: table;
+  background: white;
+  z-index: 20;
+}
+#rebus-form input {
+  margin: 0;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: small;
+  text-transform: uppercase;
+}
