@@ -4,7 +4,7 @@ layout: nil
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
- <title>Tom Preston-Werner</title>
+ <title>danvk.org blog</title>
  <link href="http://danvk.github.io/atom.xml" rel="self"/>
  <link href="http://danvk.github.io/"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
@@ -17,9 +17,9 @@ layout: nil
  {% for post in site.posts %}
  <entry>
    <title>{{ post.title }}</title>
-   <link href="http://danvk.github.io/{{ post.url }}"/>
+   <link href="https://danvk.github.io/{{ post.url }}"/>
    <updated>{{ post.date | date_to_xmlschema }}</updated>
-   <id>http://danvk.github.io/{{ post.id }}</id>
+   <id>https://danvk.github.io/{{ post.id }}</id>
    <content type="html">{{ post.content | xml_escape }}</content>
  </entry>
  {% endfor %}
