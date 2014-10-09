@@ -1,0 +1,305 @@
+<html>
+<head>
+	<title>Perl/Python/Ruby Comparison</title>
+	<style type='text/css'>
+		pre       { border-width: thin; border-style: dashed; padding: 5px; }
+		pre.perl  { background-color: #dddddd; }
+		pre.ruby  { background-color: #ffdddd; }
+		pre.python{ background-color: #ddffdd; }
+		.code { font-family: courier; font-size: 10pt; }
+		p.language{ font: 14pt bold; }
+	</style>
+</head>
+<body bgcolor=#ffffff>
+<h2>The Josephus Problem</h2>
+<p>What is the Josephus problem? To quote from <i>Concepts, Techniques, and Models
+of Computer Programming</i> (a daunting title if ever there was one):
+<blockquote>
+<p>Flavius Josephus was a roman historian of Jewish origin. During the
+Jewish-Roman wars of the first century AD, he was in a cave with fellow soldiers,
+40 men in all, surrounded by enemy Roman troops. They decided to commit
+suicide by standing in a ring and counting off each third man. Each man so
+designated was to commit suicide...Josephus,
+not wanting to die, managed to place himself in the position of the last survivor.</p>
+<p>In the general version of the problem, there are <i>n</i> soldiers numbered from 1
+to <i>n</i> and each <i>k</i>-th soldier will be eliminated. The count starts from the first
+soldier. What is the number of the last survivor?</p>
+</blockquote>
+I decided to model this situation using objects in three different scripting languages,
+Perl, Ruby, and Python. The solution in each of the languages is similar. A Person class
+is defined, which knows whether it is alive or dead, who the next person in the circle is,
+and what position number it is in. There are methods to pass along a kill signal, and to
+create a chain of people. Either of these could have been implemented using iteration, but
+I wanted to give recursion a whirl, since it's tougher on the languages. Here are my results.</p>
+
+<h2>Perl</h2>
+<pre class="perl">
+package Person;
+use overload q("") => \&to_s;
+
+# Create a new, living Person with the given position
+sub new {
+    my $invocant = shift;
+    my $class = ref($invocant) || $invocant;
+    my $pos = shift;
+    my $self = { "position" => $pos,
+                 "alive" => 1,
+                 "succ" => undef };
+    return bless($self,$class);
+}
+
+# Getter/Setter for successor
+sub succ : lvalue {
+    my $self = shift;
+    $self->{succ}
+}
+
+# Create a chain of people
+sub createChain {
+    my $self = shift;
+    my $n = shift;
+    return $self unless $n;
+    
+    my $succ = Person->new($self->{position}+1);
+    $self->succ = $succ;
+    $succ->createChain($n-1)
+}
+
+# Pass on the killing message
+sub circularKill {
+    my $self = shift;
+    my ($pos,$nth,$remaining)=@_;
+
+    return $self->{succ}->circularKill($pos, $nth, $remaining)
+        unless $self->{alive};
+    return $self unless $remaining > 1;
+    
+    if ($pos == $nth) {
+        $self->{alive} = 0;
+        $pos = 0;
+        $remaining--;
+    }
+    $self->{succ}->circularKill($pos+1, $nth, $remaining)
+}
+
+# Print descriptive information
+sub to_s{ 
+    my $self = shift;
+    "Person #".$self->{position}.", ".($self->{alive} ? "alive" : "dead")
+}
+
+# Circle of $n people, kill every one out of every $m
+$m = 3;
+$n = 40;
+
+$first = new Person(1);
+$last = $first->createChain($n-1);
+$last->succ = $first;
+
+$winner = $first->circularKill(1,$m,$n);
+print "Winner: ", $winner, "\n";
+</pre>
+<p>What's good:
+<ul>
+	<li>Support for statement modifiers (ie, the 'if' or 'unless' after a line</li>
+	<li>Last evaluated expression is assumed to be the return value (look at sub succ)</li>
+	<li>Once the class is actually defined, everything seems fairly clean</li>
+	<li>It runs, quickly, and gets the right answer</li>
+</ul>
+What's bad:
+<ul>
+	<li>It looks ugly as hell, and feels like a hack. 
+	Look at the <span class=code>new</span> routine!
+	Without the help of <i>Programming Perl</i> (aka The Camel),
+	I would have been clueless how to write this.</li>
+	<li>Also under the "it's a hack" heading, I don't like how
+	each subroutine begins by shifting <span class=code>$self</span>
+	off of the arguments stack. This seems unnatural.</li>
+	<li>Overloading the "stringification" operator was a little roundabout
+	(look at the <span class=code>use overload</span> line. Again, this
+	felt unnatural, and I wouldn't have had a clue how to do it without The Camel.</li>
+</ul>
+</p>
+<p>So, in conclusion, defining classes in Perl is decidedly inelegant, and unintuitive.
+If I were to do it often, I'd have to cut and paste that <span class=code>new</span> routine
+wherever I went. That's a BIG stumbling block, and it would probably be enough to keep me
+from using OO in Perl. In fact, it has been for the past several years.</p>
+<p>I wanted to do some OO however, so I checked out Python and Ruby. Here's the same problem
+coded using each of them.</p>
+
+<h2>Ruby</h2>
+<pre class="ruby">
+class Person
+    attr_reader :position, :succ, :alive
+    attr_writer :position, :succ, :alive
+    
+    # Everyone is alive, initially
+    def initialize(pos)
+        @position = pos
+        @alive = true
+    end
+    
+    # For creating a linked chain of people
+    def createChain(n)
+        return self unless n>0
+        @succ = Person.new(@position + 1)
+        @succ.createChain(n-1)
+    end
+    
+    # Kill every nth person
+    # Current position in the cycle is pos
+    # there are remaining people remaining
+    # Stop killing if we're the last one.
+    def kill(pos,nth,remaining)
+        return @succ.kill(pos,nth,remaining) if !@alive
+        return self if (remaining == 1)
+        
+        if pos == nth
+            @alive = false
+            puts self
+            pos = 0
+            remaining-=1
+        end
+        @succ.kill(pos+1,nth,remaining)
+    end
+    
+    # Information about this person
+    def to_s
+        "Person \##@position, #{@alive ? 'alive' : 'dead'}"
+    end
+end
+
+# Set n to anything much higher (like 10, say)
+# And the program hangs, or has an "Illegal Instruction"
+n = 7
+
+first = Person.new(1)
+last  = first.createChain(n-1)
+last.succ = first
+
+winner = first.kill(1,3,n)
+# If I use puts "Winner: " + winner, I get an error:
+#    in `+': failed to convert Person into String (TypeError)
+#puts "Winner: " + winner
+puts "Winner: ", winner
+</pre>
+<p>
+What's good:
+<ul>
+	<li>Since this was my first Ruby script, I can't claim to have written good, idiomatic
+	code, but it sure looks nice to me. It's far more elegant than the Perl mess, and
+	significantly shorter as well.</li>
+	<li>I like the <span class=code>attr_reader</span> and 
+		<span class=code>attr_writer</span> shortcuts.</li>
+	<li>"stringification" overloading was pretty simple, especially since this is done
+	frequently in the online reference.</li>
+	<li>As in Perl, there are statement modifiers and the last statement is the return value,
+	a fact which I used in most of these routines.</li>
+	<li>I like the flexible interpolation via #{}</li>
+</ul>
+What's bad:
+<ul>
+	<li>While the code looks great, the execution sucks. Ruby's limit on stack depth seems to
+	be set somewhere around 60, which is absurdly low. This clearly prevents setting n
+	particularly high. While n=40 worked in both Perl and Python, Ruby gives an "Illegal Instruction"
+	error or just hangs, which I eventually figured out was its way of saying
+	that the depth limit had been reached. There may be some way around it, but this limitation
+	seems pretty atrocious.</li>
+	<li>When there's an error in a Ruby program, the error messages tend to be pretty useless,
+	usually along the lines of "There's an error in line x", if that. When I had n set at 40, I'd
+	just get an "Illegal Instruction" error, which was incredibly misleading. Setting the --debug
+	flag didn't help in this department.</li>
+	<li>Also, and I may just be missing something here, <span class=code>puts "Winner: " + winner</span>
+	told me that it couldn't convert a Person into a String, which it clearly could, since
+	<span class=code>puts winner</span> worked fine.
+</ul>
+</p>
+<p>So in conclusion, I really liked coding in Ruby, but the execution just wasn't there.
+If there are any Ruby fans out there who know how to fix the problems I mentioned, I'd be
+thrilled to hear from you.</p>
+
+<h2>Python</h2>
+<pre class="python">
+class Person:
+    def __init__(self,pos):
+        self.pos = pos
+        self.alive = 1
+    def __str__(self):
+        return "Person #%d, %s" % (self.pos, self.alive)
+    
+    # Creates a chain of linked people
+    # Returns the last one in the chain
+    def createChain(self,n):
+        if n>0:
+            self.succ = Person(self.pos+1)
+            return self.succ.createChain(n-1)
+        else:
+            return self
+
+    # Kills in a circle, getting every nth living person
+    # When there is only one remaining, the lone survivor is returned
+    def kill(self,pos,nth,remaining):
+        if self.alive == 0: return self.succ.kill(pos,nth,remaining)
+        if remaining == 1: return self
+        if pos == nth:
+            self.alive = 0
+            pos=0
+            remaining-=1
+        return self.succ.kill(pos+1,nth,remaining)
+
+# n people in a circle
+# kill every mth person
+n = 40
+m = 3
+
+first = Person(1)
+last = first.createChain(n-1)
+last.succ = first
+
+print "In a circle of %d people, killing number %d" % (n,m)
+winner = first.kill(1,m,n)
+print "Winner: ", winner
+</pre>
+<p>What's good:
+<ul>
+	<li>It's very compact (shortest of the three), mostly because of the lack of lines
+	to end blocks (ie, "end" in Ruby or "}" in Perl). Not having these lines does feel
+	a little weird, but I think I could get used to it.</li>
+	<li>I like the printf-style formatting via the % operator. I can't say whether I like
+	it more than the direct interpolation in Ruby and Perl, however.</li>
+	<li>Unlike in Ruby, the program ran without a hitch, and got the right answer.</li>
+</ul>
+What's bad:
+<ul>
+	<li><span class=code>__init__</span> and <span class=code>__str__</span>? This seems
+	ugly, though that may be part of the "never touch anything starting with __" 
+	credo coming in from my C background.</li>
+	<li>Passing <span class=code>self</span> as the first parameter of every routine
+	makes Python's OO seem almost as hackish as Perl's or PHP's. I much prefer Ruby's system
+	of using @ to indicate an instance variable, rather than "self.".</li>
+	<li>I wish I could use tabs instead of four spaces to indicate indentation.</li>
+	<li>No statement modifiers, and there has to be an explicit return statement. These
+	aren't major drawbacks, but I'd rather have them than not.</li>
+</ul>
+<p>Python isn't quite as clean as Ruby, though it certainly trounces Perl. It would be hard
+not to trounce Perl. The performance was much better than in Ruby, however: Python ran the 
+script for n=40 without any hitches. In the debugging department, syntax errors included
+helpful information, including where in the line the error occured.</p>
+
+<hr noshade size=1>
+<p>Now for the comparison. First of all, I'll throw Perl right out. I love the language, but
+not for object-oriented programming. To write a purely procedural program I'd take it over both
+Ruby and Python any day of the week, but not for OO.</p>
+<p>If I had my choice in the matter, I would use Ruby. It's syntax seems cleaner, and it's
+object orientation doesn't seem hackish in the least. It's performance, however, left a lot
+to be desired. Granted, deep recursion probably isn't the most widely used technique, but there's
+no reason it shouldn't work. For a different sort of problem, I'd likely choose Ruby,
+though I'm worried I might have to switch over to Python if I ran into similar problems.</p>
+<p>And that brings us to the aforementioned beast. It seems to present the middle ground in this
+problem. It's syntax is fairly clean though, as I mentioned, I'd rather not have to type "self."
+all the time. But on the plus side, it could actually solve the problem without crashing.</p>
+<p>So for this round, the winner is Python, though I really wish it had been Ruby. For most
+problems, I'll go with Ruby. It's more enjoyable to code in, and that's what I'm coding
+for--enjoyment.</p>
+</body>
+</html>

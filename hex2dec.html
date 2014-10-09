@@ -1,0 +1,242 @@
+<html>
+  <head>
+    <title>Arbitrary precision Hex &lt;-&gt; Dec converter in JavaScript</title>
+
+    <!-- If you want to use this, copy the following <script> block: -->
+<script type="text/javascript">
+/**
+ * A function for converting hex <-> dec w/o loss of precision.
+ *
+ * The problem is that parseInt("0x12345...") isn't precise enough to convert
+ * 64-bit integers correctly.
+ *
+ * Internally, this uses arrays to encode decimal digits starting with the least
+ * significant:
+ * 8 = [8]
+ * 16 = [6, 1]
+ * 1024 = [4, 2, 0, 1]
+ */
+
+// Adds two arrays for the given base (10 or 16), returning the result.
+// This turns out to be the only "primitive" operation we need.
+function add(x, y, base) {
+  var z = [];
+  var n = Math.max(x.length, y.length);
+  var carry = 0;
+  var i = 0;
+  while (i < n || carry) {
+    var xi = i < x.length ? x[i] : 0;
+    var yi = i < y.length ? y[i] : 0;
+    var zi = carry + xi + yi;
+    z.push(zi % base);
+    carry = Math.floor(zi / base);
+    i++;
+  }
+  return z;
+}
+
+// Returns a*x, where x is an array of decimal digits and a is an ordinary
+// JavaScript number. base is the number base of the array x.
+function multiplyByNumber(num, x, base) {
+  if (num < 0) return null;
+  if (num == 0) return [];
+
+  var result = [];
+  var power = x;
+  while (true) {
+    if (num & 1) {
+      result = add(result, power, base);
+    }
+    num = num >> 1;
+    if (num === 0) break;
+    power = add(power, power, base);
+  }
+
+  return result;
+}
+
+function parseToDigitsArray(str, base) {
+  var digits = str.split('');
+  var ary = [];
+  for (var i = digits.length - 1; i >= 0; i--) {
+    var n = parseInt(digits[i], base);
+    if (isNaN(n)) return null;
+    ary.push(n);
+  }
+  return ary;
+}
+
+function convertBase(str, fromBase, toBase) {
+  var digits = parseToDigitsArray(str, fromBase);
+  if (digits === null) return null;
+
+  var outArray = [];
+  var power = [1];
+  for (var i = 0; i < digits.length; i++) {
+    // invariant: at this point, fromBase^i = power
+    if (digits[i]) {
+      outArray = add(outArray, multiplyByNumber(digits[i], power, toBase), toBase);
+    }
+    power = multiplyByNumber(fromBase, power, toBase);
+  }
+
+  var out = '';
+  for (var i = outArray.length - 1; i >= 0; i--) {
+    out += outArray[i].toString(toBase);
+  }
+  return out;
+}
+
+function decToHex(decStr) {
+  var hex = convertBase(decStr, 10, 16);
+  return hex ? '0x' + hex : null;
+}
+
+function hexToDec(hexStr) {
+  if (hexStr.substring(0, 2) === '0x') hexStr = hexStr.substring(2);
+  hexStr = hexStr.toLowerCase();
+  return convertBase(hexStr, 16, 10);
+}
+
+</script>
+
+<!-- everything past here is just the demo, not the hex <-> dec code. -->
+</head>
+<body style="max-width: 650px; padding-left: 20px;">
+  <p style="font-size:small;"><i><a href="http://danvk.org/">&larr; back to danvk.org</a></i></p>
+
+  <p>Type in an arbitrarily long hex or dec string:</p>
+  <input type="text" size=40 id="in" onkeyup="convert()" value="12345678909876543" />
+  <p id="result"></p>
+
+  <hr/>
+  <p>So what's going on here? JavaScript uses a 64-bit floating point
+  representation to store all numbers, even integers. This means that integers
+  <a href="http://stackoverflow.com/questions/307179/what-is-javascripts-max-int-whats-the-highest-integer-value-a-number-can-go-t">larger than 2^53</a> cannot be represented precisely in JS.</p>
+
+  <p>This becomes a problem if you need to work with 64-bit numbers, say to
+  convert them between hexadecimal (base 16) and decimal (base 10). This is not
+  an uncommon need, since many hash functions output 64-bit integers.</p>
+
+  <p>This page converts between arbitrarily large decimal and hex numbers
+  without loss of precision. It does this by working with strings and arrays of
+  digits, rather than native JS numbers. This means it's slower than built-in
+  functions like <code>parseInt</code>, but you'd rather be accurate than fast,
+  right?</p>
+
+  <p>The underlying algorithm is fairly simple. Say we're converting hex to
+  decimal. Then we represent numbers as arrays of decimal digits, starting with
+  the least-significant. So:</p>
+
+  <code>
+  <ul>
+    <li>1 = [1]
+    <li>10 = [0, 1]
+    <li>1024 = [4, 2, 0, 1]
+  </ul>
+  </code>
+
+  <p>We can implement a general <code>add(x, y)</code> function for these
+  arrays of digits. This turns out to be all we need to do the base
+  conversion.</p>
+
+  <p>Since <code>2x = x + x</code>, an add function lets you compute all
+  the powers of two:</p>
+
+  <code>
+  <ul>
+    <li>2^0 = [1]
+    <li>2^1 = add(2^0, 2^0) = add([1], [1]) = [2]
+    <li>2^2 = add(2^1, 2^1) = add([2], [2]) = [4]
+    <li>2^3 = add(2^2, 2^2) = add([4], [4]) = [8]
+    <li>2^4 = add(2^3, 2^3) = add([8], [8]) = [6, 1]
+    <li>2^5 = add(2^4, 2^4) = add([6, 1], [6, 1]) = [2, 3]
+    <li>&hellip;
+  </ul>
+  </code>
+
+  <p>Now, given a hex string, we can easily break it down into binary digits.
+  Each hex digit corresponds to four binary digits. These binary digits tell us
+  how to form the number by adding together powers of two. We already have an
+  add function and the powers of two, so we're all set!</p>
+
+  <p>For example, to convert <code>0x123</code> from hex to decimal, we:</p>
+
+  <ol>
+    <li>Convert <code>0x123</code> &rarr; (binary) <code>0001 0010 0011</code>
+    <li>Compute powers of two:<br/>
+    <code>&nbsp;2^0 = [1]<br/>
+      &nbsp;2^1 = [2]<br/>
+      &nbsp;2^5 = [2, 3]<br/>
+      &nbsp;2^8 = [6, 5, 2]</code>
+    <li>Add them up: <code>add([1], add([2], add([2, 3], [6, 5, 2]))) = [1, 9, 2]</code>
+    <li>Convert back to a string: <code>[1, 9, 2]</code> &rarr; "291".
+  </ol>
+
+  <p>If you'd like to use this or see how this works, <a
+    href="javascript:viewSource()">view the source</a>. It's fairly short (~65
+  lines of real code) and well-commented. It can be copy/pasted into your own
+  project.</p>
+
+  <script type="text/javascript">
+    function str_or_null(x) {
+      return x === null ? 'null' : x;
+    }
+
+    // "1.234e+5" -> "12340"
+    function expandExponential(x) {
+      var pos = x.indexOf("e");
+      if (pos === -1) pos = x.indexOf("E");
+      if (pos === -1) return x;
+
+      var base = x.substring(0, pos);
+      var pow = parseInt(x.substring(pos + 1), 10);
+      if (pow < 0) return x;  // not supported.
+
+      var dotPos = base.indexOf('.');
+      if (dotPos === -1) dotPos = base.length;
+
+      var ret = base.replace('.', '');
+      while (ret.length < dotPos + pow) ret += '0';
+      return ret;
+    }
+
+    function boldDifference(correct, actual) {
+      for (var i = 0, j = 0; i < correct.length && j < actual.length; i++, j++) {
+        if (correct[i] !== actual[j]) {
+          break;
+        }
+      }
+      if (j < actual.length) {
+        return actual.substring(0, j) + '<b>' + actual.substring(j) + '</b>';
+      } else {
+        return actual;
+      }
+    }
+
+    function convert() {
+      var input = document.getElementById("in").value;
+      if (input) {
+        var aHex = str_or_null(decToHex(input));
+        var aDec = str_or_null(hexToDec(input));
+        var bHex = '0x' + (parseInt(input, 10)).toString(16);
+        var bDec = "" + expandExponential("" +parseInt(input, 16));
+
+        var html = '<p><b>Arbitrary Precision</b></p><code>';
+        html += '<p>hexToDec(' + input + ') = ' + aDec + '</p>';
+        html += '<p>decToHex(' + input + ') = ' + aHex + '</p>';
+        html += '</code><p><b>Browser built-ins</b></p><code>';
+        html += '<p>parseInt(' + input + ', 16) = ' + boldDifference(aDec, bDec) + '</p>';
+        html += '<p>(' + input + ').toString(16) = ' + boldDifference(aHex, bHex) + '</p>';
+        html += '</code><p><i>(Inaccurate digits are bolded.)</i></p>';
+        document.getElementById('result').innerHTML = html;
+      }
+    }
+    convert();
+
+    function viewSource() {
+      window.location = 'view-source:' + window.location.href;
+    }
+  </script>
+</body>
+</html>
