@@ -1,0 +1,114 @@
+<html>
+<head>
+  <title>Multiples over time</title>
+  <!--<script type="text/javascript" src="http://dygraphs.com/dygraph-combined.js"></script>-->
+  <!--<script type="text/javascript" src="http://dygraphs.com/dygraph-dev.js"></script>-->
+  <!--<script type="text/javascript" src="dygraph-combined.js"></script>-->
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/dygraph/1.0.1/dygraph-combined.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="natality_grid.js"></script>
+  <style type="text/css">
+  #slider {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 370px;
+  }
+  .dygraph-legend {
+    left: 55px !important;
+    top: 5px !important;
+    -moz-box-shadow:    2px 2px 2px #ccc;
+    -webkit-box-shadow: 2px 2px 2px #ccc;
+    box-shadow:         2px 2px 2px #ccc;
+  }
+  body {
+    margin: 0;
+    width: 480px;
+  }
+  #g {
+    margin: 0;
+    padding: 0;
+  }
+  h3 {
+    text-align: center;
+  }
+  </style>
+</head>
+<body>
+
+<h3>Twin Rate by Age over Time (U.S.)</h3>
+<div id="g" style="width: 480px; height: 240px;"></div>
+
+<p>Drag the slider to animate the chart through time:<br/>
+<table><tr>
+<td>1971</td>
+<td><input id="slider" type="range" min=1971 max=2002 value=1972></td>
+<td>2002</td>
+</tr></table>
+
+<p style="text-align: center;">
+  <input id='log' type="button" value="log scale" onclick="setLogScale(true)" disabled=true >
+&nbsp; &nbsp;
+  <input id='linear' type="button" value="linear scale" onclick="setLogScale(false)">
+</p>
+
+<script type="text/javascript">
+  var first_year = 1971;
+  var last_year = 2002;
+  var labels = ["Age"];
+  var colors = [];
+  var visibility = [];
+  for (var i = first_year; i <= last_year; i++) {
+    labels.push(i);
+    visibility.push(false);
+    var hue = 128.0 * (i - first_year) / (last_year - first_year);
+    if (i == first_year) {
+      colors.push('#000099');
+    } else if (i == last_year) {
+      colors.push('#009900');
+    } else {
+      colors.push('black');
+    }
+  }
+  visibility[0] = true;
+  visibility[visibility.length - 1] = true;
+
+  g = new Dygraph(document.getElementById("g"),
+                  data,
+                  {
+                    labels: labels,
+                    visibility: visibility,
+                    // valueRange: [0.4, 40.0],
+                    strokeWidth: 1.5,
+                    colors: colors,
+                    xlabel: '<i>Age of mother when giving birth</i>',
+                    ylabel: '<i>P(multiples) * 100%</i>',
+                    logscale: true,
+                    legend: 'always',
+                    gridLineColor: 'rgb(196,196,196)',
+                    yAxisLabelWidth: 40,
+                    labelsSeparateLines: true,
+                    labelsDivWidth: 60
+                  });
+
+  $(function(){
+    $('#slider').on('input change', function(event, ui) {
+        var visibility = [];
+        for (var i = first_year; i <= last_year; i++) {
+          visibility.push(false);
+        }
+        visibility[0] = true;
+        visibility[visibility.length - 1] = true;
+        visibility[$(this).val() - first_year] = true;
+        g.updateOptions( { 'visibility': visibility } );
+      });
+  });
+
+  function setLogScale(val) {
+    g.updateOptions({ logscale: val });
+    document.getElementById("linear").disabled = !val;
+    document.getElementById("log").disabled = val;
+  }
+</script>
+</body>
+</html>
+
