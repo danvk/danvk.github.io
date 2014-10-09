@@ -24,6 +24,13 @@
   <link rel="stylesheet" type="text/css" href="/stylesheets/syntax.css" />
   <link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" />
 
+  <script>
+    var host = "danvk.github.io";
+    if (window.location.host == host && window.location.protocol != "https:") {
+      window.location.protocol = "https:"
+    }
+  </script>
+
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <!-- sourced in <head> for convenience of individual pages -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
