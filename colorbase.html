@@ -1,0 +1,68 @@
+---
+layout: default
+title: Base Pair Colorer
+---
+
+<style>
+#output {
+  font-weight: bold;
+}
+
+.igv .a { color: #188712; }
+.igv .g { color: #C45C16; }
+.igv .c { color: #0600F9; }
+.igv .t { color: #F70016; }
+.igv .u { color: #F70016; }
+
+/* C/T/U are pyrimidines, A/G are purines */
+.pyrpu .a { color: #188712; }
+.pyrpu .g { color: #188712; }
+.pyrpu .c { color: #F70016; }
+.pyrpu .t { color: #F70016; }
+.pyrpu .u { color: #F70016; }
+
+#base-colorer {
+  font-size: large;
+}
+#output, textarea {
+  font-family: monospace;
+}
+</style>
+
+<div id="base-colorer">
+  <p>
+    Type some letters and let the magic happen:<br>
+    <textarea cols=100 rows=5 id="base-input">ATCGAGGCCTTAA</textarea>
+  </p>
+
+  <p id="output" class="igv">&nbsp;</p>
+
+  <p id="color-schemes">
+  Color Scheme:<br>
+  <input type="radio" name="scheme" value="igv" id="igv" checked><label for="igv">&nbsp;IGV</label><br>
+  <input type="radio" name="scheme" value="pyrpu" id="pyrpu"><label for="pyrpu">&nbsp;Pyrimidine/Purine</label>
+  </p>
+</div>
+
+<script type="text/javascript">
+var bases = {
+  'A': '<span class="a">A</span>',
+  'C': '<span class="c">C</span>',
+  'T': '<span class="t">T</span>',
+  'U': '<span class="u">U</span>',
+  'G': '<span class="g">G</span>',
+  '\n': '<br>'
+};
+$(function() {
+  $('#base-input').on('keyup', function() {
+    var chars = $(this).val().split('');
+    $('#output').html(chars.map(function(c) {
+        return bases[c.toUpperCase()] || c;
+    }).join(''));
+  }).trigger('keyup');
+
+  $('input[type="radio"]').on('change', function() {
+    $('#output').removeClass().addClass($(this).val());
+  });
+});
+</script>
