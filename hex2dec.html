@@ -1,8 +1,8 @@
-<html>
-  <head>
-    <title>Arbitrary precision Hex &lt;-&gt; Dec converter in JavaScript</title>
-
-    <!-- If you want to use this, copy the following <script> block: -->
+---
+title: Arbitrary precision Hex &lt;-&gt; Dec converter in JavaScript
+layout: comments
+---
+<!-- If you want to use this, copy the following <script> block: -->
 <script type="text/javascript">
 /**
  * A function for converting hex <-> dec w/o loss of precision.
@@ -102,8 +102,7 @@ function hexToDec(hexStr) {
 
 <!-- everything past here is just the demo, not the hex <-> dec code. -->
 </head>
-<body style="max-width: 650px; padding-left: 20px;">
-  <p style="font-size:small;"><i><a href="http://danvk.org/">&larr; back to danvk.org</a></i></p>
+<div style="max-width: 650px; padding-left: 20px;">
 
   <p>Type in an arbitrarily long hex or dec string:</p>
   <input type="text" size=40 id="in" onkeyup="convert()" value="12345678909876543" />
@@ -238,5 +237,4 @@ function hexToDec(hexStr) {
       window.location = 'view-source:' + window.location.href;
     }
   </script>
-</body>
-</html>
+</div>
