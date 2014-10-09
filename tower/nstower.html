@@ -1,0 +1,344 @@
+<html>
+<head>
+	<title>Canvas-Tower... in JavaScript!</title>
+
+<!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
+
+<script type="text/javascript" src="trace.js"></script>
+<link rel="stylesheet" type="text/css" href="trace.css" />
+	<script type="text/javascript">
+	// Drawing context
+	var ctx, ctxT;
+
+	// Images
+	var plat, guy, side, fullbar, emptybar, bg;
+	// Platforms: 96x16
+	// Guy: 32x32
+	// Side blocks: 16x32
+	// Full/Empty bar: 8x16
+
+	// Positioning
+	var x, y, dir, dy;
+	var plats;
+	var wdt = 384;
+	var hgt = 352;
+	var guyHgt = 32;
+	var guyWdt = 32;
+	var platWdt = 96;
+	var platHgt = 16;
+	var platSpacing = 36;
+	var topPlatY = 0;
+	var scrollThreshold = 32;
+	var pixUp = 0;
+	var powering = false;
+	var power = 0;
+	var l = 0;
+	var dead = false;
+	var paused = false;
+	var jumpCount = 0;
+	var dispFloor = 1;
+	var dispJump = 0;
+	var lastOnBlock = true;
+	var step = 0;
+	var isJump = false;
+	var imagesLoaded = false;
+
+function loadImages() {
+	imagesLoaded = false;
+	plat = new Image();
+	plat.src = "plat.PNG";
+	guy = new Array(8);
+	for (var i=1; i<=8; i++) {
+		guy[i-1] = new Image();
+		guy[i-1].src = i + ".png";
+	}
+	side = new Image();
+	side.src = "wall.gif";
+	fullbar = new Image(); fullbar.src = "fullbar.png";
+	emptybar = new Image(); emptybar.src = "emptybar.png";
+	bg = new Image();
+	bg.src = "bg.png";
+	bg.onload = function() {
+		initializeGame();
+		drawTower();
+		setInterval("nextFrame();", 50); 
+		imagesLoaded = true;
+	}
+}
+
+function getPlatCol(row) {
+	var r = 16 + Math.round( 4.0 * Math.random() )*16
+		   + 64 * ( Math.floor((row%4)/2) )
+		   + 144 * ( (row%2) ); // = 0-306
+	return r;
+}
+
+function initializeGame() {
+	x = 32;
+	y = guyHgt;
+	dir = +4;
+	dy = 0;
+	pixUp = 0;
+	topPlatY = 0;
+	jumpCount = 0;
+	
+	plats = new Array(12);
+	for (var i=0; i<12; i++) {
+		plats[i] = { x: getPlatCol(i), y: i*platSpacing };
+	}
+	topPlatY = 11 * platSpacing;
+}
+
+// Scroll up a certain number of pixels, and create new platforms, if necessary
+function scroll(pix) {
+	pixUp += pix;
+	
+	// Change platforms that have gone off the edge
+	for (var i in plats) {
+		if (pixUp - plats[i].y > 0) {
+			trace("replacing platform " + i);
+			topPlatY += platSpacing;
+			plats[i].y = topPlatY;
+			plats[i].x = getPlatCol(Math.floor(plats[i].y / platSpacing));
+		}
+	}
+
+	// Update the floor
+	updateStats();
+}
+
+// Update the floor/jump count
+function updateStats() {
+	var fl = Math.floor(0.25 * topPlatY / platSpacing) - 1;
+	if (dispJump != jumpCount || dispFloor != fl) {
+		var rat = Math.round(100.0 * jumpCount / fl) / 100.0;
+		document.getElementById('floor').innerHTML = "<p align=right><font color=yellow size=+4><b>" + fl + "</b></font></p>";
+		document.getElementById('jumps').innerHTML = "<p align=right><font color='#d7d7d7' size=+2><b>"+jumpCount+"</b></font></p>";
+		//document.getElementById('ratio').innerHTML = "<b>Ratio:</b> " + rat;
+	}
+}
+
+function drawTop() {
+
+	// Draw the power meter (may not need to be refreshed)
+	for (var i=0; i<12; i++) {
+		if (power >= i+1) {
+			ctxT.fillStyle = "rgb(255,255,0)";
+		} else {
+			ctxT.fillStyle = "rgb(0,0,0)";
+		}
+		ctxT.fillRect(8*i, 0, 6, 14);
+	}
+}
+
+function drawTower() {
+	// Draw background
+	//ctx.fillStyle = "rgb(0,0,0)";
+	//ctx.fillRect(0,0,wdt + 32,hgt);
+	ctx.drawImage(bg, 16, (pixUp/2%128)-128);
+
+	// Draw platforms
+	for (i in plats) {
+		ctx.drawImage(plat, plats[i].x + 16, hgt + pixUp - plats[i].y, platWdt, platHgt);
+	}
+	
+	// Draw the side walls
+	ctx.drawImage(side, 0, (pixUp%32)-32);
+	ctx.drawImage(side, wdt + 16, (pixUp%32)-32);
+
+	// Draw character
+	step = (step + 1) % 4;
+	ctx.drawImage(guy[(4+dir)/2 + (isJump ? 0 : step)], x + 16, hgt + pixUp - y);
+	
+	// Draw the status info
+	drawTop();
+}
+
+function drawPartial(px,py) {
+	// Replace just the necessary bit of background
+	ctx.drawImage(bg, px%128, (-(pixUp/2%128)+(hgt+pixUp-py)+128)%128, guyWdt, guyHgt,
+			  px+16, hgt+pixUp-py, guyWdt, guyHgt);
+	
+	// Redraw only the platforms that need to be redrawn
+	// should be just one platform, and only part of it, if that
+	for (i in plats) {
+		if (py >= plats[i].y - platHgt && py + guyHgt >= plats[i].y
+			&& px + guyWdt >= plats[i].x && px <= plats[i].x + platWdt ) {
+			ctx.drawImage(plat, plats[i].x + 16, hgt + pixUp - plats[i].y, platWdt, platHgt);
+		}
+	}
+
+	// Now draw the guy at his new position
+	step = (step + 1) % 4;
+	ctx.drawImage(guy[(4+dir)/2 + (isJump ? 0 : step)], x + 16, hgt + pixUp - y);
+	
+	// Draw the status info
+	drawTop();
+}
+
+// Check if we're standing on a block
+function onBlock() {
+	var b = onBlock2();
+	var onb = b != -1;
+	if (onb != lastOnBlock) {
+		lastOnBlock = onb;
+		trace("on block: " + onb);
+	}
+	return onb;
+}
+
+function onBlock2() {
+	// Are we on the ground?
+	if (y - guyHgt <= 0) { return -2; }
+
+	// Check if we're on each platform
+	for (var i in plats) {
+		if (   x + guyWdt > plats[i].x + 4
+                    && x < plats[i].x + platWdt - 4
+		    && y - guyHgt - dy >= plats[i].y
+		    && y - guyHgt <= plats[i].y)
+		{
+			return i;
+		}
+	}
+
+	return -1;
+}
+
+// We've landed -- adjust y so that we're on the platform
+function land() {
+	var b = onBlock2();
+	
+	// Are we on the ground?
+	if (b == -2) { y = guyHgt; }
+
+	// Check if we're on each platform
+	else if (b != -1) {
+		y = plats[b].y + guyHgt;
+	}
+}
+
+function nextFrame() {
+	if (dead || paused ) { return; }
+
+	var px = x, py = y;
+
+	// Check for I/O
+	if (powering) {
+		if (onBlock()) {
+			power = power % 12 + 1;
+		} else if (power>0) {
+			// Must have run off a block while powering
+			power = 0;
+			jumpCount++;
+			isJump = true;
+			updateStats();
+		}
+	} else if (power > 0) {
+		// we've got a jump
+		dy = 2 * power;
+		jumpCount++;
+		isJump = true;
+		power = 0;
+		updateStats();
+	}
+
+	x += dir;
+	if (x + guyWdt > wdt) {
+		x = 2 * wdt - x - 2*guyWdt;
+		dir = -dir;
+	} else if (x <= 0) {
+		x = -x;
+		dir = -dir;
+	}
+	
+	y += dy;
+	if (onBlock()) {
+		isJump = false;
+		if (dy<0) {
+			// SPLAT
+			land();
+			power = 0;
+		}
+		dy = 0;
+	} else {
+		isJump = true;
+		dy -= 2;
+	}
+
+	if (pixUp - y + guyHgt > 0) { 
+		dead = true;
+		y -= guyHgt; // Make sure he's off the screen
+		trace("Player died");
+	}
+
+	if (hgt + pixUp - y < scrollThreshold) {
+		scroll( scrollThreshold - hgt - pixUp + y );
+		drawTower();
+	} else {
+		// A partial redraw will suffice
+		// Only need to clear (px,py) - (px+guyWdt, py+guyHgt)
+		// then draw the guy at his new location (x,y)
+		drawPartial(px,py);
+	}
+}
+
+function init() {
+	ctx  = document.getElementById('tower').getContext('2d');
+	ctxT = document.getElementById('top').getContext('2d');
+	
+	loadImages(); // this takes care of the rest after the images load
+	//setTimeout("nextFrame();", 50);
+}
+
+function doKeyDown(evt){
+	if (evt.keyCode == 32) {
+		powering = true;
+		if (paused) pause();
+	}
+}
+function doKeyUp(evt) {
+	if (evt.keyCode == 32)
+		powering=false;
+}
+
+window.addEventListener('keydown',doKeyDown,true)
+window.addEventListener('keyup',doKeyUp,true)
+
+function reset() {
+	initializeGame();
+	dead = false;
+	if (paused) { pause(); }
+	drawTower();
+}
+
+function pause() {
+	paused = !paused;
+	var ps = document.getElementById("pauseImg").style;
+	ps.display = paused ? "" : "none"; // (491,417)-(323, 209) = (188, 208) + (10, 30) = (198, 238)
+}
+
+	</script>
+</head>
+<body onLoad="init();">
+
+	<img src="interface.png" style="position:absolute; left: 10px; top: 10px;"/>
+
+	<canvas id="top" width=94 height=14 style="position:absolute; left: 98px; top: 42px;"></canvas>
+	<canvas id="tower" width=416 height=352 style="position:absolute; left: 33px; top: 73px;"></canvas>
+
+	<div id="floor" style="position:absolute; left:265px; top:-5px; width:78px; height:32px;"><p align=right><font color=yellow size=+4><b>0</b></font></p></div>
+
+	<div id="jumps" style="position:absolute; left:541; top:192; width:65px; height:16px;"><p align=right><font color='#d7d7d7' size=+2><b>0</b></font></p></div>
+	
+	<div id="pauseButton" style="position:absolute; left:522px; top:315px; width:47px; height:44px;" onClick="pause();"></div>
+	<div id="resetButton" style="position:absolute; left:520px; top:374px; width:49px; height:44px;" onClick="reset();"></div>
+
+	<img id="pauseImg" src="pause.png" style="position:absolute; left:198px; top:218px; display:none;" />
+
+	<div style="position:absolute; left: 30px; top: 450px; width:623px;">
+	Hold spacebar to charge for a jump, and release to perform the jump. To start a new game after a death, either refresh the page or click the "Abort" button. The "pause" button works. If the game doesn't load properly, try refreshing. <b>Requires Firefox 1.5</b>
+	</div>
+
+</body>
+</html>

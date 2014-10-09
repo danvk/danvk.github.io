@@ -1,0 +1,53 @@
+---
+layout: comments
+title: NS-Tower in a Canvas tag
+---
+<style>
+p { font-size: medium; }
+</style>
+	<a href="nstower.html"><img border=0 src="screenshot.jpg" width=317 height=214 /></a>
+	<p><a href="nstower.html">Play Demo</a> (Requires Firefox 1.5)</p>
+	
+	<h2>NS-Tower in a Canvas tag</h2>
+	<p>After reading about the new <a href="http://developer.mozilla.org/en/docs/Canvas_tutorial">HTML Canvas</a> tag and seeing
+	some ridiculous demos like <a href="http://www.abrahamjoffe.com.au/ben/canvascape/">CanvasScape</a>, I decided to try my hand
+	at a tribute to one of my favorite games, <a href="http://www.nagi-p.com/eng/">NS-Tower</a>. NS-Tower is a relatively simple
+	platform jumping game that dates from around 1996. To my knowledge, this is the most complete reengineering of an existing
+	game in HTML/Javascript to date. Of course, if Nagi-P Software objects to this, I'm happy to take it down.</p>
+
+	<p>My implementation is nearly identical to the Mac/Windows application -- the graphics and physics are all identical, since
+	they're based on a decompilation of the Java version of NS-Tower. The main differences are a lack of support for different
+	platform types: springs, left/right, and up/down, and difficulty levels. I'm particularly curious how NS-Tower generates platforms
+	for the Easy, Medium and Hard difficulties. Of course, if the folks at Nagi-P don't like my tribute, I'm perfectly happy to take
+	it down.</p>
+
+	<p>The HTML Canvas provided all the functionality I needed (images and colored rectangles), so most of the work lay in getting
+	the physics and feedback just right. The game runs fairly smoothly at 20 FPS in Firefox on my laptop. There's occasionally some
+	lag while scrolling, but I'm afraid this is unavoidable, since the entire canvas is being redrawn each frame. There was one
+	particularly annoying bug in Firefox's canvas: transparent GIFs and 8-bit PNGs are garbled when drawn to a canvas. 24-bit PNGs
+	seem to work just fine, though.</p>
+
+	<p>I tried using Google's <a href="http://excanvas.sourceforge.net/">ExplorerCanvas</a> to port this game to IE, but the results
+	were pretty poor. Apparently Firefox and IE use different mechanisms to track keystrokes, and I'm not enough of a Javascript
+	programmer to know how to make my scripts work in both. Even with that aside, I only got about 2-3 FPS in IE. No doubt this will
+	improve, but it's not quite there yet.</p>
+
+	<b>TODO</b>
+	<ol type="1">
+		<li><strike>PAUSE</strike></li>
+		<li><strike>Make death happen at the correct time</strike></li>
+		<li><strike>Let the guy fall through 32 pixel holes</strike></li>
+		<li><strike>Add floor/jump count</strike></li>
+		<li><strike>Animated/correctly-facing guy</strike></li>
+		<li><strike>Walls on the side</strike></li>
+		<li><strike>Only draw platforms/power bar on change</strike></li>
+		<li><strike>Mimic NS-Tower's jump power</strike></li>
+		<li>Better platform placement</li>
+		<li><strike>Mimic NS-Tower's floor spacing</strike></li>
+		<li><strike>Reduce calls to onBlock()</strike> (partial)</li>
+		<li><strike>Figure out what's going on with transparency</strike></li>
+		<li><strike>Backdrop (parallax)</strike></li>
+		<li><strike>Mimic the rest of NS-Tower's interface</strike></li>
+		<li>Signs that you've died or <strike>paused</strike></li>
+		<li><strike>Try Google's IE Canvas</strike></li>
+	</ol>
