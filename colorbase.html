@@ -59,6 +59,10 @@ title: Base Pair Colorer
   <input type="radio" name="scheme" value="pyrpu" id="pyrpu"><label for="pyrpu">&nbsp;Pyrimidine/Purine</label><br>
   <input type="radio" name="scheme" value="pyrpu-blocks" id="pyrpu-blocks"><label for="pyrpu-blocks">&nbsp;Pyrimidine/Purine Blocks</label>
   </p>
+  <p>
+    <input type="checkbox" id="flip"><label for="flip">&nbsp;Replace with complement</label><br>
+    <input type="checkbox" id="only-caps"><label for="only-caps">&nbsp;Only modify capital letters</label><br>
+  </p>
 </div>
 
 <script type="text/javascript">
@@ -71,13 +75,28 @@ var bases = {
   '\n': '<br>',
   ' ': '&nbsp;'
 };
+var flips = {
+  'A': 'T',
+  'T': 'A',
+  'G': 'C',
+  'C': 'G',
+  'U': 'A'
+};
+function redraw() {
+  var chars = $('#base-input').val().split('');
+  var flip = $('#flip').is(':checked');
+  var caps = $('#only-caps').is(':checked');
+  $('#output').html(chars.map(function(c) {
+      var b = caps ? c : c.toUpperCase();
+      if (flip) b = flips[b] || b;
+      return bases[b] || c;
+  }).join(''));
+}
 $(function() {
-  $('#base-input').on('keyup', function() {
-    var chars = $(this).val().split('');
-    $('#output').html(chars.map(function(c) {
-        return bases[c.toUpperCase()] || c;
-    }).join(''));
-  }).trigger('keyup');
+  $('#base-input')
+      .on('keyup', redraw)
+      .trigger('keyup');
+  $('#flip, #only-caps').on('change', redraw);
 
   $('input[type="radio"]').on('change', function() {
     $('#output').removeClass().addClass($(this).val());
