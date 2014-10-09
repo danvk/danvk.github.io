@@ -14,12 +14,27 @@ title: Base Pair Colorer
 .igv .t { color: #F70016; }
 .igv .u { color: #F70016; }
 
+/* same as .igv, but backgrounded */
+.blocks { line-height: 1em; }
+.blocks .a { background-color: #188712; color: transparent; }
+.blocks .g { background-color: #C45C16; color: transparent; }
+.blocks .c { background-color: #0600F9; color: transparent; }
+.blocks .t { background-color: #F70016; color: transparent; }
+.blocks .u { background-color: #F70016; color: transparent; }
+
 /* C/T/U are pyrimidines, A/G are purines */
 .pyrpu .a { color: #188712; }
 .pyrpu .g { color: #188712; }
 .pyrpu .c { color: #F70016; }
 .pyrpu .t { color: #F70016; }
 .pyrpu .u { color: #F70016; }
+
+.pyrpu-blocks { line-height: 1em; }
+.pyrpu-blocks .a { background-color: #188712; color: transparent; }
+.pyrpu-blocks .g { background-color: #188712; color: transparent; }
+.pyrpu-blocks .c { background-color: #F70016; color: transparent; }
+.pyrpu-blocks .t { background-color: #F70016; color: transparent; }
+.pyrpu-blocks .u { background-color: #F70016; color: transparent; }
 
 #base-colorer {
   font-size: large;
@@ -40,7 +55,9 @@ title: Base Pair Colorer
   <p id="color-schemes">
   Color Scheme:<br>
   <input type="radio" name="scheme" value="igv" id="igv" checked><label for="igv">&nbsp;IGV</label><br>
-  <input type="radio" name="scheme" value="pyrpu" id="pyrpu"><label for="pyrpu">&nbsp;Pyrimidine/Purine</label>
+  <input type="radio" name="scheme" value="blocks" id="blocks"><label for="blocks">&nbsp;IGV blocks</label><br>
+  <input type="radio" name="scheme" value="pyrpu" id="pyrpu"><label for="pyrpu">&nbsp;Pyrimidine/Purine</label><br>
+  <input type="radio" name="scheme" value="pyrpu-blocks" id="pyrpu-blocks"><label for="pyrpu-blocks">&nbsp;Pyrimidine/Purine Blocks</label>
   </p>
 </div>
 
