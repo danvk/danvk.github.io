@@ -20,7 +20,7 @@
   max-width: 800px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
-  font-size: 1em;
+  font-size: medium;
 }
 
 .post-page .date {
@@ -64,4 +64,16 @@ h3[id] {
   #blog .col-sm-3 {
     text-align: right;
   }
+}
+
+/* code & syntax highlighting */
+code {
+  background-color: rgba(0,0,0,0.04);
+  color: black;
+  font-weight: normal;
+}
+
+#post {
+  max-width: 700px;
+  line-height: 1.5;
 }
