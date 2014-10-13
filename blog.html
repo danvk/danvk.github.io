@@ -19,7 +19,7 @@ title: danvk.org &raquo; blog
       <div class="post-title"><a href="{{post.url}}">{{ post.title }}</a></div>
       <p class="post-summary">
       {% if post.summary %}
-        {{ post.summary }}
+        {{ post.summary }}…
       {% elsif post.content contains '<!--more-->' %}
         {{ post.content | split:'<!--more-->' | first }}
       {% else %}
