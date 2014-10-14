@@ -97,10 +97,11 @@ github](https://github.com/danvk/jss), but here are a few motivating examples.
 jss is a JSON→JSON converter. It supports three modes:
 
 1. select: find all the values that match a selector (1→N)
-2. filter out: remove all values which match a selector (1→1)
-3. filter in: keep only values which match a selector (1→1)
+2. filter out (`-v`): remove all values which match a selector (1→1)
+3. filter in (`-k`): keep only values which match a selector (1→1)
 
 Here's how the filter out mode works:
+
 ```
 $ jss -v '.coordinates' comparea.geo.json
 ```
@@ -146,6 +147,33 @@ It's also significantly faster. For the 23MB `comparea.geo.json` file, the
 speed is [appropriate
 pruning](http://stackoverflow.com/questions/26221309/preorder-traversal-using-python-generators-with-a-mechanism-to-ignore-subtrees)
 of the selector search.
+
+
+Here's how the "select" mode works:
+
+```
+$ jss '.name' comparea.geo.json
+```
+
+```
+"Aruba"
+"Afghanistan"
+"Angola"
+"Anguilla"
+"Albania"
+"Andorra"
+"United Arab Emirates"
+"Argentina"
+"Armenia"
+"American Samoa"
+...
+```
+
+Unlike "filter out", which maps one JSON object to another JSON object,
+"select" extracts multiple values from a single object. Each line of output is
+its own JSON object. This is why it's 1→N, vs 1→1 for the other modes. It's
+useful if you want to do more processing using grep, sed and other familiar
+line-oriented tools.
 
 
 Fancy selectors
