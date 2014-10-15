@@ -1,0 +1,1292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>danvk.org &#187; math</title>
+	<atom:link href="http://www.danvk.org/wp/category/math/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.danvk.org/wp</link>
+	<description>Keepin' static like wool fabric since 2006</description>
+	<lastBuildDate>Thu, 09 Oct 2014 15:59:51 +0000</lastBuildDate>
+	<language>en-US</language>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.9.2</generator>
+	<item>
+		<title>Takeaways from Stanford&#8217;s Machine Learning Class</title>
+		<link>http://www.danvk.org/wp/2011-12-19/takeaways-stanfords-machine-learning-class/</link>
+		<comments>http://www.danvk.org/wp/2011-12-19/takeaways-stanfords-machine-learning-class/#comments</comments>
+		<pubDate>Tue, 20 Dec 2011 00:04:33 +0000</pubDate>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+				<category><![CDATA[math]]></category>
+		<category><![CDATA[programming]]></category>
+
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=782</guid>
+		<description><![CDATA[Over the past two months, I&#8217;ve participated in Andrew Ng&#8217;s online Stanford Machine learning class. It&#8217;s a very high-level overview of the field with an emphasis on applications and techniques, rather than theory. Since I just finished the last assignment, it&#8217;s a fine time to write down my thoughts on the class! Overall, I&#8217;ve learned [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>Over the past two months, I&#8217;ve participated in Andrew Ng&#8217;s online <a href="http://ml-class.org">Stanford Machine learning class</a>. It&#8217;s a very high-level overview of the field with an emphasis on applications and techniques, rather than theory. Since I just finished the last assignment, it&#8217;s a fine time to write down my thoughts on the class!</p>
+<p>Overall, I&#8217;ve learned quite a bit about how <a href="http://en.wikipedia.org/wiki/Machine_learning">ML</a> is used in practice. Some highlights for me:</p>
+<style type="text/css">ul.body-list li { padding-bottom: 10px; }</style>
+<ul class="body-list">
+<li><a href="http://en.wikipedia.org/wiki/Gradient_descent">Gradient descent</a> is a very general optimization technique. If you can calculate a function and its partial derivatives, you can use gradient descent. I was particularly impressed with the way we  used it to train Neural Networks. We learned how the networks operated, but had no need to think about how to train them &mdash; we just used gradient descent.
+<li>There are <a href="http://en.wikipedia.org/wiki/BFGS_method">many</a> advanced &#8220;unconstrained optimization&#8221; algorithms which can be used as alternatives to gradient descent. These often have the advantage that you don&#8217;t need to tune parameters like a learning rate.
+<li><a href="http://en.wikipedia.org/wiki/Regularization_(machine_learning)">Regularization</a> is used almost universally. I&#8217;d previously had very negative associations with using high-order polynomial features, since I most often saw them used in examples of overfitting. But I realize now that they are quite reasonable to add if you also make good use of regularization.
+<li>The <a href="http://en.wikipedia.org/wiki/Backpropagation">backpropagation algorithm</a> for <a href="http://en.wikipedia.org/wiki/Artificial_neural_network">Neural Networks</a> is really just an efficient way to compute partial derivatives (for use by gradient descent and co).
+<li>Learning curves (plots of train/test error as a function of the number of examples) are a great way to figure out how to improve your ML algorithm. For example, if your training and test errors are both high, it means that you&#8217;re not overfitting your data set and there&#8217;s no point in gathering more data. What it does mean is that you need to add more features (e.g. the polynomial which I used to fear) in order to increase your performance.
+</ul>
+<p>The other takeaway is that, as in many fields, there are many &#8220;tricks of the trade&#8221; in Machine Learning. These are bits of knowledge that aren&#8217;t part of the core theory, but which are still enormously helpful for solving real-world problems.</p>
+<p>As an example, consider the last problem in the course: Photo OCR. The problem is to take an image like this:</p>
+<p><img src="http://www.danvk.org/wp/wp-content/uploads/2011/12/photo-ocr-e1324338543864.png" alt="Example of Photo OCR" title="photo-ocr" width="531" height="362" class="aligncenter size-full wp-image-783" /></p>
+<p>and extract all the text: &#8220;LULA B&#8217;s ANTIQUE MALL&#8221;, &#8220;LULA B&#8217;s&#8221;, &#8220;OPEN&#8221; and &#8220;Lula B&#8217;s&#8221;. Initially, this seems quite daunting. Machine Learning is clearly relevant here, but how do you break it down into concrete problems which can be attacked using ML techniques? You don&#8217;t know where the text is and you don&#8217;t even have a rough idea of the text&#8217;s size.</p>
+<p>This is where the &#8220;tricks&#8221; come in. <a href="http://en.wikipedia.org/wiki/Binary_classification">Binary classifiers</a> are the &#8220;hammer&#8221; of ML. You can write a binary classifier to determine whether a fixed-size rectangle contains text:</p>
+<table>
+<tr>
+<td><i>Positive examples</i></td>
+<td><img src="http://www.danvk.org/wp/wp-content/uploads/2011/12/text-negative.png" alt="" title="text-positive" width="383" height="75" class="alignleft size-full wp-image-785" /></td>
+</tr>
+<tr>
+<td><i>Negative examples</i></td>
+<td><img src="http://www.danvk.org/wp/wp-content/uploads/2011/12/text-positive.png" alt="" title="text-negative" width="384" height="75" class="alignleft size-full wp-image-784" /></td>
+</tr>
+</table>
+<p>You then run this classifier over thousands of different &#8220;windows&#8221; in the main image. This tells you where all the bits of text are. If you ignore all the non-contiguous areas, you have a pretty good sense of the bounding boxes for the text in the image.</p>
+<p>But even given the text boxes, how do you recognize the characters? Time for another trick! We can build a binary classifier to detect a gap between letters in the center of a fixed-size rectangle:</p>
+<table>
+<tr>
+<td><i>Positive examples</i></td>
+<td><img src="http://www.danvk.org/wp/wp-content/uploads/2011/12/split-positive.png" alt="" title="split-positive" width="143" height="94" class="alignleft size-full wp-image-791" /></td>
+</tr>
+<tr>
+<td><i>Negative examples</i></td>
+<td><img src="http://www.danvk.org/wp/wp-content/uploads/2011/12/split-negative.png" alt="" title="split-negative" width="143" height="94" class="alignleft size-full wp-image-791" /></td>
+</tr>
+</table>
+<p>If we slide this along, it will tell us where each character starts and ends. So we can chop the text box up into character boxes. Once we&#8217;ve done that, classifying characters in a fixed-size rectangle is another concrete problem which can be tackled with Neural Networks or the like.</p>
+<p>In an ML class, you&#8217;re presented with this pipeline of ML algorithms for the Photo OCR problem. It makes sense. It reduces the real-world problem into three nice clean, theoretical problems. In the class, you&#8217;d likely spend most of your time talking about those three concrete problems. In retrospect, the pipeline seems as natural as could be.</p>
+<p>But if you were given the Photo OCR problem in the real world, you might never come up with this breakdown. Unless you knew the trick! And the only way to learn tricks like this is to see them used. And that&#8217;s my final takeaway from this practical ML class: familiarity with a vastly larger set of ML tricks.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.danvk.org/wp/2011-12-19/takeaways-stanfords-machine-learning-class/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>Crossword Word Frequency</title>
+		<link>http://www.danvk.org/wp/2009-12-26/crossword-word-frequency/</link>
+		<comments>http://www.danvk.org/wp/2009-12-26/crossword-word-frequency/#comments</comments>
+		<pubDate>Sat, 26 Dec 2009 17:45:02 +0000</pubDate>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+				<category><![CDATA[math]]></category>
+		<category><![CDATA[programming]]></category>
+
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=633</guid>
+		<description><![CDATA[In a previous post, I discussed downloading several years&#8217; worth of New York Times Crosswords and categorizing them by day of week. Now, some analysis! Here were the most common words over the last 12 years, along with the percentage of puzzles in which they occurred: Percentage Word Length 6.218% ERA 3 5.703% AREA 4 [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>In a previous post, I discussed downloading several years&#8217; worth of New York Times Crosswords and categorizing them by day of week. Now, some analysis!</p>
+<p>Here were the most common words over the last 12 years, along with the percentage of puzzles in which they occurred:</p>
+<table class="thin sortable draggable">
+<tr>
+<th>Percentage</th>
+<th>Word</th>
+<th>Length</th>
+</tr>
+<tr>
+<td>6.218%</td>
+<td>ERA
+<td>3</td>
+</tr>
+<tr>
+<td>5.703%</td>
+<td>AREA
+<td>4</td>
+</tr>
+<tr>
+<td>5.413%</td>
+<td>ERE
+<td>3</td>
+</tr>
+<tr>
+<td>5.055%</td>
+<td>ELI
+<td>3</td>
+</tr>
+<tr>
+<td>4.854%</td>
+<td>ONE
+<td>3</td>
+</tr>
+<tr>
+<td>4.585%</td>
+<td>ALE
+<td>3</td>
+</tr>
+<tr>
+<td>4.496%</td>
+<td>ORE
+<td>3</td>
+</tr>
+<tr>
+<td>4.361%</td>
+<td>ERIE
+<td>4</td>
+</tr>
+<tr>
+<td>4.339%</td>
+<td>ALOE
+<td>4</td>
+</tr>
+<tr>
+<td>4.317%</td>
+<td>ETA
+<td>3</td>
+</tr>
+<tr>
+<td>4.317%</td>
+<td>ALI
+<td>3</td>
+</tr>
+<tr>
+<td>4.227%</td>
+<td>OLE
+<td>3</td>
+</tr>
+<tr>
+<td>4.205%</td>
+<td>ARE
+<td>3</td>
+</tr>
+<tr>
+<td>4.138%</td>
+<td>ESS
+<td>3</td>
+</tr>
+<tr>
+<td>4.138%</td>
+<td>EDEN
+<td>4</td>
+</tr>
+<tr>
+<td>4.138%</td>
+<td>ATE
+<td>3</td>
+</tr>
+<tr>
+<td>4.048%</td>
+<td>IRE
+<td>3</td>
+</tr>
+<tr>
+<td>4.048%</td>
+<td>ARIA
+<td>4</td>
+</tr>
+<tr>
+<td>4.004%</td>
+<td>ANTE
+<td>4</td>
+</tr>
+<tr>
+<td>3.936%</td>
+<td>ESE
+<td>3</td>
+</tr>
+<tr>
+<td>3.936%</td>
+<td>ENE
+<td>3</td>
+</tr>
+<tr>
+<td>3.914%</td>
+<td>ADO
+<td>3</td>
+</tr>
+<tr>
+<td>3.869%</td>
+<td>ELSE
+<td>4</td>
+</tr>
+<tr>
+<td>3.825%</td>
+<td>NEE
+<td>3</td>
+</tr>
+<tr>
+<td>3.758%</td>
+<td>ACE
+<td>3</td>
+</tr>
+</table>
+<p>(you can click column headings to sort.)</p>
+<p>So &#8220;ERA&#8221; appears, on average, in about 23 puzzles per year. How about if we break this down by day of week? Follow me past the fold&#8230;</p>
+<p><script type=text/javascript src="/dragtable/sorttable.js"></script><br />
+<script type=text/javascript src="/dragtable/dragtable.js"></script></p>
+<style type=text/css>
+  /* Sortable tables */
+  table.sortable thead {
+    background-color:#eee;
+    color:#666666;
+    font-weight: bold;
+    cursor: default;
+  }
+  table.thin, table.thin td, table.thin tr, table.thin th {
+    border: thin solid black;
+    border-collapse: collapse;
+  }
+</style>
+<p><span id="more-633"></span></p>
+<p><b>Monday:</b></p>
+<table class="thin sortable draggable">
+<tr>
+<th>Percentage</th>
+<th>Word</th>
+<th>Length</th>
+</tr>
+<tr>
+<td>9.404%</td>
+<td>ALOE
+<td>4</td>
+</tr>
+<tr>
+<td>8.777%</td>
+<td>AREA
+<td>4</td>
+</tr>
+<tr>
+<td>7.837%</td>
+<td>ERIE
+<td>4</td>
+</tr>
+<tr>
+<td>6.426%</td>
+<td>ONE
+<td>3</td>
+</tr>
+<tr>
+<td>6.426%</td>
+<td>IDEA
+<td>4</td>
+</tr>
+<tr>
+<td>6.426%</td>
+<td>ARIA
+<td>4</td>
+</tr>
+<tr>
+<td>6.270%</td>
+<td>ONCE
+<td>4</td>
+</tr>
+<tr>
+<td>6.270%</td>
+<td>EDEN
+<td>4</td>
+</tr>
+<tr>
+<td>6.113%</td>
+<td>ERA
+<td>3</td>
+</tr>
+<tr>
+<td>6.113%</td>
+<td>ELSE
+<td>4</td>
+</tr>
+<tr>
+<td>6.113%</td>
+<td>ASEA
+<td>4</td>
+</tr>
+<tr>
+<td>5.799%</td>
+<td>ERE
+<td>3</td>
+</tr>
+<tr>
+<td>5.643%</td>
+<td>ORE
+<td>3</td>
+</tr>
+<tr>
+<td>5.643%</td>
+<td>ETAL
+<td>4</td>
+</tr>
+<tr>
+<td>5.643%</td>
+<td>ARE
+<td>3</td>
+</tr>
+<tr>
+<td>5.643%</td>
+<td>ANTE
+<td>4</td>
+</tr>
+<tr>
+<td>5.486%</td>
+<td>OREO
+<td>4</td>
+</tr>
+<tr>
+<td>5.486%</td>
+<td>ALEE
+<td>4</td>
+</tr>
+<tr>
+<td>5.329%</td>
+<td>TREE
+<td>4</td>
+</tr>
+<tr>
+<td>5.329%</td>
+<td>ESS
+<td>3</td>
+</tr>
+<tr>
+<td>5.329%</td>
+<td>ELI
+<td>3</td>
+</tr>
+<tr>
+<td>5.329%</td>
+<td>ACRE
+<td>4</td>
+</tr>
+<tr>
+<td>5.172%</td>
+<td>TSAR
+<td>4</td>
+</tr>
+<tr>
+<td>5.172%</td>
+<td>ANTI
+<td>4</td>
+</tr>
+<tr>
+<td>5.016%</td>
+<td>ORAL
+<td>4</td>
+</tr>
+</table>
+<p>The four letter words are more common now. Also look how much higher the percentages are. There&#8217;s less variety in the fill of Monday puzzles. &#8220;ALOE&#8221; and &#8220;ARIA&#8221; are classic crossword words, not to mention &#8220;OREO&#8221;.</p>
+<p><b>Saturday:</b></p>
+<table class="thin sortable draggable">
+<tr>
+<th>Percentage</th>
+<th>Word</th>
+<th>Length</th>
+</tr>
+<tr>
+<td>3.286%</td>
+<td>ERA
+<td>3</td>
+</tr>
+<tr>
+<td>2.973%</td>
+<td>ONE
+<td>3</td>
+</tr>
+<tr>
+<td>2.973%</td>
+<td>ETE
+<td>3</td>
+</tr>
+<tr>
+<td>2.817%</td>
+<td>TEN
+<td>3</td>
+</tr>
+<tr>
+<td>2.817%</td>
+<td>EVE
+<td>3</td>
+</tr>
+<tr>
+<td>2.817%</td>
+<td>ETA
+<td>3</td>
+</tr>
+<tr>
+<td>2.660%</td>
+<td>IRE
+<td>3</td>
+</tr>
+<tr>
+<td>2.660%</td>
+<td>ERR
+<td>3</td>
+</tr>
+<tr>
+<td>2.660%</td>
+<td>ERE
+<td>3</td>
+</tr>
+<tr>
+<td>2.504%</td>
+<td>OTIS
+<td>4</td>
+</tr>
+<tr>
+<td>2.504%</td>
+<td>OLE
+<td>3</td>
+</tr>
+<tr>
+<td>2.504%</td>
+<td>ENE
+<td>3</td>
+</tr>
+<tr>
+<td>2.504%</td>
+<td>ELL
+<td>3</td>
+</tr>
+<tr>
+<td>2.504%</td>
+<td>ELI
+<td>3</td>
+</tr>
+<tr>
+<td>2.504%</td>
+<td>ARE
+<td>3</td>
+</tr>
+<tr>
+<td>2.504%</td>
+<td>ARA
+<td>3</td>
+</tr>
+<tr>
+<td>2.504%</td>
+<td>ALA
+<td>3</td>
+</tr>
+<tr>
+<td>2.504%</td>
+<td>ACE
+<td>3</td>
+</tr>
+<tr>
+<td>2.347%</td>
+<td>RTE
+<td>3</td>
+</tr>
+<tr>
+<td>2.347%</td>
+<td>ICE
+<td>3</td>
+</tr>
+<tr>
+<td>2.347%</td>
+<td>ATE
+<td>3</td>
+</tr>
+<tr>
+<td>2.347%</td>
+<td>ALE
+<td>3</td>
+</tr>
+<tr>
+<td>2.191%</td>
+<td>TSE
+<td>3</td>
+</tr>
+<tr>
+<td>2.191%</td>
+<td>TERSE
+<td>5</td>
+</tr>
+<tr>
+<td>2.191%</td>
+<td>SRI
+<td>3</td>
+</tr>
+</table>
+<p>Lots of three letter words and <i>much</i> lower percentages. &#8220;OTIS&#8221; is surprising to me, but I don&#8217;t do many Saturday puzzles, so who am I to say?</p>
+<p>It would be really interesting to combine this with some <a href="http://en.wikipedia.org/wiki/Document_frequency">document frequency</a> numbers for the English language. This would find words which are much more common in crosswords than they are in general, i.e. crosswordese.</p>
+<p>I&#8217;d include everything necessary to reproduce this here, but the puzzles are not free. See <a href="/xword-freq/">this directory</a> for the program I used to tabulate the statistics and complete word counts, both overall and for each day of the week. The first puzzle in my collection was 2006-10-23 and the last was 2009-01-19.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.danvk.org/wp/2009-12-26/crossword-word-frequency/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>How long is a day?</title>
+		<link>http://www.danvk.org/wp/2009-11-05/how-long-is-a-day/</link>
+		<comments>http://www.danvk.org/wp/2009-11-05/how-long-is-a-day/#comments</comments>
+		<pubDate>Fri, 06 Nov 2009 00:39:40 +0000</pubDate>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+				<category><![CDATA[astronomy]]></category>
+		<category><![CDATA[math]]></category>
+
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=614</guid>
+		<description><![CDATA[As we approach the winter solstice, the days get shorter and shorter. There&#8217;s a common misconception about how quickly this change happens. Most people know that: The summer solstice (June 21) is the longest day of the year. The winter solstice (December 21) is the shortest day of the year. The days get shorter between [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>As we approach the <a href="http://en.wikipedia.org/wiki/Winter_solstice">winter solstice</a>, the days get shorter and shorter. There&#8217;s a common misconception about how quickly this change happens. Most people know that:</p>
+<ol>
+<li>The summer solstice (June 21) is the longest day of the year.</li>
+<li>The winter solstice (December 21) is the shortest day of the year.</li>
+<li>The days get shorter between Summer and Winter.</li>
+<li>The days get longer between Winter and Summer.</li>
+</ol>
+<p>Many people take these four pieces of information and assume that the day length changes like this over the course of the year:</p>
+<p><script type="text/javascript" src="http://danvk.org/dygraphs/dygraph-combined.js"></script></p>
+<div id="bad-graph" style="width:450px; height:211px;"></div>
+<p><script type="text/javascript">
+new Dygraph(document.getElementById("bad-graph"), "/day-length-bad.txt", { labelsDivStyles: { 'background-color': 'transparent', 'font-size': '80%' }});
+</script></p>
+<p>(The x-axis is the date. The y-axis is length of the day in hours.)</p>
+<p>This is consistent with the four pieces of information, but is <b>incorrect</b>! There aren&#8217;t many sharp edges like that in Physics. Reality is much smoother:</p>
+<div id="good-graph" style="width:450px; height:211px;"></div>
+<p><script type="text/javascript">
+new Dygraph(document.getElementById("good-graph"), "/day-length.txt", { labelsDivStyles: { 'background-color': 'transparent', 'font-size': '80%' }});
+</script></p>
+<p>The length of the day slowly increases as we approach the summer solstice, then slowly decreases as we leave it. This is great &mdash; it means that there are lots of long days in the summer. As we get to the autumnal equinox, the rate of change hits a maximum. The same thing happens around the winter solstice, only in reverse.</p>
+<p>The summer solstice is the longest day of the year, but <i>not by much</i>! Here&#8217;s some <a href="http://www.timeanddate.com/worldclock/astronomy.html?n=224&#038;month=6&#038;year=2009&#038;obj=sun&#038;afl=-11&#038;day=1">day lengths for San Francisco</a>:</p>
+<table border=1 cellpadding=2>
+<tr>
+<th>Date</th>
+<th>Day Length</th>
+<th>Difference</th>
+</tr>
+<tr>
+<td>Jun 18, 2009</td>
+<td>14h 46m 45s</td>
+<td>+ 09s</td>
+</tr>
+<tr>
+<td>Jun 19, 2009</td>
+<td>14h 46m 51s</td>
+<td>+ 06s</td>
+</tr>
+<tr>
+<td>Jun 20, 2009</td>
+<td>14h 46m 54s</td>
+<td>+ 02s</td>
+</tr>
+<tr>
+<td>Jun 21, 2009</td>
+<td>14h 46m 54s</td>
+<td>< 1s </td>
+</tr>
+<tr>
+<td>Jun 22, 2009</td>
+<td>14h 46m 50s</td>
+<td>− 03s</td>
+</tr>
+<tr>
+<td>Jun 23, 2009</td>
+<td>14h 46m 43s</td>
+<td>− 06s</td>
+</tr>
+<tr>
+<td>Jun 24, 2009</td>
+<td>14h 46m 33s</td>
+<td>− 10s</td>
+</tr>
+</table>
+<p>The lengths of the days around the solstice differ by only a few seconds! On the other hand, here are some <a href="http://www.timeanddate.com/worldclock/astronomy.html?n=224&#038;month=9&#038;year=2009&#038;obj=sun&#038;afl=-11&#038;day=1">day lengths</a> around the autumnal equinox (September 22):</p>
+<table border=1 cellpadding=2>
+<tr>
+<th>Date</th>
+<th>Day Length</th>
+<th>Difference</th>
+</tr>
+<tr>
+<td>Sep 19, 2009</td>
+<td>12h 15m 35s</td>
+<td>− 2m 24s</td>
+</tr>
+<tr>
+<td>Sep 20, 2009</td>
+<td>12h 13m 10s</td>
+<td>− 2m 24s</td>
+</tr>
+<tr>
+<td>Sep 21, 2009</td>
+<td>12h 10m 46s</td>
+<td>− 2m 24s</td>
+</tr>
+<tr>
+<td>Sep 22, 2009</td>
+<td>12h 08m 21s</td>
+<td>− 2m 24s</td>
+</tr>
+<tr>
+<td>Sep 23, 2009</td>
+<td>12h 05m 56s</td>
+<td>− 2m 24s</td>
+</tr>
+<tr>
+<td>Sep 24, 2009</td>
+<td>12h 03m 32s</td>
+<td>− 2m 24s</td>
+</tr>
+<tr>
+<td>Sep 25, 2009</td>
+<td>12h 01m 07s</td>
+<td>− 2m 24s</td>
+</tr>
+</table>
+<p>The length of each day changes by several minutes in September. Over a single week the day gets a whole 15 minutes shorter!</p>
+<p><font size="-1"><i>note: the interactive graphs are <a href="http://danvk.org/dygraphs">dygraphs</a>, a JS library I created. Check it out!</i></font></p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.danvk.org/wp/2009-11-05/how-long-is-a-day/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Breaking 3&#215;3 Boggle</title>
+		<link>http://www.danvk.org/wp/2009-08-08/breaking-3x3-boggle/</link>
+		<comments>http://www.danvk.org/wp/2009-08-08/breaking-3x3-boggle/#comments</comments>
+		<pubDate>Sat, 08 Aug 2009 17:35:04 +0000</pubDate>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+				<category><![CDATA[boggle]]></category>
+		<category><![CDATA[math]]></category>
+		<category><![CDATA[programming]]></category>
+
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=516</guid>
+		<description><![CDATA[Why is finding the highest-scoring Boggle board so difficult? It&#8217;s because there are so many boards to consider: 2^72 for the 4&#215;4 case and 2^40 for the 3&#215;3 case. At 10,000 boards/second the former corresponds to about 2 billion years of compute time, and the latter just two years. Just enumerating all 2^72 boards would [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>Why is finding the highest-scoring Boggle board so difficult? It&#8217;s because there are so many boards to consider: 2^72 for the 4&#215;4 case and 2^40 for the 3&#215;3 case. At <a href="http://www.danvk.org/wp/2007-02-10/one-last-boggle-boost/">10,000 boards/second</a> the former corresponds to about 2 billion years of compute time, and the latter just two years. Just enumerating all 2^72 boards would take over 100,000 years.</p>
+<p>So we have to come up with a technique that doesn&#8217;t involve looking at every single board. And I&#8217;ve come up with just such a method! This is the &#8220;exciting news&#8221; I alluded to in the last post.</p>
+<p>Here&#8217;s the general technique:</p>
+<ol>
+<li>Find a very high-scoring board (maybe <a href="http://www.danvk.org/wp/2009-02-19/sky-high-boggle-scores-with-simulated-annealing/">this way</a>)</li>
+<li>Consider a large class of boards</li>
+<li>Come up with an upper bound on the highest score achieved by any board in the class.</li>
+<li>If it&#8217;s lower than the score in step #1, we can eliminate all the boards in the class. If it&#8217;s not, subdivide the class and repeat step #2 with each subclass.</li>
+</ol>
+<p><b>Classes of Boards</b><br />
+By &#8220;class of boards&#8221;, I mean something like this:</p>
+<style type="text/css">
+.board { text-align: center; border-collapse: collapse; }
+.board tbody td { border: 1px solid black; border-collapse: collapse; padding: 4px 8px 4px 8px; }
+.board tbody td { font-weight: bold; }
+.notable { color: red; }
+.change td { padding: 2px 5px 2px 5px; }
+.mb { font-family: monospace; padding: 0px 4px 0px 4px; }
+</style>
+<p><center></p>
+<table class="board">
+<tr>
+<td>{a,e,i,o,u}</td>
+<td>{a,e,i,o,u}</td>
+<td>r</td>
+</tr>
+<tr>
+<td>{b,c,d,f,g,h}</td>
+<td>a</td>
+<td>t</td>
+</tr>
+<tr>
+<td>d</td>
+<td>e</td>
+<td>{r,s,t,v}</td>
+</tr>
+</table>
+<p></center></p>
+<p>The squares that contain a set of letters can take on <i>any</i> of those letters. So this board is part of that class:</p>
+<p><center></p>
+<table class="board">
+<tr>
+<td>a</td>
+<td>i</td>
+<td>r</td>
+</tr>
+<tr>
+<td>d</td>
+<td>a</td>
+<td>t</td>
+</tr>
+<tr>
+<td>d</td>
+<td>e</td>
+<td>s</td>
+</tr>
+<tfoot>
+<tr>
+<td colspan=3><a href="/boggle3.php?quick=airdatdes">189 points</a></td>
+</tr>
+</tfoot>
+</table>
+<p></center></p>
+<p>and so is this:</p>
+<p><center></p>
+<table class="board">
+<tr>
+<td>o</td>
+<td>u</td>
+<td>r</td>
+</tr>
+<tr>
+<td>f</td>
+<td>a</td>
+<td>t</td>
+</tr>
+<tr>
+<td>d</td>
+<td>e</td>
+<td>t</td>
+</tr>
+<tfoot>
+<tr>
+<td colspan=3><a href="/boggle3.php?quick=ourfatdet">114 points</a></td>
+</tr>
+</tfoot>
+</table>
+<p></center></p>
+<p>All told, there are 5 * 5 * 6 * 4 = 600 boards that are part of this class, each with its own score. Other fun classes of boards include &#8220;boards with only vowels&#8221; (1,953,125 members) and &#8220;boards with only consonants&#8221; (794,280,046,581 members).</p>
+<p>Follow me past the fold for more&#8230;<br />
+<span id="more-516"></span></p>
+<p><b>Upper Bounds</b><br />
+Now on to step #3 of the general technique: calculating an upper bound. This is going to be easier if we introduce some mathematical notation:</p>
+<p><center></p>
+<table>
+<tr>
+<td align=right><i>b</i></td>
+<td>=</td>
+<td>A boggle board</td>
+</tr>
+<tr>
+<td align=right><i>Score(b)</i></td>
+<td>=</td>
+<td>sum of the scores of all the words contained on b</td>
+</tr>
+<tr>
+<td align=right><i><b>B</b></i></td>
+<td>=</td>
+<td>a class of boards, i.e. <img src='http://s.wordpress.com/latex.php?latex=b%20%5Cin%20B&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='b \in B' title='b \in B' class='latex' /></td>
+</tr>
+<tr>
+<td align=right><i>Score(<b>B</b>)</i></td>
+<td>=</td>
+<td><img src='http://s.wordpress.com/latex.php?latex=max%28%5C%7BScore%28b%29%20%7C%20b%20%5Cin%20B%5C%7D%29&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='max(\{Score(b) | b \in B\})' title='max(\{Score(b) | b \in B\})' class='latex' /></td>
+</tr>
+</table>
+<p></center></p>
+<p>An upper bound is a function <img src='http://s.wordpress.com/latex.php?latex=f%28B%29&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='f(B)' title='f(B)' class='latex' /> such that <img src='http://s.wordpress.com/latex.php?latex=f%28B%29%20%5Cgeq%20Score%28B%29&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='f(B) \geq Score(B)' title='f(B) \geq Score(B)' class='latex' />, i.e. <img src='http://s.wordpress.com/latex.php?latex=f%28B%29%20%5Cgeq%20Score%28b%29%20%5Cforall%20b%20%5Cin%20B&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='f(B) \geq Score(b) \forall b \in B' title='f(B) \geq Score(b) \forall b \in B' class='latex' />.</p>
+<p>There&#8217;s one really easy upper bound: <img src='http://s.wordpress.com/latex.php?latex=Score%28B%29&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='Score(B)' title='Score(B)' class='latex' />! This just enumerates all the boards in the class B, scores each and takes the maximum score. It&#8217;s very expensive to compute for a large class of boards and hence not very practical. You and I both know that no board in containing only consonants has any points on it. We don&#8217;t need to enumerate through all 794 billion such boards to determine this.</p>
+<p>With upper bounds, there&#8217;s a trade-off between how hard they are to compute and how &#8220;tight&#8221; they are, i.e. how closely they approximate <img src='http://s.wordpress.com/latex.php?latex=Score%28B%29&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='Score(B)' title='Score(B)' class='latex' />. <img src='http://s.wordpress.com/latex.php?latex=Score%28B%29&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='Score(B)' title='Score(B)' class='latex' /> is very tight but is hard to compute. At the other end of the spectrum, we know that all the words on a board are in the dictionary. So we could just sum up the scores of all the words in the dictionary and get a number, say 1,000,000. Then <img src='http://s.wordpress.com/latex.php?latex=f%28B%29%20%3D%201%2C000%2C000&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='f(B) = 1,000,000' title='f(B) = 1,000,000' class='latex' /> is an upper bound. It is very easy to compute, but is not very tight.</p>
+<p>The trick is to hit some sort of sweet spot that strikes a good balance between &#8220;tightness&#8221; and ease of computation. Over the rest of this blog post, I&#8217;ll present two upper bounds that do this. Upper bounds have the nice property that if <img src='http://s.wordpress.com/latex.php?latex=f%28B%29&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='f(B)' title='f(B)' class='latex' /> and <img src='http://s.wordpress.com/latex.php?latex=g%28B%29&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='g(B)' title='g(B)' class='latex' /> are two upper bounds, then <img src='http://s.wordpress.com/latex.php?latex=h%28B%29%20%3D%20min%28f%28B%29%2C%20g%28B%29%29&#038;bg=ffffff&#038;fg=000000&#038;s=0' alt='h(B) = min(f(B), g(B))' title='h(B) = min(f(B), g(B))' class='latex' /> is also an upper bound. So by finding two bounds, we&#8217;ll get a third that&#8217;s better than either one alone.</p>
+<p><b>sum/union</b><br />
+The idea of this bound is to find all the words that can possibly occur in a class of boards. Since each word can only be found once, we can add the scores of all these words to get an upper bound.</p>
+<p>To get the list of words, we use the same <a href="http://www.danvk.org/wp/2007-02-01/tries-the-perfect-data-structure/">depth-first search strategy</a> as we did to find words on a single board. The wrinkle is that, when we encounter a cell with multiple possible letters, we have to do a separate depth-first search for each.</p>
+<p>At first glance, it doesn&#8217;t seem like this would be tractable for a board class like this one (alternating vowels and consonants):</p>
+<p><center></p>
+<table class="board">
+<tr>
+<td>{a,e,i,o,u}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{a,e,i,o,u}</td>
+</tr>
+<tr>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{a,e,i,o,u}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+</tr>
+<tr>
+<td>{a,e,i,o,u}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{a,e,i,o,u}</td>
+</tr>
+</table>
+<p></center></p>
+<p>In addition to the branching from going different directions on each square, there&#8217;s also a huge amount of branching from trying each letter on each square. But we&#8217;re saved by the same lesson we learned in <a href="http://www.danvk.org/wp/2007-01-30/boggle-3-succeed-by-not-being-stupid/">boggle post #3</a>: the dictionary is exceptionally effective at pruning thorny search trees. If we prune search trees like &#8216;bqu&#8217; that don&#8217;t begin words, then there doesn&#8217;t wind up being that much work to do.</p>
+<p>We can find all possible words on the above board in just under 1 second. This is about 10,000 times slower than it takes to score a conventional board, but it&#8217;s certainly tractable. The resulting score is 195,944. Given that no board scores higher than 545 points, this is a wild overestimate. But at least it&#8217;s a better bound than a million!</p>
+<p>This technique does especially well on boards like this one, which contains all consonants:</p>
+<p><center></p>
+<table class="board">
+<tr>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+</tr>
+<tr>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+</tr>
+<tr>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+</tr>
+</table>
+<p></center></p>
+<p>This takes 0.23 seconds to score and results in a bound of 208 points (it contains words like &#8216;crypt&#8217; and &#8216;gypsy&#8217;). We&#8217;ve already <a href="http://www.danvk.org/wp/2009-08-04/solving-boggle-by-taking-option-three/">found</a> a single board that has <a href="/boggle3.php?quick=perlatdes">545 points</a> on it. So we can eliminate this entire class of 794 billion boards. That&#8217;s a speed of over 3 trillion boards/second! Of course, this board class is not typical.</p>
+<p>It&#8217;s also worth pointing out why this upper bound isn&#8217;t tight. Consider this class of boards:</p>
+<p><center></p>
+<table class="board">
+<tr>
+<td>{a,i}</td>
+<td>r</td>
+<td>z</td>
+</tr>
+<tr>
+<td>f</td>
+<td>z</td>
+<td>z</td>
+</tr>
+<tr>
+<td>z</td>
+<td>z</td>
+<td>z</td>
+</tr>
+</table>
+<p></center></p>
+<p>You can find both &#8220;fir&#8221; and &#8220;far&#8221; on boards in this class, but there aren&#8217;t any boards that contain <i>both</i>. So while each &#8220;fir and &#8220;far&#8221; contribute a point to the upper bound, they should only really contribute a single point. The sum/union bound doesn&#8217;t take into account the relationships between various letter choices. It&#8217;s the best trade-off between computability and &#8220;tightness&#8221; we&#8217;ve seen so far, but it&#8217;s not good enough to make the problem tractable.</p>
+<p><b>max/no mark</b><br />
+In the sum/union upper bound, we dealt with multiple possible letters on the same square by trying each and adding the resulting scores (taking care not to count any word twice). But why take the sum of all choices when we know that any given board can only take on one of the possibilities? It would result in a much better bound if we took the max of the scores resulting from each possible choice, rather than the sum. This is the idea behind the &#8220;max/no mark&#8221; bound.</p>
+<p>This is a huge win over sum/union, especially when there are many squares containing many possible letters. It does have one major drawback, though. The sum/union bound took advantage of the fact that each word could only be found once. With the max/no mark bound, the bookkeeping for this becomes completely intractable. The words we find by making a choice on one square may affect the results of a choice somewhere else. We can&#8217;t make the choices independently. The optimal set of choices becomes an optimization problem in its own right.</p>
+<p>Rather than deal with this, max/no mark just throws up its hands. This is what the &#8220;no mark&#8221; refers to. In the past, we&#8217;ve recorded the words we find by <a href="http://www.danvk.org/wp/2007-02-10/one-last-boggle-boost/">marking the Trie</a>. By not marking the Trie with found words, we accept that we&#8217;ll double-count words sometimes. But it still winds up being an excellent upper bound.</p>
+<p>Lets try some of our previous examples:</p>
+<p><center></p>
+<table class="board">
+<tr>
+<td>{a,e,i,o,u}</td>
+<td>{a,e,i,o,u}</td>
+<td>r</td>
+</tr>
+<tr>
+<td>{b,c,d,f,g,h}</td>
+<td>a</td>
+<td>t</td>
+</tr>
+<tr>
+<td>d</td>
+<td>e</td>
+<td>{r,s,t,v}</td>
+</tr>
+<tfoot>
+<tr>
+<td colspan=3 align=center>sum/union: 2880</td>
+</tr>
+<tr>
+<td colspan=3>max/no mark: 1307</td>
+</tr>
+</tfoot>
+</table>
+<p></center></p>
+<p>Alternating vowels and consonants:</p>
+<p><center></p>
+<table class="board">
+<tr>
+<td>{a,e,i,o,u}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{a,e,i,o,u}</td>
+</tr>
+<tr>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{a,e,i,o,u}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+</tr>
+<tr>
+<td>{a,e,i,o,u}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{a,e,i,o,u}</td>
+</tr>
+<tfoot>
+<tr>
+<td colspan=3>sum/union: 195944</td>
+</tr>
+<tr>
+<td colspan=3>max/no mark: 15692</td>
+</tr>
+</tfoot>
+</table>
+<p></center></p>
+<p>A class that can be entirely eliminated:</p>
+<p><center></p>
+<table class="board">
+<tr>
+<td>{b,d,f,g,j,k,m,p,v,w,x,z}</td>
+<td>a</td>
+<td>{s,y}</td>
+</tr>
+<tr>
+<td>{i,o,u}</td>
+<td>y</td>
+<td>a</td>
+</tr>
+<tr>
+<td>{s,y}</td>
+<td>{c,h,l,n,r,t}</td>
+<td>{c,h,l,n,r,t}</td>
+</tr>
+<tfoot>
+<tr>
+<td colspan=3>sum/union: 2497</td>
+</tr>
+<tr>
+<td colspan=3>max/no mark: 447</td>
+</tr>
+</tfoot>
+</table>
+<p></center></p>
+<p>max/no mark isn&#8217;t always better than sum/union:</p>
+<p><center></p>
+<table class="board">
+<tr>
+<td>{b,d}</td>
+<td>a</td>
+<td>{b,d}</td>
+</tr>
+<tr>
+<td>a</td>
+<td>{b,d}</td>
+<td>a</td>
+</tr>
+<tr>
+<td>{b,d}</td>
+<td>a</td>
+<td>{b,d}</td>
+</tr>
+<tfoot>
+<tr>
+<td colspan=3>sum/union: 9</td>
+</tr>
+<tr>
+<td colspan=3>max/no mark: 132</td>
+</tr>
+</tfoot>
+</table>
+<p></center></p>
+<p>This is something of a worst-case because, while there are relatively few distinct words, there are many different ways to find them.</p>
+<p><b>Putting it all together</b><br />
+Our two bounds do well in different situations. max/no mark works best when there are lots of choices to be made on particular cells and there are relatively few ways to make any particular word. sum/union works best when there are lots of possibilities but relatively few distinct words. Putting them together results in a bound that&#8217;s good enough to find the best 3&#215;3 boggle board using the technique described at the beginning of this post.</p>
+<p>Given an initial class of boards, we wind up with what I call a &#8220;breaking tree&#8221;. If the initial class has an upper bound less than 545 points, then we&#8217;re done. Otherwise, we pick a cell to split and try each possibility.</p>
+<p>Here&#8217;s a relatively small breaking tree that results from running <a href="http://code.google.com/p/performance-boggle/source/browse/trunk/3x3/ibucket_breaker.cc">this program</a>:</p>
+<pre>
+$ ./3x3/ibucket_breaker --best_score 520 --break_class "bdfgjkmpvwxz a sy iou xyz aeiou sy chlnrt chlnrt"
+(     0%) (0;1/1) bdfgjkmpvwxz a sy iou xyz aeiou sy chlnrt chlnrt (820, 77760 reps)
+                            split cell 4 (xyz) Will evaluate 3 more boards...
+(     0%)  (1;1/3) bdfgjkmpvwxz a sy iou x aeiou sy chlnrt chlnrt (475, 25920 reps)
+(33.333%)  (1;2/3) bdfgjkmpvwxz a sy iou y aeiou sy chlnrt chlnrt (703, 25920 reps)
+                            split cell 5 (aeiou) Will evaluate 5 more boards...
+(33.333%)   (2;1/5) bdfgjkmpvwxz a sy iou y a sy chlnrt chlnrt (447, 5184 reps)
+(    40%)   (2;2/5) bdfgjkmpvwxz a sy iou y e sy chlnrt chlnrt (524, 5184 reps)
+                            split cell (iou) 3 Will evaluate 3 more boards...
+(    40%)    (3;1/3) bdfgjkmpvwxz a sy i y e sy chlnrt chlnrt (346, 1728 reps)
+(42.222%)    (3;2/3) bdfgjkmpvwxz a sy o y e sy chlnrt chlnrt (431, 1728 reps)
+(44.444%)    (3;3/3) bdfgjkmpvwxz a sy u y e sy chlnrt chlnrt (339, 1728 reps)
+(46.667%)   (2;3/5) bdfgjkmpvwxz a sy iou y i sy chlnrt chlnrt (378, 5184 reps)
+(53.333%)   (2;4/5) bdfgjkmpvwxz a sy iou y o sy chlnrt chlnrt (423, 5184 reps)
+(    60%)   (2;5/5) bdfgjkmpvwxz a sy iou y u sy chlnrt chlnrt (318, 5184 reps)
+(66.667%)  (1;3/3) bdfgjkmpvwxz a sy iou z aeiou sy chlnrt chlnrt (509, 25920 reps)
+</pre>
+<p>The numbers in parentheses are the upper bounds. When they get below 520 (the parameter I set on the command line), a sub-class is fully broken.</p>
+<p>Using this technique and the following partition of the 26 letters:</p>
+<ul>
+<li>bdfgjvwxz
+<li>aeiou
+<li>lnrsy
+<li>chkmpt
+</ul>
+<p>I was able to go through all 262,144 (=4^9) board classes in about six hours on a single machine. This resulted in the boards I listed in the <a href="http://www.danvk.org/wp/2009-08-04/solving-boggle-by-taking-option-three/">last post</a>. Six hours is a big improvement over two years!</p>
+<p>If that same factor (two years to six hours) held for the 4&#215;4 case, then we&#8217;d be down to 380 years of compute time to find the best 4&#215;4 boggle board. Or, equivalently, 138 days on 1000 machines. That&#8217;s still a lot. We&#8217;re not quite there yet, but we&#8217;re getting closer!</p>
+<p>Code for the program that went through all possible board classes can be found <a href="http://code.google.com/p/performance-boggle/source/browse/trunk/#trunk/paper">here</a>. While <a href="http://ai.stanford.edu/~chuongdo/boggle/index.html">many</a> <a href="http://ankurdave.com/AnkurDaveExtendedEssay2009.pdf">people</a> have found high-scoring boards, I haven&#8217;t found any previous work on this upper bounding approach. So if you have any ideas/suggestions on how to improve the bound, they&#8217;re probably novel and useful!</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.danvk.org/wp/2009-08-08/breaking-3x3-boggle/feed/</wfw:commentRss>
+		<slash:comments>6</slash:comments>
+		</item>
+		<item>
+		<title>Why You Invest When the Market Goes Down</title>
+		<link>http://www.danvk.org/wp/2009-02-22/why-you-invest-when-the-market-goes-down/</link>
+		<comments>http://www.danvk.org/wp/2009-02-22/why-you-invest-when-the-market-goes-down/#comments</comments>
+		<pubDate>Sun, 22 Feb 2009 21:51:07 +0000</pubDate>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+				<category><![CDATA[finance]]></category>
+		<category><![CDATA[math]]></category>
+
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=441</guid>
+		<description><![CDATA[The S&#38;P 500 certainly hasn&#8217;t made anyone rich over the last year: Most people see this and think &#8220;an investment one year ago would have lost 45% of its value&#8221;. Others think &#8220;great, now stocks are all cheaper!&#8221; In reality, most ordinary people invest portions of their paychecks, either through their 401(k) or a personal [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>The S&amp;P 500 certainly hasn&#8217;t made anyone rich over the last year:</p>
+<p><img src="http://www.danvk.org/wp/wp-content/uploads/2009/02/sp500.png" alt="S&#038;P 500 dropping 40% over the last year" title="sp500" class="size-full wp-image-442" width="450" /></p>
+<p>Most people see this and think &#8220;an investment one year ago would have lost 45% of its value&#8221;. Others think &#8220;great, now stocks are all cheaper!&#8221;</p>
+<p>In reality, most ordinary people invest portions of their paychecks, either through their <a href="http://en.wikipedia.org/wiki/401(k)">401(k)</a> or a personal account. This means they&#8217;re doing <i>time averaging</i>. Sure, investments when the market was up aren&#8217;t doing well. But investments when the market was down are doing just fine.</p>
+<p>This is all kind of wishy-washy, though. Let&#8217;s try to quantify it. Suppose a market drop and recovery looks like a parabola:</p>
+<p><img src="http://www.danvk.org/wp/wp-content/uploads/2009/02/market-model.png" alt="market-model" title="market-model" width="361" height="192" class="aligncenter size-full wp-image-444" /></p>
+<p>The prices here are parabolas<br />
+<img class="tex" alt="P(t) = a(1-2t)^2 + (1-a)\," src="/wp/wp-content/uploads/2009/02/eq-parabolas.png" /></p>
+<p>for various values of a. a=0 means the market is flat. a=0.5 means the market loses 50% of its value.</p>
+<p>If you invest <i>dt</i> dollars in this market at each point in time, you can work out a nasty integral and show that the number of shares you have at time <i>t</i> is:</p>
+<p><img class="tex" alt="S(t) = \int_{x=0}^{x=t} \frac{dx}{a(1-2x)^2+(1-a)}" src="/wp/wp-content/uploads/2009/02/eq-integral.png" /></p>
+<p><img class="tex" alt="= \frac{1}{2a \sqrt{1/a - 1}} \left(atan \frac{1}{\sqrt{1/a - 1}}  - atan \frac{1-2t}{\sqrt{1/a - 1}} \right)" src="/wp/wp-content/uploads/2009/02/eq-indefinite.png" /></p>
+<p>and hence the value of your shares at the end is:</p>
+<p><img class="tex" alt="S(1) = \frac{1}{a \sqrt{1/a - 1}} atan \frac{1}{\sqrt{1/a - 1}}" src="/wp/wp-content/uploads/2009/02/eq-definite.png" /></p>
+<p>Here&#8217;s what that looks like:</p>
+<p><img src="http://www.danvk.org/wp/wp-content/uploads/2009/02/return-averaging.png" alt="return-averaging" title="return-averaging" width="517" height="267" class="aligncenter size-full wp-image-443" /></p>
+<p>The x-axis is <i>a</i>, the fraction by which the market drops. The y-axis is your total return on investment. If the market drops by 50% (a=0.5) then your total return on investment is around 55%. With time-averaging, <b>the more the market drops, the better you do.</b> </p>
+<p>This makes a lot of sense if you think about it. Say the market drops 99.9% and then recovers. The shares you bought when it was at its bottom earned you a return of 1000x. Investing at the bottom is important! You should keep investing, even as the market drops. If you don&#8217;t, you&#8217;ll miss that bottom.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.danvk.org/wp/2009-02-22/why-you-invest-when-the-market-goes-down/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>A Minus Times a Minus</title>
+		<link>http://www.danvk.org/wp/2008-12-31/a-minus-times-a-minus/</link>
+		<comments>http://www.danvk.org/wp/2008-12-31/a-minus-times-a-minus/#comments</comments>
+		<pubDate>Thu, 01 Jan 2009 02:32:14 +0000</pubDate>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+				<category><![CDATA[math]]></category>
+
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=376</guid>
+		<description><![CDATA[Back in grade school, I never got a satisfactory answer to the question &#8220;why is a minus times a minus equal to a plus?&#8221; I didn&#8217;t think about it again for years, until my mom asked for an explanation to give when she taught her students. This time around, I immediately realized how you&#8217;d go [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>Back in grade school, I never got a satisfactory answer to the question &#8220;why is a minus times a minus equal to a plus?&#8221;</p>
+<p>I didn&#8217;t think about it again for years, until my mom asked for an explanation to give when she taught her students. This time around, I immediately realized how you&#8217;d go about proving it. Here&#8217;s how it goes:</p>
+<table>
+<tr>
+<td align=right>1 + (-1)</td>
+<td>=</td>
+<td>0</td>
+<td>&nbsp; (definition of &#8220;-1&#8243;)</td>
+</tr>
+<tr>
+<td align=right>(-1) * 1 + (-1) * (-1)</td>
+<td>=</td>
+<td>0</td>
+<td>&nbsp; (multiply both sides by -1 and distribute)</td>
+</tr>
+<tr>
+<td align=right>-1 + (-1)(-1)</td>
+<td>=</td>
+<td>0</td>
+<td>&nbsp; (anything times 1 is itself)</td>
+</tr>
+<tr>
+<td align=right>(-1)(-1)</td>
+<td>=</td>
+<td>1</td>
+<td>&nbsp; (add 1 to both sides)</td>
+</tr>
+</table>
+<p>Easy as could be, right? Unfortunately, mom preferred my brother&#8217;s explanation:</p>
+<blockquote><p>
+A  minus times a minus is equal to a plus.<br />
+The reasons for this, we need not discuss.
+</p></blockquote>
+]]></content:encoded>
+			<wfw:commentRss>http://www.danvk.org/wp/2008-12-31/a-minus-times-a-minus/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		</item>
+		<item>
+		<title>How to Read Polls</title>
+		<link>http://www.danvk.org/wp/2008-09-25/how-to-read-polls/</link>
+		<comments>http://www.danvk.org/wp/2008-09-25/how-to-read-polls/#comments</comments>
+		<pubDate>Thu, 25 Sep 2008 22:45:29 +0000</pubDate>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+				<category><![CDATA[math]]></category>
+		<category><![CDATA[politics]]></category>
+
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=302</guid>
+		<description><![CDATA[On September 15, SurveyUSA released this poll of likely voters in Virginia: McCain (R) 46% Obama (D)&#160; 50% Margin of Error: +/-3.7% Tables like this appear on TV and in newspapers all the time. But they&#8217;re never accompanied by any explanation of how to interpret the margin of error. Commentators usually interpret it in one [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>On September 15, SurveyUSA released <a href="http://www.pollster.com/blogs/va_obama_50_mccain_46_surveyus.php">this poll</a> of likely voters in Virginia:</p>
+<blockquote style="font-family: Monospace; font-size: 10pt;"><p>
+McCain (R) 46%<br />
+Obama (D)&nbsp; 50%<br />
+Margin of Error: +/-3.7%
+</p></blockquote>
+<p>Tables like this appear on TV and in newspapers all the time. But they&#8217;re never accompanied by any explanation of how to interpret the margin of error. Commentators usually interpret it in one of two ways:</p>
+<ol>
+<li>Obama is ahead by more than the margin of error, hence his lead is statistically significant.</li>
+<li>That &#8220;+/-&#8221; means either number could be off by that amount. If you added 3.7% to McCain&#8217;s 46% and subtracted 3.7% from Obama&#8217;s 50%, McCain would actually be ahead. So Obama&#8217;s lead is not statistically significant; it is less than twice the margin of error.</li>
+</ol>
+<p>In either case, they are wrong.</p>
+<p>So what&#8217;s the <i>right</i> way to interpret the margin of error? <b>A lead is significant if it is 1.6 times the margin of error or greater</b>. That&#8217;s 5.9% for our poll, so Obama&#8217;s lead is not significant.</p>
+<p>This is a strange, non-intuitive rule, which explains why commentators don&#8217;t use it. The derivation is more revealing than the rule itself.<br />
+<span id="more-302"></span></p>
+<p>Obama&#8217;s lead is &#8220;statistically significant&#8221; if there&#8217;s a 95% probability that Obama is <i>actually</i> ahead. The &#8220;95%&#8221; is completely arbitrary, but the probability</p>
+<blockquote><p>
+P(Obama ahead)
+</p></blockquote>
+<p>is quite interesting. I wish news organizations would report this probability instead of the margin of error. It&#8217;s easier to interpret the statement &#8220;There&#8217;s an 86.5% chance that Obama is ahead&#8221; than a statement about margins of error.</p>
+<p>These margins of error, incidentally, are just one over the square root of the sample size. For the poll described above, there were 732 voters surveyed. The square root of 732 is 27 and one over that is .03696 or 3.7%. The reported margin of error is <i>not</i> a <a href="http://en.wikipedia.org/wiki/Standard_deviation">standard deviation</a>.</p>
+<p>The probability that Obama is ahead can be determined using <a href="http://en.wikipedia.org/wiki/Bayes'_Rule">Bayes' Rule</a>, which quantifies the effect of evidence on our belief in a hypothesis. It relates a Hypothesis (H) and an Observation (O):</p>
+<blockquote><p>
+<b>H</b> = Obama is ahead of McCain.<br />
+<b>O</b> = In a poll of 732 likely voters, 50% preferred Obama and 46% preferred McCain.
+</p></blockquote>
+<p>Here it is:</p>
+<blockquote><p>
+<b>Bayes&#8217; Rule:</b>  P(H|O) = P(O|H)/P(O) * P(H)
+</p></blockquote>
+<p>This rule is important enough that each of these quantities has a name:</p>
+<ul>
+<li><b>P(H)</b> is the <a href="http://en.wikipedia.org/wiki/Prior_probability">prior probability</a>, our belief that the hypothesis is true before seeing additional evidence.</li>
+<li><b>P(O|H)</b> is the <a href="http://en.wikipedia.org/wiki/Likelihood_function">likelihood function</a>, the probability of seeing the evidence if the hypothesis were true.</li>
+<li><b>P(O)</b> is the <a href="http://en.wikipedia.org/wiki/Marginal_probablity">marginal probablity</a>, the probablity of seeing the evidence at all. It&#8217;s often thought of as a normalizing term.</li>
+<li><b>P(H|O)</b> is the <a href="http://en.wikipedia.org/wiki/Posterior_probability">posterior probability</a>. It&#8217;s what we&#8217;re really after, the likelihood of the hypothesis in light of new evidence.</li>
+</ul>
+<p>Let&#8217;s start with the likelihood function, <i>P(O|H)</i>. What are the odds of seeing this survey is a certain portion <i>p</i> of voters prefer Obama? It follows from the <a href="http://en.wikipedia.org/wiki/Binomial_formula">binomial formula</a>:</p>
+<blockquote><p>
+<b>pO</b> = portion of voters preferring Obama<br />
+<b>pM</b> = portion of voters preferring McCain<br />
+<b>a</b> = pO * N (number of voters who prefer Obama)<br />
+<b>b</b> = pM * N (number of voters who prefer McCain)<br />
+<b>N</b> = a + b (total <i>decided</i> voters)<br />
+<b>P(O|H)</b> = B(a, b) = N! / (a! b!) * pO^a (1-pO)^b
+</p></blockquote>
+<p><img src="http://www.danvk.org/wp/wp-content/uploads/2008/09/binomial.png" alt="" title="binomial distribution" /></p>
+<p>This is a <a href="http://en.wikipedia.org/wiki/Binomial_distribution">binomial distribution</a> over pO. Notice that we&#8217;re only considering the two-way vote here, the 96% of the electorate that prefers either McCain or Obama.</p>
+<p>To aid in the application of Bayes&#8217; Rule, statisticians have developed the notion of a <a href="http://en.wikipedia.org/wiki/Conjugate_prior">conjugate prior</a>. The conjugate prior for the binomial distribution is the <a href="http://en.wikipedia.org/wiki/Beta_distribution">beta distribution</a>. This means that, if our likelihood function is a binomial distribution, we can choose a beta distribution for our prior probability and get another beta distribution for the posterior probability.</p>
+<p>In this case, it&#8217;s simplest to assume a <a href="http://en.wikipedia.org/wiki/Uniform_distribution">uniform distribution</a> for Obama&#8217;s portion of the vote. In other words, it&#8217;s equally probable that he&#8217;ll get 1% of the vote as it is that he&#8217;ll get 50% or 99% of it. Mathematically, if pO is the portion of voters who prefer Obama, then</p>
+<blockquote><p>
+<i>pO</i> ~ U(0, 1) = B(1, 1)
+</p></blockquote>
+<p><img src="http://www.danvk.org/wp/wp-content/uploads/2008/09/uniform.png" alt="" title="uniform distribution" /></p>
+<p>Bayes&#8217; rule then gives the following distribution for pO after observing the poll:</p>
+<blockquote><p>
+<i>pO&#8217;</i> ~ B(a + 1, b + 1) = B(pO * N + 1, pM * N + 1)
+</p></blockquote>
+<p><img src="http://www.danvk.org/wp/wp-content/uploads/2008/09/beta.png" alt="" title="beta distribution" /></p>
+<p>This is concentrated in a small region (note the x-axis) around 50 / (50 + 46) = 52.1%, Obama&#8217;s fraction of the two-way vote. The probability that Obama is ahead is the portion of mass to the right of pO&#8217; = 50%:</p>
+<p><img src="http://www.danvk.org/wp/wp-content/uploads/2008/09/beta-labeled.png" alt="" title="filled-in beta distribution" /></p>
+<p>This fraction is calculated numerically using an integral. It&#8217;s an important enough quantity to have a name, but not important enough to have a short, catchy name. It&#8217;s the <a href="http://en.wikipedia.org/wiki/Regularized_incomplete_beta_function">regularized incomplete beta function</a>,</p>
+<blockquote><p>
+P(Obama ahead) = I<sub>0.5</sub>(b, a) = I<sub>0.5</sub>(732 * 0.46, 732 * 0.50)
+</p></blockquote>
+<p>It can be calculated using a program like <a href="http://www.wolfram.com/">Mathematica</a> or <a href="http://www.gnu.org/software/octave/">Octave</a>, or by using an <a href="http://www.danielsoper.com/statcalc/calc37.aspx">online calculator</a>.</p>
+<p>Another way of formulating this is to ask, &#8220;what is the fraction &Delta; by which a candidate must lead in a poll to have a 95% chance of really being ahead?&#8221; For a small sample, &Delta; will be large. For a large sample it will be small.</p>
+<p>In a survey of N voters, a candidate with a lead of &Delta; can claim his chance of leading is:</p>
+<blockquote><p>
+P(leading) = I<sub>0.5</sub>(N*(0.5-&Delta;), N*(0.5+&Delta;))
+</p></blockquote>
+<p>By inverting the regularized incomplete beta function, one can calculate what lead is necessary for 95% confidence. But that&#8217;s hard. Here&#8217;s a table to make things simpler:</p>
+<style type=text/css>
+  table.thin, table.thin td, table.thin tr, table.thin th {
+    border: thin solid black;
+    border-collapse: collapse;
+  }
+  table.thin td { text-align: right; }
+  table.thin th { text-align: center; }
+</style>
+<table class=thin cellpadding="3" align="center">
+<tr>
+<th>N</th>
+<th>MoE</th>
+<th>&Delta;</th>
+<th>&Delta;/MoE</th>
+</tr>
+<tr>
+<td>100</td>
+<td>10.0%</td>
+<td>16.36%</td>
+<td>1.6362</td>
+</tr>
+<tr>
+<td>200</td>
+<td>7.07%</td>
+<td>11.60%</td>
+<td>1.6402</td>
+</tr>
+<tr>
+<td>500</td>
+<td>4.47%</td>
+<td>7.35%</td>
+<td>1.6431</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>3.16%</td>
+<td>5.20%</td>
+<td>1.6438</td>
+</tr>
+<tr>
+<td>1500</td>
+<td>2.58%</td>
+<td>4.25%</td>
+<td>1.6443</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>2.24%</td>
+<td>3.68%</td>
+<td>1.6444</td>
+</tr>
+<tr>
+<td>2500</td>
+<td>2.00%</td>
+<td>3.29%</td>
+<td>1.6445</td>
+</tr>
+<tr>
+<td>3000</td>
+<td>1.83%</td>
+<td>3.00%</td>
+<td>1.6445</td>
+</tr>
+</table>
+<p>The ratio &Delta;/MoE; quickly approaches a constant, somewhere around 1.644. Hence the rule I mentioned at the beginning of the post. If a candidate is ahead by more than about 1.6 times the sampling error, that corresponds to 95% confidence. If the lead is equal to the sampling error, this corresponds to about 85% confidence. A lead of half the sampling error corresponds to about 70% confidence.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.danvk.org/wp/2008-09-25/how-to-read-polls/feed/</wfw:commentRss>
+		<slash:comments>5</slash:comments>
+		</item>
+		<item>
+		<title>Living with probability 1-ln(2)</title>
+		<link>http://www.danvk.org/wp/2007-10-15/living-with-probability-1-ln2/</link>
+		<comments>http://www.danvk.org/wp/2007-10-15/living-with-probability-1-ln2/#comments</comments>
+		<pubDate>Tue, 16 Oct 2007 03:35:31 +0000</pubDate>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+				<category><![CDATA[math]]></category>
+
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=226</guid>
+		<description><![CDATA[I learned a great brainteaser while hiking in Yosemite with many a Googler this weekend. It&#8217;s from a collection called &#8220;Seven Puzzles You Think You Must Not Have Heard Correctly&#8221; (PDF), and that title is particularly apt for this one. Here&#8217;s the question: The names of 100 prisoners are placed in 100 wooden boxes, one [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>I learned a great brainteaser while <a href="http://picasaweb.google.com/ryanmoulton/Yosemite101113">hiking in Yosemite</a> with many a Googler this weekend. It&#8217;s from a collection called &ldquo;<a href="http://www.math.dartmouth.edu/~pw/solutions.pdf">Seven Puzzles You Think You Must Not Have Heard Correctly</a>&rdquo; (PDF), and that title is particularly apt for this one.</p>
+<p>Here&#8217;s the question:</p>
+<blockquote><p>The names of 100 prisoners are placed in 100 wooden boxes, one name to a box, and the boxes are lined up on a table in a room. One by one, the prisoners are led into the room; each may look in at most 50 boxes, but must leave the room exactly as he found it and is permitted no further communication with the others. </p>
+<p>The prisoners have a chance to plot their strategy in advance, and they are going to need it, because unless every single prisoner finds his own name all will subsequently be executed. </p>
+<p>Find a strategy for them which which has probability of success exceeding 30%.</p></blockquote>
+<p>Since each prisoner has a 50/50 shot at finding his own number, you&#8217;d expect their chances of survival to be (1/2)^100, which is tiny! But that&#8217;s not quite true. Here&#8217;s the reason it&#8217;s not impossible: the number of prisoners you expect to find their own number will always be 50 no matter what your strategy. But your strategy can skew the distribution. For example, if everyone looks at the same fifty lockers, you&#8217;ll always have exactly 50 prisoners find their own numbers. The problem is to find a strategy that skews the distribution towards the extremes: either it succeeds spectacularly or fails miserably.</p>
+<p>There&#8217;s a solution in that link above, and I&#8217;ll post my own in a few days. Give it a shot!</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.danvk.org/wp/2007-10-15/living-with-probability-1-ln2/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>How many Boggle boards are there?</title>
+		<link>http://www.danvk.org/wp/2007-08-02/how-many-boggle-boards-are-there/</link>
+		<comments>http://www.danvk.org/wp/2007-08-02/how-many-boggle-boards-are-there/#comments</comments>
+		<pubDate>Fri, 03 Aug 2007 03:45:32 +0000</pubDate>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+				<category><![CDATA[boggle]]></category>
+		<category><![CDATA[math]]></category>
+
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=195</guid>
+		<description><![CDATA[I&#8217;ve taken a several months break from my Boggle series, mostly because I think everyone got tired of it. I&#8217;m going to come back to it, but hopefully at a slower pace this time around. Last time, we completed a board solver that could score 10,000 boards per second. So what to do with all [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;ve taken a several months break from my <a href="http://www.danvk.org/wp/?cat=10">Boggle series</a>, mostly because I think everyone got tired of it. I&#8217;m going to come back to it, but hopefully at a slower pace this time around.</p>
+<p><a href="http://www.danvk.org/wp/?p=89">Last time</a>, we completed a board solver that could score 10,000 boards per second. So what to do with all that power? One option was to <a href="http://www.danvk.org/wp/?p=91">compute statistics</a> on random boards. Another is to hunt for the holy grail of Boggle: the highest possible scoring Boggle board. The next few posts will be devoted to the search for this board.</p>
+<p>Before undertaking any search, you need to get a feel for your search space. In our case, that&#8217;s the set of all 4&#215;4 Boggle boards. How many are there? We can do a few back-of-the-envelope calculations.</p>
+<p>To create a board, you roll 16 dice. Each has six possible letters on it, which gives 6^16 possibilities. These dice land in some permutation on the board, which gives another factor of 16!. Finally, a 4&#215;4 board has eight-fold symmetry, which takes us down to 6^16 * 16! / 8 = 7.3e24 &asymp; 2 ^ 83.</p>
+<p>That&#8217;s one upper bound. But it assumed that all 6*16 = 96 symbols on the dice were unique. Obviously they&#8217;re not. After a roll, each of the 16 squares will have one of 26 letters on it. Divide by the symmetries, and you get 26 ^ 16 / 8 = 5e21 &asymp; 2^72. Much better!</p>
+<p>I haven&#8217;t been able to come up with any better upper bounds than these. The main flaw in the second approximation is that not all boards can be rolled with the sixteen dice that <a href="http://hasbro.com/default.cfm?page=ps_results&#038;product_id=9619">Hasbro</a> provides. A board of all z&#8217;s or qu&#8217;s simply can&#8217;t occur. If we knew the probability that any sixteen character sequence could be rolled, this would give a true approximation of the number of distinct boards.</p>
+<p>The easiest way to do this is with a computer program. It picks a random sequence of sixteen characters, checks whether this board can be rolled, and repeats several thousand times. I believe that checking whether a given board can be rolled is NP-Complete, but in this case the greedy approximation works quite well. I wrote a program (leave a comment if you want to see it) to do this, and processed one million 16-character sequences. Only 84,492 could be represented with the usual dice, or 8.4%. This gives a total of</p>
+<p>(26 ^ 16 / 8) * (84,492 / 1,000,000) = 4.6e20 &asymp; 2^69.</p>
+<p>If you like confidence intervals, my sample size of one million boards gives a 95% confidence interval of [4.545e24, 4.666e24] for the total number of boards. Pretty good.</p>
+<p>So, assuming we could enumerate all these boards quickly, how long would it take for our faster solver to find the best board? At 10k boards/sec, we&#8217;re looking at 4.5e16 seconds = 1.9 billion years! Clearly we need to do better.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.danvk.org/wp/2007-08-02/how-many-boggle-boards-are-there/feed/</wfw:commentRss>
+		<slash:comments>8</slash:comments>
+		</item>
+		<item>
+		<title>Dan fights Bad Math!</title>
+		<link>http://www.danvk.org/wp/2007-07-15/dan-fights-bad-math/</link>
+		<comments>http://www.danvk.org/wp/2007-07-15/dan-fights-bad-math/#comments</comments>
+		<pubDate>Mon, 16 Jul 2007 06:07:16 +0000</pubDate>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+				<category><![CDATA[math]]></category>
+
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=187</guid>
+		<description><![CDATA[Inspired by the recent Laffer curve fuss, I&#8217;ll be doing my MarkCC imitation tonight, calling out the scourge of bad math wherever it rears its ugly head. Case number 1: I&#8217;m on something of an Alex Haley kick, so I&#8217;ve been reading The Autobiography of Malcolm X. Here&#8217;s a passage that jumped out at me: [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>Inspired by the recent <a href="http://cosmicvariance.com/2007/07/13/the-best-curve-fitting-ever/">Laffer curve fuss</a>, I&#8217;ll be doing my <a href="http://scienceblogs.com/goodmath/2007/07/a_laughable_laffer_curve_from.php">MarkCC</a> imitation tonight, calling out the scourge of bad math wherever it rears its ugly head.</p>
+<p><b>Case number 1</b>: I&#8217;m on something of an Alex Haley kick, so I&#8217;ve been reading <a href="http://www.amazon.com/Autobiography-Malcolm-X-Told-Haley/dp/0345350685/ref=si3_rdr_bb_product/105-1423106-8523611">The Autobiography of Malcolm X</a>. Here&#8217;s a passage that jumped out at me:</p>
+<blockquote><p>&nbsp;Here is an example: a British anthropologist named Dr. Louis S. B. Leakey is displaying some fossil bones&mdash;a foot, part of a hand, some jaws, and skull fragments. On the basis of these, Dr. Leakey has said it&#8217;s time to rewrite completely the history of man&#8217;s origin.<br />
+&nbsp;This species of man lived 1,818,036 years before Christ. And these bones were found in Tanganyika. In the Black Continent.<sup><a href="http://www.amazon.com/gp/sitbv3/reader/105-1423106-8523611?asin=0345350685&#038;pageID=S062&#038;checkSum=wynBKFW52ueaSPRq3IwCYUl/7ksiWmYOWs7EGoK/duA=">1</a></sup>
+</p></blockquote>
+<p>How good of Dr. Leakey to be so precise! And here I thought radio-carbon dating was only accurate to about one part in a hundred at best. What year was this written in again? 1964? Well, 1,818,036 + 1,964 = 1,820,000. Something makes me think Alex never learned about significant figures..</p>
+<p><b>Case number 2</b>: This one&#8217;s an exercise for the reader, since my tongue is tied. According to The Economist&#8217;s <a href="http://economist.com/search/displaystory.cfm?story_id=9249350">Technology Quarterly</a>,</p>
+<blockquote><p>The average installed storage capacity of a Fortune 1000 company grew from 198 terabytes in early 2005 to 680 terabytes in October 2006, according to figures from Deloitte, a consultancy.<sup><a href="http://www.mondaq.com/article.asp?articleid=45660">2</a></sup></p></blockquote>
+<p>What was different about the Fortune 1000 in early 2005 and October 2006? Why might this claim by incredibly misleading?</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.danvk.org/wp/2007-07-15/dan-fights-bad-math/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+	</channel>
+</rss>

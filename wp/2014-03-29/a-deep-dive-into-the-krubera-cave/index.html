@@ -1,0 +1,379 @@
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<!-- Mirrored from www.danvk.org/wp/2014-03-29/a-deep-dive-into-the-krubera-cave/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Oct 2014 03:09:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="generator" content="WordPress 3.9.2" /> <!-- leave this for stats please -->
+	<title>danvk.org &raquo; A deep dive into the Krubera Cave</title>
+	<style type="text/css" media="screen">
+		@import url( ../../wp-content/themes/ocadia/style.css);
+			</style>
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="../../feed/index.html" />
+	<link rel="alternate" type="text/xml" title="RSS .92" href="../../feed/rss/index.html" />
+	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="../../feed/atom/index.html" />
+	<link rel="pingback" href="../../xmlrpc.php" />
+    	<link rel='archives' title='October 2014' href='../../2014/10/index.html' />
+	<link rel='archives' title='August 2014' href='../../2014/08/index.html' />
+	<link rel='archives' title='July 2014' href='../../2014/07/index.html' />
+	<link rel='archives' title='June 2014' href='../../2014/06/index.html' />
+	<link rel='archives' title='March 2014' href='../../2014/03/index.html' />
+	<link rel='archives' title='February 2014' href='../../2014/02/index.html' />
+	<link rel='archives' title='January 2014' href='../../2014/01/index.html' />
+	<link rel='archives' title='August 2013' href='../../2013/08/index.html' />
+	<link rel='archives' title='June 2013' href='../../2013/06/index.html' />
+	<link rel='archives' title='April 2013' href='../../2013/04/index.html' />
+	<link rel='archives' title='March 2013' href='../../2013/03/index.html' />
+	<link rel='archives' title='February 2013' href='../../2013/02/index.html' />
+	<link rel='archives' title='January 2013' href='../../2013/01/index.html' />
+	<link rel='archives' title='December 2012' href='../../2012/12/index.html' />
+	<link rel='archives' title='September 2012' href='../../2012/09/index.html' />
+	<link rel='archives' title='August 2012' href='../../2012/08/index.html' />
+	<link rel='archives' title='July 2012' href='../../2012/07/index.html' />
+	<link rel='archives' title='June 2012' href='../../2012/06/index.html' />
+	<link rel='archives' title='May 2012' href='../../2012/05/index.html' />
+	<link rel='archives' title='April 2012' href='../../2012/04/index.html' />
+	<link rel='archives' title='February 2012' href='../../2012/02/index.html' />
+	<link rel='archives' title='January 2012' href='../../2012/01/index.html' />
+	<link rel='archives' title='December 2011' href='../../2011/12/index.html' />
+	<link rel='archives' title='November 2011' href='../../2011/11/index.html' />
+	<link rel='archives' title='August 2011' href='../../2011/08/index.html' />
+	<link rel='archives' title='March 2011' href='../../2011/03/index.html' />
+	<link rel='archives' title='June 2010' href='../../2010/06/index.html' />
+	<link rel='archives' title='March 2010' href='../../2010/03/index.html' />
+	<link rel='archives' title='December 2009' href='../../2009/12/index.html' />
+	<link rel='archives' title='November 2009' href='../../2009/11/index.html' />
+	<link rel='archives' title='October 2009' href='../../2009/10/index.html' />
+	<link rel='archives' title='September 2009' href='../../2009/09/index.html' />
+	<link rel='archives' title='August 2009' href='../../2009/08/index.html' />
+	<link rel='archives' title='June 2009' href='../../2009/06/index.html' />
+	<link rel='archives' title='May 2009' href='../../2009/05/index.html' />
+	<link rel='archives' title='March 2009' href='../../2009/03/index.html' />
+	<link rel='archives' title='February 2009' href='../../2009/02/index.html' />
+	<link rel='archives' title='January 2009' href='../../2009/01/index.html' />
+	<link rel='archives' title='December 2008' href='../../2008/12/index.html' />
+	<link rel='archives' title='November 2008' href='../../2008/11/index.html' />
+	<link rel='archives' title='October 2008' href='../../2008/10/index.html' />
+	<link rel='archives' title='September 2008' href='../../2008/09/index.html' />
+	<link rel='archives' title='August 2008' href='../../2008/08/index.html' />
+	<link rel='archives' title='June 2008' href='../../2008/06/index.html' />
+	<link rel='archives' title='May 2008' href='../../2008/05/index.html' />
+	<link rel='archives' title='February 2008' href='../../2008/02/index.html' />
+	<link rel='archives' title='January 2008' href='../../2008/01/index.html' />
+	<link rel='archives' title='December 2007' href='../../2007/12/index.html' />
+	<link rel='archives' title='November 2007' href='../../2007/11/index.html' />
+	<link rel='archives' title='October 2007' href='../../2007/10/index.html' />
+	<link rel='archives' title='September 2007' href='../../2007/09/index.html' />
+	<link rel='archives' title='August 2007' href='../../2007/08/index.html' />
+	<link rel='archives' title='July 2007' href='../../2007/07/index.html' />
+	<link rel='archives' title='June 2007' href='../../2007/06/index.html' />
+	<link rel='archives' title='May 2007' href='../../2007/05/index.html' />
+	<link rel='archives' title='April 2007' href='../../2007/04/index.html' />
+	<link rel='archives' title='March 2007' href='../../2007/03/index.html' />
+	<link rel='archives' title='February 2007' href='../../2007/02/index.html' />
+	<link rel='archives' title='January 2007' href='../../2007/01/index.html' />
+	<link rel='archives' title='December 2006' href='../../2006/12/index.html' />
+	<link rel='archives' title='November 2006' href='../../2006/11/index.html' />
+	<link rel='archives' title='October 2006' href='../../2006/10/index.html' />
+	<link rel='archives' title='September 2006' href='../../2006/09/index.html' />
+	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../../xmlrpc0db0.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../../wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Fact Comparisons' href='../../2014-02-24/fact-comparisons/index.html' />
+<link rel='next' title='Google&#8217;s New Finance Onebox' href='../../2014-06-14/googles-new-finance-onebox/index.html' />
+<meta name="generator" content="WordPress 3.9.2" />
+<link rel='canonical' href='index.html' />
+<link rel='shortlink' href='../../indexaffb.html?p=1171' />
+<style type="text/css">
+/* <![CDATA[ */
+img.latex { vertical-align: middle; border: none; }
+/* ]]> */
+</style>
+<style type="text/css" id="syntaxhighlighteranchor"></style>
+</head>
+	
+<body>
+
+<div id="wrapper">
+
+<div id="header">
+<h1><a href="http://www.danvk.org/wp">danvk.org</a></h1>
+<p>Keepin&#8217; static like wool fabric since 2006</p>
+</div>
+
+<div id="content">
+
+			
+		<div class="post">
+
+			<h1 class="storydate">03.29.14</h1> 
+			<h2 id="post-1171" class="storytitle"><a href="index.html" rel="bookmark" title="Permanent link to A deep dive into the Krubera Cave">A deep dive into the Krubera Cave</a></h2>
+			<p class="meta">Posted in <a href="../../category/uncategorized/index.html" title="View all posts in Uncategorized" rel="category tag">Uncategorized</a> at 2:40 pm by danvk</p>
+		
+			<p>After seeing <a href="http://gilyn.lt/uploads/images/voronya.png">this image</a> posted <a href="http://www.reddit.com/r/MapPorn/comments/217lbv/a_map_of_krubera_cave_the_deepest_cave_on_earth/">on reddit</a> last week, I took a <i>deep dive</i> into the strange world of extreme caving.</p>
+<p><a href="http://gilyn.lt/uploads/images/voronya.png"><img src="../../wp-content/uploads/2014/03/voronya.png" alt="Voronya Visualization" width="420" height="284" class="size-full aligncenter wp-image-1184" /></a>
+<p style="text-align:center;font-style:italic;padding-bottom:1em">This image is big! <a href="http://gilyn.lt/uploads/images/voronya.png">Click through</a> to see the whole thing.</p>
+<p><img src="../../wp-content/uploads/2014/03/UUTq78Fvui.png" alt="Location of Krubera Cave" width="263" height="215" class="aligncenter size-full wp-image-1172" style="float:right; padding-left: 5px" />The <a href="http://en.wikipedia.org/wiki/Krubera_Cave">Krubera Cave</a> is the deepest in the world, descending 2,197 meters from its <a href="http://www.natgeocreative.com/comp/MM7/267/961216.jpg">inconspicuous entrance</a> to its deepest explored areas. It&#8217;s located in <a href="http://en.wikipedia.org/wiki/Abkhazia">Abkhazia</a>, a breakaway territory in the Republic of Georgia. In some ways, caving is an even more extreme activity than high altitude climbing. Descending to the bottom of Krubera takes a team of dozens of people over a month, a month during which they&#8217;ll never see the sun.</p>
+<p>One question I had was &#8220;why does an expedition end?&#8221; I got some answers from <a href="http://youtu.be/OIEbFlxEhk8">this amazing documentary</a> about a 2003 expedition. Their goal was to explore this <a href="http://en.wikipedia.org/wiki/Sump_(cave)">siphon</a> at 1440m below the surface:<br />
+<span id="more-1171"></span><br />
+<a href="http://www.speleologija.hr/voronya/slike/Voronja-topo.jpg"><img src="../../wp-content/uploads/2014/03/screenshot-by-nimbus-www-speleologija-hr-voronya-slike-Voronja-topo-jpg.png" alt="Siphon at 1440m" width="489" height="297" class="aligncenter size-full wp-image-1174" /></a></p>
+<p>Previous expeditions had explored in other directions, because they didn&#8217;t have the necessary scuba equipment to explore past the siphon (carrying heavy equipment down 1400+ meters is challenging). The hope was that, if they dove through the water, there would be a dry &#8220;continuation&#8221; on the other side.</p>
+<p>And was there ever! You can see the start of the continuation they discovered in green in the image. It continues all the way to 2,197m, the lowest known point in the cave:</p>
+<p><a href="http://www.speleologija.hr/voronya/slike/Voronja-topo.jpg"><img src="../../wp-content/uploads/2014/03/Voronja-topo.jpg" alt="The continuation" width="522" height="694" class="aligncenter size-full wp-image-1176" /></a></p>
+<p>A siphon is one thing that can stop an expedition. In the case of the 2003 expedition, they continued exploring until they literally ran out of ropes and carabiners. These seem to be the two limiting factors for exploratory spelunking: water and equipment. Why not just bring more equipment? Because rope is heavy, especially when it&#8217;s waterlogged (as it&#8217;s sure to be in the humid environment of caves).</p>
+<p>Here are a few photos from the cave:</p>
+<p><a href="http://i.imgur.com/W2JM9w8.jpg"><img src="../../wp-content/uploads/2014/03/W2JM9w8.jpg" alt="A shaft in the Krubera cave" width="457" height="290" class="aligncenter size-full wp-image-1179" /></a></p>
+<p><a href="http://i.telegraph.co.uk/multimedia/archive/01929/PD44976504_035_Tab_1929047b.jpg"><img src="../../wp-content/uploads/2014/03/PD44976504_035_Tab_1929047b.jpg" alt="TIght squeeze" width="620" height="388" class="aligncenter size-full wp-image-1180" /></a></p>
+<p>I&#8217;d highly, highly recommend watching the <a href="http://youtu.be/OIEbFlxEhk8">Russian documentary about the Krubera cave</a> if you&#8217;re at all interested in this sort of thing. I don&#8217;t think caving is a hobby for me, but I&#8217;ll read news about caves with much greater interest now that I&#8217;ve watched this docu.</p>
+			
+			<p class="feedback">
+			<a href="index.html" rel="bookmark" title="Permanent link to A deep dive into the Krubera Cave" class="permalink">Permalink</a>
+						</p>
+		
+		</div>
+			
+		
+<!-- You can start editing here. -->
+
+
+					<p>Comments are closed.</p>
+		
+	
+
+	
+	
+</div>
+
+<div id="sidebar">
+<ul>
+
+	<li id="search">
+		<form method="get" id="searchform" action="http://www.danvk.org/wp/index.php">
+<p>
+<input type="text" value="" name="s" id="s" /><br />
+<input type="submit" id="searchsubmit" value="Search" />
+</p>
+</form>	</li> 
+
+<!-- I want more control than this gives me: wp_list_pages('title_li=<h2>' . __('Pages') . '</h2>' ); -->
+
+	<li class="pagenav">
+		<ul>
+			<!--<li class="page_item"><a href="http://www.danvk.org/wp/?page_id=2" title="About">About</a></li>-->
+			<li>Dan across the web
+				<ul>
+					<li class="social">
+					<a href="https://github.com/danvk"><img src="https://github.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://twitter.com/danvdk"><img src="https://twitter.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://www.facebook.com/danvdk"><img src="https://facebook.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://plus.google.com/+DanVanderkam"><img src="https://plus.google.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://www.linkedin.com/profile/view?id=340204755"><img src="https://www.linkedin.com/favicon.ico" width=16 height=16 border=0></a>
+					<script data-gittip-username="danvdk" data-gittip-widget="button" src="http://gttp.co/v1.js"></script>
+				</ul>
+
+			<li>Dan's projects
+				<ul class="projects">
+					<li><a href="http://dygraphs.com/">dygraphs</a>
+					<li><a href="http://oldsf.org/">OldSF</a>
+					<li><a href="http://comparea.org/">Comparea</a>
+					<li><a href="https://github.com/danvk/webdiff">git webdiff</a>
+				</ul>
+
+			<li>Features on this site
+				<ul class="features">
+					<li><a href="http://www.danvk.org/boggle.php" title="Boggle Solver">Online Boggle Solver</a></li>
+					<li><a href="../../beals-conjecture/index.html" title="Beal&#039;s Conjecture">Beal's Conjecture</a></li>
+					<li><a href="../../gw-basic-program-decoder/index.html" title="GW-BASIC Program Decoder">GW-BASIC Program Decoder</a></li>
+					<li><a href="http://www.danvk.org/tower/nstower.html">NS-Tower in your Browser</a></li>
+				</ul>
+		</ul>
+	</li>
+
+	<!--
+	<li id="twitter_sidebar">
+		<div id="twitter_div">
+		<a href="http://twitter.com/danvdk" target="_blank"><h2 class="sidebar-title">Follow me on Twitter</h2></a>
+		<ul id="twitter_update_list" style="padding-right:30px"></ul>
+		
+		</div>
+		<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+		<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/danvdk.json?callback=twitterCallback2&amp;count=5"></script>
+	</li>
+	-->
+
+	<li id="archives">
+		<h2>Archives</h2>
+		<ul>
+			<li><a href='../../2014/10/index.html'>October 2014</a></li>
+	<li><a href='../../2014/08/index.html'>August 2014</a></li>
+	<li><a href='../../2014/07/index.html'>July 2014</a></li>
+	<li><a href='../../2014/06/index.html'>June 2014</a></li>
+	<li><a href='../../2014/03/index.html'>March 2014</a></li>
+	<li><a href='../../2014/02/index.html'>February 2014</a></li>
+	<li><a href='../../2014/01/index.html'>January 2014</a></li>
+	<li><a href='../../2013/08/index.html'>August 2013</a></li>
+	<li><a href='../../2013/06/index.html'>June 2013</a></li>
+	<li><a href='../../2013/04/index.html'>April 2013</a></li>
+	<li><a href='../../2013/03/index.html'>March 2013</a></li>
+	<li><a href='../../2013/02/index.html'>February 2013</a></li>
+	<li><a href='../../2013/01/index.html'>January 2013</a></li>
+	<li><a href='../../2012/12/index.html'>December 2012</a></li>
+	<li><a href='../../2012/09/index.html'>September 2012</a></li>
+	<li><a href='../../2012/08/index.html'>August 2012</a></li>
+	<li><a href='../../2012/07/index.html'>July 2012</a></li>
+	<li><a href='../../2012/06/index.html'>June 2012</a></li>
+	<li><a href='../../2012/05/index.html'>May 2012</a></li>
+	<li><a href='../../2012/04/index.html'>April 2012</a></li>
+	<li><a href='../../2012/02/index.html'>February 2012</a></li>
+	<li><a href='../../2012/01/index.html'>January 2012</a></li>
+	<li><a href='../../2011/12/index.html'>December 2011</a></li>
+	<li><a href='../../2011/11/index.html'>November 2011</a></li>
+	<li><a href='../../2011/08/index.html'>August 2011</a></li>
+	<li><a href='../../2011/03/index.html'>March 2011</a></li>
+	<li><a href='../../2010/06/index.html'>June 2010</a></li>
+	<li><a href='../../2010/03/index.html'>March 2010</a></li>
+	<li><a href='../../2009/12/index.html'>December 2009</a></li>
+	<li><a href='../../2009/11/index.html'>November 2009</a></li>
+	<li><a href='../../2009/10/index.html'>October 2009</a></li>
+	<li><a href='../../2009/09/index.html'>September 2009</a></li>
+	<li><a href='../../2009/08/index.html'>August 2009</a></li>
+	<li><a href='../../2009/06/index.html'>June 2009</a></li>
+	<li><a href='../../2009/05/index.html'>May 2009</a></li>
+	<li><a href='../../2009/03/index.html'>March 2009</a></li>
+	<li><a href='../../2009/02/index.html'>February 2009</a></li>
+	<li><a href='../../2009/01/index.html'>January 2009</a></li>
+	<li><a href='../../2008/12/index.html'>December 2008</a></li>
+	<li><a href='../../2008/11/index.html'>November 2008</a></li>
+	<li><a href='../../2008/10/index.html'>October 2008</a></li>
+	<li><a href='../../2008/09/index.html'>September 2008</a></li>
+	<li><a href='../../2008/08/index.html'>August 2008</a></li>
+	<li><a href='../../2008/06/index.html'>June 2008</a></li>
+	<li><a href='../../2008/05/index.html'>May 2008</a></li>
+	<li><a href='../../2008/02/index.html'>February 2008</a></li>
+	<li><a href='../../2008/01/index.html'>January 2008</a></li>
+	<li><a href='../../2007/12/index.html'>December 2007</a></li>
+	<li><a href='../../2007/11/index.html'>November 2007</a></li>
+	<li><a href='../../2007/10/index.html'>October 2007</a></li>
+	<li><a href='../../2007/09/index.html'>September 2007</a></li>
+	<li><a href='../../2007/08/index.html'>August 2007</a></li>
+	<li><a href='../../2007/07/index.html'>July 2007</a></li>
+	<li><a href='../../2007/06/index.html'>June 2007</a></li>
+	<li><a href='../../2007/05/index.html'>May 2007</a></li>
+	<li><a href='../../2007/04/index.html'>April 2007</a></li>
+	<li><a href='../../2007/03/index.html'>March 2007</a></li>
+	<li><a href='../../2007/02/index.html'>February 2007</a></li>
+	<li><a href='../../2007/01/index.html'>January 2007</a></li>
+	<li><a href='../../2006/12/index.html'>December 2006</a></li>
+	<li><a href='../../2006/11/index.html'>November 2006</a></li>
+	<li><a href='../../2006/10/index.html'>October 2006</a></li>
+	<li><a href='../../2006/09/index.html'>September 2006</a></li>
+		</ul>
+	</li>
+
+		
+	<li id="categories">
+		<h2>Categories</h2>
+		<ul>
+			<li class="cat-item cat-item-21"><a href="../../category/astronomy/index.html" title="View all posts filed under astronomy">astronomy</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="../../category/boggle/index.html" title="View all posts filed under boggle">boggle</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="../../category/books/index.html" title="View all posts filed under books">books</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="../../category/finance/index.html" title="View all posts filed under finance">finance</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="../../category/javascript/index.html" title="View all posts filed under javascript">javascript</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="../../category/math/index.html" title="View all posts filed under math">math</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="../../category/meta/index.html" title="View all posts filed under meta">meta</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="../../category/movies/index.html" title="View all posts filed under movies">movies</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="../../category/music/index.html" title="View all posts filed under music">music</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="../../category/news/index.html" title="View all posts filed under news">news</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="../../category/personal/index.html" title="View all posts filed under personal">personal</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="../../category/politics/index.html" title="View all posts filed under politics">politics</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="../../category/programming/index.html" title="View all posts filed under programming">programming</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="../../category/reviews/index.html" title="View all posts filed under reviews">reviews</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="../../category/san-francisco/index.html" title="View all posts filed under san francisco">san francisco</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="../../category/science/index.html" title="View all posts filed under science">science</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="../../category/space/index.html" title="View all posts filed under space">space</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="../../category/sports/index.html" title="View all posts filed under sports">sports</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="../../category/tennis/index.html" title="View all posts filed under tennis">tennis</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="../../category/travel/index.html" title="View all posts filed under travel">travel</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="../../category/tv/index.html" title="View all posts filed under tv">tv</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="../../category/uncategorized/index.html" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="../../category/web/index.html" title="View all posts filed under web">web</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="../../category/wikipedia/index.html" title="View all posts filed under wikipedia">wikipedia</a>
+</li>
+ 
+		</ul>
+	</li>
+	
+			
+	
+	<li id="meta">
+		<h2>Meta</h2>
+		<ul>
+				<li><a href="../../wp-login.html">Log in</a></li>
+		<li><a href="../../feed/index.html" title="Syndicate this site using RSS">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+		<li><a href="../../comments/feed/index.html" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+		<li><a href="http://wordpress.org/" title="Powered by Wordpress, state-of-the-art semantic personal publishing platform.">Wordpress</a></li>
+				</ul>
+	</li>
+	
+</ul>
+</div>
+
+<div id="footer">
+
+<!--<p>
+
+
+Design by <a href="http://ravenkeller.com">Raven Keller</a> and <a href="http://weblogs.us" title="Theme sponsored by Weblogs.us">Weblogs.us</a>
+&#183;
+<a href="http://validator.w3.org/check/referer" title="This page validates as XHTML 1.0 Transitional"><abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a>
+&#183;
+<a href="http://jigsaw.w3.org/css-validator/check/referer" title="This page validates as CSS"><abbr title="Cascading Style Sheets">CSS</abbr></a>
+<img src='http://counter.dreamhost.com/cgi-bin/Count.cgi?df=danvk-maincounter.dat&pad=F&ft=0&dd=copper&istrip=T' align=right />
+</p>-->
+
+
+</div>
+
+
+<!-- Google Analytics -->
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-769809-1";
+urchinTracker();
+</script>
+
+</body>
+
+<!-- Mirrored from www.danvk.org/wp/2014-03-29/a-deep-dive-into-the-krubera-cave/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Oct 2014 03:09:41 GMT -->
+</html>	
+
+
+
+<!--<footer class="container"></footer>-->
+

@@ -1,0 +1,529 @@
+/*  
+Theme Name: Ocadia
+Theme URI: http://beccary.com/goodies/wordpress-themes/
+Description: A two column blue-grey theme, clean yet stylish. 
+Version: 1.3
+Author: Becca Wei
+Author URI: http://beccary.com
+*/
+
+/* Basics */
+body {
+	margin: 0;
+	padding: 0;
+	/*background: url(images/light_noise.png) repeat;*/
+	/*background: url(light_noise.png) repeat;*/
+	color: #222;
+	font-size: 1em;
+	font-family: Georgia, serif;
+	text-align: center;
+	line-height: 160%;
+}
+.post {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	font-size: 1em;
+}
+.post h1, .post h2 { 
+	font-family: Georgia, serif;
+}
+.storytitle {
+	font-size: 1.3em;
+}
+p {
+	
+}
+ol, ul {
+	line-height: 1.5em;
+	margin: 1.2em 0 1.2em 2em;
+	padding: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin: 1.2em 0;
+	color: #111; 
+}
+
+a:link {
+	color: #000;
+	/* TODO(danvk): change to 'text-decoration-style: dashed' when it's better supported. */
+	border-bottom: 1px dashed #111;
+	text-decoration: none;
+}
+a:visited {
+	color: #000;
+	text-decoration: none;
+}
+a:hover, a:active {
+	color: #0489B1;
+	text-decoration: none;
+	border-bottom: 1px solid #111;
+}
+
+/*
+ * 
+.post a:link {
+	display:inline-block;
+	line-height:1em;
+}
+*/
+
+blockquote {
+	margin: 0 20px;
+	padding: 0.05em 20px;
+	border-top: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
+	font-size: 0.9em;
+}
+code {
+	color: #666;
+}
+input, textarea, select {
+	background-color: #FFF; 
+	color: #333;
+	font-size: 1em;
+}
+form, img {
+	border: 0; 
+	margin: 0; 
+	padding: 0;
+}
+
+/* Layout */ 
+
+#wrapper {
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+	background: #fff;
+	text-align: left;
+	margin-top: 0px;
+	margin-bottom: 20px;
+	border-top: 4px solid #01A9DB;
+}
+#header {
+	width: 960px;
+	height: 100px;
+	margin-top: 20px;
+	padding-left: 30px;
+	text-align: center;
+/*	border-bottom: 1px solid #E5E5E5;*/
+}
+
+	/* Header styles */
+#header h1 {
+	margin: 0;
+	padding: 5px 0 0 0px;
+	font-size: 38px;
+	line-height: 55px;
+	display: inline-block;
+/*	text-align: center;*/
+	}
+#header h1 a {
+		text-decoration: none;
+		border-bottom: none;
+		color: #111;
+		font-weight: 500;
+	}
+#header p {
+		margin: 0;
+		padding: 0px 0 0 10px;
+		color: #0489B1;
+		font-style: italic;
+		font-size: 1em;
+		font-family: 'Open Sans', sans-serif;
+		font-weight: 300;
+		/*	text-align: center;*/
+		
+		vertical-align: top;
+}
+#header .about {
+	display: inline-block;
+	float: right;
+	margin: 21px 225px 0 0;
+}
+	
+#content {
+	float: left;
+	margin-top: 0px;
+	padding: 0 30px 0 30px;
+	width: 630px;
+	min-height: 268px;
+	background: #fff;
+	overflow: visible;
+	voice-family: "\"}\""; 
+	voice-family: inherit;
+} 
+html>body #content {
+	width: 630px;
+}
+#sidebar {
+	float: left;
+	width: 269px;
+	text-align: left;
+	margin: 54px 0 0 0;
+	color: #727272;
+}
+#twitter_update_list {
+	font-size: 0.9em;
+	margin-top: -20px;
+}
+#twitter_update_list li span {
+	font-style: italic;
+	color: #0489B1;
+}
+#twitter_update_list a, #twitter_update_list a:visited {
+	color: #0489B1;
+	text-decoration: none;
+	border-bottom: 1px dashed #0489B1;
+}
+#twitter_update_list a:hover {
+	color: #01A9DB;
+	text-decoration: none;
+	
+}
+	/* Sidebar styles */
+	#sidebar ul {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+	}
+	#sidebar ul li {
+		margin: 0;
+		/* padding: 0 0 1.5em 0; */
+		padding: 0;
+		overflow: visible;
+	}
+	#sidebar h2, .h2 {
+		margin: 0;
+		padding: 20px 30px 0 20px;
+		font-size: 18px;
+		font-weight: 300;
+		color: #222;
+	}
+	#sidebar h2 a {
+		text-decoration: none;
+	}
+	#sidebar h2 a:hover {
+	
+	}
+	/* Fix our list and paragraph styles */
+	#sidebar p, #sidebar ul ul, #sidebar ul ol {
+		margin: 1em 0 0 0;
+		padding: 0 30px 0 20px;
+	}
+	#sidebar ul ol {
+		margin: 1em 0 0 20px;
+	}
+	#sidebar ul ol li {
+		padding: 0;
+		/* IE goes buggy with background: none; */
+	}
+	#sidebar ul ul {
+		background: none;
+	}
+	#sidebar ul ul ul {
+		margin: 0;
+		padding: 0 0 0 0.8em;
+		background: none;
+	}
+	#sidebar ul ul li {
+		padding: 0 0 14px 0;
+	}
+
+* html #content, * html #sidebar {
+	overflow: hidden; /* For IE */
+}
+#footer {
+	clear: both;
+	margin: 0 0px;
+	padding: 25px 4px 10px 4px;
+	background: #fff;
+}
+
+	/* Footer styles */
+	#footer p {
+		margin: 0;
+		padding: 0.5em 20px;
+		font-size: 0.9em;
+	}
+	#footer a:hover, #footer a:active {
+		color: #5C6C7D;
+		text-decoration: none;
+	}
+	
+/* Blog */
+
+.pagetitle {
+	margin: 1.2em 0 0 0;
+}
+.post {
+	padding: 2em 0 1em 0;
+	border-bottom: 1px dashed #222;
+}
+.storydate{
+	float: left;
+	margin: 0.4em 1em 0em 0;
+	padding: 0 0; 
+	color: #727272;
+	font-weight: 300;
+	width: 100%;
+	font-size: 16px;
+}
+.storytitle {
+	float: left;
+	margin: 0;
+	max-width: 550px;
+	/* font-size: 38px; */
+	font-size: 1.5em;
+	line-height: 120%;
+	font-weight: 300;
+}
+.storytitle a{
+	border-bottom: none;
+}
+.meta {
+	margin: 0;
+	padding: 0;
+	visibility: hidden;
+	line-height: 0;
+}
+.feedback {
+	padding: 0 0 0 0em;
+}
+.meta, .feedback {
+	clear: both;
+	color: #CCC;	
+}
+.permalink {
+	margin: 0;
+	padding: 0 0px 0 0;
+}
+.commentslink {
+	padding: 0 0 0 1.5em;
+	background: url(images/comment.png) no-repeat center left;
+	margin-left: 1em;
+}
+.storytitle a, .meta a, .feedback a, .commentauthor a, .commentmeta a, #comments a {
+	text-decoration: none;
+	color: #000;
+}
+
+
+/* Comments */
+
+#commentlist {
+	margin: 1.2em 0;
+	padding: 0;
+	list-style-type: none;
+}
+#commentlist li {
+	margin: 1em 0;
+	padding: 0 20px;
+	border-top: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
+	background: #f5f5f5;
+}
+.commentalt {
+	background: #f5f5f5;
+}
+.commentauthor {
+	margin: 1em 0 0 0;
+}
+.commentauthor a {
+	font-weight: bold;
+}
+.commentmeta {
+	margin-top: 0;
+	font-size: 0.9em;
+}
+#comment {
+	width: 98%;
+}
+.post_nav{
+	margin: 0 389px 0 0;
+}
+/* Widgets and Etc */
+
+li.page_item {
+}
+
+#search, #archives, #categories, #linkcat-12 {
+	display: none;
+}
+#sidebar #s {
+	margin-bottom: 2px;
+	width: 175px;
+}
+
+/* Calendar */
+
+#calendar div {
+	padding: 0 40px 0.2em 20px;
+	background: url(images/sidebar-top.gif) no-repeat;
+}
+#wp-calendar {
+	margin: 0;
+	width: 180px;
+	border: 1px solid #CCC;
+	background: #F4F4F4;
+	line-height: 1.2em;
+	text-align: center;
+	voice-family: "\"}\""; 
+	voice-family: inherit;
+	width: 178px;
+} 
+html>body #wp-calendar {
+	width: 178px;
+}
+#wp-calendar caption {
+	margin: 0;
+	padding: 1.4em 0 0.6em 0;
+	color: #534B48;
+	font-size: 1.1em;
+	font-family: Georgia, serif; 
+	font-weight: bold;
+	text-align: left;
+}
+#wp-calendar td {
+	margin: 2px;
+	background: #FFF;
+}
+#wp-calendar td a {
+	display: block;
+	width: 100%;
+}
+#wp-calendar td.pad {
+	background: transparent;
+}
+#wp-calendar td#next, #wp-calendar td#prev {
+	padding: 0.1em 2px;
+	background: transparent;
+}
+#wp-calendar td#next a, #wp-calendar td#prev a {
+	display: inline;
+}
+#wp-calendar td#next {
+	text-align: right;
+}
+#wp-calendar td#prev {
+	text-align: left;
+}
+
+/* Dan's Ruby stuff */
+pre.ruby {
+	font-family: "Lucida Console", Monaco, monospace;
+	background-color: #1a4676;
+	color: #112;
+	padding: 10px;
+	font-size: 13px;
+	overflow: auto;
+	margin: 4px 0px;
+	width: 97%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        margin-top: 12px;
+}
+
+/* Syntax highlighting */
+pre.ruby .normal {}
+
+pre.ruby .comment { color: #428bdd; }
+pre.ruby .keyword { color: #f9bb00; }
+pre.ruby .method { color: #fff; }
+pre.ruby .class { color: #fff; }
+pre.ruby .module { color: #050; }
+pre.ruby .punct { color: #8aa6c1; }
+pre.ruby .symbol { color: #b53b3c; }
+pre.ruby .string { color: #00cc00; }
+pre.ruby .char { color: #f07; }
+pre.ruby .ident { color: #fff; }
+pre.ruby .constant { color: #8aa6c1; }
+pre.ruby .regex { color: #ca4344; }
+pre.ruby .number { color: #eddd3d; }
+pre.ruby .global { color: #fff; }
+pre.ruby .expr { color: #fff; }
+pre.ruby .escape { color: #eddd3d; }
+pre.ruby .attribute {  color: #8aa6c1; }
+pre.ruby.xml-code .string { color: #fff; }
+
+/*
+pre.ruby .comment { color: #005; font-style: italic; }
+pre.ruby .keyword { color: #A00; font-weight: bold; }
+pre.ruby .method { color: #077; }
+pre.ruby .class { color: #074; }
+pre.ruby .module { color: #050; }
+pre.ruby .punct { color: #447; font-weight: bold; }
+pre.ruby .symbol { color: #099; }
+pre.ruby .string { color: #944; background: #FFE; }
+pre.ruby .char { color: #F07; }
+pre.ruby .ident { color: #004; }
+pre.ruby .constant { color: #07F; }
+pre.ruby .regex { color: #B66; background: #FEF; }
+pre.ruby .number { color: #F99; }
+pre.ruby .attribute { color: #5bb; }
+pre.ruby .global { color: #7FB; }
+pre.ruby .expr { color: #227; }
+pre.ruby .escape { color: #277; }
+*/
+
+.code { font-family: Monaco, monospace; }
+.thin td, .thin tr { border: thin single black collapse; }
+
+
+/* Begin Images */
+p img {
+	padding: 0;
+	max-width: 100%;
+	}
+
+/*	Using 'class="alignright"' on an image will (who would've
+	thought?!) align the image to the right. And using 'class="centered',
+	will of course center the image. This is much better than using
+	align="center", being much more futureproof (and valid) */
+
+img.centered {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	}
+
+img.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	}
+
+img.alignright {
+	padding: 4px;
+	margin: 0 0 2px 7px;
+	display: inline;
+	}
+
+img.alignleft {
+	padding: 4px;
+	margin: 0 7px 2px 0;
+	display: inline;
+	}
+
+.alignright {
+	float: right;
+	}
+
+.alignleft {
+	float: left;
+	}
+/* End Images */
+
+li.social {
+	height: 20px;
+	vertical-align: bottom;
+}
+li.social a {
+	border-bottom: none;
+}
+.pagenav li {
+	line-height: 1.25em;
+}
+.pagenav > ul > li {
+	line-height: 2em;
+}

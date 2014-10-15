@@ -1,0 +1,2192 @@
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<!-- Mirrored from www.danvk.org/wp/dragtable/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Oct 2014 03:11:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="generator" content="WordPress 3.9.2" /> <!-- leave this for stats please -->
+	<title>danvk.org &raquo; dragtable: Visually reorder all your table columns</title>
+	<style type="text/css" media="screen">
+		@import url( ../wp-content/themes/ocadia/style.css);
+			</style>
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="../feed/index.html" />
+	<link rel="alternate" type="text/xml" title="RSS .92" href="../feed/rss/index.html" />
+	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="../feed/atom/index.html" />
+	<link rel="pingback" href="../xmlrpc.php" />
+    	<link rel='archives' title='October 2014' href='../2014/10/index.html' />
+	<link rel='archives' title='August 2014' href='../2014/08/index.html' />
+	<link rel='archives' title='July 2014' href='../2014/07/index.html' />
+	<link rel='archives' title='June 2014' href='../2014/06/index.html' />
+	<link rel='archives' title='March 2014' href='../2014/03/index.html' />
+	<link rel='archives' title='February 2014' href='../2014/02/index.html' />
+	<link rel='archives' title='January 2014' href='../2014/01/index.html' />
+	<link rel='archives' title='August 2013' href='../2013/08/index.html' />
+	<link rel='archives' title='June 2013' href='../2013/06/index.html' />
+	<link rel='archives' title='April 2013' href='../2013/04/index.html' />
+	<link rel='archives' title='March 2013' href='../2013/03/index.html' />
+	<link rel='archives' title='February 2013' href='../2013/02/index.html' />
+	<link rel='archives' title='January 2013' href='../2013/01/index.html' />
+	<link rel='archives' title='December 2012' href='../2012/12/index.html' />
+	<link rel='archives' title='September 2012' href='../2012/09/index.html' />
+	<link rel='archives' title='August 2012' href='../2012/08/index.html' />
+	<link rel='archives' title='July 2012' href='../2012/07/index.html' />
+	<link rel='archives' title='June 2012' href='../2012/06/index.html' />
+	<link rel='archives' title='May 2012' href='../2012/05/index.html' />
+	<link rel='archives' title='April 2012' href='../2012/04/index.html' />
+	<link rel='archives' title='February 2012' href='../2012/02/index.html' />
+	<link rel='archives' title='January 2012' href='../2012/01/index.html' />
+	<link rel='archives' title='December 2011' href='../2011/12/index.html' />
+	<link rel='archives' title='November 2011' href='../2011/11/index.html' />
+	<link rel='archives' title='August 2011' href='../2011/08/index.html' />
+	<link rel='archives' title='March 2011' href='../2011/03/index.html' />
+	<link rel='archives' title='June 2010' href='../2010/06/index.html' />
+	<link rel='archives' title='March 2010' href='../2010/03/index.html' />
+	<link rel='archives' title='December 2009' href='../2009/12/index.html' />
+	<link rel='archives' title='November 2009' href='../2009/11/index.html' />
+	<link rel='archives' title='October 2009' href='../2009/10/index.html' />
+	<link rel='archives' title='September 2009' href='../2009/09/index.html' />
+	<link rel='archives' title='August 2009' href='../2009/08/index.html' />
+	<link rel='archives' title='June 2009' href='../2009/06/index.html' />
+	<link rel='archives' title='May 2009' href='../2009/05/index.html' />
+	<link rel='archives' title='March 2009' href='../2009/03/index.html' />
+	<link rel='archives' title='February 2009' href='../2009/02/index.html' />
+	<link rel='archives' title='January 2009' href='../2009/01/index.html' />
+	<link rel='archives' title='December 2008' href='../2008/12/index.html' />
+	<link rel='archives' title='November 2008' href='../2008/11/index.html' />
+	<link rel='archives' title='October 2008' href='../2008/10/index.html' />
+	<link rel='archives' title='September 2008' href='../2008/09/index.html' />
+	<link rel='archives' title='August 2008' href='../2008/08/index.html' />
+	<link rel='archives' title='June 2008' href='../2008/06/index.html' />
+	<link rel='archives' title='May 2008' href='../2008/05/index.html' />
+	<link rel='archives' title='February 2008' href='../2008/02/index.html' />
+	<link rel='archives' title='January 2008' href='../2008/01/index.html' />
+	<link rel='archives' title='December 2007' href='../2007/12/index.html' />
+	<link rel='archives' title='November 2007' href='../2007/11/index.html' />
+	<link rel='archives' title='October 2007' href='../2007/10/index.html' />
+	<link rel='archives' title='September 2007' href='../2007/09/index.html' />
+	<link rel='archives' title='August 2007' href='../2007/08/index.html' />
+	<link rel='archives' title='July 2007' href='../2007/07/index.html' />
+	<link rel='archives' title='June 2007' href='../2007/06/index.html' />
+	<link rel='archives' title='May 2007' href='../2007/05/index.html' />
+	<link rel='archives' title='April 2007' href='../2007/04/index.html' />
+	<link rel='archives' title='March 2007' href='../2007/03/index.html' />
+	<link rel='archives' title='February 2007' href='../2007/02/index.html' />
+	<link rel='archives' title='January 2007' href='../2007/01/index.html' />
+	<link rel='archives' title='December 2006' href='../2006/12/index.html' />
+	<link rel='archives' title='November 2006' href='../2006/11/index.html' />
+	<link rel='archives' title='October 2006' href='../2006/10/index.html' />
+	<link rel='archives' title='September 2006' href='../2006/09/index.html' />
+	<link rel="alternate" type="application/rss+xml" title="danvk.org &raquo; dragtable: Visually reorder all your table columns Comments Feed" href="feed/index.html" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='GW-Basic Program Decoder' href='../gw-basic-program-decoder/index.html' />
+<meta name="generator" content="WordPress 3.9.2" />
+<link rel='canonical' href='index.html' />
+<link rel='shortlink' href='../index3e8e.html?p=296' />
+<style type="text/css">
+/* <![CDATA[ */
+img.latex { vertical-align: middle; border: none; }
+/* ]]> */
+</style>
+<style type="text/css" id="syntaxhighlighteranchor"></style>
+</head>
+	
+<body>
+
+<div id="wrapper">
+
+<div id="header">
+<h1><a href="http://www.danvk.org/wp">danvk.org</a></h1>
+<p>Keepin&#8217; static like wool fabric since 2006</p>
+</div>
+
+<div id="content">
+
+    		
+		<h2 id="post-296">dragtable: Visually reorder all your table columns</h2>
+			
+		<p>Over the past several years, Stuart Langridge&#8217;s <a href="http://www.kryogenix.org/code/browser/sorttable/">sorttable</a> Javascript library has found widespread use. It&#8217;s easy to see why. Just add <code>class=sortable</code> to a <code>table</code> tag and its column headers automatically support click to sort. Pretty slick.</p>
+<p>But sometimes sorting just isn&#8217;t enough. What if you want to focus on just one or two of the columns in a table? In a client-side application you could drag the columns you care about next to each other. Why not in a web application?</p>
+<p>Enter dragtable. Like sorttable, it teaches HTML tables a new trick through a simple <code>class</code> attribute. Here&#8217;s a sample:</p>
+<p><center></p>
+<table id=table class="draggable" cellpadding=2 border="1" style="background:#f3f3f3" >
+<tr>
+<th id=x>Name</th>
+<th>Date</th>
+<th>Favorite Color</th>
+</tr>
+<tr>
+<td>Dan</td>
+<td>1984-07-12</td>
+<td>Blue</td>
+</tr>
+<tr>
+<td>Alice</td>
+<td>1980-07-22</td>
+<td>Green</td>
+</tr>
+<tr>
+<td>Ryan</td>
+<td>1990-09-23</td>
+<td>Orange</td>
+</tr>
+<tr>
+<td>Bob</td>
+<td>1966-04-21</td>
+<td>Red</td>
+</tr>
+</table>
+<p></center></p>
+<p>Drag the column headings to rearrange the data in this table. This is a plain old HTML table with <code>class=draggable</code> set.</p>
+<p>To achieve <code>kMaxDHTMLGoodness</code>, use sorttable and dragtable on the same table! Just set <code>class="draggable sortable"</code>:</p>
+<p><center></p>
+<table id="table2" class="thin sortable draggable" style="background:#f3f3f3" >
+<tr>
+<th>Name</th>
+<th>Salary</th>
+<th>Extension</th>
+<th>Start date</th>
+</tr>
+<tr>
+<td>Bloggs, Fred</td>
+<td>$12000.00</td>
+<td>1353</td>
+<td>18/08/2003</td>
+</tr>
+<tr>
+<td>Turvey, Kevin</td>
+<td>$191200.00</td>
+<td>2342</td>
+<td>02/05/1979</td>
+</tr>
+<tr>
+<td>Mbogo, Arnold</td>
+<td>$32010.12</td>
+<td>2755</td>
+<td>09/08/1998</td>
+</tr>
+<tr>
+<td>Shakespeare, Bill</td>
+<td>$122000.00</td>
+<td>3211</td>
+<td>12/11/1961</td>
+</tr>
+<tr>
+<td>Shakespeare, Hamnet</td>
+<td>$9000</td>
+<td>9005</td>
+<td>01/01/2002</td>
+</tr>
+<tr>
+<td>Fitz, Marvin</td>
+<td>$3300</td>
+<td>5554</td>
+<td>22/05/1995</td>
+</tr>
+</table>
+<p></center></p>
+<p>To make the columns of a table reorderable, just follow these three easy steps:</p>
+<ol>
+<li>Download the <a href="http://www.danvk.org/dragtable/dragtable.js">dragtable Javascript library</a>.</li>
+<li>Include the library by putting this in your document&#8217;s HEAD:
+<pre><code>&lt;script src="<a href="http://www.danvk.org/dragtable/dragtable.js">dragtable.js</a>"&gt;&lt;/script&gt;</code></pre>
+</li>
+<li>Mark the table whose column headers you want to be draggable by<br />
+  giving it a class of &#8220;draggable&#8221;:</p>
+<pre><code>&lt;table class="draggable"&gt;</code></pre>
+</li>
+</ol>
+<p>That&#8217;s it! Your table will instantly become interactive.</p>
+<h2>Q&#038;A</h2>
+<h3>Which browsers does dragtable work with?</h3>
+<p>These are just the browsers I&#8217;ve checked. If you try dragtable on<br />
+a browser not listed here, please let me know whether it works. dragtable<br />
+should work for at least 99% of all web surfers.</p>
+<table class="thin sortable draggable" cellpadding=2 style="background:#f9f8f9" >
+<tr>
+<th>Browser</th>
+<th>Works?</th>
+</tr>
+<tr>
+<td>IE 8.0.6001.18702</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>IE 7.0.5730.13</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>IE 6.0</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Firefox 3.5</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Firefox 3 RC2</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Firefox 2.0.0.14</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Firefox 1.5</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Safari 3.1.1</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Safari 2.0</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Camino 1.6.1</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Opera 9.2.7</td>
+<td>Yes</td>
+</tr>
+</table>
+<h3>dragtable keeps forgetting my column ordering!</h3>
+<p>If you set an id on your table, dragtable will save all column reorderings for that table in a cookie and replay them the next time you visit the page. If you don&#8217;t want it to do this, either 1. don&#8217;t set an id or 2. set <code>class="draggable forget-ordering"</code>.</p>
+<h3>How does dragtable distinguish a click from a drag?</h3>
+<p>This should only be relevant if you&#8217;re using dragtable together with sorttable. If a user clicks a column header and then moves the mouse some amount, dragtable assumes they want to rearrange the columns. If they don&#8217;t move the mouse very much, dragtable considers it a click and sorttable will take it as a cue to sort on that column. The exact cutoff is a 10 pixel radius, but you can customize this by calling:</p>
+<pre><code>dragtable.setMinDragDistance(5);</code></pre>
+<p>somewhere on your page.</p>
+<h3>I found a bug/have a feature request</h3>
+<p>A bug? The horrors! Please head over to the <a href="http://code.google.com/p/dragtable/">dragtable</a> project on Google Code and file your bug/feature request in the <a href="http://code.google.com/p/dragtable/issues/list">issue tracker</a>. Or, even better start hacking around!</p>
+<p><b><i>I&#8217;ve closed the comments below due to spam. If you have issues to report, please do so on the <a href="http://code.google.com/p/dragtable/issues/list">issue tracker</a>.</i></b></p>
+<p><script type=text/javascript src="http://www.danvk.org/dragtable/sorttable.js"></script><br />
+<script type=text/javascript src="http://www.danvk.org/dragtable/dragtable.js"></script></p>
+<style type=text/css>
+  /* Sortable tables */
+  table.sortable thead {
+    background-color:#eee;
+    color:#666666;
+    font-weight: bold;
+    cursor: default;
+  }
+  table.thin, table.thin td, table.thin tr, table.thin th {
+    border: thin solid black;
+    border-collapse: collapse;
+  }
+</style>
+		
+			
+<!-- You can start editing here. -->
+
+
+	<h2 id="comments">
+		166 Comments			</h2> 
+
+	<ol id="commentlist">
+
+	
+		<li class="commentalt" id="comment-10742">
+			<p class="commentauthor"><a href='http://blog.makernet.it/2008/06/27/dragtable-effetto-drag-and-drop-tabelle/' rel='external nofollow' class='url'>Dragtable: effetto drag-and-drop sulle tabelle | Blog.makernet.it</a> said,</p>
+			<p class="commentmeta">June 27, 2008 at <a href="#comment-10742" title="Permanent link to this comment">9:25 am</a> </p>
+			
+			<p>[...] scaricare il codice e per vedere lo script all&#8217;opera: <a href="../dragtable.html" rel="nofollow">http://www.danvk.org/wp/dragtable</a>      [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-10745">
+			<p class="commentauthor"><a href='http://www.anieto2k.com/2008/06/27/dragtable-una-tabla-sortable-y-dragable-y-algun-palabro-mas/' rel='external nofollow' class='url'>Dragtable, una tabla sortable y dragable (y algún palabro más) | aNieto2K</a> said,</p>
+			<p class="commentmeta">June 27, 2008 at <a href="#comment-10745" title="Permanent link to this comment">11:39 am</a> </p>
+			
+			<p>[...] Javascript), con esta además, podemos mover las columnas ordenando los resultados a voluntad.[Demo] Compártelo       &larr; 3 de 10: Entrevista a Daniel [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-10753">
+			<p class="commentauthor"><a href='http://www.uglychart.com/2008/06/28/links-for-2008-06-28/' rel='external nofollow' class='url'>uglychart.com: a blog about stocks &raquo; Blog Archive &raquo; links for 2008-06-28</a> said,</p>
+			<p class="commentmeta">June 27, 2008 at <a href="#comment-10753" title="Permanent link to this comment">10:31 pm</a> </p>
+			
+			<p>[...] danvk.org » dragtable: Visually reorder all your table columns this is nice (tags: ui web programming javascript) [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-10756">
+			<p class="commentauthor"><a href='http://arpaneting.es/2008/06/28/dragtable-la-tabla-de-las-tablas/' rel='external nofollow' class='url'>TheDaVis Blog &mdash; DragTable, la Tabla de las tablas</a> said,</p>
+			<p class="commentmeta">June 28, 2008 at <a href="#comment-10756" title="Permanent link to this comment">9:36 am</a> </p>
+			
+			<p>[...] DragTable es una librería JavaScript que permite mover de posición las columnas de las tablas HTML tradicionales y además permite ordenar las columnas de forma ascendente y descendente. Ver Demo [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-10760">
+			<p class="commentauthor"><a href='http://www.benjaminkeen.com/?p=220' rel='external nofollow' class='url'>BenjaminKeen.com</a> said,</p>
+			<p class="commentmeta">June 28, 2008 at <a href="#comment-10760" title="Permanent link to this comment">2:11 pm</a> </p>
+			
+			<p>[...] stuff, from Dan Vanderkam. <a href="index.html" rel="nofollow">http://www.danvk.org/wp/dragtable/</a>        No Comments [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-10762">
+			<p class="commentauthor"><a href='http://toonz.wordpress.com/2008/06/28/links-for-2008-06-28/' rel='external nofollow' class='url'>links for 2008-06-28 &laquo; toonz</a> said,</p>
+			<p class="commentmeta">June 28, 2008 at <a href="#comment-10762" title="Permanent link to this comment">4:30 pm</a> </p>
+			
+			<p>[...] danvk.org » dragtable: Visually reorder all your table columns (tags: javascript table webdev) [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-10766">
+			<p class="commentauthor"><a href='http://gregable.com/' rel='external nofollow' class='url'>Greg Grothaus</a> said,</p>
+			<p class="commentmeta">June 28, 2008 at <a href="#comment-10766" title="Permanent link to this comment">8:12 pm</a> </p>
+			
+			<p>I noticed you are on the front page of programming.reddit.com &#8211; congrats.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-10767">
+			<p class="commentauthor"><a href='http://dpaladin.com/' rel='external nofollow' class='url'>dpaladin</a> said,</p>
+			<p class="commentmeta">June 28, 2008 at <a href="#comment-10767" title="Permanent link to this comment">9:48 pm</a> </p>
+			
+			<p>its great :D</p>
+<p>i tried to use it, but the sortable doesn&#8217;t works, only the drag function</p>
+<p>i even copy &amp; paste the table you used, but the table doesn&#8217;t sort, only its possible to drag it</p>
+<p>what can i do?</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-10768">
+			<p class="commentauthor"><a href='http://dpaladin.com/' rel='external nofollow' class='url'>dpaladin</a> said,</p>
+			<p class="commentmeta">June 28, 2008 at <a href="#comment-10768" title="Permanent link to this comment">10:03 pm</a> </p>
+			
+			<p>oh sorry, i find out</p>
+<p>maybe you can write that you need also the sorttable.js file for sorting :P</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-10769">
+			<p class="commentauthor"><a href='http://blog.libinpan.com/2008/06/29/links-for-2008-06-29/' rel='external nofollow' class='url'>links for 2008-06-29 | Libin Pan</a> said,</p>
+			<p class="commentmeta">June 28, 2008 at <a href="#comment-10769" title="Permanent link to this comment">11:31 pm</a> </p>
+			
+			<p>[...] danvk.org » dragtable: Visually reorder all your table columns Dragtable is a JavaScript library for making the columns of a table draggable. [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-10773">
+			<p class="commentauthor"><a href='http://www.ajaxorized.com/' rel='external nofollow' class='url'>Will</a> said,</p>
+			<p class="commentmeta">June 29, 2008 at <a href="#comment-10773" title="Permanent link to this comment">4:03 am</a> </p>
+			
+			<p>Great script, thanks a lot!</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-10776">
+			<p class="commentauthor">Joe said,</p>
+			<p class="commentmeta">June 29, 2008 at <a href="#comment-10776" title="Permanent link to this comment">9:48 am</a> </p>
+			
+			<p>If you use headers and footers in your tables.  Make sure all columns align, 4 on top require 4 in the footer.  If you miss one column, it won&#8217;t be dragable.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-10781">
+			<p class="commentauthor"><a href='http://blog.bruno.locaweb.com.br/2008/06/29/links-for-2008-06-29/' rel='external nofollow' class='url'>rascunho &raquo; Blog Archive &raquo; links for 2008-06-29</a> said,</p>
+			<p class="commentmeta">June 29, 2008 at <a href="#comment-10781" title="Permanent link to this comment">1:40 pm</a> </p>
+			
+			<p>[...] danvk.org » dragtable: Visually reorder all your table columns Over the past several years, Stuart Langridge’s sorttable Javascript library has found widespread use. It’s easy to see why. Just add class=sortable to a table tag and its column headers automatically support click to sort. Pretty slick. (tags: <a href="http://www.danvk.org/" rel="nofollow">http://www.danvk.org</a> 2008 mes5 dia28 at_home DataGrid DataTable grid table CSS javascript unobtrusive sort drag *****) [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-10782">
+			<p class="commentauthor"><a href='http://funnyweblink.com/funny-web-pages/links-for-2008-06-30-11/' rel='external nofollow' class='url'>links for 2008-06-30 | Funny Web Pages</a> said,</p>
+			<p class="commentmeta">June 29, 2008 at <a href="#comment-10782" title="Permanent link to this comment">5:35 pm</a> </p>
+			
+			<p>[...] danvk.org » dragtable: Visually reorder all your table columns (tags: javascript table webdev drag html ajax design) [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-10787">
+			<p class="commentauthor"><a href='http://www.pensamientosyrarezas.com/2008/06/si-ten-p-con-tablas-donde-se-presentan.html' rel='external nofollow' class='url'>Moisés Márquez</a> said,</p>
+			<p class="commentmeta">June 30, 2008 at <a href="#comment-10787" title="Permanent link to this comment">4:37 am</a> </p>
+			
+			<p>Si tenéis páginas con tablas donde se presentan multitud de datos seguro que os habréis preguntado cómo se podrían ordenador [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-10788">
+			<p class="commentauthor"><a href='http://viniciuscamara.net/' rel='external nofollow' class='url'>Vinicius Camara</a> said,</p>
+			<p class="commentmeta">June 30, 2008 at <a href="#comment-10788" title="Permanent link to this comment">6:11 am</a> </p>
+			
+			<p>Congratulations Fellow.<br />
+Amazing example.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-10789">
+			<p class="commentauthor"><a href='http://drumboom.net/' rel='external nofollow' class='url'>Drum Boom</a> said,</p>
+			<p class="commentmeta">June 30, 2008 at <a href="#comment-10789" title="Permanent link to this comment">7:19 am</a> </p>
+			
+			<p>Thank you. Very useful I will post russian topic on my blog for lib popularisation.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-10791">
+			<p class="commentauthor"><a href='http://drumboom.net/2008/06/30/sort_drag_table/' rel='external nofollow' class='url'>Сортировка и операции с TABLE на Javascript | Drum Boom</a> said,</p>
+			<p class="commentmeta">June 30, 2008 at <a href="#comment-10791" title="Permanent link to this comment">7:43 am</a> </p>
+			
+			<p>[...] и, наконец-то, нашел совсем свежее решение проблемы dragtable на основе предыдущей библиотеки от [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-10792">
+			<p class="commentauthor">Phil W. said,</p>
+			<p class="commentmeta">June 30, 2008 at <a href="#comment-10792" title="Permanent link to this comment">12:48 pm</a> </p>
+			
+			<p>Dan, this is a great bit of code. </p>
+<p>One question: Like many others, I use striping or zebra-ing or alternate colors for each row. I realize that sorttable isn&#8217;t your code, but do you or anyone else know if there any way to preserve that alternate colors with the sorting? Thanks.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-10794">
+			<p class="commentauthor"><a href='http://grok2.com/' rel='external nofollow' class='url'>Grok2</a> said,</p>
+			<p class="commentmeta">June 30, 2008 at <a href="#comment-10794" title="Permanent link to this comment">1:17 pm</a> </p>
+			
+			<p>Brilliant!!! Worked for me on Opera 9.5:</p>
+<p>Version:9.50<br />
+Build:10063<br />
+Platform:Win32<br />
+System:Windows XP<br />
+Java:Sun Java Runtime Environment version 1.6</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-10802">
+			<p class="commentauthor">dabdu said,</p>
+			<p class="commentmeta">July 1, 2008 at <a href="#comment-10802" title="Permanent link to this comment">12:31 pm</a> </p>
+			
+			<p>works fine on Epiphany 2.22.2</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-10807">
+			<p class="commentauthor"><a href='http://david.scatigna.it/2008/07/02/links-for-2008-07-02/' rel='external nofollow' class='url'>Skylog &raquo; Blog Archive &raquo; links for 2008-07-02</a> said,</p>
+			<p class="commentmeta">July 1, 2008 at <a href="#comment-10807" title="Permanent link to this comment">11:31 pm</a> </p>
+			
+			<p>[...] dragtable: Visually reorder all your table columns (tags: javascript) [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-10814">
+			<p class="commentauthor">Foo said,</p>
+			<p class="commentmeta">July 2, 2008 at <a href="#comment-10814" title="Permanent link to this comment">8:31 pm</a> </p>
+			
+			<p>Very nice!</p>
+<p>Sadly, there&#8217;s no facility to resize the table or to resize the column widths relative to one another.  That&#8217;d make it really useful.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-10817">
+			<p class="commentauthor">Yogeshwar said,</p>
+			<p class="commentmeta">July 2, 2008 at <a href="#comment-10817" title="Permanent link to this comment">11:13 pm</a> </p>
+			
+			<p>Is this code is free ware or do we need to take license</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-10824">
+			<p class="commentauthor">hans said,</p>
+			<p class="commentmeta">July 3, 2008 at <a href="#comment-10824" title="Permanent link to this comment">1:36 pm</a> </p>
+			
+			<p>great script thanx alot.</p>
+<p>one question: did anyone ever try the dragable in a absolute positioned table? seems to breake, any ideas?</p>
+<p>cheers,<br />
+hans</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-10908">
+			<p class="commentauthor">Colin said,</p>
+			<p class="commentmeta">July 8, 2008 at <a href="#comment-10908" title="Permanent link to this comment">10:19 pm</a> </p>
+			
+			<p>This is a great script.<br />
+Two questions:<br />
+Which library are you using to display the column being moved? On mine, the drag works fine but you don&#8217;t see the column being moved.</p>
+<p>On my small table (8 columns) everything works fine. But on my table with 11 columns I can&#8217;t seem to drag the 11th column.</p>
+<p>Any ideas?</p>
+<p>Cheers<br />
+Colin</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-10989">
+			<p class="commentauthor"><a href='http://www.balearsinnovacio.com/blog/?p=487' rel='external nofollow' class='url'>Recopilatorio diseño web &raquo; Innova Desarrollos informáticos</a> said,</p>
+			<p class="commentmeta">July 13, 2008 at <a href="#comment-10989" title="Permanent link to this comment">2:07 am</a> </p>
+			
+			<p>[...] Efectos: Reordenación visual de columnas de una tabla, espectacular dropdown, galería de fotos al estilo MS Surface, efecto slide, barra de progreso [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-11163">
+			<p class="commentauthor"><a href='http://www.deambulando.com/2008/07/21/sorttable-dratable/' rel='external nofollow' class='url'>Tablas que se ordenan y son movibles | Deambulando</a> said,</p>
+			<p class="commentmeta">July 21, 2008 at <a href="#comment-11163" title="Permanent link to this comment">2:11 am</a> </p>
+			
+			<p>[...] con Sorttable + DragTable si puedes! (que bien me ha salido el comercial [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-11167">
+			<p class="commentauthor">Charles-Antoine said,</p>
+			<p class="commentmeta">July 21, 2008 at <a href="#comment-11167" title="Permanent link to this comment">8:56 am</a> </p>
+			
+			<p>Awesome ! ! Works fine and very easy to use&#8230; Thanks a lot.<br />
+CA</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-11524">
+			<p class="commentauthor">Aashish said,</p>
+			<p class="commentmeta">August 6, 2008 at <a href="#comment-11524" title="Permanent link to this comment">1:48 am</a> </p>
+			
+			<p>Thnx a lot&#8230;&#8230;i was searchin for this script a lot which was workin on IE 7 and also on firefox</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-11597">
+			<p class="commentauthor"><a href='http://emilio.aesinformatica.com/2008/08/10/mueve-las-columnas-de-una-tabla-con-ajax/' rel='external nofollow' class='url'>Mueve las columnas de una tabla con AJAX | Emilio Jos&eacute; Rodr&iacute;guez Garc&iacute;a</a> said,</p>
+			<p class="commentmeta">August 10, 2008 at <a href="#comment-11597" title="Permanent link to this comment">7:22 am</a> </p>
+			
+			<p>[...] trata de Dragtable una librería javascript que nos permitirá sin necesidad de recargar la página cambiar el orden [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-11783">
+			<p class="commentauthor"><a href='http://mnathani.com/blog/links/2008/08/18/links-for-2008-08-18/' rel='external nofollow' class='url'>Del.icio.us Links &raquo; Blog Archive &raquo; links for 2008-08-18</a> said,</p>
+			<p class="commentmeta">August 18, 2008 at <a href="#comment-11783" title="Permanent link to this comment">7:56 am</a> </p>
+			
+			<p>[...] danvk.org » dragtable: Visually reorder all your table columns (tags: programming HTML javascript design webdesign development) [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-11819">
+			<p class="commentauthor"><a href='http://www.webmasterkit.info/2008/08/19/draggable-table/' rel='external nofollow' class='url'>Webmasterkit.info &raquo; Archives &raquo; Draggable table</a> said,</p>
+			<p class="commentmeta">August 19, 2008 at <a href="#comment-11819" title="Permanent link to this comment">4:28 am</a> </p>
+			
+			<p>[...] Link [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-11890">
+			<p class="commentauthor"><a href='http://www.drweb.de/weblog/weblog/?p=1345' rel='external nofollow' class='url'>20 frische AJAX- und Javascripts | Javascript | Dr. Web Weblog</a> said,</p>
+			<p class="commentmeta">August 21, 2008 at <a href="#comment-11890" title="Permanent link to this comment">5:30 am</a> </p>
+			
+			<p>[...] dragtable Tabellen mit der Maus ordnen [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-11911">
+			<p class="commentauthor">Chritian said,</p>
+			<p class="commentmeta">August 22, 2008 at <a href="#comment-11911" title="Permanent link to this comment">3:26 am</a> </p>
+			
+			<p>In Firefox the width of the new dragtable get not the width of the tablecolumn. When you defined a tablewidth via css the dragtable column has the same width eg. 100% of the page.</p>
+<p>You couldn&#8217;t use sortable without draggable. And the top position is the absolute of the body not from the parent relative element eg. div. Maybe you can give the new dragtable another css class or paste it at the end of the bodytag to seperate it via cascading from the original table.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-12578">
+			<p class="commentauthor"><a href='http://www.office-it.org/dragtable-visually-reorder-all-your-table-columns/' rel='external nofollow' class='url'>dragtable | Office-it.orG</a> said,</p>
+			<p class="commentmeta">September 9, 2008 at <a href="#comment-12578" title="Permanent link to this comment">6:40 am</a> </p>
+			
+			<p>[...] Here is its URL for dragtable: <a href="index.html" rel="nofollow">http://www.danvk.org/wp/dragtable/</a> [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-12820">
+			<p class="commentauthor">Rob said,</p>
+			<p class="commentmeta">September 16, 2008 at <a href="#comment-12820" title="Permanent link to this comment">2:57 am</a> </p>
+			
+			<p>Hi there,</p>
+<p>This is a great script and saves me spending hours if not days trying to do this myself.  The only problem i&#8217;m having is that it is understandably slow on my large datasets i&#8217;m using it with.  Is there any way of speeding it up with some kind of preload or is there a specific number of rows where a slow performance is noticeable?</p>
+<p>Many Thanks</p>
+<p>Rob</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-14260">
+			<p class="commentauthor">Cash Williams said,</p>
+			<p class="commentmeta">October 30, 2008 at <a href="#comment-14260" title="Permanent link to this comment">1:50 pm</a> </p>
+			
+			<p>Great Code! Thanks</p>
+<p>Question &#8211; Is there anyway manually initialize the javascript? My table is built via ajax and doesn&#8217;t exist when the page is loaded, therefore it does not become draggable.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-14328">
+			<p class="commentauthor">pdx3d said,</p>
+			<p class="commentmeta">November 4, 2008 at <a href="#comment-14328" title="Permanent link to this comment">4:21 pm</a> </p>
+			
+			<p>I tried it and has the same problem with sortable part of it like dpaladin. So I had to revert back to sorttable.js. Hope you can resolve this soon so more can benefit from your work. Thanks for sharing.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-14382">
+			<p class="commentauthor"><a href='http://www.drweb.de/magazin/20-frische-ajax-und-javascripts/' rel='external nofollow' class='url'>20 frische AJAX- und Javascripts | Dr. Web Magazin</a> said,</p>
+			<p class="commentmeta">November 7, 2008 at <a href="#comment-14382" title="Permanent link to this comment">9:10 am</a> </p>
+			
+			<p>[...] dragtable Tabellen mit der Maus ordnen [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-14424">
+			<p class="commentauthor"><a href='http://n/a' rel='external nofollow' class='url'>cromy</a> said,</p>
+			<p class="commentmeta">November 9, 2008 at <a href="#comment-14424" title="Permanent link to this comment">7:13 pm</a> </p>
+			
+			<p>can make a handle on this function? mabe a div or text that handle the drag and drop funtion.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-14650">
+			<p class="commentauthor">Cyril said,</p>
+			<p class="commentmeta">November 17, 2008 at <a href="#comment-14650" title="Permanent link to this comment">4:12 am</a> </p>
+			
+			<p>Hi,<br />
+This is a very smooth and easy to use, but when the table is long &amp; hidden in scrolling DIV the Drag does not work. :(</p>
+<p>Can i find any updates.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-15430">
+			<p class="commentauthor">Kevin said,</p>
+			<p class="commentmeta">December 12, 2008 at <a href="#comment-15430" title="Permanent link to this comment">1:02 am</a> </p>
+			
+			<p>How can i get the column&#8217;s order after drag and drop?</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-16003">
+			<p class="commentauthor">Siva said,</p>
+			<p class="commentmeta">December 29, 2008 at <a href="#comment-16003" title="Permanent link to this comment">3:46 am</a> </p>
+			
+			<p>Hi Dan,<br />
+I tried this script for GridView. It is working fine if there is only one page. But not working when GridView spans 2 or more pages. Could you please help on this, how to make this script work for Paged GridView?</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-16937">
+			<p class="commentauthor">Jon said,</p>
+			<p class="commentmeta">February 5, 2009 at <a href="#comment-16937" title="Permanent link to this comment">5:10 am</a> </p>
+			
+			<p>Mozilla 1.7 works &#8230;</p>
+<p>But no matter what i try, i can&#8217;t get &#8220;lynx&#8221; to work &#8230; ;P</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-16952">
+			<p class="commentauthor">AC said,</p>
+			<p class="commentmeta">February 5, 2009 at <a href="#comment-16952" title="Permanent link to this comment">4:11 pm</a> </p>
+			
+			<p>Found 2 bugs I have fixed on my version:</p>
+<p>1) Doesn&#8217;t work well with Zebra tables, added a paremeter to add remove classNames based on odd/even.</p>
+<p>2) The draggable column width appears crazy on FireFox.  Don&#8217;t seem to get it on your page, but I fixed it by adding units &#8220;px&#8221; to the width and height.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-17507">
+			<p class="commentauthor">Tim Streater said,</p>
+			<p class="commentmeta">February 21, 2009 at <a href="#comment-17507" title="Permanent link to this comment">4:11 am</a> </p>
+			
+			<p>Just what I was looking for. Like another who commented, I build my table using AJAX. So, I found the initialisation code, put it in a function, made _timer and _dgtimer be global, and then called those initialisation functions once I built the table.</p>
+<p>Seems to work OK.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-17828">
+			<p class="commentauthor"><a href='http://www.artdir.co.cc/1074-40-useful-javascript-libraries' rel='external nofollow' class='url'>40 Useful JavaScript Libraries</a> said,</p>
+			<p class="commentmeta">March 3, 2009 at <a href="#comment-17828" title="Permanent link to this comment">1:07 am</a> </p>
+			
+			<p>[...] and dragtableTables, same them or not, are ease digit of the prizewinning structure to inform data. But they [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-17832">
+			<p class="commentauthor"><a href='http://clicklogin.com/blog/?p=405' rel='external nofollow' class='url'>40 Useful JavaScript Libraries | ClickLogin Web Design</a> said,</p>
+			<p class="commentmeta">March 3, 2009 at <a href="#comment-17832" title="Permanent link to this comment">5:53 am</a> </p>
+			
+			<p>[...] and dragtableTables, like them or not, are still one of the best ways to present data. But they can be better: [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-17833">
+			<p class="commentauthor"><a href='http://www.digiwu.com/?p=16994' rel='external nofollow' class='url'>http://www.digiwu.com &raquo; Blog Archive &raquo; 40 Useful JavaScript Libraries</a> said,</p>
+			<p class="commentmeta">March 3, 2009 at <a href="#comment-17833" title="Permanent link to this comment">6:53 am</a> </p>
+			
+			<p>[...] and dragtableTables, like them or not, are still one of the best ways to present data. But they can be better: [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-17916">
+			<p class="commentauthor"><a href='http://www.techug.com/2009/03/40-useful-javascript-libraries/' rel='external nofollow' class='url'>40 Useful JavaScript Libraries | Tech Underground</a> said,</p>
+			<p class="commentmeta">March 5, 2009 at <a href="#comment-17916" title="Permanent link to this comment">9:58 am</a> </p>
+			
+			<p>[...] and dragtableTables, like them or not, are still one of the best ways to present data. But they can be better: [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-17941">
+			<p class="commentauthor"><a href='http://ziya.yo2.cn/archives/2009/03/06/636790' rel='external nofollow' class='url'>Just Ziya &raquo; Blog Archive &raquo; 40 个轻量级 JavaScript 库 （下）|COMSHARP CMS</a> said,</p>
+			<p class="commentmeta">March 5, 2009 at <a href="#comment-17941" title="Permanent link to this comment">10:45 pm</a> </p>
+			
+			<p>[...] swfobject  这是一个最受欢迎的对 Flash 对象进行引用的方法。可以生成标准 swf 引用代&#8230; [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-17943">
+			<p class="commentauthor"><a href='http://www.jeff-chen.com/?p=780' rel='external nofollow' class='url'>40 个轻量级 JavaScript 库（下） - Jeff-Chen.Com</a> said,</p>
+			<p class="commentmeta">March 5, 2009 at <a href="#comment-17943" title="Permanent link to this comment">10:53 pm</a> </p>
+			
+			<p>[...] 与 dragtable 不管你喜欢与否，table [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-17945">
+			<p class="commentauthor"><a href='http://www.thescriptszone.com/40-useful-javascript-libraries/' rel='external nofollow' class='url'>40 Useful JavaScript Libraries | The Scripts Zone</a> said,</p>
+			<p class="commentmeta">March 5, 2009 at <a href="#comment-17945" title="Permanent link to this comment">11:22 pm</a> </p>
+			
+			<p>[...] and dragtableTables, like them or not, are still one of the best ways to present data. But they can be better: [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-17947">
+			<p class="commentauthor"><a href='http://www.only4.cn/archives/219' rel='external nofollow' class='url'>40 个轻量级 JavaScript 库</a> said,</p>
+			<p class="commentmeta">March 6, 2009 at <a href="#comment-17947" title="Permanent link to this comment">12:47 am</a> </p>
+			
+			<p>[...] 与 dragtable 不管你喜欢与否，table [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-17979">
+			<p class="commentauthor"><a href='http://misrit.org/demo/wordpress/?p=13' rel='external nofollow' class='url'>Feed Reader &raquo; 40 Useful JavaScript Libraries</a> said,</p>
+			<p class="commentmeta">March 7, 2009 at <a href="#comment-17979" title="Permanent link to this comment">6:03 am</a> </p>
+			
+			<p>[...] and dragtableTables, like them or not, are still one of the best ways to present data. But they can be better: [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-17995">
+			<p class="commentauthor"><a href='http://reader.misrit.org/2009/03/40-useful-javascript-libraries/' rel='external nofollow' class='url'>Feed Reader (Beta) &raquo; 40 Useful JavaScript Libraries</a> said,</p>
+			<p class="commentmeta">March 7, 2009 at <a href="#comment-17995" title="Permanent link to this comment">5:42 pm</a> </p>
+			
+			<p>[...] and dragtableTables, like them or not, are still one of the best ways to present data. But they can be better: [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-18149">
+			<p class="commentauthor"><a href='http://www.hdeya.com/blog/2009/03/40-useful-javascript-libraries/' rel='external nofollow' class='url'>40 Useful JavaScript Libraries &laquo; Hdeya team blog</a> said,</p>
+			<p class="commentmeta">March 12, 2009 at <a href="#comment-18149" title="Permanent link to this comment">8:37 am</a> </p>
+			
+			<p>[...] and dragtable Tables, like them or not, are still one of the best ways to present data. But they can be better: [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-18224">
+			<p class="commentauthor"><a href='http://www.chenbaocheng.com/index.php/2009/03/223' rel='external nofollow' class='url'>陈宝成のBlog &raquo; 40 个轻量级 JavaScript 库</a> said,</p>
+			<p class="commentmeta">March 15, 2009 at <a href="#comment-18224" title="Permanent link to this comment">12:04 pm</a> </p>
+			
+			<p>[...] 与 dragtable 不管你喜欢与否，table [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-18372">
+			<p class="commentauthor"><a href='http://www.xrelic.com/?p=23' rel='external nofollow' class='url'>TimeCode &raquo; 【Study.】 40 个轻量级 JavaScript 库 （下）</a> said,</p>
+			<p class="commentmeta">March 21, 2009 at <a href="#comment-18372" title="Permanent link to this comment">7:12 pm</a> </p>
+			
+			<p>[...] 与 dragtable 不管你喜欢与否，table [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-18509">
+			<p class="commentauthor"><a href='http://veryweblog.com/2009/03/40-useful-javascript-libraries/' rel='external nofollow' class='url'>40 Useful JavaScript Libraries | veryweblog focus on the internet ,new media.</a> said,</p>
+			<p class="commentmeta">March 26, 2009 at <a href="#comment-18509" title="Permanent link to this comment">11:17 am</a> </p>
+			
+			<p>[...] and dragtableTables, like them or not, are still one of the best ways to present data. But they can be better: [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-18597">
+			<p class="commentauthor"><a href='http://www.o2webdev.com/blog/?p=88' rel='external nofollow' class='url'>40 Useful JavaScript Libraries - o2webdev</a> said,</p>
+			<p class="commentmeta">March 30, 2009 at <a href="#comment-18597" title="Permanent link to this comment">6:39 pm</a> </p>
+			
+			<p>[...] and dragtable Tables, like them or not, are still one of the best ways to present data. But they can be better: [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-18649">
+			<p class="commentauthor">dep said,</p>
+			<p class="commentmeta">April 2, 2009 at <a href="#comment-18649" title="Permanent link to this comment">11:27 am</a> </p>
+			
+			<p>Is it possible to suppress the drag on certain columns?</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-18881">
+			<p class="commentauthor"><a href='http://www.iwanna.cn/archives/2009/04/08/246/' rel='external nofollow' class='url'>我想网 &raquo; Blog Archive &raquo; 40 个轻量级 JavaScript 库</a> said,</p>
+			<p class="commentmeta">April 7, 2009 at <a href="#comment-18881" title="Permanent link to this comment">9:18 pm</a> </p>
+			
+			<p>[...] 与 dragtable 不管你喜欢与否，table [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-19501">
+			<p class="commentauthor"><a href='http://welcome.totheinter.net/bookmarks2/2009/03/40-useful-javascript-libraries/' rel='external nofollow' class='url'>40 Useful JavaScript Libraries | Bookmarks</a> said,</p>
+			<p class="commentmeta">April 20, 2009 at <a href="#comment-19501" title="Permanent link to this comment">1:06 pm</a> </p>
+			
+			<p>[...] and dragtableTables, like them or not, are still one of the best ways to present data. But they can be better: [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-20091">
+			<p class="commentauthor">Neeraj Dave said,</p>
+			<p class="commentmeta">May 5, 2009 at <a href="#comment-20091" title="Permanent link to this comment">6:59 am</a> </p>
+			
+			<p>Hi Dan,<br />
+I tried this script for GridView. It is working fine at almost on all browser except IE 8 beta version. Is there any setting needs?</p>
+<p>Also could you please help on this, how to make one or more columns fix, means I want few columns which have reordering functionality disable. Also I need to Hide/Unhide columns as per combo/list box..</p>
+<p>Thanks<br />
+Dave</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-20378">
+			<p class="commentauthor">Aaron said,</p>
+			<p class="commentmeta">May 11, 2009 at <a href="#comment-20378" title="Permanent link to this comment">8:44 pm</a> </p>
+			
+			<p>IE8 = Error.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-20981">
+			<p class="commentauthor"><a href='http://www.webdesignspeed.com/list-of-really-useful-javascript-libraries/' rel='external nofollow' class='url'>Web design Speed | Web Development | Web Site Design | SEO | Tips &raquo; List of Really Useful JavaScript Libraries</a> said,</p>
+			<p class="commentmeta">May 26, 2009 at <a href="#comment-20981" title="Permanent link to this comment">3:42 am</a> </p>
+			
+			<p>[...] DragTable Enable users to change order of table columns by simply dragging them. [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-21167">
+			<p class="commentauthor"><a href='http://webduty.ru/2009/05/список-действительно-полезных-javascrip' rel='external nofollow' class='url'>Список действительно полезных JavaScript-библиотек | WebDuty</a> said,</p>
+			<p class="commentmeta">May 30, 2009 at <a href="#comment-21167" title="Permanent link to this comment">9:16 am</a> </p>
+			
+			<p>[...] DragTable Добавляет возможность изменять порядок столбцов таблицы, просто перетаскивая их. [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-21231">
+			<p class="commentauthor">Muhammad Haris said,</p>
+			<p class="commentmeta">June 1, 2009 at <a href="#comment-21231" title="Permanent link to this comment">4:41 am</a> </p>
+			
+			<p>The script is not working in IE8 and if i change its ode to IE7 even then its not working as IE7 is mentioned in the listed ones. Please do let me know if it works then how.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-21308">
+			<p class="commentauthor"><a href='http://twilight2054@naver.com/' rel='external nofollow' class='url'>lee eun suck</a> said,</p>
+			<p class="commentmeta">June 3, 2009 at <a href="#comment-21308" title="Permanent link to this comment">3:07 am</a> </p>
+			
+			<p>I&#8217;m from korea<br />
+Please send me dragtable sourse<br />
+mail : <a href="mailto:twilight2054@naver.com">twilight2054@naver.com</a></p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-21379">
+			<p class="commentauthor">dyxyju said,</p>
+			<p class="commentmeta">June 8, 2009 at <a href="#comment-21379" title="Permanent link to this comment">1:57 pm</a> </p>
+			
+			<p>for IE8<br />
+-    forEach(elt.style, function(k) { new_elt.style[k] = elt.style[k]; });<br />
++    // forEach(elt.style, function(k) { new_elt.style[k] = elt.style[k]; });</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-21398">
+			<p class="commentauthor">David said,</p>
+			<p class="commentmeta">June 9, 2009 at <a href="#comment-21398" title="Permanent link to this comment">9:26 am</a> </p>
+			
+			<p>THis script doesn&#8217;t work with IE8.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-21897">
+			<p class="commentauthor"><a href='http://www.css88.com/archives/742' rel='external nofollow' class='url'>&raquo; 【转载】40 个轻量级 JavaScript 库 （下）- WEB前端开发- 专注前端开发，关注用户体验</a> said,</p>
+			<p class="commentmeta">June 23, 2009 at <a href="#comment-21897" title="Permanent link to this comment">10:42 pm</a> </p>
+			
+			<p>[...] 与 dragtable 不管你喜欢与否，table [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-21905">
+			<p class="commentauthor">Sanjeev said,</p>
+			<p class="commentmeta">June 24, 2009 at <a href="#comment-21905" title="Permanent link to this comment">3:01 am</a> </p>
+			
+			<p>Hi,</p>
+<p>Thanks,Every thing is working fine.But please tell me if header section is in different table and items are in different table then how can we acheive this functionality because at that time it will be two different object?Thanks in advance.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-22056">
+			<p class="commentauthor"><a href='http://www.ultimatesmashing.com/coding/tables-javascript-framworks-libraries/' rel='external nofollow' class='url'>Functional Tables with JavaScript Framworks Libraries | Developer Assets | Ultimate Smashing</a> said,</p>
+			<p class="commentmeta">June 27, 2009 at <a href="#comment-22056" title="Permanent link to this comment">2:49 pm</a> </p>
+			
+			<p>[...] 11- Dragtable [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-22692">
+			<p class="commentauthor"><a href='http://sohudesign.wordpress.com.cn/2009/04/02/转载40个实用的轻量级javascript库/' rel='external nofollow' class='url'>SOHU媒体技术产品中心-创意设计组 &raquo; [转载]40个实用的轻量级JavaScript库</a> said,</p>
+			<p class="commentmeta">July 14, 2009 at <a href="#comment-22692" title="Permanent link to this comment">2:07 am</a> </p>
+			
+			<p>[...] and dragtable [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-22737">
+			<p class="commentauthor">Anzljc said,</p>
+			<p class="commentmeta">July 15, 2009 at <a href="#comment-22737" title="Permanent link to this comment">1:43 am</a> </p>
+			
+			<p>I have problems with table when I make partial page refresh and of course then the columns can&#8217;t be reordered. Any solution?</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-22772">
+			<p class="commentauthor">Anzljc said,</p>
+			<p class="commentmeta">July 16, 2009 at <a href="#comment-22772" title="Permanent link to this comment">1:04 am</a> </p>
+			
+			<p>The problem is I can&#8217;t call init function more than once! But I have to, because of the search the table is not draggable anymore.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-22785">
+			<p class="commentauthor"><a href='http://danvk.org/' rel='external nofollow' class='url'>danvk</a> said,</p>
+			<p class="commentmeta">July 16, 2009 at <a href="#comment-22785" title="Permanent link to this comment">8:18 am</a> </p>
+			
+			<p>Anzljc &#8212; see discussion at <a href="http://code.google.com/p/dragtable/issues/detail?id=8&amp;can=1" rel="nofollow">http://code.google.com/p/dragtable/issues/detail?id=8&#038;can=1</a></p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-22931">
+			<p class="commentauthor"><a href='http://www.oh2w.com/index.php/archives/12' rel='external nofollow' class='url'>40个轻量级 JavaScript 库 &laquo; oh2w.com</a> said,</p>
+			<p class="commentmeta">July 21, 2009 at <a href="#comment-22931" title="Permanent link to this comment">10:12 am</a> </p>
+			
+			<p>[...] 与 dragtable 不管你喜欢与否，table [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-23129">
+			<p class="commentauthor"><a href='http://www.navstar-gps.ru/' rel='external nofollow' class='url'>gps</a> said,</p>
+			<p class="commentmeta">July 28, 2009 at <a href="#comment-23129" title="Permanent link to this comment">1:35 pm</a> </p>
+			
+			<p>Спасибо отличыне примеры..</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-23374">
+			<p class="commentauthor">saravanan said,</p>
+			<p class="commentmeta">August 4, 2009 at <a href="#comment-23374" title="Permanent link to this comment">9:10 pm</a> </p>
+			
+			<p>Wow! good example really wonderful script </p>
+<p>thanks</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-24168">
+			<p class="commentauthor"><a href='http://paranimage.com/40-lightweight-javascript-script-libraries/' rel='external nofollow' class='url'>40个轻量级JavaScript脚本库 | 帕兰映像</a> said,</p>
+			<p class="commentmeta">August 29, 2009 at <a href="#comment-24168" title="Permanent link to this comment">1:10 am</a> </p>
+			
+			<p>[...] sorttable and dragtable [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-24403">
+			<p class="commentauthor">chuck cottrill said,</p>
+			<p class="commentmeta">September 10, 2009 at <a href="#comment-24403" title="Permanent link to this comment">12:02 pm</a> </p>
+			
+			<p>This (dragtable) is a great tool&#8230; love it!<br />
+Had a user ask to be able to turn on/off the dragable &#8211; so I added a function toggleDrag()&#8230; you might consider adding this.<br />
+-Chuck</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-24445">
+			<p class="commentauthor">S B said,</p>
+			<p class="commentmeta">September 12, 2009 at <a href="#comment-24445" title="Permanent link to this comment">1:54 pm</a> </p>
+			
+			<p>Hi Dan,</p>
+<p>I&#8217;m trying to get dragtable to work with rows instead of columns, but am running into what appears to be some Javascript limitations. Could you reply to me or at <a href="http://code.google.com/p/dragtable/issues/detail?id=4" rel="nofollow">http://code.google.com/p/dragtable/issues/detail?id=4</a> to help me with this?</p>
+<p>Thanks!</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-25324">
+			<p class="commentauthor"><a href='http://www.irelandgoal.ru/' rel='external nofollow' class='url'>Дмитрий Шеметов</a> said,</p>
+			<p class="commentmeta">October 7, 2009 at <a href="#comment-25324" title="Permanent link to this comment">10:58 pm</a> </p>
+			
+			<p>Автор как всегда написал все понятно</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-25616">
+			<p class="commentauthor"><a href='http://musicxsat.ru/' rel='external nofollow' class='url'>Савелий Андреев</a> said,</p>
+			<p class="commentmeta">October 21, 2009 at <a href="#comment-25616" title="Permanent link to this comment">11:12 pm</a> </p>
+			
+			<p>Я конечно мало что смыслю в посте но постараюсь осилить.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-25617">
+			<p class="commentauthor"><a href='http://www.allstrategy.ru/' rel='external nofollow' class='url'>Дмитрий Шумилов</a> said,</p>
+			<p class="commentmeta">October 22, 2009 at <a href="#comment-25617" title="Permanent link to this comment">1:57 am</a> </p>
+			
+			<p>Спасибо! Доходчиво и понятно объяснил</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-25794">
+			<p class="commentauthor"><a href='http://ajaxfinder.com/3993/' rel='external nofollow' class='url'>40 个有用的JavaScript库 - Ajax Finder [Ajax探索者]</a> said,</p>
+			<p class="commentmeta">November 2, 2009 at <a href="#comment-25794" title="Permanent link to this comment">4:37 am</a> </p>
+			
+			<p>[...] and dragtable Tables, like them or not, are still one of the best ways to present data. But they can be better: [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-27363">
+			<p class="commentauthor">Tong said,</p>
+			<p class="commentmeta">December 23, 2009 at <a href="#comment-27363" title="Permanent link to this comment">4:32 am</a> </p>
+			
+			<p>you can disable some column see below.</p>
+<p>/// in html table element///</p>
+<p>            xxx //can&#8217;t draggable<br />
+            xxx // draggable<br />
+            xxx // draggable</p>
+<p>///// END HTML///////</p>
+<p>/// modify script librarie : ///</p>
+<p>    for (var i = 0; i &lt; headers.length; i++) {<br />
+       if(headers[i].className != &quot;notdrage&quot;){ //add this to disable by classname = &quot;notdrage&quot;<br />
+      	   headers[i].onmousedown = dragtable.dragStart;<br />
+       }<br />
+    }</p>
+<p>///// END SCRIPT///////</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-27457">
+			<p class="commentauthor"><a href='http://www.mkorkmaz.com/kullanisli-javascript-kutuphaneleri/' rel='external nofollow' class='url'>Kullanışlı Javascript Kütüphaneleri &raquo; Müjdat Korkmaz: Blog</a> said,</p>
+			<p class="commentmeta">December 26, 2009 at <a href="#comment-27457" title="Permanent link to this comment">6:32 am</a> </p>
+			
+			<p>[...] DragTable Enable users to change order of table columns by simply dragging them. [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-28256">
+			<p class="commentauthor"><a href='http://thenetworkclub.sitemanagementtool.com/' rel='external nofollow' class='url'>mahavir jain</a> said,</p>
+			<p class="commentmeta">January 19, 2010 at <a href="#comment-28256" title="Permanent link to this comment">5:20 am</a> </p>
+			
+			<p>can we add class for drag and drop column at drag drop event???</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-28638">
+			<p class="commentauthor">Rafael said,</p>
+			<p class="commentmeta">January 29, 2010 at <a href="#comment-28638" title="Permanent link to this comment">8:55 am</a> </p>
+			
+			<p>Hi<br />
+my table have about 1800.</p>
+<p>I have edited the js to &#8220;get&#8221; only first 20 rows to move and works great, but when I drag de columns the browser &#8220;stop&#8221; I think because the size of the table.</p>
+<p>When I drop a column I do a &#8220;__doPostBack(&#8230;)&#8221;.</p>
+<p>where can i edit the code for just change de header position? </p>
+<p>Thanks</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-29458">
+			<p class="commentauthor">Paul said,</p>
+			<p class="commentmeta">February 18, 2010 at <a href="#comment-29458" title="Permanent link to this comment">7:26 am</a> </p>
+			
+			<p>I found a bug &#8211; cookies don`t work in IE6, IE8.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-30088">
+			<p class="commentauthor"><a href='http://www.weblime.co.za/blog/?p=32' rel='external nofollow' class='url'>17 jQuery Plugins for Easy and Efficient Reordering and Filtering Page Elements : Web Lime &#8211; Design and IT blog</a> said,</p>
+			<p class="commentmeta">March 11, 2010 at <a href="#comment-30088" title="Permanent link to this comment">7:04 am</a> </p>
+			
+			<p>[...] dragtable: Visually reorder all your table columns [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-30122">
+			<p class="commentauthor"><a href='http://newsnau.ru/' rel='external nofollow' class='url'>fernits</a> said,</p>
+			<p class="commentmeta">March 11, 2010 at <a href="#comment-30122" title="Permanent link to this comment">9:30 pm</a> </p>
+			
+			<p>Приятно узнать что думает по этому поводу умный человек. Спасибо за статью.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-30152">
+			<p class="commentauthor"><a href='http://share.lidecheng.com/40-stand-alone-javascript-libraries-for-specific-purposes.html' rel='external nofollow' class='url'>40个实用的轻量级JavaScript库 40 Useful JavaScript Libraries | Collection and sharing</a> said,</p>
+			<p class="commentmeta">March 13, 2010 at <a href="#comment-30152" title="Permanent link to this comment">8:16 am</a> </p>
+			
+			<p>[...] and dragtable [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-30251">
+			<p class="commentauthor"><a href='http://www.robertbojor.info/17-jquery-plugins-for-easy-and-efficient-reordering-and-filtering-page-elements  tripwire-magazine/2010/03/16/' rel='external nofollow' class='url'>17 jQuery Plugins for Easy and Efficient Reordering and Filtering Page Elements | tripwire magazine | The circuits of imagination</a> said,</p>
+			<p class="commentmeta">March 16, 2010 at <a href="#comment-30251" title="Permanent link to this comment">4:06 am</a> </p>
+			
+			<p>[...] This is a collection of Direct Manipulation examples that work in modern browsers. Each example is a proof of concept. It is not based on jQuery but I thought it deserved to be here anyway… dragtable: Visually reorder all your table columns [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-30490">
+			<p class="commentauthor">sanjeev said,</p>
+			<p class="commentmeta">March 26, 2010 at <a href="#comment-30490" title="Permanent link to this comment">8:50 am</a> </p>
+			
+			<p>If I want to add the functionality od column resizing then can you help me please regarding this?</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-30642">
+			<p class="commentauthor">Mohamed said,</p>
+			<p class="commentmeta">April 3, 2010 at <a href="#comment-30642" title="Permanent link to this comment">8:24 pm</a> </p>
+			
+			<p>1st thanks for this great JS.<br />
+Now I am working on a project using java and play framework(playframework.org) which allows MVC and I want to call a java method to save the changes done in the columns in a DB I can easly do that in JQuery yusing $.post(&#8216;@{javamethod}&#8217;) but I want to add this to the dragtable.js<br />
+IS that possible and how as I tried that and it didn&#8217;t work?</p>
+<p>(It&#8217;s an Educational project not for commercial use).</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-30700">
+			<p class="commentauthor">dina said,</p>
+			<p class="commentmeta">April 6, 2010 at <a href="#comment-30700" title="Permanent link to this comment">7:44 am</a> </p>
+			
+			<p>how can i save the new positions of columns in a database??</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-30930">
+			<p class="commentauthor"><a href='http://rajark.wordpress.com/2010/04/15/list-of-really-useful-javascript-libraries/' rel='external nofollow' class='url'>List of Really Useful JavaScript Libraries &laquo; R@j@. R.K</a> said,</p>
+			<p class="commentmeta">April 15, 2010 at <a href="#comment-30930" title="Permanent link to this comment">4:18 am</a> </p>
+			
+			<p>[...] DragTable Enable users to change order of table columns by simply dragging them. [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-31076">
+			<p class="commentauthor">Petr said,</p>
+			<p class="commentmeta">April 21, 2010 at <a href="#comment-31076" title="Permanent link to this comment">3:46 am</a> </p>
+			
+			<p>Hi ,<br />
+I have two question, </p>
+<p>first it is possible to use this js in commercial project?</p>
+<p>second, can you help me to solve one thing.<br />
+I succesfuly make mine table header drag and drop, I use paginator and when I pagiante Im using jquery load function to show only table new content.<br />
+When I did this, so  table header arent dragable.</p>
+<p>when I didnt use load function but only window.location and full reload whole page with new content all work fine.</p>
+<p>I will try solve this by google ant testing, but if you have some idea dont hasitate to write it.<br />
+thank Petr, CZ</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-31270">
+			<p class="commentauthor"><a href='http://tautott.ru/' rel='external nofollow' class='url'>Petja</a> said,</p>
+			<p class="commentmeta">April 27, 2010 at <a href="#comment-31270" title="Permanent link to this comment">6:58 am</a> </p>
+			
+			<p>Текст перспективный, закину сайт в избранное.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-31308">
+			<p class="commentauthor"><a href='http://auto-pre.ru/' rel='external nofollow' class='url'>PrunZesee</a> said,</p>
+			<p class="commentmeta">April 28, 2010 at <a href="#comment-31308" title="Permanent link to this comment">4:51 am</a> </p>
+			
+			<p>Бесспорно, отменная статья</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-31381">
+			<p class="commentauthor"><a href='http://www.waasai.com/wp/?p=897' rel='external nofollow' class='url'>40个实用的轻量级JavaScript库 &laquo; 80端口的简单幸福生活</a> said,</p>
+			<p class="commentmeta">April 29, 2010 at <a href="#comment-31381" title="Permanent link to this comment">11:33 pm</a> </p>
+			
+			<p>[...] 流行的JavaScript库，如jQuery,&nbsp;MooTools,&nbsp;Prototype,&nbsp;Dojo和YUI等，完成起常见的JavaScript任务来得心应手。这些JS库为客户端动作(events)、动画特效(effects)，和AJAX应用等提供很多现成的函数。而且如果这些库中的某一个无法直接达到你要的效果，还可能会有相关插件满足你的要求。JavaScript库的灵活性给我们的工作提供方便，但有利也有弊——比如说JavaScript文件过大的问题。尽管放弃这些著名的JavaScript库能显示你的聪明才智，但你可能还是会愿意采用一些体积小巧、专注于特定任务的JavaScript库。以下是40个帮助你达到特定目的的独立JavaScript库。 网上能用的当然不只这些，但每位网页设计师和程序员应该都能在这里有所收获。1. 表单wFormswForms 是一个开源的、&nbsp;无入侵的(unobstrusive)[sup]注*[/sup]代码库，能够简化大部分与表单相关的常用JavaScript函数。 它能对表单的用户输入值进行验证，只需为表单元素添加一个特定的类即可使用。另外，wForms&nbsp;还具有强大的表单同步（例如“全选/全不选”）和条件表单（如，当x被选择则显示y）功能。注* 这个词也被译为“不唐突”，“有的放矢”等。意即JavaScript代码和HTML代码分离，同时也对不同版本浏览器选择性地做出反应，以提高用户体验。更多解释，请参照“为之漫笔”。译者认为“无入侵”贴合英文原文，作为术语更加简洁易懂，应该成为这个词的通用译法。ValidanguageValidanguage 是一个无入侵的&nbsp;JavaScript表单验证框架。 它有一个继承逻辑，可以全局定义，也可以对每个表单或每个元素分别定义。 利用作者提供的两个API，以及诸如综合的AJAX支持(integrated AJAX support)、缓存和调用函数等特性，该框架可以提供强健的(robust)验证体验。两个API用以高级设置，分别是加在注释里的像HTML语言的 API和基于JavaScript对象的API。LiveValidationLiveValidation是一个轻量级的JavaScript库，提供一系列验证函数。除了经典验证法，此库还具有实时验证(live validation)特性，能根据你键入的文字实时控制特定区域。&nbsp;Ruby on Rails的开发者会发现LiveValidation异常好用，因为二者的命名规范和参数设置非常相似。虽然它是独立库，不过也有一个Prototype版[sup]注*[/sup]。注* 也就是依赖于Prototype库，但是本身代码更简洁的版本yav一个功能强大、可扩展、使用灵活的表单验证代码库。yav可处理多种情况，从日期、email、整数之类的基本验证到掩码文本框和自定义正则表达式之类的高级应用，都得心应手。该库内建AJAX支持，并且可以轻易在每个对象层自定义错误显示信息。qForms处理表单的完全解决方案。为开发者提供诸如多样验证规则，阻止多次提交，锁定/禁用域等特性。formreform不用表格来实现多栏布局通常都很有挑战性。这个小巧的代码库能够把一个简单表单转换成一栏、两栏或四栏格式化布局的表单。利用formreform能自动让表单样式适应任何设计。2. 动画$fx()$fx()&nbsp;是一个用户为HTML元素添加动画效果的轻量级代码库。利用此库，你可以指定在一定时间内改变任何CSS属性。对于复杂动画，你可以合并效果，给各效果分组，让它们链式反应或者同时发生。你还可以为每一步动画设定不同的回调动作，进行更深入的自定义。JSTweener补间动画的JavaScript库。它的API和著名的ActionScript补间动画引擎&nbsp;Tweener&nbsp;相似。你可以调用动画时间，定义形状变换方式和延迟。在几乎任何时间点（如onStart &#8211; 开始时, onComplete -完成时, onUpdate &#8211; 更新时），你都可以引发新动作。Facebook Animation用于创建基于CSS的自定义动画的强大代码库。利用一两行Facebook Animation，你就能改善用户界面。本代码库的语法遵循FBJS（在Facebook实用工具中使用的代码库），一旦学会，你也就具备了创建Facebook实用工具的能力！FX一个轻量级代码库，拥有和YUI类似的使用句法。FX可以为几乎所有CSS属性创建补间动画。支持颜色和滚动动画。你只需要设计任意对象，任意属性的起始值和结束值就够了。3. 视觉化和图像特效JS chartsJS charts&nbsp;可以输出柱状图，饼图和曲线图。只需从一个XML文件或JavaScript数组里调用数据，它就能提供极佳的易用性。图表被输出为png图像文件。该库支持大部分流行的浏览器。Canvas 3D JS Library (C3DL)C3DL让编写3D应用更加容易。它提供一组算法、场景和3D对象类，对于想在浏览器里开发3D内容，但是对3D图像的深层算法不甚了了的程序员真是不小的福音。Processing.js这个JavaScript库指向&nbsp;Processing 语言&nbsp;（一个用于图像、动画和交互编程的语言）。它有丰富的特性用于创建2D输出，提供形状/图像绘制方法、颜色处理、字体、对象、算法函数等等。Rapha?l一个极赞的代码库，简化在网页中使用矢量图形的工作。Rapha?l 利用SVG和VML来创建图像，并能为这些图像绑定动作处理器。该库功能强大，包括旋转、动画、缩放和绘制曲线、矩形、圆形等。ImageFX可以为图像添加特效，例如模糊、锐化、浮雕、变亮等等。ImageFX使用画布元素来创建效果。兼容所有主流浏览器（你可以在其页面看到兼容性列表）。此库简单易用，只需要在网页中插入.js文件然后用一行代码调用就够了。PixasticPixastic&nbsp;使用HTML5的画布对象，此对象可以直接处理像素级数据。支持的效果包括减淡和去色、反相、翻转、亮度和对比度调节、色相和饱和度、浮雕、模糊等等等等。由于画布对象相对较新，各个浏览器对这一JavaScript库的支持程度不尽相同。Reflection.js自动创建倒影效果的无侵入JavaScript库。倒影的高度和透明度可以自定义。使用该库就像给图像添加一个“类”一样简单。在所有主流浏览器中都能正常工作，文件大小不过5 KB。4. 数据库Taffy DB可以作为浏览器中的SQL数据库来使用的JavaScript，也可以看做是一个高级的“数组管理器”。在AJAX化的Web应用中，它可以工作在数据库层。你可以创建、读取、编辑和删除数据，也可以使用循环、归类以及各种高级查询方式。ActiveRecord.js此库支持Google Gears和Chrome，Aptana Jaxer，Adobe AIR ，以及任何支持W3C HTML5 SQL规范的平台（现在Webkit和iPhone也支持了）。它使在JavaScript利用数据库变得简单。使用ActiveRecord.js, 你能自动创建数据表、验证和同步数据等等。5. 字符串和数学函数Date.js和日期打交道总是很容易把人搞昏掉。如此多的点、斜杠和格式。Datejs以令人耳目一新的方式提供或简单或复杂的日期函数。它可以处理如下格式的日期：“Next thursday”(下星期四), “+2 years”(两年后) 以及诸如2009.01.08, 12/6/2001的所有格式。译注：此函数很有用啊，哪位朋友来把它汉化成可以支持中文就好了。Sylvester此JavaScript库可以轻松处理矢量和矩阵。有了它你就不用被一串串循环和大量数组搅得头昏脑胀了。此库包含模数化矢量和任意维度的矩阵的类，从而可以计算无限直线的模数和3D空间里的平面。译注：太高级了，直冒冷汗&#8220;` -_-||Pretty Date&nbsp;一个聪明的JavaScript解决方案，让过去一个月内的日期以更加漂亮和用户友好的方式显示。它能让日期以距离现在多久的方式显示，如“3天以前”，“昨天”。XRegExp正则表达式可以在JavaScript里通过RegExp对象加以利用。&nbsp;XRegExp&nbsp;能使正则表达式变得更加强大，它提供一些在将来的浏览器才会实现的特性（据 ECMAScript 4 &#8211; ES4 的开发愿景）。使用该库，RegExp对象可以被缓存和再利用，还能为已经存在的RegExp对象添加修改器等等。JavaScript URL Library一个用与方便处理URLs的JavaScript库。如果需要，它可以控制到将URL内每一个部分当做字符串来处理。这一URL代码库刚出炉不久，但已能像刚才所提一样工作。6. 字体typeface.js一个用以在网页上使用任意字体的代码库。与流行的解决方案（如sIFR&nbsp;和&nbsp;FLIR）不同，typeface.js&nbsp;并不需要Flash，是100%的JavaScript应用。要使用任意字体，只需上传其字体文件到一个&nbsp;基于网页的字体生成器，然后下载渲染过的JavaScript文件，把它添加到你的网页中即可。Cufón与typeface.js十分相似，&nbsp;Cufón&nbsp;也是一个让你在网页中使用TrueType字体的代码库。同样，它也使用一个生成器来将字体文件转换成VML图像。只需在网页中插入generated .js文件，你即可像使用普通字体一样使用你指定的字体。译注：这两个工具对于中文网页不太实用…… (⊙_⊙)7. 调试与记录Blackbird在JavaScript开发过程中，经常会用到alert()函数来添加断点。Blackbird&nbsp;提供一个风格化的控制台，用以记录、查看和过滤JavaScript中的消息，如此即可消除在每个alert()的停顿，并且更好地分析它们，从而加快开发进程。NitobiBug基于浏览器的，跨浏览器&nbsp;JavaScript 对象记录和检测组件。通过在你的代码中插入规则（和JavaScript对象的用法类似），你可以轻易区别简单类型，如字符串、布尔值和数值，以及复杂元素，如错误信息和JavaScript对象。Firebug LiteFirebug，大概是世界上最好的JavaScript调试工具，可惜只能在Firefox中使用。要在所有浏览器中拥有一个类似工具，向你的网页添加这个Firebug Lite&nbsp;.js文件吧，面对你的是你所熟悉的功能和界面。8. 其他swfobjectswfobject&nbsp;是最流行的，扩展性最好的插入Flash影片的方式。此库符合Web标准，生成可以通过验证的标记，能够自动检测用户的Flash播放器版本，如果版本不匹配，它还允许你向用户显示代替内容。你可以看一看“为什么应该使用swfobject”这篇文章，写得不错。sorttable&nbsp;and&nbsp;dragtable不管你喜不喜欢，表格仍然是展示数据的最佳方式。不过表格还可以更好用：&nbsp;sorttable&nbsp;让表格数据可以排序，升序降序均可。你指向为添加class=”sortable” 属性。你还可以排除某些特定的栏，让他们不自动排序，以及指定升序或者降序哪一个为默认值。dragtable&nbsp;使表格的行列变得可拖动。在网页中插入此库后，同样，给表格添加一个class=”dragtable”即可。如果需要两个功能都用，只需在网页中包含同时两个库，然后添加class=”sortable dragtable” 。DD_roundies&nbsp;and&nbsp;DD_belatedPNGDD_roundies&nbsp;是一个极佳的不利用图片创建圆角的JavaScript解决方案。它处理的重点在IE，通过使用VML来解决问题。其他浏览器被忽略，因为他们支持CSS的 border-radius 属性。(译注：Really?)DD_belatedPNG为臭名昭著的IE6 PNG问题提供了一个可自定义的解决办法。不论PNG图像是用于“src”或是“background-image”中，DD_belatedPNG&nbsp;都能把它解决掉。与其他解决方案不同， “background-position” 和 “background-repeat” 属性也能正常工作！译注：这个太实用啦！O(∩_∩)O 哈哈~Custom JavaScript Dialog Boxes用于创建自定义对话框的轻量级（约 4.5 KB）代码库。四种对话框可用： alerts(出错), warnings(警告), prompts(提示), success(成功)。利用一个简单的函数，你可以自定义对话框的标题，内容和显示时间。GameJSGameJS&nbsp;是一个JavaScript版本的&nbsp;Microsoft’s XNA 游戏框架， 使用 “画布” 作为渲染机制。JavaScript不是编写游戏的最佳平台。不过如果是那些帧速要求较低的游戏，而你又是一个JavaScript开发者，何乐而不为？ 此库包含一些控制游戏元素、屏幕显示和键盘操作的方便好用的类。Shortcuts.js自从Google Reader和Gmail之后，Web应用里的键盘快捷键变得越来越流行，因为他们大大提升了易用性。Shorcuts.js提供更为方便地处理键盘快捷键的函数。 使用该库，创建快捷键，然后在按下键盘的同时就运行函数成为更易实现的可能。Mapstraction几个不同的地图供应商都提供了各自不同的API。如果你想在供应商之间转换（比如说从Google Map转到MapQuest），则需要重写一些代码。Mapstraction就是用来帮你解决这个问题的。它提供一个通用 API ，帮你在大多数流行的地图供应商之间转换。只需更新一行代码，即可转换完毕。Amberjack一个小巧的JavaScript库，为你的网站添加上漂亮的导游信息。 一旦启用，一个模式化的内容框就能像到导游一样介绍您的站点，框内可以添加任意你想要的内容。导游内容的代码可以手工编写，也可以用线上工具自动生成。当然，你可以通过编写css或者利用即刻可用的主题来使导游信息符合内容框的样式。JsLoadJavaScript库的远程载入API。JsLoad这个简单的API能够让你从Google的服务器上导入大体积JavaScript文件。JsLoad能自动载入任何版本代码库的依赖文件。关于作者Umut Muhaddisoglu是一位网页设计师，同时也是程序员。他维护网站WebResourcesDepot，一个每天提供免费网页设计和开发资源的网志。要联系作者，你可以在Twitter上关注他。(完)?原文&nbsp;40 Useful JavaScript Libraries&nbsp;来自Smashing Magazine&nbsp;，作者为 Umut Muhaddisoglu。译者笨活儿保留译文版权，转载请保留出处和此版权信息。欢迎留言指正错误。 [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-31382">
+			<p class="commentauthor"><a href='http://www.waasai.com/wp/?p=898' rel='external nofollow' class='url'>40 Useful JavaScript Libraries &laquo; 80端口的简单幸福生活</a> said,</p>
+			<p class="commentmeta">April 29, 2010 at <a href="#comment-31382" title="Permanent link to this comment">11:33 pm</a> </p>
+			
+			<p>[...] sorttable&nbsp;and&nbsp;dragtableTables, like them or not, are still one of the best ways to present data. But they can be better:sorttable&nbsp;is a library that makes tabular data sortable, both ascending and descending. To do this, simply add class=”sortable” to the table. You can also exclude certain columns from being sorted and make either ascending or descending the default behavior.&nbsp;dragtable&nbsp;is another library that makes columns draggable. After inserting the library in the Web page, add class=”dragtable” to the table as above. Best of all, both libraries can be used together. Simply add class=”sortable dragtable” to the table after including both libraries in the Web page. [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-31440">
+			<p class="commentauthor"><a href='http://kinvix.kdv.cn/blog/?p=385' rel='external nofollow' class='url'>40 个轻量级 JavaScript 库 （下） &laquo; i在云端</a> said,</p>
+			<p class="commentmeta">May 2, 2010 at <a href="#comment-31440" title="Permanent link to this comment">10:21 am</a> </p>
+			
+			<p>[...] 与 dragtable 不管你喜欢与否，table [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-31463">
+			<p class="commentauthor">chris said,</p>
+			<p class="commentmeta">May 3, 2010 at <a href="#comment-31463" title="Permanent link to this comment">10:06 am</a> </p>
+			
+			<p>Hi, great code info!</p>
+<p>Is there a method to get the actual field order of each field after draging and dropping?</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-31600">
+			<p class="commentauthor"><a href='http://automoonn.ru/' rel='external nofollow' class='url'>Энергия</a> said,</p>
+			<p class="commentmeta">May 7, 2010 at <a href="#comment-31600" title="Permanent link to this comment">7:36 am</a> </p>
+			
+			<p>В целом, автор нетипично отжег.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-31613">
+			<p class="commentauthor"><a href='http://www.billy.net.cn/?p=757' rel='external nofollow' class='url'>40个小巧的独立JavaScript库 | Billy 的博客</a> said,</p>
+			<p class="commentmeta">May 7, 2010 at <a href="#comment-31613" title="Permanent link to this comment">6:05 pm</a> </p>
+			
+			<p>[...] and&nbsp;dragtable [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-32007">
+			<p class="commentauthor"><a href='http://saisat.wordpress.com/2010/05/27/list-of-really-useful-javascript-libraries/' rel='external nofollow' class='url'>List of Really Useful JavaScript Libraries &laquo; SaiSatheesh</a> said,</p>
+			<p class="commentmeta">May 27, 2010 at <a href="#comment-32007" title="Permanent link to this comment">12:47 am</a> </p>
+			
+			<p>[...] DragTable Enable users to change order of table columns by simply dragging them. [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-32137">
+			<p class="commentauthor">Anant said,</p>
+			<p class="commentmeta">June 2, 2010 at <a href="#comment-32137" title="Permanent link to this comment">5:52 am</a> </p>
+			
+			<p>Awesome work..</p>
+<p>It help me a lot.</p>
+<p>Thanks dude.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-32138">
+			<p class="commentauthor">MB34 said,</p>
+			<p class="commentmeta">June 2, 2010 at <a href="#comment-32138" title="Permanent link to this comment">5:57 am</a> </p>
+			
+			<p>Wondering about the values saved in the cookie.</p>
+<p>This is my column ordering:<br />
+One Six Four Three Five Two</p>
+<p>This is what is stored in the cookie:<br />
+1/5,4/1,2/3</p>
+<p>I just don&#8217;t get the correlation&#8230;</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-32139">
+			<p class="commentauthor">MB34 said,</p>
+			<p class="commentmeta">June 2, 2010 at <a href="#comment-32139" title="Permanent link to this comment">5:59 am</a> </p>
+			
+			<p>Now, after resetting them back to this order:</p>
+<p>One Two Three Four Five Six</p>
+<p>this is what is saved in the cookie:<br />
+1/5,4/1,2/3,0/4,1/2,4/0,5/1,2/5</p>
+<p>HUH?????</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-32146">
+			<p class="commentauthor">MB34 said,</p>
+			<p class="commentmeta">June 2, 2010 at <a href="#comment-32146" title="Permanent link to this comment">12:36 pm</a> </p>
+			
+			<p>OK, I have something working that is a little easier to work with as far as the ordering is concerned&#8230;</p>
+<p>These are the changes I made to make it store the column indexes in the cookie based on the id of the column. I needed this to be able to handle some pretty unique situations.</p>
+<p>  // Store a column swap in a cookie for posterity.<br />
+  rememberDrag: function(id, a, b, table) {<br />
+    var cookieName = &#8220;dragtable-&#8221; + id;<br />
+    var new_val = &#8220;&#8221;;<br />
+    // This gets the id&#8217;s of each column to store in the cookie in this format:<br />
+    // 1|2|3|4|5  etc so it can be split.<br />
+    //<br />
+    // Needed so I can determine column order for different process.<br />
+    //<br />
+    forEach(table.firstElementChild.rows[0].childNodes, function(cell) {<br />
+      if (cell.id &gt; -1) {<br />
+        new_val += cell.id + &#8216;|&#8217;;<br />
+      }<br />
+    });<br />
+    new_val = new_val.trim();<br />
+    new_val = new_val.substr(0, new_val.length-1);<br />
+    dragtable.eraseCookie(cookieName);<br />
+    dragtable.createCookie(cookieName, new_val, dragtable.cookieDays);<br />
+  },</p>
+<p>	// Replay all column swaps for a table.<br />
+	replayDrags: function(table) {<br />
+		if (!dragtable.cookiesEnabled()) return;<br />
+		var dragstr = dragtable.readCookie(&#8220;dragtable-&#8221; + table.id);<br />
+		if (!dragstr) return;<br />
+  	var pair = dragstr.split(&#8220;|&#8221;);<br />
+		var a = parseInt(pair[0])-1;<br />
+		dragtable.moveColumn(table, 0, a);<br />
+		a = parseInt(pair[1])-1;<br />
+		dragtable.moveColumn(table, 1, a);<br />
+		a = parseInt(pair[2])-1;<br />
+		dragtable.moveColumn(table, 2, a);<br />
+		a = parseInt(pair[3])-1;<br />
+		dragtable.moveColumn(table, 3, a);<br />
+		a = parseInt(pair[4])-1;<br />
+		dragtable.moveColumn(table, 4, a);<br />
+		a = parseInt(pair[5])-1;<br />
+		dragtable.moveColumn(table, 5, a);<br />
+		a = parseInt(pair[6])-1;<br />
+		dragtable.moveColumn(table, 6, a);<br />
+	},</p>
+<p>I do, however have one question&#8230;How do I call moveColumn from a function outside of the dragtable class? I can&#8217;t seem to send the table as a parameter.</p>
+<p>I placed arrow images on the right/left of each column and I want the user to be able to click the image to move the column to the right or left based on the image they clicked.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-32283">
+			<p class="commentauthor">MB34 said,</p>
+			<p class="commentmeta">June 11, 2010 at <a href="#comment-32283" title="Permanent link to this comment">9:53 am</a> </p>
+			
+			<p>Does ANYONE know how to get help with this stuff???</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-32925">
+			<p class="commentauthor">Crash said,</p>
+			<p class="commentmeta">July 16, 2010 at <a href="#comment-32925" title="Permanent link to this comment">2:05 am</a> </p>
+			
+			<p>The same problem can anyone help please</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-33219">
+			<p class="commentauthor"><a href='http://redtower.plala.jp/2010/07/30/javascript-dragtable.html' rel='external nofollow' class='url'>テーブルの列を手軽にドラッグ＆ドロップで入替え出来るようにするJavaScriptライブラリのdragtable - redtower&#039;s memo</a> said,</p>
+			<p class="commentmeta">July 30, 2010 at <a href="#comment-33219" title="Permanent link to this comment">12:44 am</a> </p>
+			
+			<p>[...] ref. <a href="http://www.ideaxidea.com/archives/2008/06/javascriptdratable.html" rel="nofollow">http://www.ideaxidea.com/archives/2008/06/javascriptdratable.html</a> ref. <a href="index.html" rel="nofollow">http://www.danvk.org/wp/dragtable/</a> [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-33337">
+			<p class="commentauthor"><a href='http://www.backtype.com/url/www.heelsncleavage.com%252fGOD_FIRE_Diving_Torch__Flashlight%252fcat18290_177199.aspx' rel='external nofollow' class='url'>Walton Plouffe</a> said,</p>
+			<p class="commentmeta">August 3, 2010 at <a href="#comment-33337" title="Permanent link to this comment">3:10 am</a> </p>
+			
+			<p>Really!, this has been a premier superior write. The theory is that I would like to create this way too &#8211; spending time and actual effort to make a smart story&#8230; still , what can I say&#8230; I put things off a whole lot but not seem to get something basically finished</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-37712">
+			<p class="commentauthor"><a href='http://ziliao.pingziblog.com/2010-09-2424/' rel='external nofollow' class='url'>[收集]四十个非常实用的轻量级JavaScript库 | 瓶子的资料库</a> said,</p>
+			<p class="commentmeta">September 7, 2010 at <a href="#comment-37712" title="Permanent link to this comment">3:04 am</a> </p>
+			
+			<p>[...] sorttable and dragtable [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-38640">
+			<p class="commentauthor"><a href='http://catsrealtqy.ru/' rel='external nofollow' class='url'>Smark</a> said,</p>
+			<p class="commentmeta">September 21, 2010 at <a href="#comment-38640" title="Permanent link to this comment">5:00 am</a> </p>
+			
+			<p>Не помню где я уже встречал такую же тему хотя пофиг</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-38657">
+			<p class="commentauthor"><a href='http://woodrealjty.ru/' rel='external nofollow' class='url'>Автоном</a> said,</p>
+			<p class="commentmeta">September 21, 2010 at <a href="#comment-38657" title="Permanent link to this comment">9:13 am</a> </p>
+			
+			<p>Чего и следовало ожидать, тот кто писал убого опубликовал.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-40124">
+			<p class="commentauthor"><a href='http://www.jqueryhome.com/how-would-you-do-this.html' rel='external nofollow' class='url'>How would you do this? - Jquery Home</a> said,</p>
+			<p class="commentmeta">October 7, 2010 at <a href="#comment-40124" title="Permanent link to this comment">9:13 am</a> </p>
+			
+			<p>[...] I already have some thing similar using the jQuery dragtable plugin here but it  was using only one row because it is used to reorder the columns in one  table: <a href="index.html" rel="nofollow">http://www.danvk.org/wp/dragtable/</a> [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-40548">
+			<p class="commentauthor"><a href='http://dontyouwishitwereyou@gmail.com/' rel='external nofollow' class='url'>DronycymnCrot</a> said,</p>
+			<p class="commentmeta">October 13, 2010 at <a href="#comment-40548" title="Permanent link to this comment">5:58 am</a> </p>
+			
+			<p>Hello everyone, long time fan first time poster here</p>
+<p>excited to be a member, and I can&#8217;t wait to begin getting more active here</p>
+<p>Until then visit my page <a href="http://seoarticlewriter.goingonline.co.za/2010/10/13/the-three-resistant-internet-advertising-secrets/" rel="nofollow">http://seoarticlewriter.goingonline.co.za/2010/10/13/the-three-resistant-internet-advertising-secrets/</a></p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-40898">
+			<p class="commentauthor"><a href='http://www.surgerythailand.com/' rel='external nofollow' class='url'>Sam</a> said,</p>
+			<p class="commentmeta">October 21, 2010 at <a href="#comment-40898" title="Permanent link to this comment">2:35 am</a> </p>
+			
+			<p>great. Can it be also grouped ?</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-44847">
+			<p class="commentauthor"><a href='http://jp.layer8.sh/blog/tech/2010/11/17/javascriptの様々なライブラリで便利なプラグ%e3%8' rel='external nofollow' class='url'>javascriptの様々なライブラリで便利なプラグインまとめ(テーブル編) &laquo; Tech Blog « Layer 8</a> said,</p>
+			<p class="commentmeta">November 17, 2010 at <a href="#comment-44847" title="Permanent link to this comment">6:18 am</a> </p>
+			
+			<p>[...]  drag table  列の表示・非表示を操作できるjqueryのプラグイン  jQuery columnManager plugin  [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-45172">
+			<p class="commentauthor"><a href='http://www.thepixelart.com/take-your-html-tables-to-a-new-level-with-javascript-frameworks/' rel='external nofollow' class='url'>Take Your HTML Tables to a New Level with JavaScript Frameworks</a> said,</p>
+			<p class="commentmeta">November 19, 2010 at <a href="#comment-45172" title="Permanent link to this comment">12:15 am</a> </p>
+			
+			<p>[...]  dragtable [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-45662">
+			<p class="commentauthor">T. Alexander Lystad said,</p>
+			<p class="commentmeta">November 21, 2010 at <a href="#comment-45662" title="Permanent link to this comment">4:36 pm</a> </p>
+			
+			<p>The script doesn&#8217;t pass JSLint. Lots of errors :( Which is bad.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-49856">
+			<p class="commentauthor"><a href='http://www.spaceweb.nl/' rel='external nofollow' class='url'>Bart McLeod</a> said,</p>
+			<p class="commentmeta">December 16, 2010 at <a href="#comment-49856" title="Permanent link to this comment">9:04 am</a> </p>
+			
+			<p>Thanks for sharing this. I experience some problems, but I still think your script is great.</p>
+<p>Problems I find:<br />
+- Slow with large columns<br />
+- no clear visual feedback (am I dragging or not, can&#8217;t tell)<br />
+- Footers do not come along (maybe a cellcount mismatch, have to check!)<br />
+- Ajax filling of table has some problems with the ordering, must figure out what comes first. Would be great if initialization could be run over and over again to cope with difficulties like that on, will look if any documentation tells us about that.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-49858">
+			<p class="commentauthor"><a href='http://www.spaceweb.nl/' rel='external nofollow' class='url'>Bart McLeod</a> said,</p>
+			<p class="commentmeta">December 16, 2010 at <a href="#comment-49858" title="Permanent link to this comment">9:11 am</a> </p>
+			
+			<p>I wrote a small test, footers do come along in that test.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-49859">
+			<p class="commentauthor"><a href='http://www.spaceweb.nl/' rel='external nofollow' class='url'>Bart McLeod</a> said,</p>
+			<p class="commentmeta">December 16, 2010 at <a href="#comment-49859" title="Permanent link to this comment">9:16 am</a> </p>
+			
+			<p>Visual feedback is also working with small tables.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-49994">
+			<p class="commentauthor"><a href='http://www.spaceweb.nl/' rel='external nofollow' class='url'>Bart McLeod</a> said,</p>
+			<p class="commentmeta">December 17, 2010 at <a href="#comment-49994" title="Permanent link to this comment">2:24 am</a> </p>
+			
+			<p>It seems that in our large table, the footers that do not come along have absolute positioning, which makes it obvious that they do not move.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-59372">
+			<p class="commentauthor">Simple Jain said,</p>
+			<p class="commentmeta">February 10, 2011 at <a href="#comment-59372" title="Permanent link to this comment">7:01 am</a> </p>
+			
+			<p>Please suggest how to implement column drag and drop in asp.net grid view</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-61709">
+			<p class="commentauthor"><a href='http://5socks.net/' rel='external nofollow' class='url'>прокси</a> said,</p>
+			<p class="commentmeta">February 22, 2011 at <a href="#comment-61709" title="Permanent link to this comment">7:54 am</a> </p>
+			
+			<p>анонимный прокси сервер</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-63443">
+			<p class="commentauthor"><a href='http://www.itbrother.com/?p=236' rel='external nofollow' class='url'>40 个轻量级 JavaScript 库 （下） | 海蓝博客</a> said,</p>
+			<p class="commentmeta">March 1, 2011 at <a href="#comment-63443" title="Permanent link to this comment">6:08 am</a> </p>
+			
+			<p>[...] 与 dragtable不管你喜欢与否，table [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-69926">
+			<p class="commentauthor"><a href='http://blog.layer8.sh/ja/2010/11/17/javascriptの様々なライブラリで便利なプラグイ%' rel='external nofollow' class='url'>javascriptの様々なライブラリで便利なプラグインまとめ(テーブル編)</a> said,</p>
+			<p class="commentmeta">March 29, 2011 at <a href="#comment-69926" title="Permanent link to this comment">3:55 am</a> </p>
+			
+			<p>[...] drag table 列の表示・非表示を操作できるjqueryのプラグイン [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-76866">
+			<p class="commentauthor"><a href='http://brainy168.gotoip2.com/?p=1591' rel='external nofollow' class='url'>40个非常实用的轻量级JavaScript库 | 百锐网</a> said,</p>
+			<p class="commentmeta">April 27, 2011 at <a href="#comment-76866" title="Permanent link to this comment">10:39 pm</a> </p>
+			
+			<p>[...] sorttable and dragtable [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-78526">
+			<p class="commentauthor"><a href='http://www.aqbest.ru/' rel='external nofollow' class='url'>Аквариум своими руками</a> said,</p>
+			<p class="commentmeta">May 6, 2011 at <a href="#comment-78526" title="Permanent link to this comment">11:34 am</a> </p>
+			
+			<p>Hello everyone, long time fan first time poster here</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-78528">
+			<p class="commentauthor"><a href='http://www.vsepopugai.ru/' rel='external nofollow' class='url'>Волнистые попугаи</a> said,</p>
+			<p class="commentmeta">May 6, 2011 at <a href="#comment-78528" title="Permanent link to this comment">11:35 am</a> </p>
+			
+			<p>Really!, this has been a premier superior write</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-80861">
+			<p class="commentauthor">Yotarzan said,</p>
+			<p class="commentmeta">May 17, 2011 at <a href="#comment-80861" title="Permanent link to this comment">1:34 pm</a> </p>
+			
+			<p>Awesome and extremely easy to use!!!</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-80905">
+			<p class="commentauthor"><a href='http://www.lzcak.com/2009/03/06/40-个轻量级-javascript-库/' rel='external nofollow' class='url'>40 个轻量级 JavaScript 库 - 志成塾</a> said,</p>
+			<p class="commentmeta">May 17, 2011 at <a href="#comment-80905" title="Permanent link to this comment">6:27 pm</a> </p>
+			
+			<p>[...] 与 dragtable 不管你喜欢与否，table [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-81539">
+			<p class="commentauthor">LePirlouit said,</p>
+			<p class="commentmeta">May 20, 2011 at <a href="#comment-81539" title="Permanent link to this comment">10:14 am</a> </p>
+			
+			<p>Hi danvk,</p>
+<p>I&#8217;m interesseted to join your project.</p>
+<p>I have added some improvement to your code, and resolved partialy<br />
+issue number 23</p>
+<p><a href="http://code.google.com/p/dragtable/issues/detail?id=23" rel="nofollow">http://code.google.com/p/dragtable/issues/detail?id=23</a></p>
+<p>pleaase write me an email.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-82458">
+			<p class="commentauthor">Sulaiman said,</p>
+			<p class="commentmeta">May 25, 2011 at <a href="#comment-82458" title="Permanent link to this comment">3:35 am</a> </p>
+			
+			<p>I  have created a dynamic table in jquery. but the class is not working when i create a dynamic table and add a class to it. else it is working fine when i add a class in a manually created table. Can you tell me how to solve this issue. I am facing this issue from last three days.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-87264">
+			<p class="commentauthor">Deepx said,</p>
+			<p class="commentmeta">June 18, 2011 at <a href="#comment-87264" title="Permanent link to this comment">4:13 am</a> </p>
+			
+			<p>To get the code if you dynamically creating a table:</p>
+<p>Create and fill table<br />
+Add Class &#8216;draggable<br />
+Run code:</p>
+<p>forEach(document.getElementsByTagName(&#8216;table&#8217;), function(table) {<br />
+  if (table.className.search(/\bdraggable\b/) != -1) {<br />
+	dragtable.makeDraggable(table);<br />
+  }<br />
+});</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-89345">
+			<p class="commentauthor"><a href='http://tdtechnosys.com/wpress/?p=111' rel='external nofollow' class='url'>40 Useful JavaScript Libraries | Takedown Studio</a> said,</p>
+			<p class="commentmeta">June 29, 2011 at <a href="#comment-89345" title="Permanent link to this comment">5:39 pm</a> </p>
+			
+			<p>[...] and dragtable Tables, like them or not, are still one of the best ways to present data. But they can be [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-94647">
+			<p class="commentauthor"><a href='http://unknownerror.net/2011-07/40-lightweight-javascript-library-43682' rel='external nofollow' class='url'>40 lightweight JavaScript library ()</a> said,</p>
+			<p class="commentmeta">July 26, 2011 at <a href="#comment-94647" title="Permanent link to this comment">3:54 am</a> </p>
+			
+			<p>[...] and dragtableWhether you like it or not, table is is still the best performance data way, but can better [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-101509">
+			<p class="commentauthor">julhaw said,</p>
+			<p class="commentmeta">August 23, 2011 at <a href="#comment-101509" title="Permanent link to this comment">11:32 am</a> </p>
+			
+			<p>This really is a great piece of code and easy to implement.  I also had to figure out how to get it to work with an ajax created table.  I had to comment out the folllowing two lines in the init method:</p>
+<p>//    if (arguments.callee.done) return;<br />
+//    arguments.callee.done = true;</p>
+<p>Then when my ajax was done loading I just called dragtable.init()</p>
+<p>A couple of other things.  1) you cannot have a div that is scrollable.  It screws it up.  So I had to make the scroll be back on my document instead off an individual div.  2) you can&#8217;t have text input boxes in the header row of the column as you won&#8217;t be able to click into the text box to edit it.  I had a table that had filters in the header row along with the name of the column.  I had to move the filters to the first tbody row.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-105577">
+			<p class="commentauthor"><a href='http://blog.layer8.sh/ja/2010/11/17/javascriptの様々なライブラリで便利なプラグイ%' rel='external nofollow' class='url'>JavaScript の便利なプラグインまとめ(テーブル編)</a> said,</p>
+			<p class="commentmeta">September 7, 2011 at <a href="#comment-105577" title="Permanent link to this comment">10:00 pm</a> </p>
+			
+			<p>[...] drag table 列の表示・非表示を操作できるjqueryのプラグイン [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-106444">
+			<p class="commentauthor"><a href='http://blog.layer8.sh/2011/09/11/javascript-plugins-for-better-table-functionalities/' rel='external nofollow' class='url'>JavaScript plugins for better table functionalities</a> said,</p>
+			<p class="commentmeta">September 10, 2011 at <a href="#comment-106444" title="Permanent link to this comment">8:01 pm</a> </p>
+			
+			<p>[...] columns, and sorting.  Table sorter &#8211; A jquery plugin for table sorting, easy to implement. drag table is another jquery plugin that is easy to implement and enables users to reorder table columns by [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-108457">
+			<p class="commentauthor"><a href='http://autocarautx206.wetpaint.com/page/Getting+the+best+offer+at+the+Federal+Car+Auction+(9)' rel='external nofollow' class='url'>Esther Ransford</a> said,</p>
+			<p class="commentmeta">September 20, 2011 at <a href="#comment-108457" title="Permanent link to this comment">1:09 pm</a> </p>
+			
+			<p>Firefox / internet can not work but connection to the internet is excellent?</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-116115">
+			<p class="commentauthor"><a href='http://listfield.com/' rel='external nofollow' class='url'>brad</a> said,</p>
+			<p class="commentmeta">October 26, 2011 at <a href="#comment-116115" title="Permanent link to this comment">5:33 am</a> </p>
+			
+			<p>can you fix a particular column so it is not draggable?</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-116116">
+			<p class="commentauthor"><a href='http://listfield.com/' rel='external nofollow' class='url'>brad</a> said,</p>
+			<p class="commentmeta">October 26, 2011 at <a href="#comment-116116" title="Permanent link to this comment">5:33 am</a> </p>
+			
+			<p>can you highlight the place the column will be dropped while it being dragged?</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-116281">
+			<p class="commentauthor">Tushar Maini said,</p>
+			<p class="commentmeta">October 27, 2011 at <a href="#comment-116281" title="Permanent link to this comment">3:27 pm</a> </p>
+			
+			<p>nice work . its clean and clear</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-117649">
+			<p class="commentauthor">Benjamin said,</p>
+			<p class="commentmeta">November 9, 2011 at <a href="#comment-117649" title="Permanent link to this comment">7:47 am</a> </p>
+			
+			<p>Hi, realy nice work!<br />
+is it possible to save the table without cookies, mabye with a database an build the table again?</p>
+<p>Thank you for helping</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-122447">
+			<p class="commentauthor">rucs said,</p>
+			<p class="commentmeta">December 2, 2011 at <a href="#comment-122447" title="Permanent link to this comment">9:51 am</a> </p>
+			
+			<p>Does it work on Firefox 8??Doesnt work for me!!</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-122917">
+			<p class="commentauthor"><a href='http://golfhybrid-sale.info/' rel='external nofollow' class='url'>Kristie Forcier</a> said,</p>
+			<p class="commentmeta">December 4, 2011 at <a href="#comment-122917" title="Permanent link to this comment">12:05 am</a> </p>
+			
+			<p>Unquestionably believe that which you said. Your favorite reason appeared to be at the net the simplest factor to consider of. I say to you, I definitely get irked while other folks think about worries that they plainly do not recognize about. You managed to hit the nail upon the top and also outlined out the entire thing without having side effect , other folks could take a signal. Will probably be back to get more. Thanks!</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-124535">
+			<p class="commentauthor">Houmpmichael said,</p>
+			<p class="commentmeta">December 9, 2011 at <a href="#comment-124535" title="Permanent link to this comment">1:51 pm</a> </p>
+			
+			<p>you love this?   for less  , just clicks away</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-125242">
+			<p class="commentauthor">Lola_Sib said,</p>
+			<p class="commentmeta">December 12, 2011 at <a href="#comment-125242" title="Permanent link to this comment">5:23 am</a> </p>
+			
+			<p>hermione sex pix porn hentai movis pairis hilton sex sence school college sex party pics small penis sex galleries g4 wired for sex julian rios porn movies volleyball ass gallery adult movies by mail rental ashton moore sex pics gay lady sex father and son sex tube free bloody sex sex change penis implant nintendo sex game free asian sex pictures xnxx free natural porn ass parade felicia porno movies 1 day trial hustler sex barely legal</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-125766">
+			<p class="commentauthor"><a href='http://www.thepoint.com/users/maria-vonstaden67/profile' rel='external nofollow' class='url'>galaxy s2 blacklist</a> said,</p>
+			<p class="commentmeta">December 13, 2011 at <a href="#comment-125766" title="Permanent link to this comment">11:03 pm</a> </p>
+			
+			<p>Gday, you should know that this web site features troubles rendering correctly using Mac OSx together with the native edition of safari.  It seems as if the text is to large for all the boxes?</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-149211">
+			<p class="commentauthor"><a href='http://mujdat.me/blog/kullanisli-javascript-kutuphaneleri' rel='external nofollow' class='url'>Kullanışlı Javascript Kütüphaneleri &#8212; Müjdat Korkmaz &#8211; Design Blog</a> said,</p>
+			<p class="commentmeta">April 22, 2012 at <a href="#comment-149211" title="Permanent link to this comment">8:42 am</a> </p>
+			
+			<p>[...]  [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-150853">
+			<p class="commentauthor"><a href='http://www.suporteon.com/' rel='external nofollow' class='url'>Guilherme Cruz</a> said,</p>
+			<p class="commentmeta">April 30, 2012 at <a href="#comment-150853" title="Permanent link to this comment">7:40 pm</a> </p>
+			
+			<p>Dear Friends,</p>
+<p>I am looking for a jQuery plugin that works with tables and allows all the five features below:</p>
+<p>1) Drag and drop of an entire row (up, down).</p>
+<p>2) Drag and drop of an entire column (left, right) * This is the most important!</p>
+<p>3) Add new rows visually just passing the mouse over the bottom limit of the table.</p>
+<p>4) Add new columns visually just passing the mouse over the right limit of the table.</p>
+<p>5) By double clicking, edit the content of the cell.</p>
+<p>I would aprecciate any tip or solution.</p>
+<p>Thanks a lot!</p>
+<p>Guilherme Cruz</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-153872">
+			<p class="commentauthor"><a href='http://drupalgeeks.blogspot.com/' rel='external nofollow' class='url'>saimann</a> said,</p>
+			<p class="commentmeta">May 10, 2012 at <a href="#comment-153872" title="Permanent link to this comment">9:25 pm</a> </p>
+			
+			<p>Thank you. Very useful :)</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-158078">
+			<p class="commentauthor">Jonas said,</p>
+			<p class="commentmeta">May 25, 2012 at <a href="#comment-158078" title="Permanent link to this comment">1:12 pm</a> </p>
+			
+			<p>I read my TABLE with ajax.<br />
+Why aplly this winth a function?</p>
+<p>like   $(&#8216;#table_id&#8217;).dragtable();</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-166082">
+			<p class="commentauthor">Joby Joseph said,</p>
+			<p class="commentmeta">June 26, 2012 at <a href="#comment-166082" title="Permanent link to this comment">11:41 pm</a> </p>
+			
+			<p>Hi,</p>
+<p>Can I implement the same on row level?</p>
+		</li>
+
+		
+	
+	</ol>
+
+
+	
+	
+</div>
+
+<div id="sidebar">
+<ul>
+
+	<li id="search">
+		<form method="get" id="searchform" action="http://www.danvk.org/wp/index.php">
+<p>
+<input type="text" value="" name="s" id="s" /><br />
+<input type="submit" id="searchsubmit" value="Search" />
+</p>
+</form>	</li> 
+
+<!-- I want more control than this gives me: wp_list_pages('title_li=<h2>' . __('Pages') . '</h2>' ); -->
+
+	<li class="pagenav">
+		<ul>
+			<!--<li class="page_item"><a href="http://www.danvk.org/wp/?page_id=2" title="About">About</a></li>-->
+			<li>Dan across the web
+				<ul>
+					<li class="social">
+					<a href="https://github.com/danvk"><img src="https://github.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://twitter.com/danvdk"><img src="https://twitter.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://www.facebook.com/danvdk"><img src="https://facebook.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://plus.google.com/+DanVanderkam"><img src="https://plus.google.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://www.linkedin.com/profile/view?id=340204755"><img src="https://www.linkedin.com/favicon.ico" width=16 height=16 border=0></a>
+					<script data-gittip-username="danvdk" data-gittip-widget="button" src="http://gttp.co/v1.js"></script>
+				</ul>
+
+			<li>Dan's projects
+				<ul class="projects">
+					<li><a href="http://dygraphs.com/">dygraphs</a>
+					<li><a href="http://oldsf.org/">OldSF</a>
+					<li><a href="http://comparea.org/">Comparea</a>
+					<li><a href="https://github.com/danvk/webdiff">git webdiff</a>
+				</ul>
+
+			<li>Features on this site
+				<ul class="features">
+					<li><a href="http://www.danvk.org/boggle.php" title="Boggle Solver">Online Boggle Solver</a></li>
+					<li><a href="../beals-conjecture/index.html" title="Beal&#039;s Conjecture">Beal's Conjecture</a></li>
+					<li><a href="../gw-basic-program-decoder/index.html" title="GW-BASIC Program Decoder">GW-BASIC Program Decoder</a></li>
+					<li><a href="http://www.danvk.org/tower/nstower.html">NS-Tower in your Browser</a></li>
+				</ul>
+		</ul>
+	</li>
+
+	<!--
+	<li id="twitter_sidebar">
+		<div id="twitter_div">
+		<a href="http://twitter.com/danvdk" target="_blank"><h2 class="sidebar-title">Follow me on Twitter</h2></a>
+		<ul id="twitter_update_list" style="padding-right:30px"></ul>
+		
+		</div>
+		<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+		<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/danvdk.json?callback=twitterCallback2&amp;count=5"></script>
+	</li>
+	-->
+
+	<li id="archives">
+		<h2>Archives</h2>
+		<ul>
+			<li><a href='../2014/10/index.html'>October 2014</a></li>
+	<li><a href='../2014/08/index.html'>August 2014</a></li>
+	<li><a href='../2014/07/index.html'>July 2014</a></li>
+	<li><a href='../2014/06/index.html'>June 2014</a></li>
+	<li><a href='../2014/03/index.html'>March 2014</a></li>
+	<li><a href='../2014/02/index.html'>February 2014</a></li>
+	<li><a href='../2014/01/index.html'>January 2014</a></li>
+	<li><a href='../2013/08/index.html'>August 2013</a></li>
+	<li><a href='../2013/06/index.html'>June 2013</a></li>
+	<li><a href='../2013/04/index.html'>April 2013</a></li>
+	<li><a href='../2013/03/index.html'>March 2013</a></li>
+	<li><a href='../2013/02/index.html'>February 2013</a></li>
+	<li><a href='../2013/01/index.html'>January 2013</a></li>
+	<li><a href='../2012/12/index.html'>December 2012</a></li>
+	<li><a href='../2012/09/index.html'>September 2012</a></li>
+	<li><a href='../2012/08/index.html'>August 2012</a></li>
+	<li><a href='../2012/07/index.html'>July 2012</a></li>
+	<li><a href='../2012/06/index.html'>June 2012</a></li>
+	<li><a href='../2012/05/index.html'>May 2012</a></li>
+	<li><a href='../2012/04/index.html'>April 2012</a></li>
+	<li><a href='../2012/02/index.html'>February 2012</a></li>
+	<li><a href='../2012/01/index.html'>January 2012</a></li>
+	<li><a href='../2011/12/index.html'>December 2011</a></li>
+	<li><a href='../2011/11/index.html'>November 2011</a></li>
+	<li><a href='../2011/08/index.html'>August 2011</a></li>
+	<li><a href='../2011/03/index.html'>March 2011</a></li>
+	<li><a href='../2010/06/index.html'>June 2010</a></li>
+	<li><a href='../2010/03/index.html'>March 2010</a></li>
+	<li><a href='../2009/12/index.html'>December 2009</a></li>
+	<li><a href='../2009/11/index.html'>November 2009</a></li>
+	<li><a href='../2009/10/index.html'>October 2009</a></li>
+	<li><a href='../2009/09/index.html'>September 2009</a></li>
+	<li><a href='../2009/08/index.html'>August 2009</a></li>
+	<li><a href='../2009/06/index.html'>June 2009</a></li>
+	<li><a href='../2009/05/index.html'>May 2009</a></li>
+	<li><a href='../2009/03/index.html'>March 2009</a></li>
+	<li><a href='../2009/02/index.html'>February 2009</a></li>
+	<li><a href='../2009/01/index.html'>January 2009</a></li>
+	<li><a href='../2008/12/index.html'>December 2008</a></li>
+	<li><a href='../2008/11/index.html'>November 2008</a></li>
+	<li><a href='../2008/10/index.html'>October 2008</a></li>
+	<li><a href='../2008/09/index.html'>September 2008</a></li>
+	<li><a href='../2008/08/index.html'>August 2008</a></li>
+	<li><a href='../2008/06/index.html'>June 2008</a></li>
+	<li><a href='../2008/05/index.html'>May 2008</a></li>
+	<li><a href='../2008/02/index.html'>February 2008</a></li>
+	<li><a href='../2008/01/index.html'>January 2008</a></li>
+	<li><a href='../2007/12/index.html'>December 2007</a></li>
+	<li><a href='../2007/11/index.html'>November 2007</a></li>
+	<li><a href='../2007/10/index.html'>October 2007</a></li>
+	<li><a href='../2007/09/index.html'>September 2007</a></li>
+	<li><a href='../2007/08/index.html'>August 2007</a></li>
+	<li><a href='../2007/07/index.html'>July 2007</a></li>
+	<li><a href='../2007/06/index.html'>June 2007</a></li>
+	<li><a href='../2007/05/index.html'>May 2007</a></li>
+	<li><a href='../2007/04/index.html'>April 2007</a></li>
+	<li><a href='../2007/03/index.html'>March 2007</a></li>
+	<li><a href='../2007/02/index.html'>February 2007</a></li>
+	<li><a href='../2007/01/index.html'>January 2007</a></li>
+	<li><a href='../2006/12/index.html'>December 2006</a></li>
+	<li><a href='../2006/11/index.html'>November 2006</a></li>
+	<li><a href='../2006/10/index.html'>October 2006</a></li>
+	<li><a href='../2006/09/index.html'>September 2006</a></li>
+		</ul>
+	</li>
+
+		
+	<li id="categories">
+		<h2>Categories</h2>
+		<ul>
+			<li class="cat-item cat-item-21"><a href="../category/astronomy/index.html" title="View all posts filed under astronomy">astronomy</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="../category/boggle/index.html" title="View all posts filed under boggle">boggle</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="../category/books/index.html" title="View all posts filed under books">books</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="../category/finance/index.html" title="View all posts filed under finance">finance</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="../category/javascript/index.html" title="View all posts filed under javascript">javascript</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="../category/math/index.html" title="View all posts filed under math">math</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="../category/meta/index.html" title="View all posts filed under meta">meta</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="../category/movies/index.html" title="View all posts filed under movies">movies</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="../category/music/index.html" title="View all posts filed under music">music</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="../category/news/index.html" title="View all posts filed under news">news</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="../category/personal/index.html" title="View all posts filed under personal">personal</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="../category/politics/index.html" title="View all posts filed under politics">politics</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="../category/programming/index.html" title="View all posts filed under programming">programming</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="../category/reviews/index.html" title="View all posts filed under reviews">reviews</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="../category/san-francisco/index.html" title="View all posts filed under san francisco">san francisco</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="../category/science/index.html" title="View all posts filed under science">science</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="../category/space/index.html" title="View all posts filed under space">space</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="../category/sports/index.html" title="View all posts filed under sports">sports</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="../category/tennis/index.html" title="View all posts filed under tennis">tennis</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="../category/travel/index.html" title="View all posts filed under travel">travel</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="../category/tv/index.html" title="View all posts filed under tv">tv</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="../category/uncategorized/index.html" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="../category/web/index.html" title="View all posts filed under web">web</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="../category/wikipedia/index.html" title="View all posts filed under wikipedia">wikipedia</a>
+</li>
+ 
+		</ul>
+	</li>
+	
+			
+	
+	<li id="meta">
+		<h2>Meta</h2>
+		<ul>
+				<li><a href="../wp-login.html">Log in</a></li>
+		<li><a href="../feed/index.html" title="Syndicate this site using RSS">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+		<li><a href="../comments/feed/index.html" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+		<li><a href="http://wordpress.org/" title="Powered by Wordpress, state-of-the-art semantic personal publishing platform.">Wordpress</a></li>
+				</ul>
+	</li>
+	
+</ul>
+</div>
+
+<div id="footer">
+
+<!--<p>
+
+
+Design by <a href="http://ravenkeller.com">Raven Keller</a> and <a href="http://weblogs.us" title="Theme sponsored by Weblogs.us">Weblogs.us</a>
+&#183;
+<a href="http://validator.w3.org/check/referer" title="This page validates as XHTML 1.0 Transitional"><abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a>
+&#183;
+<a href="http://jigsaw.w3.org/css-validator/check/referer" title="This page validates as CSS"><abbr title="Cascading Style Sheets">CSS</abbr></a>
+<img src='http://counter.dreamhost.com/cgi-bin/Count.cgi?df=danvk-maincounter.dat&pad=F&ft=0&dd=copper&istrip=T' align=right />
+</p>-->
+
+
+</div>
+
+
+<!-- Google Analytics -->
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-769809-1";
+urchinTracker();
+</script>
+
+</body>
+
+<!-- Mirrored from www.danvk.org/wp/dragtable/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Oct 2014 03:11:40 GMT -->
+</html>	
+
+
+
+<!--<footer class="container"></footer>-->

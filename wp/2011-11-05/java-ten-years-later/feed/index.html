@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Java, Ten Years Later</title>
+	<atom:link href="http://www.danvk.org/wp/2011-11-05/java-ten-years-later/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.danvk.org/wp/2011-11-05/java-ten-years-later/</link>
+	<description>Keepin' static like wool fabric since 2006</description>
+	<lastBuildDate>Wed, 08 Oct 2014 14:33:23 +0000</lastBuildDate>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.9.2</generator>
+	<item>
+		<title>By: Kenny Leftin</title>
+		<link>http://www.danvk.org/wp/2011-11-05/java-ten-years-later/comment-page-1/#comment-118974</link>
+		<dc:creator><![CDATA[Kenny Leftin]]></dc:creator>
+		<pubDate>Fri, 18 Nov 2011 06:46:34 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=765#comment-118974</guid>
+		<description><![CDATA[If you&#039;re doing a lot more with Java, it&#039;s worth reading Effective Java by Josh Bloch. It&#039;s the bible for good Java idioms. (There&#039;s a free pdf copy within Google that you can read)
+
+Be careful with your last point. static {} is convenient for a project with only a couple classes, but it can get un-maintainable really quickly. Since the static block is executed only when the class is loaded, it can be surprising when it will or will not run. The &#039;static&#039; keyword in Java in general can be a little hairy. See Puzzle 5 (http://www.javapuzzlers.com/java-puzzlers-sampler.pdf) for class initialization craziness. Not to mention, it&#039;s almost impossible to mock any sort of static method in a unit test. I basically only use static for two things:
+
+1. Defining final constants
+2. Writing methods that need absolutely no state
+
+What are you working on nowadays that uses Java? You should e-mail me!]]></description>
+		<content:encoded><![CDATA[<p>If you&#8217;re doing a lot more with Java, it&#8217;s worth reading Effective Java by Josh Bloch. It&#8217;s the bible for good Java idioms. (There&#8217;s a free pdf copy within Google that you can read)</p>
+<p>Be careful with your last point. static {} is convenient for a project with only a couple classes, but it can get un-maintainable really quickly. Since the static block is executed only when the class is loaded, it can be surprising when it will or will not run. The &#8216;static&#8217; keyword in Java in general can be a little hairy. See Puzzle 5 (<a href="http://www.javapuzzlers.com/java-puzzlers-sampler.pdf" rel="nofollow">http://www.javapuzzlers.com/java-puzzlers-sampler.pdf</a>) for class initialization craziness. Not to mention, it&#8217;s almost impossible to mock any sort of static method in a unit test. I basically only use static for two things:</p>
+<p>1. Defining final constants<br />
+2. Writing methods that need absolutely no state</p>
+<p>What are you working on nowadays that uses Java? You should e-mail me!</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: danvk</title>
+		<link>http://www.danvk.org/wp/2011-11-05/java-ten-years-later/comment-page-1/#comment-117399</link>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+		<pubDate>Mon, 07 Nov 2011 15:40:32 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=765#comment-117399</guid>
+		<description><![CDATA[There&#039;s something nearly identical to Java&#039;s foreach in C++11: http://en.wikipedia.org/wiki/C%2B%2B11#Range-based_for-loop
+
+Unfortunately, we&#039;re not allowed to use either that or boost::foreach at work yet :(]]></description>
+		<content:encoded><![CDATA[<p>There&#8217;s something nearly identical to Java&#8217;s foreach in C++11: <a href="http://en.wikipedia.org/wiki/C%2B%2B11#Range-based_for-loop" rel="nofollow">http://en.wikipedia.org/wiki/C%2B%2B11#Range-based_for-loop</a></p>
+<p>Unfortunately, we&#8217;re not allowed to use either that or boost::foreach at work yet :(</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Craig Fratrik</title>
+		<link>http://www.danvk.org/wp/2011-11-05/java-ten-years-later/comment-page-1/#comment-117333</link>
+		<dc:creator><![CDATA[Craig Fratrik]]></dc:creator>
+		<pubDate>Mon, 07 Nov 2011 06:43:47 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=765#comment-117333</guid>
+		<description><![CDATA[&lt;a href=&quot;http://www.boost.org/doc/libs/1_47_0/doc/html/foreach.html&quot; rel=&quot;nofollow&quot;&gt;Boost Foreach&lt;/a&gt; is pretty good.]]></description>
+		<content:encoded><![CDATA[<p><a href="http://www.boost.org/doc/libs/1_47_0/doc/html/foreach.html" rel="nofollow">Boost Foreach</a> is pretty good.</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

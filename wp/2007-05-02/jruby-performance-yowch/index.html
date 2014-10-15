@@ -1,0 +1,462 @@
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<!-- Mirrored from www.danvk.org/wp/2007-05-02/jruby-performance-yowch/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Oct 2014 03:10:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="generator" content="WordPress 3.9.2" /> <!-- leave this for stats please -->
+	<title>danvk.org &raquo; JRuby Performance, Yowch!</title>
+	<style type="text/css" media="screen">
+		@import url( ../../wp-content/themes/ocadia/style.css);
+			</style>
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="../../feed/index.html" />
+	<link rel="alternate" type="text/xml" title="RSS .92" href="../../feed/rss/index.html" />
+	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="../../feed/atom/index.html" />
+	<link rel="pingback" href="../../xmlrpc.php" />
+    	<link rel='archives' title='October 2014' href='../../2014/10/index.html' />
+	<link rel='archives' title='August 2014' href='../../2014/08/index.html' />
+	<link rel='archives' title='July 2014' href='../../2014/07/index.html' />
+	<link rel='archives' title='June 2014' href='../../2014/06/index.html' />
+	<link rel='archives' title='March 2014' href='../../2014/03/index.html' />
+	<link rel='archives' title='February 2014' href='../../2014/02/index.html' />
+	<link rel='archives' title='January 2014' href='../../2014/01/index.html' />
+	<link rel='archives' title='August 2013' href='../../2013/08/index.html' />
+	<link rel='archives' title='June 2013' href='../../2013/06/index.html' />
+	<link rel='archives' title='April 2013' href='../../2013/04/index.html' />
+	<link rel='archives' title='March 2013' href='../../2013/03/index.html' />
+	<link rel='archives' title='February 2013' href='../../2013/02/index.html' />
+	<link rel='archives' title='January 2013' href='../../2013/01/index.html' />
+	<link rel='archives' title='December 2012' href='../../2012/12/index.html' />
+	<link rel='archives' title='September 2012' href='../../2012/09/index.html' />
+	<link rel='archives' title='August 2012' href='../../2012/08/index.html' />
+	<link rel='archives' title='July 2012' href='../../2012/07/index.html' />
+	<link rel='archives' title='June 2012' href='../../2012/06/index.html' />
+	<link rel='archives' title='May 2012' href='../../2012/05/index.html' />
+	<link rel='archives' title='April 2012' href='../../2012/04/index.html' />
+	<link rel='archives' title='February 2012' href='../../2012/02/index.html' />
+	<link rel='archives' title='January 2012' href='../../2012/01/index.html' />
+	<link rel='archives' title='December 2011' href='../../2011/12/index.html' />
+	<link rel='archives' title='November 2011' href='../../2011/11/index.html' />
+	<link rel='archives' title='August 2011' href='../../2011/08/index.html' />
+	<link rel='archives' title='March 2011' href='../../2011/03/index.html' />
+	<link rel='archives' title='June 2010' href='../../2010/06/index.html' />
+	<link rel='archives' title='March 2010' href='../../2010/03/index.html' />
+	<link rel='archives' title='December 2009' href='../../2009/12/index.html' />
+	<link rel='archives' title='November 2009' href='../../2009/11/index.html' />
+	<link rel='archives' title='October 2009' href='../../2009/10/index.html' />
+	<link rel='archives' title='September 2009' href='../../2009/09/index.html' />
+	<link rel='archives' title='August 2009' href='../../2009/08/index.html' />
+	<link rel='archives' title='June 2009' href='../../2009/06/index.html' />
+	<link rel='archives' title='May 2009' href='../../2009/05/index.html' />
+	<link rel='archives' title='March 2009' href='../../2009/03/index.html' />
+	<link rel='archives' title='February 2009' href='../../2009/02/index.html' />
+	<link rel='archives' title='January 2009' href='../../2009/01/index.html' />
+	<link rel='archives' title='December 2008' href='../../2008/12/index.html' />
+	<link rel='archives' title='November 2008' href='../../2008/11/index.html' />
+	<link rel='archives' title='October 2008' href='../../2008/10/index.html' />
+	<link rel='archives' title='September 2008' href='../../2008/09/index.html' />
+	<link rel='archives' title='August 2008' href='../../2008/08/index.html' />
+	<link rel='archives' title='June 2008' href='../../2008/06/index.html' />
+	<link rel='archives' title='May 2008' href='../../2008/05/index.html' />
+	<link rel='archives' title='February 2008' href='../../2008/02/index.html' />
+	<link rel='archives' title='January 2008' href='../../2008/01/index.html' />
+	<link rel='archives' title='December 2007' href='../../2007/12/index.html' />
+	<link rel='archives' title='November 2007' href='../../2007/11/index.html' />
+	<link rel='archives' title='October 2007' href='../../2007/10/index.html' />
+	<link rel='archives' title='September 2007' href='../../2007/09/index.html' />
+	<link rel='archives' title='August 2007' href='../../2007/08/index.html' />
+	<link rel='archives' title='July 2007' href='../../2007/07/index.html' />
+	<link rel='archives' title='June 2007' href='../../2007/06/index.html' />
+	<link rel='archives' title='May 2007' href='../../2007/05/index.html' />
+	<link rel='archives' title='April 2007' href='../../2007/04/index.html' />
+	<link rel='archives' title='March 2007' href='../../2007/03/index.html' />
+	<link rel='archives' title='February 2007' href='../../2007/02/index.html' />
+	<link rel='archives' title='January 2007' href='../../2007/01/index.html' />
+	<link rel='archives' title='December 2006' href='../../2006/12/index.html' />
+	<link rel='archives' title='November 2006' href='../../2006/11/index.html' />
+	<link rel='archives' title='October 2006' href='../../2006/10/index.html' />
+	<link rel='archives' title='September 2006' href='../../2006/09/index.html' />
+	<link rel="alternate" type="application/rss+xml" title="danvk.org &raquo; JRuby Performance, Yowch! Comments Feed" href="feed/index.html" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../../xmlrpc0db0.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../../wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Barack Obama Myspace Gaffe' href='../barack-obama-myspace-gaffe/index.html' />
+<link rel='next' title='Movies to see, movies to not see' href='../../2007-05-06/movies-to-see-movies-to-not-see/index.html' />
+<meta name="generator" content="WordPress 3.9.2" />
+<link rel='canonical' href='index.html' />
+<link rel='shortlink' href='../../index269b.html?p=141' />
+<style type="text/css">
+/* <![CDATA[ */
+img.latex { vertical-align: middle; border: none; }
+/* ]]> */
+</style>
+<style type="text/css" id="syntaxhighlighteranchor"></style>
+</head>
+	
+<body>
+
+<div id="wrapper">
+
+<div id="header">
+<h1><a href="http://www.danvk.org/wp">danvk.org</a></h1>
+<p>Keepin&#8217; static like wool fabric since 2006</p>
+</div>
+
+<div id="content">
+
+			
+		<div class="post">
+
+			<h1 class="storydate">05.02.07</h1> 
+			<h2 id="post-141" class="storytitle"><a href="index.html" rel="bookmark" title="Permanent link to JRuby Performance, Yowch!">JRuby Performance, Yowch!</a></h2>
+			<p class="meta">Posted in <a href="../../category/boggle/index.html" title="View all posts in boggle" rel="category tag">boggle</a>, <a href="../../category/programming/index.html" title="View all posts in programming" rel="category tag">programming</a> at 10:58 pm by danvk</p>
+		
+			<p>I took <a href="http://jruby.codehaus.org/">JRuby</a> 0.9.9 for a spin with the <a href="../../index7665.html?p=65">exceptionally-inefficient Boggle program</a> from a few months back. Here are the numbers:</p>
+<pre>$ <b>time ruby short.rb c a t d l i n e m a r o p e t s</b>
+2338
+ruby short.rb c a t d l i n e m a r o p e t s  241.95s user 1.20s system 97% cpu 4:08.35 total</pre>
+<pre>$ <b>time jruby short.rb c a t d l i n e m a r o p e t s</b>
+2338
+jruby short.rb c a t d l i n e m a r o p e t s  1178.86s user 40.84s system 108% cpu 18:44.44 total</pre>
+<p>I&#8217;d heard JRuby was slow, but this is spectacular. Four times slower than the already-slow Ruby?</p>
+<p>I&#8217;d always thought that the point of JRuby was to run Ruby programs on the JVM, and hence get the benefits of the JVM&#8217;s JIT. I guess not. With that kind of performance, the only possible justification is the ability to use Java libraries.</p>
+			
+			<p class="feedback">
+			<a href="index.html" rel="bookmark" title="Permanent link to JRuby Performance, Yowch!" class="permalink">Permalink</a>
+						</p>
+		
+		</div>
+			
+		
+<!-- You can start editing here. -->
+
+
+	<h2 id="comments">
+		7 Comments			</h2> 
+
+	<ol id="commentlist">
+
+	
+		<li class="commentalt" id="comment-2466">
+			<p class="commentauthor">A said,</p>
+			<p class="commentmeta">May 2, 2007 at <a href="#comment-2466" title="Permanent link to this comment">11:42 pm</a> </p>
+			
+			<p>I know JRuby has a compiler; did you try that or are you just running it off the interpreter?</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-2467">
+			<p class="commentauthor"><a href='http://danvk.org/' rel='external nofollow' class='url'>danvk</a> said,</p>
+			<p class="commentmeta">May 2, 2007 at <a href="#comment-2467" title="Permanent link to this comment">11:47 pm</a> </p>
+			
+			<p>Yeah, I did try that, jrubyc gave me:</p>
+<p>Error &#8212; Not compilable: Can&#8217;t compile node: NextNode[]</p>
+<p>Any ideas?</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-2468">
+			<p class="commentauthor"><a href='http://headius.blogspot.com/' rel='external nofollow' class='url'>Charles Oliver Nutter</a> said,</p>
+			<p class="commentmeta">May 3, 2007 at <a href="#comment-2468" title="Permanent link to this comment">12:23 am</a> </p>
+			
+			<p>Your results aren&#8217;t too surprising. JRuby can run faster than MRI, but a few things have to line up:</p>
+<p>1. Generally you need to run Java 6, which is by far the fastest release of Java yet.<br />
+2. You need to run the &#8220;server&#8221; more in Java, which runs considerably faster.<br />
+3. If possible, you need to enable the JRuby compiler to get the best performance.<br />
+4. Disabling objectspace can get you another big gain, since it&#8217;s just pure overhead for JRuby.</p>
+<p>When these four line up, or even three (ObjectSpace isn&#8217;t crucial), JRuby consistently outperforms Ruby. And that&#8217;s good enough for a lot of people. But we&#8217;re working to make it faster an faster, so that folks not running Java 6 can get good performance, and so that the compiler is able to compile more code.</p>
+<p>You would probably be able to do 1, 2, and 4 by using the following command line (with Java 6 installed):</p>
+<p>jruby SERVER -O short.rb &#8230;..</p>
+<p>Unfortunately there&#8217;s a number of things in your code golfed version that won&#8217;t compile, so you won&#8217;t get the largest performance boost you could. It&#8217;s also important to remember that although code running on the JVM will almost always run very fast, it rarely does so right away. It takes some time for code to get JITted by Java.</p>
+<p>All that said, here&#8217;s my results for your test, using Java 6 server VM with objectspace disabled. I&#8217;ve also created a modified version of your script that could take better advantage of the compiler and compared that.</p>
+<p>The primary two things in the golfed version that couldn&#8217;t compile is the swap (p, B[x][y] = &#8230;) and the each block that accepts two arguments. Both will be compilable soon in the future, but they&#8217;re not now. My modification did a slow swap (split it in to two lines) and move the each block out to a separate method. Then JRuby&#8217;s JIT is able to compile the &#8220;s&#8221; method.</p>
+<p>ruby time: 8m45.336s<br />
+jruby time: 7m21.713s</p>
+<p>Note that this would improve if the last each block could also be compiled, rather than moved out to a separate method, but it&#8217;s still pretty good. We&#8217;ll get everything compiling, hopefully soon after the 1.0 final release.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-2482">
+			<p class="commentauthor"><a href='http://danvk.org/' rel='external nofollow' class='url'>danvk</a> said,</p>
+			<p class="commentmeta">May 3, 2007 at <a href="#comment-2482" title="Permanent link to this comment">9:04 am</a> </p>
+			
+			<p>Thanks for the followup, Charles. You guys certainly get props for being on top of the JRuby blogosphere. I&#8217;m on Mac OS X, so my JVM build is 1.5.0_07-87, which I assume means Java 5.</p>
+<p>I&#8217;m curious why the &#8220;do |a,b| &#8230; end&#8221; syntax isn&#8217;t supported yet. I&#8217;ve found it to be a major time saver in my Ruby coding.</p>
+<p>Also, is there any official documentation for jrubyc? A google search asks me if I meant &#8220;ruby&#8221;, and shows lots of source code.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-2483">
+			<p class="commentauthor"><a href='http://headius.blogspot.com/' rel='external nofollow' class='url'>Charles Oliver Nutter</a> said,</p>
+			<p class="commentmeta">May 3, 2007 at <a href="#comment-2483" title="Permanent link to this comment">9:33 am</a> </p>
+			
+			<p>Yep, that would be Java 5. Java 6 is only available through the Apple Developer Connection (which isn&#8217;t hard to get into).</p>
+<p>The details of why it can&#8217;t compile are a little tricky. Basically anything other than a single argument block parses to a multiple assignment. The variable-swapping code also compiles to multiple assignment. Multiassign is probably the nastiest bit of Ruby to get compiling right, because for each variable/element being assigned it may have to do something different. And basically, I haven&#8217;t subjected myself to that pain yet. But I came up with a new strategy for compiling it, so there&#8217;s a chance it could still be in 1.0 final.</p>
+<p>And no, there&#8217;s no official documentation for jrubyc. I figured it was mostly experimental until more stuff compiles and people could really start using it regularly. For 1.0 it won&#8217;t be an officially supported feature, since it won&#8217;t be able to compile everything.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-3362">
+			<p class="commentauthor">Kungen said,</p>
+			<p class="commentmeta">July 15, 2007 at <a href="#comment-3362" title="Permanent link to this comment">12:07 pm</a> </p>
+			
+			<p>danvk: You don&#8217;t have the sources (or even clips) of your online php boggle-solver anywhere? I have tried to make one myself. I have worked on it for few weeks, but still it doesn&#8217;t work right. I really can&#8217;t think cpp-code as php, so I can&#8217;t use those example sources of yours?</p>
+<p>Are you planning on publishing those sources someday?</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-3382">
+			<p class="commentauthor"><a href='http://danvk.org/' rel='external nofollow' class='url'>danvk</a> said,</p>
+			<p class="commentmeta">July 17, 2007 at <a href="#comment-3382" title="Permanent link to this comment">9:04 am</a> </p>
+			
+			<p>Kungen: The PHP is just a simple wrapper around the C++ program. I&#8217;ve sent it to you as an email, but I have no plans to post the source here, since it&#8217;s not particularly interesting.</p>
+		</li>
+
+		
+	
+	</ol>
+
+
+	
+	
+</div>
+
+<div id="sidebar">
+<ul>
+
+	<li id="search">
+		<form method="get" id="searchform" action="http://www.danvk.org/wp/index.php">
+<p>
+<input type="text" value="" name="s" id="s" /><br />
+<input type="submit" id="searchsubmit" value="Search" />
+</p>
+</form>	</li> 
+
+<!-- I want more control than this gives me: wp_list_pages('title_li=<h2>' . __('Pages') . '</h2>' ); -->
+
+	<li class="pagenav">
+		<ul>
+			<!--<li class="page_item"><a href="http://www.danvk.org/wp/?page_id=2" title="About">About</a></li>-->
+			<li>Dan across the web
+				<ul>
+					<li class="social">
+					<a href="https://github.com/danvk"><img src="https://github.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://twitter.com/danvdk"><img src="https://twitter.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://www.facebook.com/danvdk"><img src="https://facebook.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://plus.google.com/+DanVanderkam"><img src="https://plus.google.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://www.linkedin.com/profile/view?id=340204755"><img src="https://www.linkedin.com/favicon.ico" width=16 height=16 border=0></a>
+					<script data-gittip-username="danvdk" data-gittip-widget="button" src="http://gttp.co/v1.js"></script>
+				</ul>
+
+			<li>Dan's projects
+				<ul class="projects">
+					<li><a href="http://dygraphs.com/">dygraphs</a>
+					<li><a href="http://oldsf.org/">OldSF</a>
+					<li><a href="http://comparea.org/">Comparea</a>
+					<li><a href="https://github.com/danvk/webdiff">git webdiff</a>
+				</ul>
+
+			<li>Features on this site
+				<ul class="features">
+					<li><a href="http://www.danvk.org/boggle.php" title="Boggle Solver">Online Boggle Solver</a></li>
+					<li><a href="../../beals-conjecture/index.html" title="Beal&#039;s Conjecture">Beal's Conjecture</a></li>
+					<li><a href="../../gw-basic-program-decoder/index.html" title="GW-BASIC Program Decoder">GW-BASIC Program Decoder</a></li>
+					<li><a href="http://www.danvk.org/tower/nstower.html">NS-Tower in your Browser</a></li>
+				</ul>
+		</ul>
+	</li>
+
+	<!--
+	<li id="twitter_sidebar">
+		<div id="twitter_div">
+		<a href="http://twitter.com/danvdk" target="_blank"><h2 class="sidebar-title">Follow me on Twitter</h2></a>
+		<ul id="twitter_update_list" style="padding-right:30px"></ul>
+		
+		</div>
+		<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+		<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/danvdk.json?callback=twitterCallback2&amp;count=5"></script>
+	</li>
+	-->
+
+	<li id="archives">
+		<h2>Archives</h2>
+		<ul>
+			<li><a href='../../2014/10/index.html'>October 2014</a></li>
+	<li><a href='../../2014/08/index.html'>August 2014</a></li>
+	<li><a href='../../2014/07/index.html'>July 2014</a></li>
+	<li><a href='../../2014/06/index.html'>June 2014</a></li>
+	<li><a href='../../2014/03/index.html'>March 2014</a></li>
+	<li><a href='../../2014/02/index.html'>February 2014</a></li>
+	<li><a href='../../2014/01/index.html'>January 2014</a></li>
+	<li><a href='../../2013/08/index.html'>August 2013</a></li>
+	<li><a href='../../2013/06/index.html'>June 2013</a></li>
+	<li><a href='../../2013/04/index.html'>April 2013</a></li>
+	<li><a href='../../2013/03/index.html'>March 2013</a></li>
+	<li><a href='../../2013/02/index.html'>February 2013</a></li>
+	<li><a href='../../2013/01/index.html'>January 2013</a></li>
+	<li><a href='../../2012/12/index.html'>December 2012</a></li>
+	<li><a href='../../2012/09/index.html'>September 2012</a></li>
+	<li><a href='../../2012/08/index.html'>August 2012</a></li>
+	<li><a href='../../2012/07/index.html'>July 2012</a></li>
+	<li><a href='../../2012/06/index.html'>June 2012</a></li>
+	<li><a href='../../2012/05/index.html'>May 2012</a></li>
+	<li><a href='../../2012/04/index.html'>April 2012</a></li>
+	<li><a href='../../2012/02/index.html'>February 2012</a></li>
+	<li><a href='../../2012/01/index.html'>January 2012</a></li>
+	<li><a href='../../2011/12/index.html'>December 2011</a></li>
+	<li><a href='../../2011/11/index.html'>November 2011</a></li>
+	<li><a href='../../2011/08/index.html'>August 2011</a></li>
+	<li><a href='../../2011/03/index.html'>March 2011</a></li>
+	<li><a href='../../2010/06/index.html'>June 2010</a></li>
+	<li><a href='../../2010/03/index.html'>March 2010</a></li>
+	<li><a href='../../2009/12/index.html'>December 2009</a></li>
+	<li><a href='../../2009/11/index.html'>November 2009</a></li>
+	<li><a href='../../2009/10/index.html'>October 2009</a></li>
+	<li><a href='../../2009/09/index.html'>September 2009</a></li>
+	<li><a href='../../2009/08/index.html'>August 2009</a></li>
+	<li><a href='../../2009/06/index.html'>June 2009</a></li>
+	<li><a href='../../2009/05/index.html'>May 2009</a></li>
+	<li><a href='../../2009/03/index.html'>March 2009</a></li>
+	<li><a href='../../2009/02/index.html'>February 2009</a></li>
+	<li><a href='../../2009/01/index.html'>January 2009</a></li>
+	<li><a href='../../2008/12/index.html'>December 2008</a></li>
+	<li><a href='../../2008/11/index.html'>November 2008</a></li>
+	<li><a href='../../2008/10/index.html'>October 2008</a></li>
+	<li><a href='../../2008/09/index.html'>September 2008</a></li>
+	<li><a href='../../2008/08/index.html'>August 2008</a></li>
+	<li><a href='../../2008/06/index.html'>June 2008</a></li>
+	<li><a href='../../2008/05/index.html'>May 2008</a></li>
+	<li><a href='../../2008/02/index.html'>February 2008</a></li>
+	<li><a href='../../2008/01/index.html'>January 2008</a></li>
+	<li><a href='../../2007/12/index.html'>December 2007</a></li>
+	<li><a href='../../2007/11/index.html'>November 2007</a></li>
+	<li><a href='../../2007/10/index.html'>October 2007</a></li>
+	<li><a href='../../2007/09/index.html'>September 2007</a></li>
+	<li><a href='../../2007/08/index.html'>August 2007</a></li>
+	<li><a href='../../2007/07/index.html'>July 2007</a></li>
+	<li><a href='../../2007/06/index.html'>June 2007</a></li>
+	<li><a href='../../2007/05/index.html'>May 2007</a></li>
+	<li><a href='../../2007/04/index.html'>April 2007</a></li>
+	<li><a href='../../2007/03/index.html'>March 2007</a></li>
+	<li><a href='../../2007/02/index.html'>February 2007</a></li>
+	<li><a href='../../2007/01/index.html'>January 2007</a></li>
+	<li><a href='../../2006/12/index.html'>December 2006</a></li>
+	<li><a href='../../2006/11/index.html'>November 2006</a></li>
+	<li><a href='../../2006/10/index.html'>October 2006</a></li>
+	<li><a href='../../2006/09/index.html'>September 2006</a></li>
+		</ul>
+	</li>
+
+		
+	<li id="categories">
+		<h2>Categories</h2>
+		<ul>
+			<li class="cat-item cat-item-21"><a href="../../category/astronomy/index.html" title="View all posts filed under astronomy">astronomy</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="../../category/boggle/index.html" title="View all posts filed under boggle">boggle</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="../../category/books/index.html" title="View all posts filed under books">books</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="../../category/finance/index.html" title="View all posts filed under finance">finance</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="../../category/javascript/index.html" title="View all posts filed under javascript">javascript</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="../../category/math/index.html" title="View all posts filed under math">math</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="../../category/meta/index.html" title="View all posts filed under meta">meta</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="../../category/movies/index.html" title="View all posts filed under movies">movies</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="../../category/music/index.html" title="View all posts filed under music">music</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="../../category/news/index.html" title="View all posts filed under news">news</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="../../category/personal/index.html" title="View all posts filed under personal">personal</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="../../category/politics/index.html" title="View all posts filed under politics">politics</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="../../category/programming/index.html" title="View all posts filed under programming">programming</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="../../category/reviews/index.html" title="View all posts filed under reviews">reviews</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="../../category/san-francisco/index.html" title="View all posts filed under san francisco">san francisco</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="../../category/science/index.html" title="View all posts filed under science">science</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="../../category/space/index.html" title="View all posts filed under space">space</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="../../category/sports/index.html" title="View all posts filed under sports">sports</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="../../category/tennis/index.html" title="View all posts filed under tennis">tennis</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="../../category/travel/index.html" title="View all posts filed under travel">travel</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="../../category/tv/index.html" title="View all posts filed under tv">tv</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="../../category/uncategorized/index.html" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="../../category/web/index.html" title="View all posts filed under web">web</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="../../category/wikipedia/index.html" title="View all posts filed under wikipedia">wikipedia</a>
+</li>
+ 
+		</ul>
+	</li>
+	
+			
+	
+	<li id="meta">
+		<h2>Meta</h2>
+		<ul>
+				<li><a href="../../wp-login.html">Log in</a></li>
+		<li><a href="../../feed/index.html" title="Syndicate this site using RSS">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+		<li><a href="../../comments/feed/index.html" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+		<li><a href="http://wordpress.org/" title="Powered by Wordpress, state-of-the-art semantic personal publishing platform.">Wordpress</a></li>
+				</ul>
+	</li>
+	
+</ul>
+</div>
+
+<div id="footer">
+
+<!--<p>
+
+
+Design by <a href="http://ravenkeller.com">Raven Keller</a> and <a href="http://weblogs.us" title="Theme sponsored by Weblogs.us">Weblogs.us</a>
+&#183;
+<a href="http://validator.w3.org/check/referer" title="This page validates as XHTML 1.0 Transitional"><abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a>
+&#183;
+<a href="http://jigsaw.w3.org/css-validator/check/referer" title="This page validates as CSS"><abbr title="Cascading Style Sheets">CSS</abbr></a>
+<img src='http://counter.dreamhost.com/cgi-bin/Count.cgi?df=danvk-maincounter.dat&pad=F&ft=0&dd=copper&istrip=T' align=right />
+</p>-->
+
+
+</div>
+
+
+<!-- Google Analytics -->
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-769809-1";
+urchinTracker();
+</script>
+
+</body>
+
+<!-- Mirrored from www.danvk.org/wp/2007-05-02/jruby-performance-yowch/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Oct 2014 03:10:08 GMT -->
+</html>	
+
+
+
+<!--<footer class="container"></footer>-->
+

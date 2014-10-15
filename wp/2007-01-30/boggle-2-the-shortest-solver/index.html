@@ -1,0 +1,531 @@
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<!-- Mirrored from www.danvk.org/wp/2007-01-30/boggle-2-the-shortest-solver/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Oct 2014 03:09:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="generator" content="WordPress 3.9.2" /> <!-- leave this for stats please -->
+	<title>danvk.org &raquo; Boggle #2: The Shortest Solver</title>
+	<style type="text/css" media="screen">
+		@import url( ../../wp-content/themes/ocadia/style.css);
+			</style>
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="../../feed/index.html" />
+	<link rel="alternate" type="text/xml" title="RSS .92" href="../../feed/rss/index.html" />
+	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="../../feed/atom/index.html" />
+	<link rel="pingback" href="../../xmlrpc.php" />
+    	<link rel='archives' title='October 2014' href='../../2014/10/index.html' />
+	<link rel='archives' title='August 2014' href='../../2014/08/index.html' />
+	<link rel='archives' title='July 2014' href='../../2014/07/index.html' />
+	<link rel='archives' title='June 2014' href='../../2014/06/index.html' />
+	<link rel='archives' title='March 2014' href='../../2014/03/index.html' />
+	<link rel='archives' title='February 2014' href='../../2014/02/index.html' />
+	<link rel='archives' title='January 2014' href='../../2014/01/index.html' />
+	<link rel='archives' title='August 2013' href='../../2013/08/index.html' />
+	<link rel='archives' title='June 2013' href='../../2013/06/index.html' />
+	<link rel='archives' title='April 2013' href='../../2013/04/index.html' />
+	<link rel='archives' title='March 2013' href='../../2013/03/index.html' />
+	<link rel='archives' title='February 2013' href='../../2013/02/index.html' />
+	<link rel='archives' title='January 2013' href='../../2013/01/index.html' />
+	<link rel='archives' title='December 2012' href='../../2012/12/index.html' />
+	<link rel='archives' title='September 2012' href='../../2012/09/index.html' />
+	<link rel='archives' title='August 2012' href='../../2012/08/index.html' />
+	<link rel='archives' title='July 2012' href='../../2012/07/index.html' />
+	<link rel='archives' title='June 2012' href='../../2012/06/index.html' />
+	<link rel='archives' title='May 2012' href='../../2012/05/index.html' />
+	<link rel='archives' title='April 2012' href='../../2012/04/index.html' />
+	<link rel='archives' title='February 2012' href='../../2012/02/index.html' />
+	<link rel='archives' title='January 2012' href='../../2012/01/index.html' />
+	<link rel='archives' title='December 2011' href='../../2011/12/index.html' />
+	<link rel='archives' title='November 2011' href='../../2011/11/index.html' />
+	<link rel='archives' title='August 2011' href='../../2011/08/index.html' />
+	<link rel='archives' title='March 2011' href='../../2011/03/index.html' />
+	<link rel='archives' title='June 2010' href='../../2010/06/index.html' />
+	<link rel='archives' title='March 2010' href='../../2010/03/index.html' />
+	<link rel='archives' title='December 2009' href='../../2009/12/index.html' />
+	<link rel='archives' title='November 2009' href='../../2009/11/index.html' />
+	<link rel='archives' title='October 2009' href='../../2009/10/index.html' />
+	<link rel='archives' title='September 2009' href='../../2009/09/index.html' />
+	<link rel='archives' title='August 2009' href='../../2009/08/index.html' />
+	<link rel='archives' title='June 2009' href='../../2009/06/index.html' />
+	<link rel='archives' title='May 2009' href='../../2009/05/index.html' />
+	<link rel='archives' title='March 2009' href='../../2009/03/index.html' />
+	<link rel='archives' title='February 2009' href='../../2009/02/index.html' />
+	<link rel='archives' title='January 2009' href='../../2009/01/index.html' />
+	<link rel='archives' title='December 2008' href='../../2008/12/index.html' />
+	<link rel='archives' title='November 2008' href='../../2008/11/index.html' />
+	<link rel='archives' title='October 2008' href='../../2008/10/index.html' />
+	<link rel='archives' title='September 2008' href='../../2008/09/index.html' />
+	<link rel='archives' title='August 2008' href='../../2008/08/index.html' />
+	<link rel='archives' title='June 2008' href='../../2008/06/index.html' />
+	<link rel='archives' title='May 2008' href='../../2008/05/index.html' />
+	<link rel='archives' title='February 2008' href='../../2008/02/index.html' />
+	<link rel='archives' title='January 2008' href='../../2008/01/index.html' />
+	<link rel='archives' title='December 2007' href='../../2007/12/index.html' />
+	<link rel='archives' title='November 2007' href='../../2007/11/index.html' />
+	<link rel='archives' title='October 2007' href='../../2007/10/index.html' />
+	<link rel='archives' title='September 2007' href='../../2007/09/index.html' />
+	<link rel='archives' title='August 2007' href='../../2007/08/index.html' />
+	<link rel='archives' title='July 2007' href='../../2007/07/index.html' />
+	<link rel='archives' title='June 2007' href='../../2007/06/index.html' />
+	<link rel='archives' title='May 2007' href='../../2007/05/index.html' />
+	<link rel='archives' title='April 2007' href='../../2007/04/index.html' />
+	<link rel='archives' title='March 2007' href='../../2007/03/index.html' />
+	<link rel='archives' title='February 2007' href='../../2007/02/index.html' />
+	<link rel='archives' title='January 2007' href='../../2007/01/index.html' />
+	<link rel='archives' title='December 2006' href='../../2006/12/index.html' />
+	<link rel='archives' title='November 2006' href='../../2006/11/index.html' />
+	<link rel='archives' title='October 2006' href='../../2006/10/index.html' />
+	<link rel='archives' title='September 2006' href='../../2006/09/index.html' />
+	<link rel="alternate" type="application/rss+xml" title="danvk.org &raquo; Boggle #2: The Shortest Solver Comments Feed" href="feed/index.html" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../../xmlrpc0db0.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../../wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='WordPress 2.1' href='../../2007-01-29/wordpress-21/index.html' />
+<link rel='next' title='Colbert and Wikipedia' href='../colbert-and-wikipedia/index.html' />
+<meta name="generator" content="WordPress 3.9.2" />
+<link rel='canonical' href='index.html' />
+<link rel='shortlink' href='../../index7665.html?p=65' />
+<style type="text/css">
+/* <![CDATA[ */
+img.latex { vertical-align: middle; border: none; }
+/* ]]> */
+</style>
+<style type="text/css" id="syntaxhighlighteranchor"></style>
+</head>
+	
+<body>
+
+<div id="wrapper">
+
+<div id="header">
+<h1><a href="http://www.danvk.org/wp">danvk.org</a></h1>
+<p>Keepin&#8217; static like wool fabric since 2006</p>
+</div>
+
+<div id="content">
+
+			
+		<div class="post">
+
+			<h1 class="storydate">01.30.07</h1> 
+			<h2 id="post-65" class="storytitle"><a href="index.html" rel="bookmark" title="Permanent link to Boggle #2: The Shortest Solver">Boggle #2: The Shortest Solver</a></h2>
+			<p class="meta">Posted in <a href="../../category/boggle/index.html" title="View all posts in boggle" rel="category tag">boggle</a>, <a href="../../category/programming/index.html" title="View all posts in programming" rel="category tag">programming</a> at 1:40 am by danvk</p>
+		
+			<p><a href="../../index96f1.html?p=67">Last time</a>, we talked about how to play Boggle and the general idea of a program to find all the words on a board. This time, we&#8217;ll implement it! We&#8217;ll use <a href="http://www.ruby-lang.org/">Ruby</a>, since it&#8217;s such a wonderful language.</p>
+<p>First of all, we&#8217;ll need a dictionary of valid English words. There are plenty of different dictionaries floating around the web, and if you&#8217;re running a UNIX-style OS, you&#8217;ve already got one in /usr/share/dict/words. That dictionary is pretty bad, though. It&#8217;s designed for spellcheckers, and has no shortage of extremely questionable words (e.g. &#8220;aal&#8221; &#8212; more on this in a future post). I&#8217;ve eventually settled on the <a href="http://personal.riverusers.com/~thegrendel/software.html">ENABLE2K</a> list, since it seems to agree well with the scrabble dictionary and my intuition for words.</p>
+<p>A dictionary on disk is no good, though. We need to load it into memory. Hash tables are the best built-in data structure for us, since they provide fast word lookups. Here&#8217;s the code:</p>
+<pre class="brush: ruby; title: ; notranslate" title="">
+Words = Hash.new
+IO.foreach(&quot;words&quot;) do |line|
+  line =~ /^([a-z]{3,17})\b/ and Words[$1] = true
+end
+</pre>
+<p>There&#8217;s some slightly subtle stuff going on here. <code>IO.foreach</code> passes each line in a file to its block. In a display of its Perl roots, Ruby includes the trailing newline on each line. That&#8217;s what the &#8220;\b&#8221; in the regular expression is matching. In Perl, we could have written <code>/^([a-z]{3,17})$/</code>, since Perl interprets &#8220;$&#8221; as end-of-line. But Ruby interprets it as end-of-string, so we have to fudge. The capturing parens cut off the newline and put the word in <code>$1</code>, which we add to the hash.</p>
+<p>Just a little more setting up. We&#8217;ll represent the board as a 4&#215;4 array of strings, one for each letter on the board. Letters will come in from the command line arguments (<code>ARGV</code>). We also need a way to remember which words we&#8217;ve found and which cells we&#8217;ve gone through in the depth-first search.</p>
+<pre class="brush: ruby; title: ; notranslate" title="">
+Found = {} # = Hash.new
+Prev = Array.new(4) { [false] * 4 }
+Bd = Array.new(4) { [0] * 4 }
+(0..15).each { |i| Bd[i/4][i%4] = ARGV[i] }
+</pre>
+<p>When you use multiplication on arrays in Ruby it acts like Perl&#8217;s <code>x</code> operator, so <code>[0] * 4 == [0,0,0,0]</code>.</p>
+<p>Now for the meat of the algorithm, the recursive DFS routine. When we enter a cell, we mark it as visited so that longer paths won&#8217;t illegally pass through the cell again. Then we check if we&#8217;ve formed an English word. Finally, we continue the search on paths in every direction around the cell.</p>
+<pre class="brush: ruby; title: ; notranslate" title="">
+Dirs = [ [-1,-1], [-1,0], [-1,1], [0,-1], [0,1], [1,-1], [1,0], [1,1] ]
+def solve(x, y, sofar)
+  Prev[x][y]=true               # Mark our turf
+
+  wd = sofar + Bd[x][y]
+  Found[wd]=true if Words[wd]   # count the new word
+  
+  Dirs.each do |dx, dy|
+    next unless (0..3)===(x+dx) # are we still
+    next unless (0..3)===(y+dy) # on the board?
+    next if Prev[x+dx][y+dy]    # have we been here before?
+    solve(x+dx,y+dy,wd)         # keep going!
+  end
+  
+  Prev[x][y] = false            # We're done here
+end
+</pre>
+<p>When Ruby sees a single array like <code>[1,0]</code> passed into a block with two parameters, it automatically expands the array to match the params, which is almost always exactly what you want. The recursion bottoms out when we got trapped in a cell:  <code>Prev[x+dx][y+dy]</code> is set on each iteration of the loop that lands on the board.</p>
+<p>That funky <code>===</code> operator is the range inclusion operator. The statement <code>(a..b)===x</code> is entirely equivalent to <code>a<=x &#038;&#038; x<=b</code>.</p>
+<p>Finally we need to start the search from each cell and tally up the score:</p>
+<pre class="brush: ruby; title: ; notranslate" title="">
+(0..15).each { |i| solve(i/4, i%4, &quot;&quot;) }
+
+# Length: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17
+Scores = [0, 0, 0, 1, 1, 2, 3, 5,11,11,11,11,11,11,11,11,11,11]
+puts Found.keys.inject(0) { |sum,w| sum + Scores[w.length] }
+</pre>
+<p>The <code>Enumerable.inject</code> method is like <code>foldr</code> in functional languages or <code>accumulate</code> in the C++ STL. It takes a starting value (<code>0</code> in this case) and an action on that value for each item in the enumeration.</p>
+<p>And that, my friends, is a complete Boggle solver! How fast is this? Here's a few sample runs on my MacBook Pro:</p>
+<pre>$ time ruby short.rb a b c d e f g h i j k l m n o p
+18
+
+real    4m11.836s
+user    4m8.601s
+sys     0m0.777s
+$ time ruby short.rb c a t d l i n e m a r o p e t s
+2338
+
+real    4m12.465s
+user    4m8.631s
+sys     0m0.866s</pre>
+<p>It's a strength of this algorithm that its running time is almost completely independent of the input board. But four minutes is an eternity in computer time. How much better can we do?</p>
+<p>Here's the full source of the program:</p>
+<pre class="brush: ruby; title: ; notranslate" title="">
+# Load all 3-17 letter words into a hash for fast lookup
+Words = Hash.new
+IO.foreach(&quot;words&quot;) do |line|
+  line =~ /^([a-z]{3,17})\b/ and Words[$1] = true
+end
+
+Found = Hash.new                            # hash of words we've found
+Prev = Array.new(4) { [false] * 4 }         # where have we been already?
+Bd = Array.new(4) { [0] * 4 }               # empty 4x4 array
+(0..15).each { |i| Bd[i/4][i%4] = ARGV[i] }
+
+# All the different directions [dx,dy] we can look from a cell
+Dirs = [ [-1,-1], [-1,0], [-1,1], [0,-1], [0,1], [1,-1], [1,0], [1,1] ]
+def solve(x, y, sofar)
+  Prev[x][y]=true               # Mark our turf
+
+  wd = sofar + Bd[x][y]
+  Found[wd]=true if Words[wd]   # count the new word
+  
+  Dirs.each do |dx,dy|
+    next unless (0..3)===(x+dx) # are we still
+    next unless (0..3)===(y+dy) # on the board?
+    next if Prev[x+dx][y+dy]    # have we been here before?
+    solve(x+dx,y+dy,wd)         # keep going!
+  end
+  
+  Prev[x][y] = false            # We're done here
+end
+
+# Start a depth-first search from each cell on the board
+(0..15).each { |i| solve(i/4, i%4, &quot;&quot;) }
+
+#         0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17
+Scores = [0, 0, 0, 1, 1, 2, 3, 5,11,11,11,11,11,11,11,11,11,11]
+puts Found.keys.inject(0) { |sum,w| sum + Scores[w.length] }
+</pre>
+<p>In the spirit of <a href="http://codegolf.com/">code golf</a>, I tried to make this program as short as I possibly could. Here's the result: a 12 line, slow-as-hell Boggle solver that I won't dignify with an explanation. <a href="http://community.livejournal.com/evan_tech">Someone</a> claimed he could write a shorter one in Haskell. I'll believe it when I see it!</p>
+<pre class="brush: ruby; title: ; notranslate" title="">
+W, F = {}, {}
+IO.foreach(&quot;words&quot;) { |l| l =~ /^([a-z]{3,17})\b/ and W[$1] = 1 }
+B = Array.new(6) { [&quot;&quot;]*6 }
+(0..15).each { |i| B[1+i/4][1+i%4] = ARGV[i] }
+def s(x, y, w)
+  p, B[x][y] = B[x][y], &quot;&quot;
+  F[w+p]=true if W[w+p]
+  (0..8).map{|i|[i/3-1,i%3-1]}.each {|e,f| s(x+e,y+f,w+p) if B[x+e][y+f]!=&quot;&quot;}
+  B[x][y] = p
+end
+(0..15).each { |i| s(1+i/4, 1+i%4, &quot;&quot;) }
+puts F.keys.inject(0){|s,w| s+(w.size&lt;8 ? [0,0,0,1,1,2,3,5][w.size] : 11)}
+</pre>
+			
+			<p class="feedback">
+			<a href="index.html" rel="bookmark" title="Permanent link to Boggle #2: The Shortest Solver" class="permalink">Permalink</a>
+						</p>
+		
+		</div>
+			
+		
+<!-- You can start editing here. -->
+
+
+	<h2 id="comments">
+		1 Comment			</h2> 
+
+	<ol id="commentlist">
+
+	
+		<li class="commentalt" id="comment-2464">
+			<p class="commentauthor"><a href='../../index269b.html?p=141' rel='external nofollow' class='url'>danvk.org &raquo; JRuby Performance, Yowch!</a> said,</p>
+			<p class="commentmeta">May 2, 2007 at <a href="#comment-2464" title="Permanent link to this comment">10:58 pm</a> </p>
+			
+			<p>[...] took JRuby 0.9.9 for a spin with the exceptionally-inefficient Boggle program from a few months back. Here are the [...]</p>
+		</li>
+
+		
+	
+	</ol>
+
+
+	
+	
+</div>
+
+<div id="sidebar">
+<ul>
+
+	<li id="search">
+		<form method="get" id="searchform" action="http://www.danvk.org/wp/index.php">
+<p>
+<input type="text" value="" name="s" id="s" /><br />
+<input type="submit" id="searchsubmit" value="Search" />
+</p>
+</form>	</li> 
+
+<!-- I want more control than this gives me: wp_list_pages('title_li=<h2>' . __('Pages') . '</h2>' ); -->
+
+	<li class="pagenav">
+		<ul>
+			<!--<li class="page_item"><a href="http://www.danvk.org/wp/?page_id=2" title="About">About</a></li>-->
+			<li>Dan across the web
+				<ul>
+					<li class="social">
+					<a href="https://github.com/danvk"><img src="https://github.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://twitter.com/danvdk"><img src="https://twitter.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://www.facebook.com/danvdk"><img src="https://facebook.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://plus.google.com/+DanVanderkam"><img src="https://plus.google.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://www.linkedin.com/profile/view?id=340204755"><img src="https://www.linkedin.com/favicon.ico" width=16 height=16 border=0></a>
+					<script data-gittip-username="danvdk" data-gittip-widget="button" src="http://gttp.co/v1.js"></script>
+				</ul>
+
+			<li>Dan's projects
+				<ul class="projects">
+					<li><a href="http://dygraphs.com/">dygraphs</a>
+					<li><a href="http://oldsf.org/">OldSF</a>
+					<li><a href="http://comparea.org/">Comparea</a>
+					<li><a href="https://github.com/danvk/webdiff">git webdiff</a>
+				</ul>
+
+			<li>Features on this site
+				<ul class="features">
+					<li><a href="http://www.danvk.org/boggle.php" title="Boggle Solver">Online Boggle Solver</a></li>
+					<li><a href="../../beals-conjecture/index.html" title="Beal&#039;s Conjecture">Beal's Conjecture</a></li>
+					<li><a href="../../gw-basic-program-decoder/index.html" title="GW-BASIC Program Decoder">GW-BASIC Program Decoder</a></li>
+					<li><a href="http://www.danvk.org/tower/nstower.html">NS-Tower in your Browser</a></li>
+				</ul>
+		</ul>
+	</li>
+
+	<!--
+	<li id="twitter_sidebar">
+		<div id="twitter_div">
+		<a href="http://twitter.com/danvdk" target="_blank"><h2 class="sidebar-title">Follow me on Twitter</h2></a>
+		<ul id="twitter_update_list" style="padding-right:30px"></ul>
+		
+		</div>
+		<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+		<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/danvdk.json?callback=twitterCallback2&amp;count=5"></script>
+	</li>
+	-->
+
+	<li id="archives">
+		<h2>Archives</h2>
+		<ul>
+			<li><a href='../../2014/10/index.html'>October 2014</a></li>
+	<li><a href='../../2014/08/index.html'>August 2014</a></li>
+	<li><a href='../../2014/07/index.html'>July 2014</a></li>
+	<li><a href='../../2014/06/index.html'>June 2014</a></li>
+	<li><a href='../../2014/03/index.html'>March 2014</a></li>
+	<li><a href='../../2014/02/index.html'>February 2014</a></li>
+	<li><a href='../../2014/01/index.html'>January 2014</a></li>
+	<li><a href='../../2013/08/index.html'>August 2013</a></li>
+	<li><a href='../../2013/06/index.html'>June 2013</a></li>
+	<li><a href='../../2013/04/index.html'>April 2013</a></li>
+	<li><a href='../../2013/03/index.html'>March 2013</a></li>
+	<li><a href='../../2013/02/index.html'>February 2013</a></li>
+	<li><a href='../../2013/01/index.html'>January 2013</a></li>
+	<li><a href='../../2012/12/index.html'>December 2012</a></li>
+	<li><a href='../../2012/09/index.html'>September 2012</a></li>
+	<li><a href='../../2012/08/index.html'>August 2012</a></li>
+	<li><a href='../../2012/07/index.html'>July 2012</a></li>
+	<li><a href='../../2012/06/index.html'>June 2012</a></li>
+	<li><a href='../../2012/05/index.html'>May 2012</a></li>
+	<li><a href='../../2012/04/index.html'>April 2012</a></li>
+	<li><a href='../../2012/02/index.html'>February 2012</a></li>
+	<li><a href='../../2012/01/index.html'>January 2012</a></li>
+	<li><a href='../../2011/12/index.html'>December 2011</a></li>
+	<li><a href='../../2011/11/index.html'>November 2011</a></li>
+	<li><a href='../../2011/08/index.html'>August 2011</a></li>
+	<li><a href='../../2011/03/index.html'>March 2011</a></li>
+	<li><a href='../../2010/06/index.html'>June 2010</a></li>
+	<li><a href='../../2010/03/index.html'>March 2010</a></li>
+	<li><a href='../../2009/12/index.html'>December 2009</a></li>
+	<li><a href='../../2009/11/index.html'>November 2009</a></li>
+	<li><a href='../../2009/10/index.html'>October 2009</a></li>
+	<li><a href='../../2009/09/index.html'>September 2009</a></li>
+	<li><a href='../../2009/08/index.html'>August 2009</a></li>
+	<li><a href='../../2009/06/index.html'>June 2009</a></li>
+	<li><a href='../../2009/05/index.html'>May 2009</a></li>
+	<li><a href='../../2009/03/index.html'>March 2009</a></li>
+	<li><a href='../../2009/02/index.html'>February 2009</a></li>
+	<li><a href='../../2009/01/index.html'>January 2009</a></li>
+	<li><a href='../../2008/12/index.html'>December 2008</a></li>
+	<li><a href='../../2008/11/index.html'>November 2008</a></li>
+	<li><a href='../../2008/10/index.html'>October 2008</a></li>
+	<li><a href='../../2008/09/index.html'>September 2008</a></li>
+	<li><a href='../../2008/08/index.html'>August 2008</a></li>
+	<li><a href='../../2008/06/index.html'>June 2008</a></li>
+	<li><a href='../../2008/05/index.html'>May 2008</a></li>
+	<li><a href='../../2008/02/index.html'>February 2008</a></li>
+	<li><a href='../../2008/01/index.html'>January 2008</a></li>
+	<li><a href='../../2007/12/index.html'>December 2007</a></li>
+	<li><a href='../../2007/11/index.html'>November 2007</a></li>
+	<li><a href='../../2007/10/index.html'>October 2007</a></li>
+	<li><a href='../../2007/09/index.html'>September 2007</a></li>
+	<li><a href='../../2007/08/index.html'>August 2007</a></li>
+	<li><a href='../../2007/07/index.html'>July 2007</a></li>
+	<li><a href='../../2007/06/index.html'>June 2007</a></li>
+	<li><a href='../../2007/05/index.html'>May 2007</a></li>
+	<li><a href='../../2007/04/index.html'>April 2007</a></li>
+	<li><a href='../../2007/03/index.html'>March 2007</a></li>
+	<li><a href='../../2007/02/index.html'>February 2007</a></li>
+	<li><a href='../../2007/01/index.html'>January 2007</a></li>
+	<li><a href='../../2006/12/index.html'>December 2006</a></li>
+	<li><a href='../../2006/11/index.html'>November 2006</a></li>
+	<li><a href='../../2006/10/index.html'>October 2006</a></li>
+	<li><a href='../../2006/09/index.html'>September 2006</a></li>
+		</ul>
+	</li>
+
+		
+	<li id="categories">
+		<h2>Categories</h2>
+		<ul>
+			<li class="cat-item cat-item-21"><a href="../../category/astronomy/index.html" title="View all posts filed under astronomy">astronomy</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="../../category/boggle/index.html" title="View all posts filed under boggle">boggle</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="../../category/books/index.html" title="View all posts filed under books">books</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="../../category/finance/index.html" title="View all posts filed under finance">finance</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="../../category/javascript/index.html" title="View all posts filed under javascript">javascript</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="../../category/math/index.html" title="View all posts filed under math">math</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="../../category/meta/index.html" title="View all posts filed under meta">meta</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="../../category/movies/index.html" title="View all posts filed under movies">movies</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="../../category/music/index.html" title="View all posts filed under music">music</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="../../category/news/index.html" title="View all posts filed under news">news</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="../../category/personal/index.html" title="View all posts filed under personal">personal</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="../../category/politics/index.html" title="View all posts filed under politics">politics</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="../../category/programming/index.html" title="View all posts filed under programming">programming</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="../../category/reviews/index.html" title="View all posts filed under reviews">reviews</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="../../category/san-francisco/index.html" title="View all posts filed under san francisco">san francisco</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="../../category/science/index.html" title="View all posts filed under science">science</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="../../category/space/index.html" title="View all posts filed under space">space</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="../../category/sports/index.html" title="View all posts filed under sports">sports</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="../../category/tennis/index.html" title="View all posts filed under tennis">tennis</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="../../category/travel/index.html" title="View all posts filed under travel">travel</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="../../category/tv/index.html" title="View all posts filed under tv">tv</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="../../category/uncategorized/index.html" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="../../category/web/index.html" title="View all posts filed under web">web</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="../../category/wikipedia/index.html" title="View all posts filed under wikipedia">wikipedia</a>
+</li>
+ 
+		</ul>
+	</li>
+	
+			
+	
+	<li id="meta">
+		<h2>Meta</h2>
+		<ul>
+				<li><a href="../../wp-login.html">Log in</a></li>
+		<li><a href="../../feed/index.html" title="Syndicate this site using RSS">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+		<li><a href="../../comments/feed/index.html" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+		<li><a href="http://wordpress.org/" title="Powered by Wordpress, state-of-the-art semantic personal publishing platform.">Wordpress</a></li>
+				</ul>
+	</li>
+	
+</ul>
+</div>
+
+<div id="footer">
+
+<!--<p>
+
+
+Design by <a href="http://ravenkeller.com">Raven Keller</a> and <a href="http://weblogs.us" title="Theme sponsored by Weblogs.us">Weblogs.us</a>
+&#183;
+<a href="http://validator.w3.org/check/referer" title="This page validates as XHTML 1.0 Transitional"><abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a>
+&#183;
+<a href="http://jigsaw.w3.org/css-validator/check/referer" title="This page validates as CSS"><abbr title="Cascading Style Sheets">CSS</abbr></a>
+<img src='http://counter.dreamhost.com/cgi-bin/Count.cgi?df=danvk-maincounter.dat&pad=F&ft=0&dd=copper&istrip=T' align=right />
+</p>-->
+
+
+</div>
+
+<script type='text/javascript' src='../../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore677a.js?ver=3.0.9'></script>
+<script type='text/javascript' src='../../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushRuby677a.js?ver=3.0.9'></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "../../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore677a.css?ver=3.0.9";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "../../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault677a.css?ver=3.0.9";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+</script>
+
+<!-- Google Analytics -->
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-769809-1";
+urchinTracker();
+</script>
+
+</body>
+
+<!-- Mirrored from www.danvk.org/wp/2007-01-30/boggle-2-the-shortest-solver/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Oct 2014 03:09:49 GMT -->
+</html>	
+
+
+
+<!--<footer class="container"></footer>-->
+

@@ -1,0 +1,475 @@
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<!-- Mirrored from www.danvk.org/wp/2007-12-24/using-track-parser/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Oct 2014 03:11:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="generator" content="WordPress 3.9.2" /> <!-- leave this for stats please -->
+	<title>danvk.org &raquo; Using Track Parser</title>
+	<style type="text/css" media="screen">
+		@import url( ../../wp-content/themes/ocadia/style.css);
+			</style>
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="../../feed/index.html" />
+	<link rel="alternate" type="text/xml" title="RSS .92" href="../../feed/rss/index.html" />
+	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="../../feed/atom/index.html" />
+	<link rel="pingback" href="../../xmlrpc.php" />
+    	<link rel='archives' title='October 2014' href='../../2014/10/index.html' />
+	<link rel='archives' title='August 2014' href='../../2014/08/index.html' />
+	<link rel='archives' title='July 2014' href='../../2014/07/index.html' />
+	<link rel='archives' title='June 2014' href='../../2014/06/index.html' />
+	<link rel='archives' title='March 2014' href='../../2014/03/index.html' />
+	<link rel='archives' title='February 2014' href='../../2014/02/index.html' />
+	<link rel='archives' title='January 2014' href='../../2014/01/index.html' />
+	<link rel='archives' title='August 2013' href='../../2013/08/index.html' />
+	<link rel='archives' title='June 2013' href='../../2013/06/index.html' />
+	<link rel='archives' title='April 2013' href='../../2013/04/index.html' />
+	<link rel='archives' title='March 2013' href='../../2013/03/index.html' />
+	<link rel='archives' title='February 2013' href='../../2013/02/index.html' />
+	<link rel='archives' title='January 2013' href='../../2013/01/index.html' />
+	<link rel='archives' title='December 2012' href='../../2012/12/index.html' />
+	<link rel='archives' title='September 2012' href='../../2012/09/index.html' />
+	<link rel='archives' title='August 2012' href='../../2012/08/index.html' />
+	<link rel='archives' title='July 2012' href='../../2012/07/index.html' />
+	<link rel='archives' title='June 2012' href='../../2012/06/index.html' />
+	<link rel='archives' title='May 2012' href='../../2012/05/index.html' />
+	<link rel='archives' title='April 2012' href='../../2012/04/index.html' />
+	<link rel='archives' title='February 2012' href='../../2012/02/index.html' />
+	<link rel='archives' title='January 2012' href='../../2012/01/index.html' />
+	<link rel='archives' title='December 2011' href='../../2011/12/index.html' />
+	<link rel='archives' title='November 2011' href='../../2011/11/index.html' />
+	<link rel='archives' title='August 2011' href='../../2011/08/index.html' />
+	<link rel='archives' title='March 2011' href='../../2011/03/index.html' />
+	<link rel='archives' title='June 2010' href='../../2010/06/index.html' />
+	<link rel='archives' title='March 2010' href='../../2010/03/index.html' />
+	<link rel='archives' title='December 2009' href='../../2009/12/index.html' />
+	<link rel='archives' title='November 2009' href='../../2009/11/index.html' />
+	<link rel='archives' title='October 2009' href='../../2009/10/index.html' />
+	<link rel='archives' title='September 2009' href='../../2009/09/index.html' />
+	<link rel='archives' title='August 2009' href='../../2009/08/index.html' />
+	<link rel='archives' title='June 2009' href='../../2009/06/index.html' />
+	<link rel='archives' title='May 2009' href='../../2009/05/index.html' />
+	<link rel='archives' title='March 2009' href='../../2009/03/index.html' />
+	<link rel='archives' title='February 2009' href='../../2009/02/index.html' />
+	<link rel='archives' title='January 2009' href='../../2009/01/index.html' />
+	<link rel='archives' title='December 2008' href='../../2008/12/index.html' />
+	<link rel='archives' title='November 2008' href='../../2008/11/index.html' />
+	<link rel='archives' title='October 2008' href='../../2008/10/index.html' />
+	<link rel='archives' title='September 2008' href='../../2008/09/index.html' />
+	<link rel='archives' title='August 2008' href='../../2008/08/index.html' />
+	<link rel='archives' title='June 2008' href='../../2008/06/index.html' />
+	<link rel='archives' title='May 2008' href='../../2008/05/index.html' />
+	<link rel='archives' title='February 2008' href='../../2008/02/index.html' />
+	<link rel='archives' title='January 2008' href='../../2008/01/index.html' />
+	<link rel='archives' title='December 2007' href='../../2007/12/index.html' />
+	<link rel='archives' title='November 2007' href='../../2007/11/index.html' />
+	<link rel='archives' title='October 2007' href='../../2007/10/index.html' />
+	<link rel='archives' title='September 2007' href='../../2007/09/index.html' />
+	<link rel='archives' title='August 2007' href='../../2007/08/index.html' />
+	<link rel='archives' title='July 2007' href='../../2007/07/index.html' />
+	<link rel='archives' title='June 2007' href='../../2007/06/index.html' />
+	<link rel='archives' title='May 2007' href='../../2007/05/index.html' />
+	<link rel='archives' title='April 2007' href='../../2007/04/index.html' />
+	<link rel='archives' title='March 2007' href='../../2007/03/index.html' />
+	<link rel='archives' title='February 2007' href='../../2007/02/index.html' />
+	<link rel='archives' title='January 2007' href='../../2007/01/index.html' />
+	<link rel='archives' title='December 2006' href='../../2006/12/index.html' />
+	<link rel='archives' title='November 2006' href='../../2006/11/index.html' />
+	<link rel='archives' title='October 2006' href='../../2006/10/index.html' />
+	<link rel='archives' title='September 2006' href='../../2006/09/index.html' />
+	<link rel="alternate" type="application/rss+xml" title="danvk.org &raquo; Using Track Parser Comments Feed" href="feed/index.html" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../../xmlrpc0db0.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../../wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='San Francisco History Center' href='../../2007-12-17/san-francisco-history-center/index.html' />
+<link rel='next' title='Best Podcasts of 2007' href='../best-podcasts-of-2007/index.html' />
+<meta name="generator" content="WordPress 3.9.2" />
+<link rel='canonical' href='index.html' />
+<link rel='shortlink' href='../../indexe1a1.html?p=245' />
+<style type="text/css">
+/* <![CDATA[ */
+img.latex { vertical-align: middle; border: none; }
+/* ]]> */
+</style>
+<style type="text/css" id="syntaxhighlighteranchor"></style>
+</head>
+	
+<body>
+
+<div id="wrapper">
+
+<div id="header">
+<h1><a href="http://www.danvk.org/wp">danvk.org</a></h1>
+<p>Keepin&#8217; static like wool fabric since 2006</p>
+</div>
+
+<div id="content">
+
+			
+		<div class="post">
+
+			<h1 class="storydate">12.24.07</h1> 
+			<h2 id="post-245" class="storytitle"><a href="index.html" rel="bookmark" title="Permanent link to Using Track Parser">Using Track Parser</a></h2>
+			<p class="meta">Posted in <a href="../../category/music/index.html" title="View all posts in music" rel="category tag">music</a>, <a href="../../category/programming/index.html" title="View all posts in programming" rel="category tag">programming</a>, <a href="../../category/web/index.html" title="View all posts in web" rel="category tag">web</a> at 12:27 pm by danvk</p>
+		
+			<p><a href='http://www.pitchforkmedia.com/article/feature/47681-staff-list-top-100-tracks-of-2007' title='pitchfork-tracks.png'><img width=145 src='../../wp-content/uploads/2007/12/pitchfork-tracks.png' alt='pitchfork-tracks.png' border=0 style="padding-left:5px;" align=right /></a> <a href="http://www.pitchforkmedia.com/">Pitchfork Media</a> has released their two standard year-end lists, the <a href="http://www.pitchforkmedia.com/article/feature/47681-staff-list-top-100-tracks-of-2007">Top 100 Tracks of 2007</a> and the <a href="http://www.pitchforkmedia.com/article/feature/47446-staff-list-top-50-albums-of-2007">Top 50 Albums of 2007</a>. As usual, they&#8217;ve been lampooned all over the web, including one critique in <a href="http://nymag.com/daily/entertainment/2007/12/pitchforks_top_100_tracks_of_2.html">pie chart form</a>. For me, they made for perfect listening on a long car drive this weekend.</p>
+<p>In my case, this list led to a good use of my <a href="http://dougscripts.com/itunes/scripts/ss.php?sp=trackparser">Track Parser</a> script, which is in all likelihood the most useful program I&#8217;ve ever written. It&#8217;s an AppleScript for iTunes (i.e. Mac only, sorry) that lets you apply regular expressions to track names/tags. Here&#8217;s how I used it today&#8230;</p>
+<p>Through some strange turn of events (certainly nothing to do with <a href="http://www.mininova.org/tor/1054972">this</a>), I found myself with a playlist of the top 100 tracks. The music was all there, but none of the songs had their &#8220;Artist&#8221; field filled in! Here&#8217;s where my Track Parser script came in.</p>
+<p>I <a href="http://www.google.com/search?q=list%20of%20pitchfork%202007%20singles">googled around</a> and quickly found <a href="http://idolator.com/tunes/year_end-analysis/pitchfork-thinks-lcd-soundsystems-all-my-friends-is-something-great-334602.php">this page</a>, which has some commentary on the list, as well as what we&#8217;re interested in: a copy of all the songs/artists in simple text form. (For what it&#8217;s worth, I agree with his reactions.)</p>
+<p>I copied the list and ran two regular expressions to get it down to just the artist (<code>s/ ".*//g</code> and <code>^\d*: </code> if you must know). The tracks are in reverse order of what we want (100 to 1 instead of 1 to 100). So I ran <code>pbpaste | tac | pbcopy</code> to put the #1 track at the top of the list. Or I would have, if Mac OS X had the <a href="http://en.wikipedia.org/wiki/Tac_(Unix)">tac</a> command. Instead, I ran this monstrosity:
+<pre>pbpaste | perl -ne 'push @x, $_; END { print for reverse @x }' | pbcopy</pre>
+<p> to do the same thing. In retrospect, I should have just sorted my playlist in reverse track order.</p>
+<p>Next I went into iTunes and selected my songs. I ran &#8220;Track Parser (Clipboard)&#8221; from the Scripts menu, clicked &#8220;New Pattern&#8221; and put in &#8220;%a&#8221; to extract the artist from each line. Track Parser handled the rest. Total time: about five minutes.</p>
+			
+			<p class="feedback">
+			<a href="index.html" rel="bookmark" title="Permanent link to Using Track Parser" class="permalink">Permalink</a>
+						</p>
+		
+		</div>
+			
+		
+<!-- You can start editing here. -->
+
+
+	<h2 id="comments">
+		8 Comments			</h2> 
+
+	<ol id="commentlist">
+
+	
+		<li class="commentalt" id="comment-6894">
+			<p class="commentauthor">matt said,</p>
+			<p class="commentmeta">January 8, 2008 at <a href="#comment-6894" title="Permanent link to this comment">11:04 am</a> </p>
+			
+			<p>i emailed you a while back about track parser.. just want to say thanks again for it, i use it pretty much every time i&#8217;m in itunes lately. actually i&#8217;ve whittled down your version a bit, i don&#8217;t really use the saved expressions so now i can call it up w/ a shortcut, enter my regex, and i&#8217;m done. but i&#8217;d be lost w/o the core of the script you&#8217;ve put together.</p>
+<p>cheers,<br />
+matt</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-7260">
+			<p class="commentauthor">Wolf said,</p>
+			<p class="commentmeta">February 4, 2008 at <a href="#comment-7260" title="Permanent link to this comment">8:00 am</a> </p>
+			
+			<p>While google&#8217;ing your name for a home page and maybe updated version of track parser I came across your site, and got stuck at your blog. After reading a couple of nice entrys this one popped up, reminding me about why I was here&#8230; ;-)</p>
+<p>Thanks for sharing Track Parser with us. In the last two years it silently replaced almost all other plugins I used to straighten out track information.<br />
+And thanks for giving it out as source code; by looking at it&#8217;s innards I even learned something about AppleScript, which still eludes me most of the time, though.</p>
+<p>Thanks. Thanks very much!</p>
+<p>Cheers from Germany.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-7733">
+			<p class="commentauthor"><a href='http://homepage.mac.com/galdamez/' rel='external nofollow' class='url'>Jose Galdamez</a> said,</p>
+			<p class="commentmeta">March 12, 2008 at <a href="#comment-7733" title="Permanent link to this comment">6:56 am</a> </p>
+			
+			<p>I too have gotten great use from Track Parser. I originally downloaded it from Doug&#8217;s Applescripts for iTunes. It is hands down the most powerful tag manager out there. I&#8217;d probably get even more use out of it if I&#8217;d just take some time to learn regex.</p>
+<p>I do have a question about the &#8220;Parser (Clipboard)&#8221; script. Is there a way to remove a saved pattern from the main menu?</p>
+<p>Thanks,<br />
+Jose</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-7749">
+			<p class="commentauthor">Chris Cleeland said,</p>
+			<p class="commentmeta">March 14, 2008 at <a href="#comment-7749" title="Permanent link to this comment">3:24 pm</a> </p>
+			
+			<p>First, I echo the thanks for such a cool script.  Last night I tried to send you an email at Rice and it bounced.  I was trying to send the email b/c I was having problems and I was trying to figure out if it was possible to use track parser to do something specific.</p>
+<p>In the first case, today I figured out the problem, and have discovered what may be a bug in the script.  I can describe the whole thing in detail if you contact me.</p>
+<p>In the second case, track parser mostly focuses on taking hunks of information that have been glommed together into track names and parsing up and out to their proper fields.  In my case, I actually want to add some of those fields back *in* to the track name; is that possible?  Specifically, I want to add the &#8220;album name&#8221; at the beginning of the track name, separate by a comma.  This is because what I am actually working with are chapters from an audio book, and the way that the iPod presents audiobooks is slightly different from the way it presents music.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-10780">
+			<p class="commentauthor">Steve Madancy said,</p>
+			<p class="commentmeta">June 29, 2008 at <a href="#comment-10780" title="Permanent link to this comment">11:24 am</a> </p>
+			
+			<p>Oops&#8230;Hi Dan, I just left you a comment about Track Parser on your &#8220;about&#8221; page &#8212; I was looking for a general e-mail address. I&#8217;d delete it and move it here, but I don&#8217;t know how&#8230;sorry.</p>
+<p>&#8211; Steve</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-13554">
+			<p class="commentauthor">Tom Strand said,</p>
+			<p class="commentmeta">October 1, 2008 at <a href="#comment-13554" title="Permanent link to this comment">5:44 pm</a> </p>
+			
+			<p>Track Parser is wonderful!</p>
+<p>I&#8217;m wondering if the substitute (album) pattern quit working because of recent iTunes changes?  Maybe &#8220;album&#8221; is name somehting internally now?</p>
+<p>I&#8217;m trying to parse the Disc number from the album track (for an 18 CD set, but I get the following error:</p>
+<p>Can&#8217;t get every item of &#8220;l&#8221;.</p>
+<p>I saw note of an open source Track Parser, but can&#8217;t find it to see if the &#8220;l&#8221; needs to refer to a new element in recent iTunes&#8230;</p>
+<p>&#8211;</p>
+<p>Yes this is (still) very useful software.</p>
+<p>Tom</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-20235">
+			<p class="commentauthor">Wolf said,</p>
+			<p class="commentmeta">May 8, 2009 at <a href="#comment-20235" title="Permanent link to this comment">12:45 pm</a> </p>
+			
+			<p>Hi,</p>
+<p>I&#8217;ve checked and rechecked, but since iTunes v8.x Track Parser is not working anymore. The entry at Dougs AppleScripts hasn&#8217;t been updated since 01/2005 so I came here again to see if there&#8217;s any news about an upgrade or a workaround / fix.<br />
+I wasn&#8217;t really expecting something, since I myself would probably not be updating a script this old. But then, this things is indispensable for me &#8211; and maybe for somebody else too.<br />
+Any way you could be persuaded to have a look at it? AppleScript is still AS. iTunes has maybe modified some parameter or what that has the script falling over. Maybe even easy to fix. And it would make me happy. Very much so. :-)</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-20476">
+			<p class="commentauthor">Steve said,</p>
+			<p class="commentmeta">May 13, 2009 at <a href="#comment-20476" title="Permanent link to this comment">5:52 pm</a> </p>
+			
+			<p>Hello,</p>
+<p>I&#8217;m having the same problems that Tom and Wolf are having; it looks as though iTunes 8 has broken the script in places. Track Parser is sooooo useful&#8230;.I&#8217;d be eternally grateful if you could update the script sometime!</p>
+<p>Many thanks for a wonderful tool,</p>
+<p>Steve</p>
+		</li>
+
+		
+	
+	</ol>
+
+
+	
+	
+</div>
+
+<div id="sidebar">
+<ul>
+
+	<li id="search">
+		<form method="get" id="searchform" action="http://www.danvk.org/wp/index.php">
+<p>
+<input type="text" value="" name="s" id="s" /><br />
+<input type="submit" id="searchsubmit" value="Search" />
+</p>
+</form>	</li> 
+
+<!-- I want more control than this gives me: wp_list_pages('title_li=<h2>' . __('Pages') . '</h2>' ); -->
+
+	<li class="pagenav">
+		<ul>
+			<!--<li class="page_item"><a href="http://www.danvk.org/wp/?page_id=2" title="About">About</a></li>-->
+			<li>Dan across the web
+				<ul>
+					<li class="social">
+					<a href="https://github.com/danvk"><img src="https://github.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://twitter.com/danvdk"><img src="https://twitter.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://www.facebook.com/danvdk"><img src="https://facebook.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://plus.google.com/+DanVanderkam"><img src="https://plus.google.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://www.linkedin.com/profile/view?id=340204755"><img src="https://www.linkedin.com/favicon.ico" width=16 height=16 border=0></a>
+					<script data-gittip-username="danvdk" data-gittip-widget="button" src="http://gttp.co/v1.js"></script>
+				</ul>
+
+			<li>Dan's projects
+				<ul class="projects">
+					<li><a href="http://dygraphs.com/">dygraphs</a>
+					<li><a href="http://oldsf.org/">OldSF</a>
+					<li><a href="http://comparea.org/">Comparea</a>
+					<li><a href="https://github.com/danvk/webdiff">git webdiff</a>
+				</ul>
+
+			<li>Features on this site
+				<ul class="features">
+					<li><a href="http://www.danvk.org/boggle.php" title="Boggle Solver">Online Boggle Solver</a></li>
+					<li><a href="../../beals-conjecture/index.html" title="Beal&#039;s Conjecture">Beal's Conjecture</a></li>
+					<li><a href="../../gw-basic-program-decoder/index.html" title="GW-BASIC Program Decoder">GW-BASIC Program Decoder</a></li>
+					<li><a href="http://www.danvk.org/tower/nstower.html">NS-Tower in your Browser</a></li>
+				</ul>
+		</ul>
+	</li>
+
+	<!--
+	<li id="twitter_sidebar">
+		<div id="twitter_div">
+		<a href="http://twitter.com/danvdk" target="_blank"><h2 class="sidebar-title">Follow me on Twitter</h2></a>
+		<ul id="twitter_update_list" style="padding-right:30px"></ul>
+		
+		</div>
+		<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+		<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/danvdk.json?callback=twitterCallback2&amp;count=5"></script>
+	</li>
+	-->
+
+	<li id="archives">
+		<h2>Archives</h2>
+		<ul>
+			<li><a href='../../2014/10/index.html'>October 2014</a></li>
+	<li><a href='../../2014/08/index.html'>August 2014</a></li>
+	<li><a href='../../2014/07/index.html'>July 2014</a></li>
+	<li><a href='../../2014/06/index.html'>June 2014</a></li>
+	<li><a href='../../2014/03/index.html'>March 2014</a></li>
+	<li><a href='../../2014/02/index.html'>February 2014</a></li>
+	<li><a href='../../2014/01/index.html'>January 2014</a></li>
+	<li><a href='../../2013/08/index.html'>August 2013</a></li>
+	<li><a href='../../2013/06/index.html'>June 2013</a></li>
+	<li><a href='../../2013/04/index.html'>April 2013</a></li>
+	<li><a href='../../2013/03/index.html'>March 2013</a></li>
+	<li><a href='../../2013/02/index.html'>February 2013</a></li>
+	<li><a href='../../2013/01/index.html'>January 2013</a></li>
+	<li><a href='../../2012/12/index.html'>December 2012</a></li>
+	<li><a href='../../2012/09/index.html'>September 2012</a></li>
+	<li><a href='../../2012/08/index.html'>August 2012</a></li>
+	<li><a href='../../2012/07/index.html'>July 2012</a></li>
+	<li><a href='../../2012/06/index.html'>June 2012</a></li>
+	<li><a href='../../2012/05/index.html'>May 2012</a></li>
+	<li><a href='../../2012/04/index.html'>April 2012</a></li>
+	<li><a href='../../2012/02/index.html'>February 2012</a></li>
+	<li><a href='../../2012/01/index.html'>January 2012</a></li>
+	<li><a href='../../2011/12/index.html'>December 2011</a></li>
+	<li><a href='../../2011/11/index.html'>November 2011</a></li>
+	<li><a href='../../2011/08/index.html'>August 2011</a></li>
+	<li><a href='../../2011/03/index.html'>March 2011</a></li>
+	<li><a href='../../2010/06/index.html'>June 2010</a></li>
+	<li><a href='../../2010/03/index.html'>March 2010</a></li>
+	<li><a href='../../2009/12/index.html'>December 2009</a></li>
+	<li><a href='../../2009/11/index.html'>November 2009</a></li>
+	<li><a href='../../2009/10/index.html'>October 2009</a></li>
+	<li><a href='../../2009/09/index.html'>September 2009</a></li>
+	<li><a href='../../2009/08/index.html'>August 2009</a></li>
+	<li><a href='../../2009/06/index.html'>June 2009</a></li>
+	<li><a href='../../2009/05/index.html'>May 2009</a></li>
+	<li><a href='../../2009/03/index.html'>March 2009</a></li>
+	<li><a href='../../2009/02/index.html'>February 2009</a></li>
+	<li><a href='../../2009/01/index.html'>January 2009</a></li>
+	<li><a href='../../2008/12/index.html'>December 2008</a></li>
+	<li><a href='../../2008/11/index.html'>November 2008</a></li>
+	<li><a href='../../2008/10/index.html'>October 2008</a></li>
+	<li><a href='../../2008/09/index.html'>September 2008</a></li>
+	<li><a href='../../2008/08/index.html'>August 2008</a></li>
+	<li><a href='../../2008/06/index.html'>June 2008</a></li>
+	<li><a href='../../2008/05/index.html'>May 2008</a></li>
+	<li><a href='../../2008/02/index.html'>February 2008</a></li>
+	<li><a href='../../2008/01/index.html'>January 2008</a></li>
+	<li><a href='../../2007/12/index.html'>December 2007</a></li>
+	<li><a href='../../2007/11/index.html'>November 2007</a></li>
+	<li><a href='../../2007/10/index.html'>October 2007</a></li>
+	<li><a href='../../2007/09/index.html'>September 2007</a></li>
+	<li><a href='../../2007/08/index.html'>August 2007</a></li>
+	<li><a href='../../2007/07/index.html'>July 2007</a></li>
+	<li><a href='../../2007/06/index.html'>June 2007</a></li>
+	<li><a href='../../2007/05/index.html'>May 2007</a></li>
+	<li><a href='../../2007/04/index.html'>April 2007</a></li>
+	<li><a href='../../2007/03/index.html'>March 2007</a></li>
+	<li><a href='../../2007/02/index.html'>February 2007</a></li>
+	<li><a href='../../2007/01/index.html'>January 2007</a></li>
+	<li><a href='../../2006/12/index.html'>December 2006</a></li>
+	<li><a href='../../2006/11/index.html'>November 2006</a></li>
+	<li><a href='../../2006/10/index.html'>October 2006</a></li>
+	<li><a href='../../2006/09/index.html'>September 2006</a></li>
+		</ul>
+	</li>
+
+		
+	<li id="categories">
+		<h2>Categories</h2>
+		<ul>
+			<li class="cat-item cat-item-21"><a href="../../category/astronomy/index.html" title="View all posts filed under astronomy">astronomy</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="../../category/boggle/index.html" title="View all posts filed under boggle">boggle</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="../../category/books/index.html" title="View all posts filed under books">books</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="../../category/finance/index.html" title="View all posts filed under finance">finance</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="../../category/javascript/index.html" title="View all posts filed under javascript">javascript</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="../../category/math/index.html" title="View all posts filed under math">math</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="../../category/meta/index.html" title="View all posts filed under meta">meta</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="../../category/movies/index.html" title="View all posts filed under movies">movies</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="../../category/music/index.html" title="View all posts filed under music">music</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="../../category/news/index.html" title="View all posts filed under news">news</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="../../category/personal/index.html" title="View all posts filed under personal">personal</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="../../category/politics/index.html" title="View all posts filed under politics">politics</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="../../category/programming/index.html" title="View all posts filed under programming">programming</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="../../category/reviews/index.html" title="View all posts filed under reviews">reviews</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="../../category/san-francisco/index.html" title="View all posts filed under san francisco">san francisco</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="../../category/science/index.html" title="View all posts filed under science">science</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="../../category/space/index.html" title="View all posts filed under space">space</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="../../category/sports/index.html" title="View all posts filed under sports">sports</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="../../category/tennis/index.html" title="View all posts filed under tennis">tennis</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="../../category/travel/index.html" title="View all posts filed under travel">travel</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="../../category/tv/index.html" title="View all posts filed under tv">tv</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="../../category/uncategorized/index.html" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="../../category/web/index.html" title="View all posts filed under web">web</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="../../category/wikipedia/index.html" title="View all posts filed under wikipedia">wikipedia</a>
+</li>
+ 
+		</ul>
+	</li>
+	
+			
+	
+	<li id="meta">
+		<h2>Meta</h2>
+		<ul>
+				<li><a href="../../wp-login.html">Log in</a></li>
+		<li><a href="../../feed/index.html" title="Syndicate this site using RSS">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+		<li><a href="../../comments/feed/index.html" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+		<li><a href="http://wordpress.org/" title="Powered by Wordpress, state-of-the-art semantic personal publishing platform.">Wordpress</a></li>
+				</ul>
+	</li>
+	
+</ul>
+</div>
+
+<div id="footer">
+
+<!--<p>
+
+
+Design by <a href="http://ravenkeller.com">Raven Keller</a> and <a href="http://weblogs.us" title="Theme sponsored by Weblogs.us">Weblogs.us</a>
+&#183;
+<a href="http://validator.w3.org/check/referer" title="This page validates as XHTML 1.0 Transitional"><abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a>
+&#183;
+<a href="http://jigsaw.w3.org/css-validator/check/referer" title="This page validates as CSS"><abbr title="Cascading Style Sheets">CSS</abbr></a>
+<img src='http://counter.dreamhost.com/cgi-bin/Count.cgi?df=danvk-maincounter.dat&pad=F&ft=0&dd=copper&istrip=T' align=right />
+</p>-->
+
+
+</div>
+
+
+<!-- Google Analytics -->
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-769809-1";
+urchinTracker();
+</script>
+
+</body>
+
+<!-- Mirrored from www.danvk.org/wp/2007-12-24/using-track-parser/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Oct 2014 03:11:48 GMT -->
+</html>	
+
+
+
+<!--<footer class="container"></footer>-->
+

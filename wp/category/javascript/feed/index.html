@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>danvk.org &#187; javascript</title>
+	<atom:link href="http://www.danvk.org/wp/category/javascript/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.danvk.org/wp</link>
+	<description>Keepin' static like wool fabric since 2006</description>
+	<lastBuildDate>Thu, 09 Oct 2014 15:59:51 +0000</lastBuildDate>
+	<language>en-US</language>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.9.2</generator>
+	<item>
+		<title>Accurate hexadecimal to decimal conversion in JavaScript</title>
+		<link>http://www.danvk.org/wp/2012-01-20/accurate-hexadecimal-to-decimal-conversion-in-javascript/</link>
+		<comments>http://www.danvk.org/wp/2012-01-20/accurate-hexadecimal-to-decimal-conversion-in-javascript/#comments</comments>
+		<pubDate>Fri, 20 Jan 2012 23:05:20 +0000</pubDate>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+				<category><![CDATA[javascript]]></category>
+		<category><![CDATA[programming]]></category>
+
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=824</guid>
+		<description><![CDATA[A problem came up at work yesterday: I was creating a web page that received 64-bit hex numbers from one API. But it needed to pass them off to another API that expected decimal numbers. Usually this would not be a problem &#8212; JavaScript has built-in functions for converting between hex and decimal: parseInt("1234abcd", 16) [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>A problem came up at work yesterday: I was creating a web page that received 64-bit hex numbers from one API. But it needed to pass them off to another API that expected decimal numbers.</p>
+<p>Usually this would not be a problem &mdash; JavaScript has built-in functions for converting between hex and decimal:</p>
+<p><code>parseInt("1234abcd", 16) = 305441741<br />
+(305441741).toString(16) = "1234abcd"</code></p>
+<p>Unfortunately, for larger numbers, there&#8217;s a big problem lurking:</p>
+<p><code>parseInt("123456789abcd<u>ef</u>", 16) = 81985529216486900<br />
+(81985529216486900).toString(16) = "123456789abcd<u>f0</u>"<br />
+</code></p>
+<p>The last two digits are wrong. Why did these functions stop being inverses of one another?</p>
+<p>The answer has to do with how JavaScript stores numbers. It uses 64-bit floating point representation for all numbers, even integers. This means that integers larger than 2^53 cannot be represented precisely. You can see this by evaluating:</p>
+<p><code>(Math.pow(2, 53) + 1) - 1 = 9007199254740991</code></p>
+<p>That ends with a 1, so whatever it is, it&#8217;s certainly not a power of 2. (It&#8217;s off by one).</p>
+<p>To solve this problem, I wrote some very simple hex &lt;-&gt; decimal conversion functions which use arbitrary precision arithmetic. In particular, these will work for 64-bit numbers or 128-bit numbers. The code is only about 65 lines, so it&#8217;s much more lightweight than a full-fledged library for arbitrary precision arithmetic.</p>
+<p>The algorithm is pretty cool. You can see a demo, read an explanation and get the code here:<br />
+<a href="http://danvk.org/hex2dec.html">http://danvk.org/hex2dec.html</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.danvk.org/wp/2012-01-20/accurate-hexadecimal-to-decimal-conversion-in-javascript/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,529 @@
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<!-- Mirrored from www.danvk.org/wp/2007-02-06/in-which-we-discover-that-tries-are-awesome/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Oct 2014 03:09:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="generator" content="WordPress 3.9.2" /> <!-- leave this for stats please -->
+	<title>danvk.org &raquo; In which we discover that Tries are awesome</title>
+	<style type="text/css" media="screen">
+		@import url( ../../wp-content/themes/ocadia/style.css);
+			</style>
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="../../feed/index.html" />
+	<link rel="alternate" type="text/xml" title="RSS .92" href="../../feed/rss/index.html" />
+	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="../../feed/atom/index.html" />
+	<link rel="pingback" href="../../xmlrpc.php" />
+    	<link rel='archives' title='October 2014' href='../../2014/10/index.html' />
+	<link rel='archives' title='August 2014' href='../../2014/08/index.html' />
+	<link rel='archives' title='July 2014' href='../../2014/07/index.html' />
+	<link rel='archives' title='June 2014' href='../../2014/06/index.html' />
+	<link rel='archives' title='March 2014' href='../../2014/03/index.html' />
+	<link rel='archives' title='February 2014' href='../../2014/02/index.html' />
+	<link rel='archives' title='January 2014' href='../../2014/01/index.html' />
+	<link rel='archives' title='August 2013' href='../../2013/08/index.html' />
+	<link rel='archives' title='June 2013' href='../../2013/06/index.html' />
+	<link rel='archives' title='April 2013' href='../../2013/04/index.html' />
+	<link rel='archives' title='March 2013' href='../../2013/03/index.html' />
+	<link rel='archives' title='February 2013' href='../../2013/02/index.html' />
+	<link rel='archives' title='January 2013' href='../../2013/01/index.html' />
+	<link rel='archives' title='December 2012' href='../../2012/12/index.html' />
+	<link rel='archives' title='September 2012' href='../../2012/09/index.html' />
+	<link rel='archives' title='August 2012' href='../../2012/08/index.html' />
+	<link rel='archives' title='July 2012' href='../../2012/07/index.html' />
+	<link rel='archives' title='June 2012' href='../../2012/06/index.html' />
+	<link rel='archives' title='May 2012' href='../../2012/05/index.html' />
+	<link rel='archives' title='April 2012' href='../../2012/04/index.html' />
+	<link rel='archives' title='February 2012' href='../../2012/02/index.html' />
+	<link rel='archives' title='January 2012' href='../../2012/01/index.html' />
+	<link rel='archives' title='December 2011' href='../../2011/12/index.html' />
+	<link rel='archives' title='November 2011' href='../../2011/11/index.html' />
+	<link rel='archives' title='August 2011' href='../../2011/08/index.html' />
+	<link rel='archives' title='March 2011' href='../../2011/03/index.html' />
+	<link rel='archives' title='June 2010' href='../../2010/06/index.html' />
+	<link rel='archives' title='March 2010' href='../../2010/03/index.html' />
+	<link rel='archives' title='December 2009' href='../../2009/12/index.html' />
+	<link rel='archives' title='November 2009' href='../../2009/11/index.html' />
+	<link rel='archives' title='October 2009' href='../../2009/10/index.html' />
+	<link rel='archives' title='September 2009' href='../../2009/09/index.html' />
+	<link rel='archives' title='August 2009' href='../../2009/08/index.html' />
+	<link rel='archives' title='June 2009' href='../../2009/06/index.html' />
+	<link rel='archives' title='May 2009' href='../../2009/05/index.html' />
+	<link rel='archives' title='March 2009' href='../../2009/03/index.html' />
+	<link rel='archives' title='February 2009' href='../../2009/02/index.html' />
+	<link rel='archives' title='January 2009' href='../../2009/01/index.html' />
+	<link rel='archives' title='December 2008' href='../../2008/12/index.html' />
+	<link rel='archives' title='November 2008' href='../../2008/11/index.html' />
+	<link rel='archives' title='October 2008' href='../../2008/10/index.html' />
+	<link rel='archives' title='September 2008' href='../../2008/09/index.html' />
+	<link rel='archives' title='August 2008' href='../../2008/08/index.html' />
+	<link rel='archives' title='June 2008' href='../../2008/06/index.html' />
+	<link rel='archives' title='May 2008' href='../../2008/05/index.html' />
+	<link rel='archives' title='February 2008' href='../../2008/02/index.html' />
+	<link rel='archives' title='January 2008' href='../../2008/01/index.html' />
+	<link rel='archives' title='December 2007' href='../../2007/12/index.html' />
+	<link rel='archives' title='November 2007' href='../../2007/11/index.html' />
+	<link rel='archives' title='October 2007' href='../../2007/10/index.html' />
+	<link rel='archives' title='September 2007' href='../../2007/09/index.html' />
+	<link rel='archives' title='August 2007' href='../../2007/08/index.html' />
+	<link rel='archives' title='July 2007' href='../../2007/07/index.html' />
+	<link rel='archives' title='June 2007' href='../../2007/06/index.html' />
+	<link rel='archives' title='May 2007' href='../../2007/05/index.html' />
+	<link rel='archives' title='April 2007' href='../../2007/04/index.html' />
+	<link rel='archives' title='March 2007' href='../../2007/03/index.html' />
+	<link rel='archives' title='February 2007' href='../../2007/02/index.html' />
+	<link rel='archives' title='January 2007' href='../../2007/01/index.html' />
+	<link rel='archives' title='December 2006' href='../../2006/12/index.html' />
+	<link rel='archives' title='November 2006' href='../../2006/11/index.html' />
+	<link rel='archives' title='October 2006' href='../../2006/10/index.html' />
+	<link rel='archives' title='September 2006' href='../../2006/09/index.html' />
+	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../../xmlrpc0db0.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../../wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Moving Boggle to C++' href='../../2007-02-04/moving-boggle-to-c/index.html' />
+<link rel='next' title='One Last Boggle Boost' href='../../2007-02-10/one-last-boggle-boost/index.html' />
+<meta name="generator" content="WordPress 3.9.2" />
+<link rel='canonical' href='index.html' />
+<link rel='shortlink' href='../../index5d38.html?p=87' />
+<style type="text/css">
+/* <![CDATA[ */
+img.latex { vertical-align: middle; border: none; }
+/* ]]> */
+</style>
+<style type="text/css" id="syntaxhighlighteranchor"></style>
+</head>
+	
+<body>
+
+<div id="wrapper">
+
+<div id="header">
+<h1><a href="http://www.danvk.org/wp">danvk.org</a></h1>
+<p>Keepin&#8217; static like wool fabric since 2006</p>
+</div>
+
+<div id="content">
+
+			
+		<div class="post">
+
+			<h1 class="storydate">02.06.07</h1> 
+			<h2 id="post-87" class="storytitle"><a href="index.html" rel="bookmark" title="Permanent link to In which we discover that Tries are awesome">In which we discover that Tries are awesome</a></h2>
+			<p class="meta">Posted in <a href="../../category/boggle/index.html" title="View all posts in boggle" rel="category tag">boggle</a>, <a href="../../category/programming/index.html" title="View all posts in programming" rel="category tag">programming</a> at 2:29 am by danvk</p>
+		
+			<p><i>This is the sixth installment in an ongoing series about Boggle. See also <a href="../../index96f1.html?p=67">1</a>, <a href="../../index7665.html?p=65">2</a>, <a href="../../index4f61.html?p=66">3</a>, <a href="../../index55e4.html?p=83">4</a> and <a href="../../index6213.html?p=86">5</a>.</i></p>
+<p>We&#8217;ve <a href="../../index55e4.html?p=83">talked before</a> about why <a href="http://en.wikipedia.org/wiki/Tries">Tries</a> are the perfect data structure for solving Boggle boards. Today we&#8217;ll adapt the <a href="../../wp-content/uploads/2007/boggle4/index.html">C++ program</a> from <a href="../../index6213.html?p=86">yesterday&#8217;s post</a> to use them.</p>
+<p>Here&#8217;s a picture of part of a Trie:</p>
+<p><center><img src='../../wp-content/uploads/2007/02/bubbles-lines.png' alt='bubbles-lines.png' height="167" width="180" /></center></p>
+<p>There are three important operations that we can perform quickly on a Trie node:</p>
+<ol>
+<li>Check whether the current node completes a word</li>
+<li>Check whether a particular character leads to more words</li>
+<li>Descend to a child node</li>
+</ol>
+<p>So, in addition to some convenience functions, our Trie interface will need to support these operations. Here&#8217;s what I came up with:</p>
+<pre class="brush: cpp; title: ; notranslate" title="">
+const int kNumLetters = 26;
+
+class Trie {
+  public:
+	Trie();
+	virtual ~Trie();
+	
+	// FAST access functions
+	inline bool IsWord() { return is_word_; }
+	inline bool StartsWord(int i) { return children_[i]; }
+	inline Trie* Descend(int i) { return children_[i]; }
+	
+	// Slower utility functions
+	void AddWord(const char* wd);
+	int LoadFile(const char* filename);
+	bool IsWord(const char* wd) const; // Look up a full word
+	unsigned int size() const;         // Total # of words
+	
+  private:
+	Trie* children_[kNumLetters];
+	bool is_word_;
+};
+</pre>
+<p>As you can see, the big three operations are all fast inline accessors. There&#8217;s one nuance worth talking about here: why do <code>StartsWord</code> and <code>Descend</code> take integers? In pictures of Tries, the edges are usually labeled with strings, or at least characters. This is partially a performance optimization: by mapping &#8216;a&#8217;..&#8217;z&#8217; to 0..25, the program can avoid lots of annoying additions and subtractions. It also forces us to treat the &#8216;qu&#8217; die specially. From now on, we&#8217;ll consider the letter &#8216;q&#8217; to stand in for &#8220;qu&#8221;. We&#8217;ll have to be careful to filter words containing a &#8216;q&#8217; not followed by a &#8216;u&#8217; from the dictionary to make this work. We&#8217;ll also change our input interface to reflect this. Since each cell can be represented with exactly one character, there&#8217;s no reason to separate them with spaces anymore. Where we used to write &#8220;a b c d e f g h i j k l m n o p&#8221;, we&#8217;ll write &#8220;abcdefghijklmnop&#8221;. This greatly simplifies the board parsing code. I won&#8217;t go into any details, but the implementation can be found in <a href="http://danvk.org/wp/wp-content/uploads/2007/boggle5/trie.cc">trie.cc</a>.</p>
+<p>Now for the Boggler class. We&#8217;ll try to avoid changing the public interface. The only change will be the format of the boards, from &#8220;a b c &#8230;&#8221; to &#8220;abc&#8230;&#8221; The Boggler will need a Trie to contain its dictionary, but this allows us to remove the <code>words_</code> and <code>stems_</code> hashes. Finally, we&#8217;ll need some way to remember which words we&#8217;ve found. A hash will do fine here, but there&#8217;s some trickiness which we&#8217;ll get to below:</p>
+<pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;ext/hash_set&gt;
+#include &lt;inttypes.h&gt;      // for uintptr_t
+using namespace __gnu_cxx; // for hash_set
+class Trie;
+
+class Boggler {
+  public:
+	Boggler();
+    int LoadDictionary(const char* filename);
+	int Score(const char* bd);
+	
+  private:
+	bool ParseBoard(const char* lets);
+	void Solve(int x, int y, int len, Trie* t);
+	
+	hash_set&lt;uintptr_t&gt; found_;
+	int bd_[4][4];
+ 	bool prev_[4][4];
+	int score_;
+	Trie* dict_;
+};
+</pre>
+<p>So, what the hell is a <code>uintptr_t</code>? We&#8217;ll get to that in a sec. What&#8217;s more interesting is that the type signature of the recursive <code>Solve</code> method has changed. We no longer know what letters are in the word we&#8217;ve found so far, only its length. This is all we need to know for scoring, but it&#8217;s a little disconcerting. If we don&#8217;t know the characters in the word we&#8217;ve found, how can we tell whether we&#8217;ve found it before?</p>
+<p>The solution is in the Trie. There&#8217;s a one-to-one correspondence between nodes in the Trie and words in the dictionary. If we&#8217;ve found a word before, then we&#8217;ve necessarily been to this Trie node before. So instead of storing the whole word in a hash, we can just store a pointer to the Trie node in its place. This is exactly the kind of dirty hack that I mentioned last time. You can do this in C/C++, but Ruby makes it rather difficult.</p>
+<p>That leads us to <code>uintptr_t</code>. The STL won&#8217;t just let us put any old pointer into a <code>hash_set</code>. We need to convert it to something that the STL knows how to hash. On a 32-bit system, we could just use an unsigned int or long. But that <a href="http://www.unix.org/whitepapers/64bit.html">won&#8217;t always work</a>. The <code>uintptr_t</code> data type is an unsigned long that&#8217;s guaranteed to have the same number of bits as a pointer. So there we go.</p>
+<p>Maybe a picture will clarify things. This shows the Boggle board on the left with all four arguments to the <code>Solve</code> function at each node. On the right is a part of the Trie, annotated with memory addresses. This may have also been an excuse to play with Photoshop..</p>
+<p><a href='../../wp-content/uploads/2007/02/triegraph.png' title='triegraph.png'><img src='../../wp-content/uploads/2007/02/triegraph.png' alt='triegraph.png' /></a></p>
+<p>Here&#8217;s the juicy bits of the implementation:</p>
+<pre class="brush: cpp; title: ; notranslate" title="">
+// Returns the score from this portion of the search
+void Boggler::Solve(int x, int y, int len, Trie* t) {
+	prev_[x][y] = true;
+
+	len += (bd_[x][y]=='q'-'a' ? 2 : 1);
+	if (t-&gt;IsWord()) {
+		// Convert the Trie node to an int and look it up
+		uintptr_t hash = reinterpret_cast&lt;uintptr_t&gt;(t);
+		if (found_.find(hash) == found_.end()) {
+			score_ += kWordScores[len];
+			found_.insert(hash);
+		}
+	}
+
+	// Recur in each possible direction
+	for (int dx=-1; dx&lt;=1; ++dx) {
+		int cx = x + dx;
+		if (cx&lt;0 || cx&gt;3) continue;
+		for (int dy=-1; dy&lt;=1; ++dy) {
+			int cy = y + dy;
+			if (cy&lt;0 || cy&gt;3) continue;
+			if (prev_[cx][cy]) continue;
+			if (t-&gt;StartsWord(bd_[cx][cy]))
+				Solve(cx, cy, len, t-&gt;Descend(bd_[cx][cy]));
+		}
+	}
+	
+	prev_[x][y] = false;
+}
+
+int Boggler::Score(const char* letters) {
+	if (!ParseBoard(letters)) return -1;
+
+	score_ = 0;
+	for (int i=0; i&lt;16; ++i)
+		Solve(i/4, i%4, 0, dict_-&gt;Descend(bd_[i/4][i%4]));
+	found_.clear();
+	return score_;
+}
+
+// Board format: &quot;bcdefghijklmnopq&quot;
+bool Boggler::ParseBoard(const char* lets) {
+	for (int i=0; i&lt;16; i++) {
+		if (!lets[i] || lets[i]&lt;'a' || lets[i]&gt;'z')
+		  return false;
+		bd_[i/4][i%4] = lets[i] - 'a';
+	}
+	return true;
+}
+</pre>
+<p>Now the moment of truth&#8230; what kind of performance do we get out of this? I wrapped a small binary called <code>perf</code> that we&#8217;ll be using to measure this from now on. It solves 50,000 pre-defined boards and reports on the time used:</p>
+<pre>
+$ <b>./perf</b>
+Loaded 172203 words.
+Testing perf on 50000 boards...
+50000 boards in 7.97206 secs => 6271.91 bds/sec
+Average board score: 141.1734 pts/bd
+</pre>
+<p>That&#8217;s another 20x improvement over the previous post&#8217;s Boggler class!</p>
+<p>Fast as this board is, there&#8217;s still one major, unnecessary bottleneck left in it. Any guesses? We&#8217;ll fix it tomorrow, at which point we&#8217;ll have a Boggler that&#8217;s about as fast as I know how to make it. Then we can start doing the fun stuff with it.</p>
+<p>Complete source code for today&#8217;s Boggler can be found <a href="http://danvk.org/wp/wp-content/uploads/2007/boggle5/">here</a>.</p>
+			
+			<p class="feedback">
+			<a href="index.html" rel="bookmark" title="Permanent link to In which we discover that Tries are awesome" class="permalink">Permalink</a>
+						</p>
+		
+		</div>
+			
+		
+<!-- You can start editing here. -->
+
+
+					<p>Comments are closed.</p>
+		
+	
+
+	
+	
+</div>
+
+<div id="sidebar">
+<ul>
+
+	<li id="search">
+		<form method="get" id="searchform" action="http://www.danvk.org/wp/index.php">
+<p>
+<input type="text" value="" name="s" id="s" /><br />
+<input type="submit" id="searchsubmit" value="Search" />
+</p>
+</form>	</li> 
+
+<!-- I want more control than this gives me: wp_list_pages('title_li=<h2>' . __('Pages') . '</h2>' ); -->
+
+	<li class="pagenav">
+		<ul>
+			<!--<li class="page_item"><a href="http://www.danvk.org/wp/?page_id=2" title="About">About</a></li>-->
+			<li>Dan across the web
+				<ul>
+					<li class="social">
+					<a href="https://github.com/danvk"><img src="https://github.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://twitter.com/danvdk"><img src="https://twitter.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://www.facebook.com/danvdk"><img src="https://facebook.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://plus.google.com/+DanVanderkam"><img src="https://plus.google.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://www.linkedin.com/profile/view?id=340204755"><img src="https://www.linkedin.com/favicon.ico" width=16 height=16 border=0></a>
+					<script data-gittip-username="danvdk" data-gittip-widget="button" src="http://gttp.co/v1.js"></script>
+				</ul>
+
+			<li>Dan's projects
+				<ul class="projects">
+					<li><a href="http://dygraphs.com/">dygraphs</a>
+					<li><a href="http://oldsf.org/">OldSF</a>
+					<li><a href="http://comparea.org/">Comparea</a>
+					<li><a href="https://github.com/danvk/webdiff">git webdiff</a>
+				</ul>
+
+			<li>Features on this site
+				<ul class="features">
+					<li><a href="http://www.danvk.org/boggle.php" title="Boggle Solver">Online Boggle Solver</a></li>
+					<li><a href="../../beals-conjecture/index.html" title="Beal&#039;s Conjecture">Beal's Conjecture</a></li>
+					<li><a href="../../gw-basic-program-decoder/index.html" title="GW-BASIC Program Decoder">GW-BASIC Program Decoder</a></li>
+					<li><a href="http://www.danvk.org/tower/nstower.html">NS-Tower in your Browser</a></li>
+				</ul>
+		</ul>
+	</li>
+
+	<!--
+	<li id="twitter_sidebar">
+		<div id="twitter_div">
+		<a href="http://twitter.com/danvdk" target="_blank"><h2 class="sidebar-title">Follow me on Twitter</h2></a>
+		<ul id="twitter_update_list" style="padding-right:30px"></ul>
+		
+		</div>
+		<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+		<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/danvdk.json?callback=twitterCallback2&amp;count=5"></script>
+	</li>
+	-->
+
+	<li id="archives">
+		<h2>Archives</h2>
+		<ul>
+			<li><a href='../../2014/10/index.html'>October 2014</a></li>
+	<li><a href='../../2014/08/index.html'>August 2014</a></li>
+	<li><a href='../../2014/07/index.html'>July 2014</a></li>
+	<li><a href='../../2014/06/index.html'>June 2014</a></li>
+	<li><a href='../../2014/03/index.html'>March 2014</a></li>
+	<li><a href='../../2014/02/index.html'>February 2014</a></li>
+	<li><a href='../../2014/01/index.html'>January 2014</a></li>
+	<li><a href='../../2013/08/index.html'>August 2013</a></li>
+	<li><a href='../../2013/06/index.html'>June 2013</a></li>
+	<li><a href='../../2013/04/index.html'>April 2013</a></li>
+	<li><a href='../../2013/03/index.html'>March 2013</a></li>
+	<li><a href='../../2013/02/index.html'>February 2013</a></li>
+	<li><a href='../../2013/01/index.html'>January 2013</a></li>
+	<li><a href='../../2012/12/index.html'>December 2012</a></li>
+	<li><a href='../../2012/09/index.html'>September 2012</a></li>
+	<li><a href='../../2012/08/index.html'>August 2012</a></li>
+	<li><a href='../../2012/07/index.html'>July 2012</a></li>
+	<li><a href='../../2012/06/index.html'>June 2012</a></li>
+	<li><a href='../../2012/05/index.html'>May 2012</a></li>
+	<li><a href='../../2012/04/index.html'>April 2012</a></li>
+	<li><a href='../../2012/02/index.html'>February 2012</a></li>
+	<li><a href='../../2012/01/index.html'>January 2012</a></li>
+	<li><a href='../../2011/12/index.html'>December 2011</a></li>
+	<li><a href='../../2011/11/index.html'>November 2011</a></li>
+	<li><a href='../../2011/08/index.html'>August 2011</a></li>
+	<li><a href='../../2011/03/index.html'>March 2011</a></li>
+	<li><a href='../../2010/06/index.html'>June 2010</a></li>
+	<li><a href='../../2010/03/index.html'>March 2010</a></li>
+	<li><a href='../../2009/12/index.html'>December 2009</a></li>
+	<li><a href='../../2009/11/index.html'>November 2009</a></li>
+	<li><a href='../../2009/10/index.html'>October 2009</a></li>
+	<li><a href='../../2009/09/index.html'>September 2009</a></li>
+	<li><a href='../../2009/08/index.html'>August 2009</a></li>
+	<li><a href='../../2009/06/index.html'>June 2009</a></li>
+	<li><a href='../../2009/05/index.html'>May 2009</a></li>
+	<li><a href='../../2009/03/index.html'>March 2009</a></li>
+	<li><a href='../../2009/02/index.html'>February 2009</a></li>
+	<li><a href='../../2009/01/index.html'>January 2009</a></li>
+	<li><a href='../../2008/12/index.html'>December 2008</a></li>
+	<li><a href='../../2008/11/index.html'>November 2008</a></li>
+	<li><a href='../../2008/10/index.html'>October 2008</a></li>
+	<li><a href='../../2008/09/index.html'>September 2008</a></li>
+	<li><a href='../../2008/08/index.html'>August 2008</a></li>
+	<li><a href='../../2008/06/index.html'>June 2008</a></li>
+	<li><a href='../../2008/05/index.html'>May 2008</a></li>
+	<li><a href='../../2008/02/index.html'>February 2008</a></li>
+	<li><a href='../../2008/01/index.html'>January 2008</a></li>
+	<li><a href='../../2007/12/index.html'>December 2007</a></li>
+	<li><a href='../../2007/11/index.html'>November 2007</a></li>
+	<li><a href='../../2007/10/index.html'>October 2007</a></li>
+	<li><a href='../../2007/09/index.html'>September 2007</a></li>
+	<li><a href='../../2007/08/index.html'>August 2007</a></li>
+	<li><a href='../../2007/07/index.html'>July 2007</a></li>
+	<li><a href='../../2007/06/index.html'>June 2007</a></li>
+	<li><a href='../../2007/05/index.html'>May 2007</a></li>
+	<li><a href='../../2007/04/index.html'>April 2007</a></li>
+	<li><a href='../../2007/03/index.html'>March 2007</a></li>
+	<li><a href='../../2007/02/index.html'>February 2007</a></li>
+	<li><a href='../../2007/01/index.html'>January 2007</a></li>
+	<li><a href='../../2006/12/index.html'>December 2006</a></li>
+	<li><a href='../../2006/11/index.html'>November 2006</a></li>
+	<li><a href='../../2006/10/index.html'>October 2006</a></li>
+	<li><a href='../../2006/09/index.html'>September 2006</a></li>
+		</ul>
+	</li>
+
+		
+	<li id="categories">
+		<h2>Categories</h2>
+		<ul>
+			<li class="cat-item cat-item-21"><a href="../../category/astronomy/index.html" title="View all posts filed under astronomy">astronomy</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="../../category/boggle/index.html" title="View all posts filed under boggle">boggle</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="../../category/books/index.html" title="View all posts filed under books">books</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="../../category/finance/index.html" title="View all posts filed under finance">finance</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="../../category/javascript/index.html" title="View all posts filed under javascript">javascript</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="../../category/math/index.html" title="View all posts filed under math">math</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="../../category/meta/index.html" title="View all posts filed under meta">meta</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="../../category/movies/index.html" title="View all posts filed under movies">movies</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="../../category/music/index.html" title="View all posts filed under music">music</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="../../category/news/index.html" title="View all posts filed under news">news</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="../../category/personal/index.html" title="View all posts filed under personal">personal</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="../../category/politics/index.html" title="View all posts filed under politics">politics</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="../../category/programming/index.html" title="View all posts filed under programming">programming</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="../../category/reviews/index.html" title="View all posts filed under reviews">reviews</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="../../category/san-francisco/index.html" title="View all posts filed under san francisco">san francisco</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="../../category/science/index.html" title="View all posts filed under science">science</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="../../category/space/index.html" title="View all posts filed under space">space</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="../../category/sports/index.html" title="View all posts filed under sports">sports</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="../../category/tennis/index.html" title="View all posts filed under tennis">tennis</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="../../category/travel/index.html" title="View all posts filed under travel">travel</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="../../category/tv/index.html" title="View all posts filed under tv">tv</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="../../category/uncategorized/index.html" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="../../category/web/index.html" title="View all posts filed under web">web</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="../../category/wikipedia/index.html" title="View all posts filed under wikipedia">wikipedia</a>
+</li>
+ 
+		</ul>
+	</li>
+	
+			
+	
+	<li id="meta">
+		<h2>Meta</h2>
+		<ul>
+				<li><a href="../../wp-login.html">Log in</a></li>
+		<li><a href="../../feed/index.html" title="Syndicate this site using RSS">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+		<li><a href="../../comments/feed/index.html" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+		<li><a href="http://wordpress.org/" title="Powered by Wordpress, state-of-the-art semantic personal publishing platform.">Wordpress</a></li>
+				</ul>
+	</li>
+	
+</ul>
+</div>
+
+<div id="footer">
+
+<!--<p>
+
+
+Design by <a href="http://ravenkeller.com">Raven Keller</a> and <a href="http://weblogs.us" title="Theme sponsored by Weblogs.us">Weblogs.us</a>
+&#183;
+<a href="http://validator.w3.org/check/referer" title="This page validates as XHTML 1.0 Transitional"><abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a>
+&#183;
+<a href="http://jigsaw.w3.org/css-validator/check/referer" title="This page validates as CSS"><abbr title="Cascading Style Sheets">CSS</abbr></a>
+<img src='http://counter.dreamhost.com/cgi-bin/Count.cgi?df=danvk-maincounter.dat&pad=F&ft=0&dd=copper&istrip=T' align=right />
+</p>-->
+
+
+</div>
+
+<script type='text/javascript' src='../../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore677a.js?ver=3.0.9'></script>
+<script type='text/javascript' src='../../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCpp677a.js?ver=3.0.9'></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "../../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore677a.css?ver=3.0.9";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "../../wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault677a.css?ver=3.0.9";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+</script>
+
+<!-- Google Analytics -->
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-769809-1";
+urchinTracker();
+</script>
+
+</body>
+
+<!-- Mirrored from www.danvk.org/wp/2007-02-06/in-which-we-discover-that-tries-are-awesome/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Oct 2014 03:09:59 GMT -->
+</html>	
+
+
+
+<!--<footer class="container"></footer>-->
+

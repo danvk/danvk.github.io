@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: C++ STL sort weirdness</title>
+	<atom:link href="http://www.danvk.org/wp/2007-12-16/c-stl-sort-weirdness/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.danvk.org/wp/2007-12-16/c-stl-sort-weirdness/</link>
+	<description>Keepin' static like wool fabric since 2006</description>
+	<lastBuildDate>Wed, 08 Oct 2014 14:33:23 +0000</lastBuildDate>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.9.2</generator>
+	<item>
+		<title>By: Evan M</title>
+		<link>http://www.danvk.org/wp/2007-12-16/c-stl-sort-weirdness/comment-page-1/#comment-6449</link>
+		<dc:creator><![CDATA[Evan M]]></dc:creator>
+		<pubDate>Wed, 19 Dec 2007 01:55:56 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=241#comment-6449</guid>
+		<description><![CDATA[The segfaulting is due to preconditions not being met in the sorting function.  E.g., imagine a binary search on an unsorted list -- it could hit cases where the midpoint is not between the endpoints and for speed reasons not have code to properly handled that situation.]]></description>
+		<content:encoded><![CDATA[<p>The segfaulting is due to preconditions not being met in the sorting function.  E.g., imagine a binary search on an unsorted list &#8212; it could hit cases where the midpoint is not between the endpoints and for speed reasons not have code to properly handled that situation.</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

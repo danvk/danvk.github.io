@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>danvk.org &#187; web</title>
+	<atom:link href="http://www.danvk.org/wp/category/web/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.danvk.org/wp</link>
+	<description>Keepin' static like wool fabric since 2006</description>
+	<lastBuildDate>Thu, 09 Oct 2014 15:59:51 +0000</lastBuildDate>
+	<language>en-US</language>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.9.2</generator>
+	<item>
+		<title>Finding Pictures in Pictures</title>
+		<link>http://www.danvk.org/wp/2013-02-09/finding-pictures-in-pictures/</link>
+		<comments>http://www.danvk.org/wp/2013-02-09/finding-pictures-in-pictures/#comments</comments>
+		<pubDate>Sun, 10 Feb 2013 06:11:42 +0000</pubDate>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+				<category><![CDATA[programming]]></category>
+		<category><![CDATA[web]]></category>
+
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=1021</guid>
+		<description><![CDATA[Over the past month, I&#8217;ve been working with imagery from the NYPL&#8217;s Milstein Collection. Astute readers may have some guesses why. The images look something like this one: There are two photos in this picture! They&#8217;re on cards set against a brown background. Other pictures in the Milstein gallery have one or three photos, with [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>Over the past month, I&#8217;ve been working with imagery from the NYPL&#8217;s <a href="http://digitalgallery.nypl.org/nypldigital/dgdivisionbrowseresult.cfm?div_id=hh">Milstein Collection</a>. Astute readers may have some guesses why. The images look something like <a href="http://digitalgallery.nypl.org/nypldigital/dgkeysearchdetail.cfm?strucID=405038&#038;imageID=715240f">this one</a>:</p>
+<p><center><a style="border:none;" href="http://digitalgallery.nypl.org/nypldigital/dgkeysearchdetail.cfm?strucID=405038&#038;imageID=715240f"><img border=0 src="http://images.nypl.org/index.php?id=715240f&#038;t=w" width=490 height=760 /></a></center></p>
+<p>There are two photos in this picture! They&#8217;re on cards set against a brown background. Other pictures in the Milstein gallery have one or three photos, with or without a white border:</p>
+<p><center><img src="http://images.nypl.org/index.php?id=711018f&#038;t=r" width=194 height=300 /> &nbsp; <img src="http://images.nypl.org/index.php?id=715591f&#038;t=r" width=194 height=300 /> &nbsp; <img src="http://images.nypl.org/index.php?id=710504f&#038;t=r" width=194 height=300 /></center></p>
+<p>To make something akin to <a href="http://oldsf.org/">OldSF</a>, I&#8217;d need to write a program to find and extract each of the photos embedded in these pictures. It&#8217;s incredibly easy for our eyes to pick out the embedded photos, but this is deceptive. We&#8217;re really good at this sort of thing! Teaching a computer to do makes you realize how non-trivial the problem is.</p>
+<p>I started by converting the images to grayscale and running <a href="http://en.wikipedia.org/wiki/Edge_detection">edge detection</a>:<br />
+<img src="http://www.danvk.org/wp/wp-content/uploads/2013/02/Screen-Shot-2013-02-10-at-12.47.42-AM.png" alt="edge detection" width="394" height="613" class="aligncenter size-full wp-image-1029" /></p>
+<p>The white lines indicate places where there was an &#8220;edge&#8221; in the original image. It&#8217;s an impressive effect&mdash;almost like you hired someone to sketch the image. The details on the stoops are particularly cool:</p>
+<p><img src="http://www.danvk.org/wp/wp-content/uploads/2013/02/Screen-Shot-2013-02-10-at-12.48.19-AM.png" alt="Detail on edge detection image" width="553" height="392" class="aligncenter size-full wp-image-1030" /></p>
+<p>The interesting bit for us isn&#8217;t the lines inside the photo so much as the white box around it. Running an edge detection algorithm brings it into stark relief. There are a number of image processing algorithms to detect lines, for example the <a href="http://en.wikipedia.org/wiki/Hough_Transform">Hough Transform</a> or scipy&#8217;s <a href="http://scikit-image.org/docs/0.3/auto_examples/plot_hough_transform.html#example-plot-hough-transform-py">probabilistic_hough</a>. I&#8217;ve never been able to get these to work, however, and this ultimately proved to be a dead end.</p>
+<p>A simple algorithm often works much better than high-powered computer vision algorithms like edge detection and the Hough Transform. In this case, I realized that there was, in fact, a much simpler way to do things.</p>
+<p>The images are always on brown paper. So why not find the brown paper and call everything else the photos? To do this, I found the median color in each image, blurred it and called everything within an RMSE of 20 &#8220;brown&#8221;. I colored the brown pixels black and the non-brown pixels white. This left me with an image like this:</p>
+<p><img src="http://www.danvk.org/wp/wp-content/uploads/2013/02/Screen-Shot-2013-02-10-at-1.00.29-AM.png" alt="Two white rectangles on a black background" width="533" height="847" class="aligncenter size-full wp-image-1032" /></p>
+<p>Now this is progress! The rectangles stand out clearly. Now it&#8217;s a matter of teaching the computer to find them.</p>
+<p>To do this, I used the following algorithm:</p>
+<ol>
+<li>Pick a random white pixel, (x, y) (statistically, this is likely to be in a photo)</li>
+<li>Call this a 1&#215;1 rectangle.</li>
+<li>Extend the rectangle out in all directions, so long as you keep adding new white pixels.</li>
+<li>If this rectangle is larger than 100&#215;100, record it as a photo.</li>
+<li>Color the rectangle black.</li>
+<li>If &lt;90% of the image is black, go back to step 1.
+</ol>
+<p>Eventually this should find all the photos. Here are the results on the original photo from the top of the post:</p>
+<p><img src="http://www.danvk.org/wp/wp-content/uploads/2013/02/Screen-Shot-2013-02-10-at-1.07.23-AM.png" alt="Outlined Photos" width="545" height="847" class="aligncenter size-full wp-image-1034" /></p>
+<p>The red rectangles are those found by the algorithm. This has a few nice properties:</p>
+<ol>
+<li>It naturally generalizes to images with 1, 2, 3, 4, etc. photos.</li>
+<li>It still works well when the photos are slightly rotated.</li>
+<li>It works for any background color (lighting conditions vary for each image).</li>
+</ol>
+<p>There&#8217;s still some tweaking to do, but I&#8217;m really happy with how this algorithm has performed! You can find the source code <a href="https://github.com/danvk/sfhistory/blob/master/nyc/find-pictures.py">here</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.danvk.org/wp/2013-02-09/finding-pictures-in-pictures/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>OldSF Buzz!</title>
+		<link>http://www.danvk.org/wp/2013-01-27/oldsf-buzz/</link>
+		<comments>http://www.danvk.org/wp/2013-01-27/oldsf-buzz/#comments</comments>
+		<pubDate>Mon, 28 Jan 2013 04:21:10 +0000</pubDate>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+				<category><![CDATA[san francisco]]></category>
+		<category><![CDATA[web]]></category>
+
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=1011</guid>
+		<description><![CDATA[After its recent update, OldSF got an unexpected surge of traffic after appearing on Hacker News and reddit San Francisco. Traffic peaked at 14,000 visitors the day it hit Hacker News, then trailed off: I particularly enjoyed the new &#8220;Live Analytics&#8221; feature on Google Analytics, which shows you who&#8217;s on your site right now: In [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>After its <a href="http://www.danvk.org/wp/2013-01-21/developing-the-oldsf-slideshow/">recent update</a>, <a href="http://oldsf.org/">OldSF</a> got an unexpected surge of traffic after appearing on <a href="http://news.ycombinator.com/item?id=5098289">Hacker News</a> and <a href="http://www.reddit.com/r/sanfrancisco/comments/172nli/oldsf_pictures_of_san_francisco_from_1850_to_the/">reddit San Francisco</a>.</p>
+<p>Traffic peaked at 14,000 visitors the day it hit Hacker News, then trailed off:<br />
+<img src="http://www.danvk.org/wp/wp-content/uploads/2013/01/oldsf-spike.png" alt="Traffic jumping to 14,000 visits/day, then fading away." width="756" height="180" class="aligncenter size-full wp-image-1013" /></p>
+<p>I particularly enjoyed the new &#8220;Live Analytics&#8221; feature on Google Analytics, which shows you who&#8217;s on your site <i>right now</i>:<br />
+<img src="http://www.danvk.org/wp/wp-content/uploads/2013/01/live-analytics.png" alt="Live Analytics showing 70 visitors on the site" width="610" height="638" class="aligncenter size-full wp-image-1015" /></p>
+<p>In the end, 40% of our traffic came from Facebook, 39% from Hacker News, 10% from reddit, 7.5% from Twitter and 3% from Google+. In other words, things started on Hacker News but wound up spreading through other social media.</p>
+<p>The traffic spike was exciting, but also a bit sad. OldSF is fundamentally a read-only site, which makes it hard to keep people coming back. <a href="http://ravenkeller.tumblr.com/">Raven</a> and I did some brainstorming and decided to start tweeting &#8220;pictures of the day&#8221; on <a href="https://twitter.com/Old_SF">@Old_SF</a>. Please <a href="https://twitter.com/Old_SF">follow us</a>!</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.danvk.org/wp/2013-01-27/oldsf-buzz/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Developing the OldSF Slideshow</title>
+		<link>http://www.danvk.org/wp/2013-01-21/developing-the-oldsf-slideshow/</link>
+		<comments>http://www.danvk.org/wp/2013-01-21/developing-the-oldsf-slideshow/#comments</comments>
+		<pubDate>Tue, 22 Jan 2013 02:21:10 +0000</pubDate>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+				<category><![CDATA[programming]]></category>
+		<category><![CDATA[san francisco]]></category>
+		<category><![CDATA[web]]></category>
+
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=972</guid>
+		<description><![CDATA[If you head over to oldsf.org, you&#8217;ll find a sleek new UI and a brand new slideshow feature. Here&#8217;s the before/after: &#160; Locations like the Sutro Baths can have hundreds of photos. The slideshow lets you flip through them quickly. As so often happens, what looked simple at first became more and more complex as [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>If you head over to <a href="http://oldsf.org/">oldsf.org</a>, you&#8217;ll find a sleek new UI and a brand new <a href="http://www.oldsf.org/#ll:37.780073|-122.513765&#038;e:AAC-0275|535&#038;m:37.78395|-122.47521|14">slideshow feature</a>. Here&#8217;s the before/after:</p>
+<p><a href="http://www.danvk.org/wp/wp-content/uploads/2013/01/oldsf-before.png" style="border:none;"><img src="http://www.danvk.org/wp/wp-content/uploads/2013/01/oldsf-before-300x209.png" alt="OldSF &quot;expanded image&quot; view before update." width="300" height="209" class="aligncenter size-medium wp-image-974" style="display: inline-block;" border=0 /></a> &nbsp; <a href="http://www.danvk.org/wp/wp-content/uploads/2013/01/oldsf-after.png" style="border:none;"><img src="http://www.danvk.org/wp/wp-content/uploads/2013/01/oldsf-after-300x209.png" alt="oldsf-after" width="300" height="209" class="aligncenter size-medium wp-image-973" style="display: inline-block;" border=0 /></a></p>
+<p>Locations like the <a href="http://en.wikipedia.org/wiki/Sutro_Baths">Sutro Baths</a> can have hundreds of photos. The slideshow lets you flip through them quickly.</p>
+<p>As so often happens, what looked simple at first became more and more complex as I implemented it. Here&#8217;s how that process went for the OldSF update.<br />
+<span id="more-972"></span><br />
+It started with Raven&#8217;s mock of the feature:</p>
+<p><a href="http://www.danvk.org/wp/wp-content/uploads/2013/01/oldsf-slideshow.jpeg" style="border:none;"><img src="http://www.danvk.org/wp/wp-content/uploads/2013/01/oldsf-slideshow.jpeg" alt="Raven&#039;s initial mocks for the OldSF slideshow." width="616" height="359" class="aligncenter size-full wp-image-995" /></a></p>
+<p>I started by looking for a JavaScript library that could do most of the heavy lifting for me. Raven&#8217;s mock shows a single big image in the center with bits of the previous and next images visible on either side. After finding lots of &#8220;slideshow&#8221; libraries that <a href="http://www.slidesjs.com/">weren&#8217;t</a> <a href="https://github.com/Ephigenia/jquery.slideShow">quite</a> <a href="http://vandelaydesign.com/blog/web-development/jquery-slideshow/">right</a>, I realized that what I really wanted was called a &#8220;carousel&#8221;, not a &#8220;slideshow&#8221;. After making this conceptual breakthrough, I quickly settled on <a href="https://github.com/jsor/jcarousel">jCarousel</a>.</p>
+<p>The slideshow/carousel was barely in place before I ran into a new problem: the images kept shifting out of place! The issue is that jCarousel lays out all the images in your slideshow in a big long line, like so:</p>
+<p><img src="http://www.danvk.org/wp/wp-content/uploads/2013/01/long-line-laptop.png" alt="Long strip of photos with with one visible" width="600" height="87" class="aligncenter size-full wp-image-986" /></p>
+<p>Most of the images are off-screen. To change the &#8220;active&#8221; image, jCarousel slides the whole strip to the left or right. To save bandwidth, I try not to load images that you&#8217;ll never see. An image only gets loaded when it appears on the screen. Before it loaded, I had no idea what its width was. The long strip of images really looked like this:</p>
+<p><img src="http://www.danvk.org/wp/wp-content/uploads/2013/01/long-line-laptop-1.png" alt="long-line-laptop-1" width="600" height="87" class="aligncenter size-full wp-image-1006" /></p>
+<p>If an image turned out to be wider than expected, then the browser would push all the later images farther to the right, like so:</p>
+<p><img src="http://www.danvk.org/wp/wp-content/uploads/2013/01/long-line-laptop-2.png" alt="long-line-laptop-2" width="600" height="87" class="aligncenter size-full wp-image-1005" /></p>
+<p>This wreaked havoc on the carousel&#8217;s layout. It could budge the center image all the way off the screen!</p>
+<p>At first, I told jCarousel to redo its layout whenever a new image loaded. This mostly prevented the budging, but it had a nasty side effect. Images typically get loaded when you scroll through the slideshow. This scrolling is animated. But if jCarousel redid the layout, then the animation would suddenly stop and the motion would look very janky. My first thought was to prevent the relayout during animations, and this is what I did for our initial &#8220;launch&#8221;. But a few days later, Raven told me that she wasn&#8217;t consistently seeing the correct image when she copy/pasted links to the slideshow. The layout issues weren&#8217;t gone!</p>
+<p>The source of all this complexity was the images in the slideshow with unknown widths. So the cleanest solution was to make them known! I added image width and height to the database and propagated them through to the client. This meant that the layout never had to change when an image loaded. Using the same schematic as above, the carousel looked like this:</p>
+<p><img src="http://www.danvk.org/wp/wp-content/uploads/2013/01/long-line-laptop-3.png" alt="long-line-laptop-3" width="600" height="87" class="aligncenter size-full wp-image-1004" /></p>
+<p>With the layout fixed, all the hacks I&#8217;d written melted away and the slideshow links turned rock solid.</p>
+<p><img src="http://www.danvk.org/wp/wp-content/uploads/2013/01/layout-clash.png" alt="Google Maps navigation and OldSF logo overlapping" width="282" height="265" class="alignleft size-full wp-image-987" /> Another surprisingly tricky part involved moving the Google Maps navigation controls. In our new UI, the map uses the full window. The logo, date range selector and right-hand panel &#8220;float&#8221; above the map. When I first implemented it, I saw the mess you see to the left.</p>
+<p>Uh-oh! I assumed this would be easy to fix&mdash;just shove the Google Maps navigation down a bit. But Google Maps doesn&#8217;t expose any CSS classes for its controls, so this turns out to be quite tricky. With some help from the <a href="https://developers.google.com/maps/documentation/javascript/controls">API docs</a> and <a href="http://stackoverflow.com/questions/2934269/google-maps-api-v3-custom-controls-position">this StackOverflow question</a> I learned that the only way to do this is to create a small, invisible custom maps control which shoves all the other controls out of the way. Sheesh. The invisible control is outlined in this image:</p>
+<p><img src="http://www.danvk.org/wp/wp-content/uploads/2013/01/layout-fixed.png" alt="Layout fixed using an invisible control." width="290" height="273" class="aligncenter size-full wp-image-989" /></p>
+<p>Another fun issue came up with Street View. Having Street View on OldSF is quite useful, since it lets you do &#8220;now and then&#8221; comparisons. But when we went to the full-screen map layout, we ran into this annoyance:</p>
+<p><img src="http://www.danvk.org/wp/wp-content/uploads/2013/01/x-in-the-corner.png" alt="The Street View close button is covered by the right-hand panel of images." width="405" height="259" class="alignleft size-full wp-image-992" /> That &#8220;x&#8221; button in the top right corner is the <i>only</i> way to get out of street view, and it&#8217;s covered by the right-hand panel. You&#8217;re stuck! The solution here was to find the events corresponding to entering and leaving Street View. When you go into Street View, we hide our UI elements. When you leave, we show them again. Raven has suggested that it&#8217;s nice to still see the images, so in the future I may just shove the right-hand panel down a bit or provide my own exit button.</p>
+<p>Those were three of the most interesting issues I ran into while creating this new feature. There were many, many more. Nothing is ever so simple as it seems!</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.danvk.org/wp/2013-01-21/developing-the-oldsf-slideshow/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Updated Online Boggle Solver</title>
+		<link>http://www.danvk.org/wp/2012-07-03/updated-online-boggle-solver/</link>
+		<comments>http://www.danvk.org/wp/2012-07-03/updated-online-boggle-solver/#comments</comments>
+		<pubDate>Tue, 03 Jul 2012 17:42:45 +0000</pubDate>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+				<category><![CDATA[boggle]]></category>
+		<category><![CDATA[web]]></category>
+
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=924</guid>
+		<description><![CDATA[See that Online Boggle Solver link on the right? Bet you&#8217;ve never clicked it! I built the online solver back in 2006, mostly just for fun. In the six years since, I&#8217;ve wound up using it almost exclusively on my phone during real-life Boggle games. The iPhone didn&#8217;t exist when I built that page, and [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>See that <a href="http://danvk.org/boggle.php">Online Boggle Solver</a> link on the right? Bet you&#8217;ve never clicked it!</p>
+<p>I built the online solver back in 2006, mostly just for fun. In the six years since, I&#8217;ve wound up using it almost exclusively on my phone during real-life Boggle games. The iPhone didn&#8217;t exist when I built that page, and it is a device for which its fancy design (with hover effects and fixed position elements) is very ill-suited. Minimal designs tend to work better on Mobile, and I&#8217;ve just pushed out a <a href="http://danvk.org/boggle.php">new version</a> for phones which is very minimal indeed.</p>
+<p>The code behind this boggle solver differs from my <a href="https://github.com/danvk/performance-boggle">other boggle code</a> in that it&#8217;s designed for low latency rather than high throughput. This is precisely what you want from a web solver. You&#8217;re only finding the words on a single board, so time spent loading the word list dominates time spent finding words on the board. The current version uses a custom dictionary which can be <a href="http://en.wikipedia.org/wiki/Mmap">MMAPped</a>. This winds up being about 3x faster than reading a dictionary text file and building a Trie on every invocation.</p>
+<p>I haven&#8217;t <a href="http://www.danvk.org/wp/category/boggle/">worked on Boggle</a> in the past three years, so the state of the art in finding the highest-scoring boards is still where it was when I made my last blog post about <a href="http://www.danvk.org/wp/2009-08-08/breaking-3x3-boggle/">breaking 3&#215;3 Boggle</a>. The interesting development then was that you could get something like a 1000x speedup by upper-bounding whole classes of boards rather than scoring each board individually. This is a big enough speed boost to make 3&#215;3 Boggle &#8220;solvable&#8221; in a day on a desktop computer, but not enough to make 3&#215;4 or 4&#215;4 solvable, even on a big cluster of computers. I was optimistic that <a href="http://en.wikipedia.org/wiki/Memoization">memoization</a> could give some more big wins, but when those failed to materialize I got frustrated and stopped working on the project.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.danvk.org/wp/2012-07-03/updated-online-boggle-solver/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>puzzle+: Crosswords for Google+</title>
+		<link>http://www.danvk.org/wp/2012-05-17/puzzle-crosswords-for-google/</link>
+		<comments>http://www.danvk.org/wp/2012-05-17/puzzle-crosswords-for-google/#comments</comments>
+		<pubDate>Thu, 17 May 2012 15:48:12 +0000</pubDate>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+				<category><![CDATA[programming]]></category>
+		<category><![CDATA[web]]></category>
+
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=867</guid>
+		<description><![CDATA[To solve a crossword with your friends in Google+, click this giant hangout button: You&#8217;ll see something like this: Click &#8220;Hang out&#8221; to invite everyone in your circles to help you with the puzzle. If you want to collaborate with just one or two people, click the &#8220;x&#8221; on &#8220;Your Circles&#8221; and then click your [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>To solve a crossword with your friends in Google+, click this giant hangout button:</p>
+<p style="text-align: center; padding: 20px 0;"><a href="https://plus.google.com/hangouts/_?gid=816682636912" style="text-decoration:none;"><img src="https://ssl.gstatic.com/s2/oz/images/stars/hangout/1/gplus-hangout-60x230-normal.png" alt="Start a Hangout" style="border:0;width:230px;height:60px;"/></a></p>
+<p>You&#8217;ll see something like this:</p>
+<p style="text-align: center;"><img src="http://www.danvk.org/wp/wp-content/uploads/2012/05/circles-people.png" alt="" title="circles-people" width="523" height="401" class="aligncenter size-full wp-image-883" /></p>
+<p>Click &#8220;Hang out&#8221; to invite everyone in your circles to help you with the puzzle. If you want to collaborate with just one or two people, click the &#8220;x&#8221; on &#8220;Your Circles&#8221; and then click your friend&#8217;s names on the right.</p>
+<p>You&#8217;ll be prompted to either upload a .puz file or play one of the built-in Onion puzzles. You can get a free puzzle from the New York Times by clicking &#8220;Play in Across Lite&#8221; on <a href="http://www.nytimes.com/ref/crosswords/classicpuz.html?ref=crosswords">this page</a>.</p>
+<p>With the puzzle downloaded, drag it into the drop area:</p>
+<p style="text-align: center;"><img src="http://www.danvk.org/wp/wp-content/uploads/2012/05/dragging-e1337269129570.png" alt="" title="dragging" width="608" height="413" class="aligncenter size-full wp-image-874" /></p>
+<p>And now you&#8217;re off to the races! The big win of doing this in a Google+ hangout is that you get to video chat with your collaborators while you&#8217;re solving the puzzle, just like you would in person!</p>
+<p><img src="http://www.danvk.org/wp/wp-content/uploads/2012/05/screenshot.png" alt="" title="screenshot" width="900" height="577" class="size-full wp-image-875" style="max-width: 900px;" /></p>
+<p>Astute readers will note that puzzle+ is a revival of <a href="/wp/2011-03-27/crosscountry-crosswords/">lmnopuz for Google Shared Spaces</a>, which was a revival of <a href="/wp/2010-03-22/introducing-lmnowave/">lmnowave</a> (Crosswords for Google Wave), which was in turn a revival of <a href="http://neugierig.org/">Evan Martin</a> and <a href="http://www.erat.org/">Dan Erat</a>&#8216;s standalone <a href="http://neugierig.org/software/lmnopuz/">lmnopuz</a>. Hopefully the Google+ Hangouts API will be more long-lived than its predecessors.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.danvk.org/wp/2012-05-17/puzzle-crosswords-for-google/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Horizontal and Vertical Centering with CSS</title>
+		<link>http://www.danvk.org/wp/2012-05-14/horizontal-and-vertical-centering-with-css/</link>
+		<comments>http://www.danvk.org/wp/2012-05-14/horizontal-and-vertical-centering-with-css/#comments</comments>
+		<pubDate>Mon, 14 May 2012 17:04:47 +0000</pubDate>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+				<category><![CDATA[programming]]></category>
+		<category><![CDATA[web]]></category>
+
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=854</guid>
+		<description><![CDATA[I recently wanted to center some content both vertically and horizontally on a web page. I did not know in advance how large the content was, and I wanted it to work for any size browser window. These two articles have everything you need to know about horizontal centering and vertical centering. The two articles [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>I recently wanted to center some content both vertically and horizontally on a web page. I did not know in advance how large the content was, and I wanted it to work for any size browser window.</p>
+<p>These two articles have everything you need to know about <a href="http://haslayout.net/css-tuts/Horizontal-Centering">horizontal centering</a> and <a href="http://haslayout.net/css-tuts/Vertical-Centering">vertical centering</a>.</p>
+<p>The two articles don&#8217;t actually combine the techniques, so I&#8217;ll do that here.</p>
+<p>In the bad old days before CSS, you might accomplish this with tables:</p>
+<pre class="brush: xml; title: ; notranslate">
+&lt;table width=100% height=100%&gt;
+  &lt;tr&gt;
+    &lt;td valign=middle align=center&gt;
+      Content goes here
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+<p>Simple enough! In the wonderful world of HTML5, you do the same thing by turning <code>div</code>s into <code>table</code>s using CSS. You need no fewer than <i>three</i> divs to pull this off:</p>
+<pre class="brush: xml; title: ; notranslate">
+&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;middle&quot;&gt;
+    &lt;div class=&quot;inner&quot;&gt;
+      Content goes here
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<p>And here&#8217;s the CSS:</p>
+<pre class="brush: css; title: ; notranslate">
+.container {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+.inner {
+  display: table;
+  margin: 0 auto;
+}
+</pre>
+<p>A few comments on why this works:</p>
+<ul>
+<li>You can only apply <code>vertical-align: middle</code> to an element with <code>display: table-cell</code>. (Hence <code>.middle</code>)
+<li>You can only apply <code>display: table-cell</code> to an element inside of another element with <code>display: table</code>. (Hence <code>.container</code>)
+<li>Elements with <code>display: block</code> have 100% width by default. Setting <code>display: table</code> has the side effect of shrinking the div to fit its content, while still keeping it a block-level element. This, in turn, enables the <code>margin: 0 auto</code> trick. (Hence <code>.inner</code>)
+</ul>
+<p>I believe all three of these divs are genuinely necessary. For the common case that you want to center elements on the entire screen, you can make <code>.container</code> the <code>body</code> tag to get rid of one div.</p>
+<p>In the future, this will get slightly easier with <a href="http://www.the-haystack.com/2012/01/04/learn-you-a-flexbox/">display: flexbox</a>, a box model which makes infinitely more sense for layout than the existing CSS model. You can read about how do to horizontal and vertical centering using flexbox <a href="http://www.kirupa.com/html5/centering_vertically_horizontally.htm">here</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.danvk.org/wp/2012-05-14/horizontal-and-vertical-centering-with-css/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Crosscountry Crosswords</title>
+		<link>http://www.danvk.org/wp/2011-03-27/crosscountry-crosswords/</link>
+		<comments>http://www.danvk.org/wp/2011-03-27/crosscountry-crosswords/#comments</comments>
+		<pubDate>Sun, 27 Mar 2011 21:07:05 +0000</pubDate>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+				<category><![CDATA[personal]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[web]]></category>
+
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=749</guid>
+		<description><![CDATA[It&#8217;s been almost a year since I introduced lmnowave, the collaborative crossword puzzle gadget for Google Wave. A lot has happened in that past year, not least the cancelation of Wave. First, to clear up some confusion. It&#8217;s not &#8220;I&#8217;m no wave&#8221;, it&#8217;s &#8220;L-M-N-O-Wave&#8221;, which is a play on &#8220;L-M-N-O-Puz&#8221;, aka lmnopuz, the software on [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p><img src="http://www.danvk.org/wp/wp-content/uploads/2010/03/logo.png" alt="logo" title="logo" width="167" height="101" align="right" class="alignright size-full wp-image-688" />It&#8217;s been almost a year since I introduced <a href="/wp/2010-03-22/introducing-lmnowave/">lmnowave</a>, the collaborative crossword puzzle gadget for <a href="http://wave.google.com/">Google Wave</a>. A lot has happened in that past year, not least the cancelation of Wave.</p>
+<p>First, to clear up some confusion. It&#8217;s not &#8220;I&#8217;m no wave&#8221;, it&#8217;s &#8220;L-M-N-O-Wave&#8221;, which is a play on &#8220;L-M-N-O-Puz&#8221;, aka <a href="http://neugierig.org/software/lmnopuz/">lmnopuz</a>, the software on which my collaborative crossword system is based. Only a few dozen people ever saw lmnopuz, so no one got the joke. And I realized after releasing it that, by changing &#8216;puz&#8217; -&gt; &#8216;wave&#8217;, I&#8217;d taken away any hint of what my wave gadget actually did. A bad name. Oh well.</p>
+<p>In August, Google announced that <a href="http://googleblog.blogspot.com/2010/08/update-on-google-wave.html">Wave was canceled</a>. This seemed to be the end of lmnowave. Sure, Wave was still usable. But the life had been sucked out of the project. This was quite disappointing to me, since I&#8217;d spent a fair bit of my own time developing the crossword gadget.</p>
+<p>Then, in mid-December, Douwe Osinga <a href="http://googlewave.blogspot.com/2010/12/announcing-google-shared-spaces.html">introduced</a> the oddly-named <a href="http://sharedspaces.googlelabs.com/">Google Shared Spaces</a>. It&#8217;s an attempt to salvage the Wave gadget code, to let it live outside of Wave.</p>
+<p>For lmnopuz, it&#8217;s perfect. Here&#8217;s the <a href="http://sharedspaces.googlelabs.com/gallery/app?app_id=96001">lmnowave shared space</a>. You can use it to collaborate on crosswords with your friends, just like you could with lmnowave. In some ways, it&#8217;s even better, since the Wave UI is stripped away and you can focus on your puzzle. To do crosscountry crosswords, my <a href="http://ericaricardo.com/">friend</a> and I open up a shared space and call each other on Skype. The combination works really well.</p>
+<p>What does the future hold for lmnowave? It&#8217;s a bit unclear. I may turn it into a Facebook game, or perhaps use it to learn how to write applications for the <a href="http://www.apple.com/mac/app-store/">Mac App store</a>.</p>
+<p>Enjoy!</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.danvk.org/wp/2011-03-27/crosscountry-crosswords/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Commacopy</title>
+		<link>http://www.danvk.org/wp/2011-03-09/commacopy/</link>
+		<comments>http://www.danvk.org/wp/2011-03-09/commacopy/#comments</comments>
+		<pubDate>Wed, 09 Mar 2011 15:16:08 +0000</pubDate>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+				<category><![CDATA[programming]]></category>
+		<category><![CDATA[web]]></category>
+
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=720</guid>
+		<description><![CDATA[At work, I often see web pages that display large numbers like so: num-bytes 1,234,567,890 num-entries 123,456,789 Including the commas in the display makes the numbers easier to read. But it does have a downside. Say you want to calculate the average number of bytes per entry. If you copy/paste the numbers above, the commas [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>At work, I often see web pages that display large numbers like so:</p>
+<table>
+<tr>
+<td>num-bytes</td>
+<td>1,234,567,890</td>
+</tr>
+<tr>
+<td>num-entries</td>
+<td>123,456,789</td>
+</tr>
+</table>
+<p>Including the commas in the display makes the numbers easier to read. But it does have a downside. Say you want to calculate the average number of bytes per entry. If you copy/paste the numbers above, the commas will prevent most programming languages (e.g. <a href="http://en.wikipedia.org/wiki/Python_(programming_language)">python</a> or <a href="http://en.wikipedia.org/wiki/Bc_programming_language">bc</a>) from interpreting them correctly.</p>
+<p>My coworker <a href="http://dsandler.org/wp/">Dan</a> came up with a great solution to this conundrum using CSS. Try copy/pasting these numbers over into the text box:</p>
+<style type="text/css">.pre-comma:before { content:","; }</style>
+<table>
+<tr valign="top">
+<td valign="top" width="50%">
+<ul>
+<li>1<span class='pre-comma'>234</span> <b> or </b> 2<span class='pre-comma'>345</span>
+<li>-12<span class='pre-comma'>345</span>.67
+<li>-123<span class='pre-comma'>456</span><span class='pre-comma'>789</span></ul>
+</td>
+<td valign="top"><textarea rows=4 cols=30></textarea></td>
+</tr>
+</table>
+<p>The commas don&#8217;t copy! Best of both worlds!</p>
+<p>You can view source to see how it works, but let&#8217;s jump straight to the goodies:</p>
+<p><!-- hoisted from https://www.squarefree.com/bookmarklets/ --></p>
+<style type="text/css">a.bml { border:1px outset #ddd; padding: 1px; vertical-align: 1px; background: #ddd; text-decoration: none;  font-family: sans-serif; color: darkgreen; }</style>
+<p><b>Bookmarklet: </b><a class="bml" href="javascript:var%20s%20=%20document.getElementsByTagName(%27*%27);var%20re%20=%20/[-+]?(\d{1,3})(,\d\d\d)+(\.\d*)?/;var%20changed%20=%20false;for%20(var%20i%20=%200;%20i%20<%20s.length;%20i++)%20{var%20el%20=%20s[i];for%20(var%20j%20=%200;%20j%20<%20el.childNodes.length;%20j++)%20{if%20(el.childNodes[j].nodeType%20==%203)%20{var%20txtEl%20=%20el.childNodes[j];var%20txt%20=%20txtEl.nodeValue;if%20(txt.match(re))%20{changed%20=%20true;var%20new_span%20=%20document.createElement(%22span%22);new_span.innerHTML%20=%20txt.replace(/,(\d\d\d)/g,%22<span%20class=%27pre-comma%27>$1</span>%22);el.replaceChild(new_span,%20txtEl);}}}}if%20(changed)%20{var%20rule%20=%20%22content:%20%27,%27;%22;var%20styleSheetElement%20=%20document.createElement(%22style%22);styleSheetElement.type%20=%20%22text/css%22;document.getElementsByTagName(%22head%22)[0].appendChild(styleSheetElement);for%20(var%20i%20=%200;%20i%20<%20document.styleSheets.length;%20i++)%20{if%20(document.styleSheets[i].disabled)%20continue;var%20mysheet%20=%20document.styleSheets[i];try%20{if%20(mysheet.insertRule)%20{var%20idx%20=%20mysheet.cssRules%20?%20mysheet.cssRules.length%20:%200;mysheet.insertRule(%22.pre-comma:before%20{%20%22%20+%20rule%20+%20%22%20}%22,%20idx);}%20else%20if%20(mysheet.addRule)%20{mysheet.addRule(%22.pre-comma:before%22,%20rule);}return;}%20catch(err)%20{}}}">commacopy</a></span></p>
+<p><b>Unobtrusive JavaScript: </b><a href="/commacopy/commacopy.js">commacopy.js</a></p>
+<p>To use the bookmarklet, drag it to your browser&#8217;s bookmarks toolbar. If you click it, it will silently convert all numbers containing commas on the current page to the fancy copy/pasteable commas. This should really be a Chrome extension that runs on every page, but I&#8217;ll leave that as an exercise for the reader.</p>
+<p>To use the unobtrusive JS, make a copy of <a href="/commacopy/commacopy.js">commacopy.js</a> and include it in your page via:<br />
+<code><br />
+&lt;script src="commacopy.js" language="text/javascript"&gt;&lt;script&gt;<br />
+</code></p>
+<p>commacopy works by converting a number like:<br />
+<code><br />
+123,456,789<br />
+</code></p>
+<p>into this HTML:<br />
+<code><br />
+&lt;style type="text/css"&gt;<br />
+.pre-comma:before {<br />
+&nbsp;&nbsp;content: ",";<br />
+}<br />
+&lt;/style&gt;<br />
+123&lt;span class='pre-comma'&gt;456&lt;/span&gt;&lt;span class='pre-comma'&gt;789&lt;/span&gt;<br />
+</code></p>
+<p>The commas are only present in a CSS style, rather than in the text itself. For reasons which aren&#8217;t entirely clear to me, this means that they don&#8217;t make it into the clipboard when you copy/paste them.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.danvk.org/wp/2011-03-09/commacopy/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Sunrise/Sunset Onebox</title>
+		<link>http://www.danvk.org/wp/2010-06-28/sunrisesunset-onebox/</link>
+		<comments>http://www.danvk.org/wp/2010-06-28/sunrisesunset-onebox/#comments</comments>
+		<pubDate>Tue, 29 Jun 2010 01:45:25 +0000</pubDate>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+				<category><![CDATA[astronomy]]></category>
+		<category><![CDATA[personal]]></category>
+		<category><![CDATA[web]]></category>
+
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=708</guid>
+		<description><![CDATA[If you try searching for [sunrise san francisco] on Google, you&#8217;ll see a special display in the results: This is known as a &#8220;onebox&#8221;. It&#8217;s designed to get you answers quickly. Other examples include the calculator (e.g. [2*2]), weather ([weather 94110]) and time ([time italy]) oneboxes. The sunrise/sunset onebox is a project that I worked [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>If you try searching for [<a href="http://www.google.com/search?q=sunrise+san+francisco">sunrise san francisco</a>] on Google, you&#8217;ll see a special display in the results:</p>
+<p><img src="http://www.danvk.org/wp/wp-content/uploads/2010/06/sunrise-sf1.png" alt="" title="sunrise-sf" width="478" height="130" class="aligncenter size-full wp-image-711" /></p>
+<p>This is known as a &#8220;onebox&#8221;. It&#8217;s designed to get you answers quickly. Other examples include the calculator (e.g. [<a href="http://www.google.com/search?q=2*2">2*2</a>]), weather ([<a href="http://www.google.com/search?q=weather+94110">weather 94110</a>]) and time ([<a href="http://www.google.com/search?q=time+italy">time italy</a>]) oneboxes.</p>
+<p>The sunrise/sunset onebox is a project that I worked on in my spare time and recently launched. You can read more about it on the <a href="http://googleblog.blogspot.com/2010/06/this-week-in-search-62710.html">Official Google Blog</a>. I first had the idea for this onebox about two years ago, so it&#8217;s very gratifying to see it finally launch!</p>
+<p>A few features which are worth calling out:</p>
+<ul>
+<li>The sunrise and sunset times are calculated when you perform your query. They are a function of latitude, longitude and the current time. The algorithm is based on the one used by <a href="http://www.srrb.noaa.gov/highlights/sunrise/sunrise.html">NOAA</a>.</li>
+<li>In most places, you can just search for [<a href="http://www.google.com/search?q=sunrise">sunrise</a>] or [<a href="http://www.google.com/search?q=sunset">sunset</a>] to get results for your current location. Google figures this out based on your IP.</li>
+<li>This onebox works on mobile phones, too, so you can search for sunset times when you&#8217;re out on a hike.</li>
+</ul>
+<p>There&#8217;s a wrinkle to the sunrise/sunset calculation that non-astronomers don&#8217;t typically think about. The sun starts to behave strangely once you get north of the arctic circle or south of the antarctic circle. If you&#8217;re north of the arctic circle, then there will be at least one day during the summer when the site never sets. And there will be at least one day during the winter when it never rises. This is truly a special case for the onebox! Here&#8217;s what it looks like:</p>
+<p><a href="http://www.google.com/search?q=sunset+barrow+ak"><img border=0 src="http://www.danvk.org/wp/wp-content/uploads/2010/06/sunset-barrow.png" alt="" title="sunset-barrow" width="392" height="136" class="aligncenter size-full wp-image-710" align="center" /></a></p>
+<p>I feel bad for those Barrowans &mdash; hopefully they&#8217;ll be able to fall asleep sometime in the next 34 days!</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.danvk.org/wp/2010-06-28/sunrisesunset-onebox/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>A new view on Minard&#8217;s Napoleon</title>
+		<link>http://www.danvk.org/wp/2009-12-04/a-new-view-on-minards-napoleon/</link>
+		<comments>http://www.danvk.org/wp/2009-12-04/a-new-view-on-minards-napoleon/#comments</comments>
+		<pubDate>Sat, 05 Dec 2009 00:29:04 +0000</pubDate>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+				<category><![CDATA[web]]></category>
+
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=625</guid>
+		<description><![CDATA[Charles Minard&#8217;s chart of the demise of Napoleon&#8217;s Grand Armée is famous for its &#8220;brutal eloquence&#8221;. Edward Tufte says it &#8220;may well be the best statistical graphic ever drawn&#8221;. The width of the line represents the size of Napoleon&#8217;s army as it marched to Moscow and then retreated. I found a version of this visualization [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>Charles Minard&#8217;s chart of the demise of Napoleon&#8217;s <a href="http://en.wikipedia.org/wiki/Grand_Armée">Grand Armée</a> is famous for its &#8220;brutal eloquence&#8221;. <a href="http://en.wikipedia.org/wiki/Edward_Tufte">Edward Tufte</a> says it &#8220;may well be the best statistical graphic ever drawn&#8221;.</p>
+<p><a href="http://en.wikipedia.org/wiki/File:Minard.png"><img src="http://www.danvk.org/wp/wp-content/uploads/2009/12/Minard-small.png" alt="Minard-small" title="Minard-small" width="450" height="214" class="aligncenter size-full wp-image-629" border="0" /></a></p>
+<p>The width of the line represents the size of Napoleon&#8217;s army as it marched to Moscow and then retreated.</p>
+<p>I found a version of this visualization <a href="http://vis.stanford.edu/protovis/ex/napoleon.html">put on a Google Map</a> using <a href="http://vis.stanford.edu/protovis/ex/">protovis</a>. This visualization is great! It draws attention to one of the main problems with this famous visualization: it doesn&#8217;t give any geographical context. I had no idea where Napoleon&#8217;s army started and turned around until I saw this map:</p>
+<p><a href="http://vis.stanford.edu/protovis/ex/napoleon.html "><img src="http://www.danvk.org/wp/wp-content/uploads/2009/12/grand-armee.png" alt="grand-armee" title="grand-armee" width="503" height="333" class="aligncenter size-full wp-image-626" border="0" /></a></p>
+<p>Some things that stand out:</p>
+<ul>
+<li>The Grand Armée was <i>way</i> far away from France at the start of this.
+<li>The march wasn&#8217;t as long as I&#8217;d imagined. When I think &#8220;march across Russia&#8221;, the image in my mind goes halfway across Siberia.
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://www.danvk.org/wp/2009-12-04/a-new-view-on-minards-napoleon/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+	</channel>
+</rss>

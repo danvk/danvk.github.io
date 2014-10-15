@@ -1,0 +1,767 @@
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<!-- Mirrored from www.danvk.org/wp/2009-08-08/breaking-3x3-boggle/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Oct 2014 03:10:10 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="generator" content="WordPress 3.9.2" /> <!-- leave this for stats please -->
+	<title>danvk.org &raquo; Breaking 3&#215;3 Boggle</title>
+	<style type="text/css" media="screen">
+		@import url( ../../wp-content/themes/ocadia/style.css);
+			</style>
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="../../feed/index.html" />
+	<link rel="alternate" type="text/xml" title="RSS .92" href="../../feed/rss/index.html" />
+	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="../../feed/atom/index.html" />
+	<link rel="pingback" href="../../xmlrpc.php" />
+    	<link rel='archives' title='October 2014' href='../../2014/10/index.html' />
+	<link rel='archives' title='August 2014' href='../../2014/08/index.html' />
+	<link rel='archives' title='July 2014' href='../../2014/07/index.html' />
+	<link rel='archives' title='June 2014' href='../../2014/06/index.html' />
+	<link rel='archives' title='March 2014' href='../../2014/03/index.html' />
+	<link rel='archives' title='February 2014' href='../../2014/02/index.html' />
+	<link rel='archives' title='January 2014' href='../../2014/01/index.html' />
+	<link rel='archives' title='August 2013' href='../../2013/08/index.html' />
+	<link rel='archives' title='June 2013' href='../../2013/06/index.html' />
+	<link rel='archives' title='April 2013' href='../../2013/04/index.html' />
+	<link rel='archives' title='March 2013' href='../../2013/03/index.html' />
+	<link rel='archives' title='February 2013' href='../../2013/02/index.html' />
+	<link rel='archives' title='January 2013' href='../../2013/01/index.html' />
+	<link rel='archives' title='December 2012' href='../../2012/12/index.html' />
+	<link rel='archives' title='September 2012' href='../../2012/09/index.html' />
+	<link rel='archives' title='August 2012' href='../../2012/08/index.html' />
+	<link rel='archives' title='July 2012' href='../../2012/07/index.html' />
+	<link rel='archives' title='June 2012' href='../../2012/06/index.html' />
+	<link rel='archives' title='May 2012' href='../../2012/05/index.html' />
+	<link rel='archives' title='April 2012' href='../../2012/04/index.html' />
+	<link rel='archives' title='February 2012' href='../../2012/02/index.html' />
+	<link rel='archives' title='January 2012' href='../../2012/01/index.html' />
+	<link rel='archives' title='December 2011' href='../../2011/12/index.html' />
+	<link rel='archives' title='November 2011' href='../../2011/11/index.html' />
+	<link rel='archives' title='August 2011' href='../../2011/08/index.html' />
+	<link rel='archives' title='March 2011' href='../../2011/03/index.html' />
+	<link rel='archives' title='June 2010' href='../../2010/06/index.html' />
+	<link rel='archives' title='March 2010' href='../../2010/03/index.html' />
+	<link rel='archives' title='December 2009' href='../../2009/12/index.html' />
+	<link rel='archives' title='November 2009' href='../../2009/11/index.html' />
+	<link rel='archives' title='October 2009' href='../../2009/10/index.html' />
+	<link rel='archives' title='September 2009' href='../../2009/09/index.html' />
+	<link rel='archives' title='August 2009' href='../../2009/08/index.html' />
+	<link rel='archives' title='June 2009' href='../../2009/06/index.html' />
+	<link rel='archives' title='May 2009' href='../../2009/05/index.html' />
+	<link rel='archives' title='March 2009' href='../../2009/03/index.html' />
+	<link rel='archives' title='February 2009' href='../../2009/02/index.html' />
+	<link rel='archives' title='January 2009' href='../../2009/01/index.html' />
+	<link rel='archives' title='December 2008' href='../../2008/12/index.html' />
+	<link rel='archives' title='November 2008' href='../../2008/11/index.html' />
+	<link rel='archives' title='October 2008' href='../../2008/10/index.html' />
+	<link rel='archives' title='September 2008' href='../../2008/09/index.html' />
+	<link rel='archives' title='August 2008' href='../../2008/08/index.html' />
+	<link rel='archives' title='June 2008' href='../../2008/06/index.html' />
+	<link rel='archives' title='May 2008' href='../../2008/05/index.html' />
+	<link rel='archives' title='February 2008' href='../../2008/02/index.html' />
+	<link rel='archives' title='January 2008' href='../../2008/01/index.html' />
+	<link rel='archives' title='December 2007' href='../../2007/12/index.html' />
+	<link rel='archives' title='November 2007' href='../../2007/11/index.html' />
+	<link rel='archives' title='October 2007' href='../../2007/10/index.html' />
+	<link rel='archives' title='September 2007' href='../../2007/09/index.html' />
+	<link rel='archives' title='August 2007' href='../../2007/08/index.html' />
+	<link rel='archives' title='July 2007' href='../../2007/07/index.html' />
+	<link rel='archives' title='June 2007' href='../../2007/06/index.html' />
+	<link rel='archives' title='May 2007' href='../../2007/05/index.html' />
+	<link rel='archives' title='April 2007' href='../../2007/04/index.html' />
+	<link rel='archives' title='March 2007' href='../../2007/03/index.html' />
+	<link rel='archives' title='February 2007' href='../../2007/02/index.html' />
+	<link rel='archives' title='January 2007' href='../../2007/01/index.html' />
+	<link rel='archives' title='December 2006' href='../../2006/12/index.html' />
+	<link rel='archives' title='November 2006' href='../../2006/11/index.html' />
+	<link rel='archives' title='October 2006' href='../../2006/10/index.html' />
+	<link rel='archives' title='September 2006' href='../../2006/09/index.html' />
+	<link rel="alternate" type="application/rss+xml" title="danvk.org &raquo; Breaking 3&#215;3 Boggle Comments Feed" href="feed/index.html" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../../xmlrpc0db0.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../../wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Solving Boggle by Taking Option Three' href='../../2009-08-04/solving-boggle-by-taking-option-three/index.html' />
+<link rel='next' title='Some max/no mark examples' href='../../2009-08-11/some-maxno-mark-examples/index.html' />
+<meta name="generator" content="WordPress 3.9.2" />
+<link rel='canonical' href='index.html' />
+<link rel='shortlink' href='../../index3ee1.html?p=516' />
+<style type="text/css">
+/* <![CDATA[ */
+img.latex { vertical-align: middle; border: none; }
+/* ]]> */
+</style>
+<style type="text/css" id="syntaxhighlighteranchor"></style>
+</head>
+	
+<body>
+
+<div id="wrapper">
+
+<div id="header">
+<h1><a href="http://www.danvk.org/wp">danvk.org</a></h1>
+<p>Keepin&#8217; static like wool fabric since 2006</p>
+</div>
+
+<div id="content">
+
+			
+		<div class="post">
+
+			<h1 class="storydate">08.08.09</h1> 
+			<h2 id="post-516" class="storytitle"><a href="index.html" rel="bookmark" title="Permanent link to Breaking 3&#215;3 Boggle">Breaking 3&#215;3 Boggle</a></h2>
+			<p class="meta">Posted in <a href="../../category/boggle/index.html" title="View all posts in boggle" rel="category tag">boggle</a>, <a href="../../category/math/index.html" title="View all posts in math" rel="category tag">math</a>, <a href="../../category/programming/index.html" title="View all posts in programming" rel="category tag">programming</a> at 10:35 am by danvk</p>
+		
+			<p>Why is finding the highest-scoring Boggle board so difficult? It&#8217;s because there are so many boards to consider: 2^72 for the 4&#215;4 case and 2^40 for the 3&#215;3 case. At <a href="../../2007-02-10/one-last-boggle-boost/index.html">10,000 boards/second</a> the former corresponds to about 2 billion years of compute time, and the latter just two years. Just enumerating all 2^72 boards would take over 100,000 years.</p>
+<p>So we have to come up with a technique that doesn&#8217;t involve looking at every single board. And I&#8217;ve come up with just such a method! This is the &#8220;exciting news&#8221; I alluded to in the last post.</p>
+<p>Here&#8217;s the general technique:</p>
+<ol>
+<li>Find a very high-scoring board (maybe <a href="../../2009-02-19/sky-high-boggle-scores-with-simulated-annealing/index.html">this way</a>)</li>
+<li>Consider a large class of boards</li>
+<li>Come up with an upper bound on the highest score achieved by any board in the class.</li>
+<li>If it&#8217;s lower than the score in step #1, we can eliminate all the boards in the class. If it&#8217;s not, subdivide the class and repeat step #2 with each subclass.</li>
+</ol>
+<p><b>Classes of Boards</b><br />
+By &#8220;class of boards&#8221;, I mean something like this:</p>
+<style type="text/css">
+.board { text-align: center; border-collapse: collapse; }
+.board tbody td { border: 1px solid black; border-collapse: collapse; padding: 4px 8px 4px 8px; }
+.board tbody td { font-weight: bold; }
+.notable { color: red; }
+.change td { padding: 2px 5px 2px 5px; }
+.mb { font-family: monospace; padding: 0px 4px 0px 4px; }
+</style>
+<p><center></p>
+<table class="board">
+<tr>
+<td>{a,e,i,o,u}</td>
+<td>{a,e,i,o,u}</td>
+<td>r</td>
+</tr>
+<tr>
+<td>{b,c,d,f,g,h}</td>
+<td>a</td>
+<td>t</td>
+</tr>
+<tr>
+<td>d</td>
+<td>e</td>
+<td>{r,s,t,v}</td>
+</tr>
+</table>
+<p></center></p>
+<p>The squares that contain a set of letters can take on <i>any</i> of those letters. So this board is part of that class:</p>
+<p><center></p>
+<table class="board">
+<tr>
+<td>a</td>
+<td>i</td>
+<td>r</td>
+</tr>
+<tr>
+<td>d</td>
+<td>a</td>
+<td>t</td>
+</tr>
+<tr>
+<td>d</td>
+<td>e</td>
+<td>s</td>
+</tr>
+<tfoot>
+<tr>
+<td colspan=3><a href="http://www.danvk.org/boggle3.php?quick=airdatdes">189 points</a></td>
+</tr>
+</tfoot>
+</table>
+<p></center></p>
+<p>and so is this:</p>
+<p><center></p>
+<table class="board">
+<tr>
+<td>o</td>
+<td>u</td>
+<td>r</td>
+</tr>
+<tr>
+<td>f</td>
+<td>a</td>
+<td>t</td>
+</tr>
+<tr>
+<td>d</td>
+<td>e</td>
+<td>t</td>
+</tr>
+<tfoot>
+<tr>
+<td colspan=3><a href="http://www.danvk.org/boggle3.php?quick=ourfatdet">114 points</a></td>
+</tr>
+</tfoot>
+</table>
+<p></center></p>
+<p>All told, there are 5 * 5 * 6 * 4 = 600 boards that are part of this class, each with its own score. Other fun classes of boards include &#8220;boards with only vowels&#8221; (1,953,125 members) and &#8220;boards with only consonants&#8221; (794,280,046,581 members).</p>
+<p>Follow me past the fold for more&#8230;<br />
+<span id="more-516"></span></p>
+<p><b>Upper Bounds</b><br />
+Now on to step #3 of the general technique: calculating an upper bound. This is going to be easier if we introduce some mathematical notation:</p>
+<p><center></p>
+<table>
+<tr>
+<td align=right><i>b</i></td>
+<td>=</td>
+<td>A boggle board</td>
+</tr>
+<tr>
+<td align=right><i>Score(b)</i></td>
+<td>=</td>
+<td>sum of the scores of all the words contained on b</td>
+</tr>
+<tr>
+<td align=right><i><b>B</b></i></td>
+<td>=</td>
+<td>a class of boards, i.e. <img src='http://s.wordpress.com/latex.php?latex=b%20%5Cin%20B&amp;bg=ffffff&amp;fg=000000&amp;s=0' alt='b \in B' title='b \in B' class='latex' /></td>
+</tr>
+<tr>
+<td align=right><i>Score(<b>B</b>)</i></td>
+<td>=</td>
+<td><img src='http://s.wordpress.com/latex.php?latex=max%28%5C%7BScore%28b%29%20%7C%20b%20%5Cin%20B%5C%7D%29&amp;bg=ffffff&amp;fg=000000&amp;s=0' alt='max(\{Score(b) | b \in B\})' title='max(\{Score(b) | b \in B\})' class='latex' /></td>
+</tr>
+</table>
+<p></center></p>
+<p>An upper bound is a function <img src='http://s.wordpress.com/latex.php?latex=f%28B%29&amp;bg=ffffff&amp;fg=000000&amp;s=0' alt='f(B)' title='f(B)' class='latex' /> such that <img src='http://s.wordpress.com/latex.php?latex=f%28B%29%20%5Cgeq%20Score%28B%29&amp;bg=ffffff&amp;fg=000000&amp;s=0' alt='f(B) \geq Score(B)' title='f(B) \geq Score(B)' class='latex' />, i.e. <img src='http://s.wordpress.com/latex.php?latex=f%28B%29%20%5Cgeq%20Score%28b%29%20%5Cforall%20b%20%5Cin%20B&amp;bg=ffffff&amp;fg=000000&amp;s=0' alt='f(B) \geq Score(b) \forall b \in B' title='f(B) \geq Score(b) \forall b \in B' class='latex' />.</p>
+<p>There&#8217;s one really easy upper bound: <img src='http://s.wordpress.com/latex.php?latex=Score%28B%29&amp;bg=ffffff&amp;fg=000000&amp;s=0' alt='Score(B)' title='Score(B)' class='latex' />! This just enumerates all the boards in the class B, scores each and takes the maximum score. It&#8217;s very expensive to compute for a large class of boards and hence not very practical. You and I both know that no board in containing only consonants has any points on it. We don&#8217;t need to enumerate through all 794 billion such boards to determine this.</p>
+<p>With upper bounds, there&#8217;s a trade-off between how hard they are to compute and how &#8220;tight&#8221; they are, i.e. how closely they approximate <img src='http://s.wordpress.com/latex.php?latex=Score%28B%29&amp;bg=ffffff&amp;fg=000000&amp;s=0' alt='Score(B)' title='Score(B)' class='latex' />. <img src='http://s.wordpress.com/latex.php?latex=Score%28B%29&amp;bg=ffffff&amp;fg=000000&amp;s=0' alt='Score(B)' title='Score(B)' class='latex' /> is very tight but is hard to compute. At the other end of the spectrum, we know that all the words on a board are in the dictionary. So we could just sum up the scores of all the words in the dictionary and get a number, say 1,000,000. Then <img src='http://s.wordpress.com/latex.php?latex=f%28B%29%20%3D%201%2C000%2C000&amp;bg=ffffff&amp;fg=000000&amp;s=0' alt='f(B) = 1,000,000' title='f(B) = 1,000,000' class='latex' /> is an upper bound. It is very easy to compute, but is not very tight.</p>
+<p>The trick is to hit some sort of sweet spot that strikes a good balance between &#8220;tightness&#8221; and ease of computation. Over the rest of this blog post, I&#8217;ll present two upper bounds that do this. Upper bounds have the nice property that if <img src='http://s.wordpress.com/latex.php?latex=f%28B%29&amp;bg=ffffff&amp;fg=000000&amp;s=0' alt='f(B)' title='f(B)' class='latex' /> and <img src='http://s.wordpress.com/latex.php?latex=g%28B%29&amp;bg=ffffff&amp;fg=000000&amp;s=0' alt='g(B)' title='g(B)' class='latex' /> are two upper bounds, then <img src='http://s.wordpress.com/latex.php?latex=h%28B%29%20%3D%20min%28f%28B%29%2C%20g%28B%29%29&amp;bg=ffffff&amp;fg=000000&amp;s=0' alt='h(B) = min(f(B), g(B))' title='h(B) = min(f(B), g(B))' class='latex' /> is also an upper bound. So by finding two bounds, we&#8217;ll get a third that&#8217;s better than either one alone.</p>
+<p><b>sum/union</b><br />
+The idea of this bound is to find all the words that can possibly occur in a class of boards. Since each word can only be found once, we can add the scores of all these words to get an upper bound.</p>
+<p>To get the list of words, we use the same <a href="../../2007-02-01/tries-the-perfect-data-structure/index.html">depth-first search strategy</a> as we did to find words on a single board. The wrinkle is that, when we encounter a cell with multiple possible letters, we have to do a separate depth-first search for each.</p>
+<p>At first glance, it doesn&#8217;t seem like this would be tractable for a board class like this one (alternating vowels and consonants):</p>
+<p><center></p>
+<table class="board">
+<tr>
+<td>{a,e,i,o,u}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{a,e,i,o,u}</td>
+</tr>
+<tr>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{a,e,i,o,u}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+</tr>
+<tr>
+<td>{a,e,i,o,u}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{a,e,i,o,u}</td>
+</tr>
+</table>
+<p></center></p>
+<p>In addition to the branching from going different directions on each square, there&#8217;s also a huge amount of branching from trying each letter on each square. But we&#8217;re saved by the same lesson we learned in <a href="../../2007-01-30/boggle-3-succeed-by-not-being-stupid/index.html">boggle post #3</a>: the dictionary is exceptionally effective at pruning thorny search trees. If we prune search trees like &#8216;bqu&#8217; that don&#8217;t begin words, then there doesn&#8217;t wind up being that much work to do.</p>
+<p>We can find all possible words on the above board in just under 1 second. This is about 10,000 times slower than it takes to score a conventional board, but it&#8217;s certainly tractable. The resulting score is 195,944. Given that no board scores higher than 545 points, this is a wild overestimate. But at least it&#8217;s a better bound than a million!</p>
+<p>This technique does especially well on boards like this one, which contains all consonants:</p>
+<p><center></p>
+<table class="board">
+<tr>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+</tr>
+<tr>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+</tr>
+<tr>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+</tr>
+</table>
+<p></center></p>
+<p>This takes 0.23 seconds to score and results in a bound of 208 points (it contains words like &#8216;crypt&#8217; and &#8216;gypsy&#8217;). We&#8217;ve already <a href="../../2009-08-04/solving-boggle-by-taking-option-three/index.html">found</a> a single board that has <a href="http://www.danvk.org/boggle3.php?quick=perlatdes">545 points</a> on it. So we can eliminate this entire class of 794 billion boards. That&#8217;s a speed of over 3 trillion boards/second! Of course, this board class is not typical.</p>
+<p>It&#8217;s also worth pointing out why this upper bound isn&#8217;t tight. Consider this class of boards:</p>
+<p><center></p>
+<table class="board">
+<tr>
+<td>{a,i}</td>
+<td>r</td>
+<td>z</td>
+</tr>
+<tr>
+<td>f</td>
+<td>z</td>
+<td>z</td>
+</tr>
+<tr>
+<td>z</td>
+<td>z</td>
+<td>z</td>
+</tr>
+</table>
+<p></center></p>
+<p>You can find both &#8220;fir&#8221; and &#8220;far&#8221; on boards in this class, but there aren&#8217;t any boards that contain <i>both</i>. So while each &#8220;fir and &#8220;far&#8221; contribute a point to the upper bound, they should only really contribute a single point. The sum/union bound doesn&#8217;t take into account the relationships between various letter choices. It&#8217;s the best trade-off between computability and &#8220;tightness&#8221; we&#8217;ve seen so far, but it&#8217;s not good enough to make the problem tractable.</p>
+<p><b>max/no mark</b><br />
+In the sum/union upper bound, we dealt with multiple possible letters on the same square by trying each and adding the resulting scores (taking care not to count any word twice). But why take the sum of all choices when we know that any given board can only take on one of the possibilities? It would result in a much better bound if we took the max of the scores resulting from each possible choice, rather than the sum. This is the idea behind the &#8220;max/no mark&#8221; bound.</p>
+<p>This is a huge win over sum/union, especially when there are many squares containing many possible letters. It does have one major drawback, though. The sum/union bound took advantage of the fact that each word could only be found once. With the max/no mark bound, the bookkeeping for this becomes completely intractable. The words we find by making a choice on one square may affect the results of a choice somewhere else. We can&#8217;t make the choices independently. The optimal set of choices becomes an optimization problem in its own right.</p>
+<p>Rather than deal with this, max/no mark just throws up its hands. This is what the &#8220;no mark&#8221; refers to. In the past, we&#8217;ve recorded the words we find by <a href="../../2007-02-10/one-last-boggle-boost/index.html">marking the Trie</a>. By not marking the Trie with found words, we accept that we&#8217;ll double-count words sometimes. But it still winds up being an excellent upper bound.</p>
+<p>Lets try some of our previous examples:</p>
+<p><center></p>
+<table class="board">
+<tr>
+<td>{a,e,i,o,u}</td>
+<td>{a,e,i,o,u}</td>
+<td>r</td>
+</tr>
+<tr>
+<td>{b,c,d,f,g,h}</td>
+<td>a</td>
+<td>t</td>
+</tr>
+<tr>
+<td>d</td>
+<td>e</td>
+<td>{r,s,t,v}</td>
+</tr>
+<tfoot>
+<tr>
+<td colspan=3 align=center>sum/union: 2880</td>
+</tr>
+<tr>
+<td colspan=3>max/no mark: 1307</td>
+</tr>
+</tfoot>
+</table>
+<p></center></p>
+<p>Alternating vowels and consonants:</p>
+<p><center></p>
+<table class="board">
+<tr>
+<td>{a,e,i,o,u}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{a,e,i,o,u}</td>
+</tr>
+<tr>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{a,e,i,o,u}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+</tr>
+<tr>
+<td>{a,e,i,o,u}</td>
+<td>{b-d,f-h,j-n,p-t,v-z}</td>
+<td>{a,e,i,o,u}</td>
+</tr>
+<tfoot>
+<tr>
+<td colspan=3>sum/union: 195944</td>
+</tr>
+<tr>
+<td colspan=3>max/no mark: 15692</td>
+</tr>
+</tfoot>
+</table>
+<p></center></p>
+<p>A class that can be entirely eliminated:</p>
+<p><center></p>
+<table class="board">
+<tr>
+<td>{b,d,f,g,j,k,m,p,v,w,x,z}</td>
+<td>a</td>
+<td>{s,y}</td>
+</tr>
+<tr>
+<td>{i,o,u}</td>
+<td>y</td>
+<td>a</td>
+</tr>
+<tr>
+<td>{s,y}</td>
+<td>{c,h,l,n,r,t}</td>
+<td>{c,h,l,n,r,t}</td>
+</tr>
+<tfoot>
+<tr>
+<td colspan=3>sum/union: 2497</td>
+</tr>
+<tr>
+<td colspan=3>max/no mark: 447</td>
+</tr>
+</tfoot>
+</table>
+<p></center></p>
+<p>max/no mark isn&#8217;t always better than sum/union:</p>
+<p><center></p>
+<table class="board">
+<tr>
+<td>{b,d}</td>
+<td>a</td>
+<td>{b,d}</td>
+</tr>
+<tr>
+<td>a</td>
+<td>{b,d}</td>
+<td>a</td>
+</tr>
+<tr>
+<td>{b,d}</td>
+<td>a</td>
+<td>{b,d}</td>
+</tr>
+<tfoot>
+<tr>
+<td colspan=3>sum/union: 9</td>
+</tr>
+<tr>
+<td colspan=3>max/no mark: 132</td>
+</tr>
+</tfoot>
+</table>
+<p></center></p>
+<p>This is something of a worst-case because, while there are relatively few distinct words, there are many different ways to find them.</p>
+<p><b>Putting it all together</b><br />
+Our two bounds do well in different situations. max/no mark works best when there are lots of choices to be made on particular cells and there are relatively few ways to make any particular word. sum/union works best when there are lots of possibilities but relatively few distinct words. Putting them together results in a bound that&#8217;s good enough to find the best 3&#215;3 boggle board using the technique described at the beginning of this post.</p>
+<p>Given an initial class of boards, we wind up with what I call a &#8220;breaking tree&#8221;. If the initial class has an upper bound less than 545 points, then we&#8217;re done. Otherwise, we pick a cell to split and try each possibility.</p>
+<p>Here&#8217;s a relatively small breaking tree that results from running <a href="http://code.google.com/p/performance-boggle/source/browse/trunk/3x3/ibucket_breaker.cc">this program</a>:</p>
+<pre>
+$ ./3x3/ibucket_breaker --best_score 520 --break_class "bdfgjkmpvwxz a sy iou xyz aeiou sy chlnrt chlnrt"
+(     0%) (0;1/1) bdfgjkmpvwxz a sy iou xyz aeiou sy chlnrt chlnrt (820, 77760 reps)
+                            split cell 4 (xyz) Will evaluate 3 more boards...
+(     0%)  (1;1/3) bdfgjkmpvwxz a sy iou x aeiou sy chlnrt chlnrt (475, 25920 reps)
+(33.333%)  (1;2/3) bdfgjkmpvwxz a sy iou y aeiou sy chlnrt chlnrt (703, 25920 reps)
+                            split cell 5 (aeiou) Will evaluate 5 more boards...
+(33.333%)   (2;1/5) bdfgjkmpvwxz a sy iou y a sy chlnrt chlnrt (447, 5184 reps)
+(    40%)   (2;2/5) bdfgjkmpvwxz a sy iou y e sy chlnrt chlnrt (524, 5184 reps)
+                            split cell (iou) 3 Will evaluate 3 more boards...
+(    40%)    (3;1/3) bdfgjkmpvwxz a sy i y e sy chlnrt chlnrt (346, 1728 reps)
+(42.222%)    (3;2/3) bdfgjkmpvwxz a sy o y e sy chlnrt chlnrt (431, 1728 reps)
+(44.444%)    (3;3/3) bdfgjkmpvwxz a sy u y e sy chlnrt chlnrt (339, 1728 reps)
+(46.667%)   (2;3/5) bdfgjkmpvwxz a sy iou y i sy chlnrt chlnrt (378, 5184 reps)
+(53.333%)   (2;4/5) bdfgjkmpvwxz a sy iou y o sy chlnrt chlnrt (423, 5184 reps)
+(    60%)   (2;5/5) bdfgjkmpvwxz a sy iou y u sy chlnrt chlnrt (318, 5184 reps)
+(66.667%)  (1;3/3) bdfgjkmpvwxz a sy iou z aeiou sy chlnrt chlnrt (509, 25920 reps)
+</pre>
+<p>The numbers in parentheses are the upper bounds. When they get below 520 (the parameter I set on the command line), a sub-class is fully broken.</p>
+<p>Using this technique and the following partition of the 26 letters:</p>
+<ul>
+<li>bdfgjvwxz
+<li>aeiou
+<li>lnrsy
+<li>chkmpt
+</ul>
+<p>I was able to go through all 262,144 (=4^9) board classes in about six hours on a single machine. This resulted in the boards I listed in the <a href="../../2009-08-04/solving-boggle-by-taking-option-three/index.html">last post</a>. Six hours is a big improvement over two years!</p>
+<p>If that same factor (two years to six hours) held for the 4&#215;4 case, then we&#8217;d be down to 380 years of compute time to find the best 4&#215;4 boggle board. Or, equivalently, 138 days on 1000 machines. That&#8217;s still a lot. We&#8217;re not quite there yet, but we&#8217;re getting closer!</p>
+<p>Code for the program that went through all possible board classes can be found <a href="http://code.google.com/p/performance-boggle/source/browse/trunk/#trunk/paper">here</a>. While <a href="http://ai.stanford.edu/~chuongdo/boggle/index.html">many</a> <a href="http://ankurdave.com/AnkurDaveExtendedEssay2009.pdf">people</a> have found high-scoring boards, I haven&#8217;t found any previous work on this upper bounding approach. So if you have any ideas/suggestions on how to improve the bound, they&#8217;re probably novel and useful!</p>
+			
+			<p class="feedback">
+			<a href="index.html" rel="bookmark" title="Permanent link to Breaking 3&#215;3 Boggle" class="permalink">Permalink</a>
+						</p>
+		
+		</div>
+			
+		
+<!-- You can start editing here. -->
+
+
+	<h2 id="comments">
+		6 Comments			</h2> 
+
+	<ol id="commentlist">
+
+	
+		<li class="commentalt" id="comment-23546">
+			<p class="commentauthor"><a href='http://trikyguy.wordpress.com/' rel='external nofollow' class='url'>Craig Fratrik</a> said,</p>
+			<p class="commentmeta">August 9, 2009 at <a href="#comment-23546" title="Permanent link to this comment">11:43 am</a> </p>
+			
+			<p>I dont&#8217; quite understand how the Max/No-Mark evaluation decideds at each cell which letter to use.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-23550">
+			<p class="commentauthor"><a href='http://danvk.org/' rel='external nofollow' class='url'>danvk</a> said,</p>
+			<p class="commentmeta">August 9, 2009 at <a href="#comment-23550" title="Permanent link to this comment">1:52 pm</a> </p>
+			
+			<p>You&#8217;re right, I should do a follow-up post explaining max/no mark in more detail, since it&#8217;s the main, novel idea in this post.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-23835">
+			<p class="commentauthor"><a href='http://jng.imagine27.com/articles/2009-05-06-113423_its_good_to_be_wrong.html' rel='external nofollow' class='url'>Justin Grant</a> said,</p>
+			<p class="commentmeta">August 17, 2009 at <a href="#comment-23835" title="Permanent link to this comment">3:06 am</a> </p>
+			
+			<p>A fast boggle solver in Common Lisp and C.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-23870">
+			<p class="commentauthor"><a href='http://danvk.org/' rel='external nofollow' class='url'>danvk</a> said,</p>
+			<p class="commentmeta">August 17, 2009 at <a href="#comment-23870" title="Permanent link to this comment">1:45 pm</a> </p>
+			
+			<p>Justin &#8212; took me a bit to find the C source, here it is: <a href="http://git.imagine27.com/cgit/boggle/tree/src/c" rel="nofollow">http://git.imagine27.com/cgit/boggle/tree/src/c</a></p>
+<p>We&#8217;re interested in different sorts of performance. Your link is about scaling up to NxN boards, whereas I&#8217;m interested in scoring N 3&#215;3 or 4&#215;4 boards.</p>
+<p>Also, it appears the C/Lisp code does not enforce the restriction that each word can only be found once? Fixing that problem isn&#8217;t a big deal if you&#8217;re solving a single NxN board, but it can be an issue if you&#8217;re solving lots of boards. I came up with a somewhat novel solution to this problem, which I discuss in this post: <a href="../../2007-02-10/one-last-boggle-boost/index.html" rel="nofollow">http://www.danvk.org/wp/2007-02-10/one-last-boggle-boost/</a></p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-24202">
+			<p class="commentauthor">HisKingdomComes said,</p>
+			<p class="commentmeta">August 31, 2009 at <a href="#comment-24202" title="Permanent link to this comment">1:32 am</a> </p>
+			
+			<p>What about using CUDA (or similar) instructions for a GPU and use a couple of computers to just crunch only this task till it&#8217;s done? I know a CUDA-enabled GPU could cost you some money, but maybe someone is able to borrow you one.</p>
+<p>I like mathematical problem-solvers (as computed) and appreciate the people who figure these things out!</p>
+<p>- His Kingdom Comes -</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-24738">
+			<p class="commentauthor">kundan singh said,</p>
+			<p class="commentmeta">September 22, 2009 at <a href="#comment-24738" title="Permanent link to this comment">12:41 am</a> </p>
+			
+			<p>there are five vowels in english gramer. so you can make a word.without any allphabets to taken out side. please sort-out my problum.</p>
+<p>thanking you</p>
+		</li>
+
+		
+	
+	</ol>
+
+
+	
+	
+</div>
+
+<div id="sidebar">
+<ul>
+
+	<li id="search">
+		<form method="get" id="searchform" action="http://www.danvk.org/wp/index.php">
+<p>
+<input type="text" value="" name="s" id="s" /><br />
+<input type="submit" id="searchsubmit" value="Search" />
+</p>
+</form>	</li> 
+
+<!-- I want more control than this gives me: wp_list_pages('title_li=<h2>' . __('Pages') . '</h2>' ); -->
+
+	<li class="pagenav">
+		<ul>
+			<!--<li class="page_item"><a href="http://www.danvk.org/wp/?page_id=2" title="About">About</a></li>-->
+			<li>Dan across the web
+				<ul>
+					<li class="social">
+					<a href="https://github.com/danvk"><img src="https://github.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://twitter.com/danvdk"><img src="https://twitter.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://www.facebook.com/danvdk"><img src="https://facebook.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://plus.google.com/+DanVanderkam"><img src="https://plus.google.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://www.linkedin.com/profile/view?id=340204755"><img src="https://www.linkedin.com/favicon.ico" width=16 height=16 border=0></a>
+					<script data-gittip-username="danvdk" data-gittip-widget="button" src="http://gttp.co/v1.js"></script>
+				</ul>
+
+			<li>Dan's projects
+				<ul class="projects">
+					<li><a href="http://dygraphs.com/">dygraphs</a>
+					<li><a href="http://oldsf.org/">OldSF</a>
+					<li><a href="http://comparea.org/">Comparea</a>
+					<li><a href="https://github.com/danvk/webdiff">git webdiff</a>
+				</ul>
+
+			<li>Features on this site
+				<ul class="features">
+					<li><a href="http://www.danvk.org/boggle.php" title="Boggle Solver">Online Boggle Solver</a></li>
+					<li><a href="../../beals-conjecture/index.html" title="Beal&#039;s Conjecture">Beal's Conjecture</a></li>
+					<li><a href="../../gw-basic-program-decoder/index.html" title="GW-BASIC Program Decoder">GW-BASIC Program Decoder</a></li>
+					<li><a href="http://www.danvk.org/tower/nstower.html">NS-Tower in your Browser</a></li>
+				</ul>
+		</ul>
+	</li>
+
+	<!--
+	<li id="twitter_sidebar">
+		<div id="twitter_div">
+		<a href="http://twitter.com/danvdk" target="_blank"><h2 class="sidebar-title">Follow me on Twitter</h2></a>
+		<ul id="twitter_update_list" style="padding-right:30px"></ul>
+		
+		</div>
+		<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+		<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/danvdk.json?callback=twitterCallback2&amp;count=5"></script>
+	</li>
+	-->
+
+	<li id="archives">
+		<h2>Archives</h2>
+		<ul>
+			<li><a href='../../2014/10/index.html'>October 2014</a></li>
+	<li><a href='../../2014/08/index.html'>August 2014</a></li>
+	<li><a href='../../2014/07/index.html'>July 2014</a></li>
+	<li><a href='../../2014/06/index.html'>June 2014</a></li>
+	<li><a href='../../2014/03/index.html'>March 2014</a></li>
+	<li><a href='../../2014/02/index.html'>February 2014</a></li>
+	<li><a href='../../2014/01/index.html'>January 2014</a></li>
+	<li><a href='../../2013/08/index.html'>August 2013</a></li>
+	<li><a href='../../2013/06/index.html'>June 2013</a></li>
+	<li><a href='../../2013/04/index.html'>April 2013</a></li>
+	<li><a href='../../2013/03/index.html'>March 2013</a></li>
+	<li><a href='../../2013/02/index.html'>February 2013</a></li>
+	<li><a href='../../2013/01/index.html'>January 2013</a></li>
+	<li><a href='../../2012/12/index.html'>December 2012</a></li>
+	<li><a href='../../2012/09/index.html'>September 2012</a></li>
+	<li><a href='../../2012/08/index.html'>August 2012</a></li>
+	<li><a href='../../2012/07/index.html'>July 2012</a></li>
+	<li><a href='../../2012/06/index.html'>June 2012</a></li>
+	<li><a href='../../2012/05/index.html'>May 2012</a></li>
+	<li><a href='../../2012/04/index.html'>April 2012</a></li>
+	<li><a href='../../2012/02/index.html'>February 2012</a></li>
+	<li><a href='../../2012/01/index.html'>January 2012</a></li>
+	<li><a href='../../2011/12/index.html'>December 2011</a></li>
+	<li><a href='../../2011/11/index.html'>November 2011</a></li>
+	<li><a href='../../2011/08/index.html'>August 2011</a></li>
+	<li><a href='../../2011/03/index.html'>March 2011</a></li>
+	<li><a href='../../2010/06/index.html'>June 2010</a></li>
+	<li><a href='../../2010/03/index.html'>March 2010</a></li>
+	<li><a href='../../2009/12/index.html'>December 2009</a></li>
+	<li><a href='../../2009/11/index.html'>November 2009</a></li>
+	<li><a href='../../2009/10/index.html'>October 2009</a></li>
+	<li><a href='../../2009/09/index.html'>September 2009</a></li>
+	<li><a href='../../2009/08/index.html'>August 2009</a></li>
+	<li><a href='../../2009/06/index.html'>June 2009</a></li>
+	<li><a href='../../2009/05/index.html'>May 2009</a></li>
+	<li><a href='../../2009/03/index.html'>March 2009</a></li>
+	<li><a href='../../2009/02/index.html'>February 2009</a></li>
+	<li><a href='../../2009/01/index.html'>January 2009</a></li>
+	<li><a href='../../2008/12/index.html'>December 2008</a></li>
+	<li><a href='../../2008/11/index.html'>November 2008</a></li>
+	<li><a href='../../2008/10/index.html'>October 2008</a></li>
+	<li><a href='../../2008/09/index.html'>September 2008</a></li>
+	<li><a href='../../2008/08/index.html'>August 2008</a></li>
+	<li><a href='../../2008/06/index.html'>June 2008</a></li>
+	<li><a href='../../2008/05/index.html'>May 2008</a></li>
+	<li><a href='../../2008/02/index.html'>February 2008</a></li>
+	<li><a href='../../2008/01/index.html'>January 2008</a></li>
+	<li><a href='../../2007/12/index.html'>December 2007</a></li>
+	<li><a href='../../2007/11/index.html'>November 2007</a></li>
+	<li><a href='../../2007/10/index.html'>October 2007</a></li>
+	<li><a href='../../2007/09/index.html'>September 2007</a></li>
+	<li><a href='../../2007/08/index.html'>August 2007</a></li>
+	<li><a href='../../2007/07/index.html'>July 2007</a></li>
+	<li><a href='../../2007/06/index.html'>June 2007</a></li>
+	<li><a href='../../2007/05/index.html'>May 2007</a></li>
+	<li><a href='../../2007/04/index.html'>April 2007</a></li>
+	<li><a href='../../2007/03/index.html'>March 2007</a></li>
+	<li><a href='../../2007/02/index.html'>February 2007</a></li>
+	<li><a href='../../2007/01/index.html'>January 2007</a></li>
+	<li><a href='../../2006/12/index.html'>December 2006</a></li>
+	<li><a href='../../2006/11/index.html'>November 2006</a></li>
+	<li><a href='../../2006/10/index.html'>October 2006</a></li>
+	<li><a href='../../2006/09/index.html'>September 2006</a></li>
+		</ul>
+	</li>
+
+		
+	<li id="categories">
+		<h2>Categories</h2>
+		<ul>
+			<li class="cat-item cat-item-21"><a href="../../category/astronomy/index.html" title="View all posts filed under astronomy">astronomy</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="../../category/boggle/index.html" title="View all posts filed under boggle">boggle</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="../../category/books/index.html" title="View all posts filed under books">books</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="../../category/finance/index.html" title="View all posts filed under finance">finance</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="../../category/javascript/index.html" title="View all posts filed under javascript">javascript</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="../../category/math/index.html" title="View all posts filed under math">math</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="../../category/meta/index.html" title="View all posts filed under meta">meta</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="../../category/movies/index.html" title="View all posts filed under movies">movies</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="../../category/music/index.html" title="View all posts filed under music">music</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="../../category/news/index.html" title="View all posts filed under news">news</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="../../category/personal/index.html" title="View all posts filed under personal">personal</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="../../category/politics/index.html" title="View all posts filed under politics">politics</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="../../category/programming/index.html" title="View all posts filed under programming">programming</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="../../category/reviews/index.html" title="View all posts filed under reviews">reviews</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="../../category/san-francisco/index.html" title="View all posts filed under san francisco">san francisco</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="../../category/science/index.html" title="View all posts filed under science">science</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="../../category/space/index.html" title="View all posts filed under space">space</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="../../category/sports/index.html" title="View all posts filed under sports">sports</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="../../category/tennis/index.html" title="View all posts filed under tennis">tennis</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="../../category/travel/index.html" title="View all posts filed under travel">travel</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="../../category/tv/index.html" title="View all posts filed under tv">tv</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="../../category/uncategorized/index.html" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="../../category/web/index.html" title="View all posts filed under web">web</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="../../category/wikipedia/index.html" title="View all posts filed under wikipedia">wikipedia</a>
+</li>
+ 
+		</ul>
+	</li>
+	
+			
+	
+	<li id="meta">
+		<h2>Meta</h2>
+		<ul>
+				<li><a href="../../wp-login.html">Log in</a></li>
+		<li><a href="../../feed/index.html" title="Syndicate this site using RSS">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+		<li><a href="../../comments/feed/index.html" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+		<li><a href="http://wordpress.org/" title="Powered by Wordpress, state-of-the-art semantic personal publishing platform.">Wordpress</a></li>
+				</ul>
+	</li>
+	
+</ul>
+</div>
+
+<div id="footer">
+
+<!--<p>
+
+
+Design by <a href="http://ravenkeller.com">Raven Keller</a> and <a href="http://weblogs.us" title="Theme sponsored by Weblogs.us">Weblogs.us</a>
+&#183;
+<a href="http://validator.w3.org/check/referer" title="This page validates as XHTML 1.0 Transitional"><abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a>
+&#183;
+<a href="http://jigsaw.w3.org/css-validator/check/referer" title="This page validates as CSS"><abbr title="Cascading Style Sheets">CSS</abbr></a>
+<img src='http://counter.dreamhost.com/cgi-bin/Count.cgi?df=danvk-maincounter.dat&pad=F&ft=0&dd=copper&istrip=T' align=right />
+</p>-->
+
+
+</div>
+
+
+<!-- Google Analytics -->
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-769809-1";
+urchinTracker();
+</script>
+
+</body>
+
+<!-- Mirrored from www.danvk.org/wp/2009-08-08/breaking-3x3-boggle/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Oct 2014 03:10:10 GMT -->
+</html>	
+
+
+
+<!--<footer class="container"></footer>-->
+

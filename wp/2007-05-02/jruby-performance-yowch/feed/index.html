@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: JRuby Performance, Yowch!</title>
+	<atom:link href="http://www.danvk.org/wp/2007-05-02/jruby-performance-yowch/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.danvk.org/wp/2007-05-02/jruby-performance-yowch/</link>
+	<description>Keepin' static like wool fabric since 2006</description>
+	<lastBuildDate>Wed, 08 Oct 2014 14:33:23 +0000</lastBuildDate>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.9.2</generator>
+	<item>
+		<title>By: danvk</title>
+		<link>http://www.danvk.org/wp/2007-05-02/jruby-performance-yowch/comment-page-1/#comment-3382</link>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+		<pubDate>Tue, 17 Jul 2007 16:04:35 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=141#comment-3382</guid>
+		<description><![CDATA[Kungen: The PHP is just a simple wrapper around the C++ program. I&#039;ve sent it to you as an email, but I have no plans to post the source here, since it&#039;s not particularly interesting.]]></description>
+		<content:encoded><![CDATA[<p>Kungen: The PHP is just a simple wrapper around the C++ program. I&#8217;ve sent it to you as an email, but I have no plans to post the source here, since it&#8217;s not particularly interesting.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Kungen</title>
+		<link>http://www.danvk.org/wp/2007-05-02/jruby-performance-yowch/comment-page-1/#comment-3362</link>
+		<dc:creator><![CDATA[Kungen]]></dc:creator>
+		<pubDate>Sun, 15 Jul 2007 19:07:54 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=141#comment-3362</guid>
+		<description><![CDATA[danvk: You don&#039;t have the sources (or even clips) of your online php boggle-solver anywhere? I have tried to make one myself. I have worked on it for few weeks, but still it doesn&#039;t work right. I really can&#039;t think cpp-code as php, so I can&#039;t use those example sources of yours?
+
+Are you planning on publishing those sources someday?]]></description>
+		<content:encoded><![CDATA[<p>danvk: You don&#8217;t have the sources (or even clips) of your online php boggle-solver anywhere? I have tried to make one myself. I have worked on it for few weeks, but still it doesn&#8217;t work right. I really can&#8217;t think cpp-code as php, so I can&#8217;t use those example sources of yours?</p>
+<p>Are you planning on publishing those sources someday?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Charles Oliver Nutter</title>
+		<link>http://www.danvk.org/wp/2007-05-02/jruby-performance-yowch/comment-page-1/#comment-2483</link>
+		<dc:creator><![CDATA[Charles Oliver Nutter]]></dc:creator>
+		<pubDate>Thu, 03 May 2007 16:33:47 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=141#comment-2483</guid>
+		<description><![CDATA[Yep, that would be Java 5. Java 6 is only available through the Apple Developer Connection (which isn&#039;t hard to get into).
+
+The details of why it can&#039;t compile are a little tricky. Basically anything other than a single argument block parses to a multiple assignment. The variable-swapping code also compiles to multiple assignment. Multiassign is probably the nastiest bit of Ruby to get compiling right, because for each variable/element being assigned it may have to do something different. And basically, I haven&#039;t subjected myself to that pain yet. But I came up with a new strategy for compiling it, so there&#039;s a chance it could still be in 1.0 final.
+
+And no, there&#039;s no official documentation for jrubyc. I figured it was mostly experimental until more stuff compiles and people could really start using it regularly. For 1.0 it won&#039;t be an officially supported feature, since it won&#039;t be able to compile everything.]]></description>
+		<content:encoded><![CDATA[<p>Yep, that would be Java 5. Java 6 is only available through the Apple Developer Connection (which isn&#8217;t hard to get into).</p>
+<p>The details of why it can&#8217;t compile are a little tricky. Basically anything other than a single argument block parses to a multiple assignment. The variable-swapping code also compiles to multiple assignment. Multiassign is probably the nastiest bit of Ruby to get compiling right, because for each variable/element being assigned it may have to do something different. And basically, I haven&#8217;t subjected myself to that pain yet. But I came up with a new strategy for compiling it, so there&#8217;s a chance it could still be in 1.0 final.</p>
+<p>And no, there&#8217;s no official documentation for jrubyc. I figured it was mostly experimental until more stuff compiles and people could really start using it regularly. For 1.0 it won&#8217;t be an officially supported feature, since it won&#8217;t be able to compile everything.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: danvk</title>
+		<link>http://www.danvk.org/wp/2007-05-02/jruby-performance-yowch/comment-page-1/#comment-2482</link>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+		<pubDate>Thu, 03 May 2007 16:04:33 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=141#comment-2482</guid>
+		<description><![CDATA[Thanks for the followup, Charles. You guys certainly get props for being on top of the JRuby blogosphere. I&#039;m on Mac OS X, so my JVM build is 1.5.0_07-87, which I assume means Java 5.
+
+I&#039;m curious why the &quot;do &#124;a,b&#124; ... end&quot; syntax isn&#039;t supported yet. I&#039;ve found it to be a major time saver in my Ruby coding.
+
+Also, is there any official documentation for jrubyc? A google search asks me if I meant &quot;ruby&quot;, and shows lots of source code.]]></description>
+		<content:encoded><![CDATA[<p>Thanks for the followup, Charles. You guys certainly get props for being on top of the JRuby blogosphere. I&#8217;m on Mac OS X, so my JVM build is 1.5.0_07-87, which I assume means Java 5.</p>
+<p>I&#8217;m curious why the &#8220;do |a,b| &#8230; end&#8221; syntax isn&#8217;t supported yet. I&#8217;ve found it to be a major time saver in my Ruby coding.</p>
+<p>Also, is there any official documentation for jrubyc? A google search asks me if I meant &#8220;ruby&#8221;, and shows lots of source code.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Charles Oliver Nutter</title>
+		<link>http://www.danvk.org/wp/2007-05-02/jruby-performance-yowch/comment-page-1/#comment-2468</link>
+		<dc:creator><![CDATA[Charles Oliver Nutter]]></dc:creator>
+		<pubDate>Thu, 03 May 2007 07:23:53 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=141#comment-2468</guid>
+		<description><![CDATA[Your results aren&#039;t too surprising. JRuby can run faster than MRI, but a few things have to line up:
+
+1. Generally you need to run Java 6, which is by far the fastest release of Java yet.
+2. You need to run the &quot;server&quot; more in Java, which runs considerably faster.
+3. If possible, you need to enable the JRuby compiler to get the best performance.
+4. Disabling objectspace can get you another big gain, since it&#039;s just pure overhead for JRuby.
+
+When these four line up, or even three (ObjectSpace isn&#039;t crucial), JRuby consistently outperforms Ruby. And that&#039;s good enough for a lot of people. But we&#039;re working to make it faster an faster, so that folks not running Java 6 can get good performance, and so that the compiler is able to compile more code.
+
+You would probably be able to do 1, 2, and 4 by using the following command line (with Java 6 installed):
+
+jruby SERVER -O short.rb .....
+
+Unfortunately there&#039;s a number of things in your code golfed version that won&#039;t compile, so you won&#039;t get the largest performance boost you could. It&#039;s also important to remember that although code running on the JVM will almost always run very fast, it rarely does so right away. It takes some time for code to get JITted by Java.
+
+All that said, here&#039;s my results for your test, using Java 6 server VM with objectspace disabled. I&#039;ve also created a modified version of your script that could take better advantage of the compiler and compared that.
+
+The primary two things in the golfed version that couldn&#039;t compile is the swap (p, B[x][y] = ...) and the each block that accepts two arguments. Both will be compilable soon in the future, but they&#039;re not now. My modification did a slow swap (split it in to two lines) and move the each block out to a separate method. Then JRuby&#039;s JIT is able to compile the &quot;s&quot; method.
+
+ruby time: 8m45.336s
+jruby time: 7m21.713s
+
+Note that this would improve if the last each block could also be compiled, rather than moved out to a separate method, but it&#039;s still pretty good. We&#039;ll get everything compiling, hopefully soon after the 1.0 final release.]]></description>
+		<content:encoded><![CDATA[<p>Your results aren&#8217;t too surprising. JRuby can run faster than MRI, but a few things have to line up:</p>
+<p>1. Generally you need to run Java 6, which is by far the fastest release of Java yet.<br />
+2. You need to run the &#8220;server&#8221; more in Java, which runs considerably faster.<br />
+3. If possible, you need to enable the JRuby compiler to get the best performance.<br />
+4. Disabling objectspace can get you another big gain, since it&#8217;s just pure overhead for JRuby.</p>
+<p>When these four line up, or even three (ObjectSpace isn&#8217;t crucial), JRuby consistently outperforms Ruby. And that&#8217;s good enough for a lot of people. But we&#8217;re working to make it faster an faster, so that folks not running Java 6 can get good performance, and so that the compiler is able to compile more code.</p>
+<p>You would probably be able to do 1, 2, and 4 by using the following command line (with Java 6 installed):</p>
+<p>jruby SERVER -O short.rb &#8230;..</p>
+<p>Unfortunately there&#8217;s a number of things in your code golfed version that won&#8217;t compile, so you won&#8217;t get the largest performance boost you could. It&#8217;s also important to remember that although code running on the JVM will almost always run very fast, it rarely does so right away. It takes some time for code to get JITted by Java.</p>
+<p>All that said, here&#8217;s my results for your test, using Java 6 server VM with objectspace disabled. I&#8217;ve also created a modified version of your script that could take better advantage of the compiler and compared that.</p>
+<p>The primary two things in the golfed version that couldn&#8217;t compile is the swap (p, B[x][y] = &#8230;) and the each block that accepts two arguments. Both will be compilable soon in the future, but they&#8217;re not now. My modification did a slow swap (split it in to two lines) and move the each block out to a separate method. Then JRuby&#8217;s JIT is able to compile the &#8220;s&#8221; method.</p>
+<p>ruby time: 8m45.336s<br />
+jruby time: 7m21.713s</p>
+<p>Note that this would improve if the last each block could also be compiled, rather than moved out to a separate method, but it&#8217;s still pretty good. We&#8217;ll get everything compiling, hopefully soon after the 1.0 final release.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: danvk</title>
+		<link>http://www.danvk.org/wp/2007-05-02/jruby-performance-yowch/comment-page-1/#comment-2467</link>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+		<pubDate>Thu, 03 May 2007 06:47:23 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=141#comment-2467</guid>
+		<description><![CDATA[Yeah, I did try that, jrubyc gave me:
+
+Error -- Not compilable: Can&#039;t compile node: NextNode[]
+
+Any ideas?]]></description>
+		<content:encoded><![CDATA[<p>Yeah, I did try that, jrubyc gave me:</p>
+<p>Error &#8212; Not compilable: Can&#8217;t compile node: NextNode[]</p>
+<p>Any ideas?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: A</title>
+		<link>http://www.danvk.org/wp/2007-05-02/jruby-performance-yowch/comment-page-1/#comment-2466</link>
+		<dc:creator><![CDATA[A]]></dc:creator>
+		<pubDate>Thu, 03 May 2007 06:42:23 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=141#comment-2466</guid>
+		<description><![CDATA[I know JRuby has a compiler; did you try that or are you just running it off the interpreter?]]></description>
+		<content:encoded><![CDATA[<p>I know JRuby has a compiler; did you try that or are you just running it off the interpreter?</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

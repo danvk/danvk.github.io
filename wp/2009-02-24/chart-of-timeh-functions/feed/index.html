@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Chart of time.h Functions</title>
+	<atom:link href="http://www.danvk.org/wp/2009-02-24/chart-of-timeh-functions/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.danvk.org/wp/2009-02-24/chart-of-timeh-functions/</link>
+	<description>Keepin' static like wool fabric since 2006</description>
+	<lastBuildDate>Wed, 08 Oct 2014 14:33:23 +0000</lastBuildDate>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.9.2</generator>
+	<item>
+		<title>By: Peteris Krumins</title>
+		<link>http://www.danvk.org/wp/2009-02-24/chart-of-timeh-functions/comment-page-1/#comment-17641</link>
+		<dc:creator><![CDATA[Peteris Krumins]]></dc:creator>
+		<pubDate>Wed, 25 Feb 2009 14:10:29 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=459#comment-17641</guid>
+		<description><![CDATA[There is another nice graph of relationship of various time functions in Advanced Programming in the Uni Environment:
+
+&lt;a href=&quot;http://imagepaste.com/img/dab9a2e71ee652988eacb49b986fe92c.png&quot; rel=&quot;nofollow&quot;&gt;http://imagepaste.com/img/dab9a2e71ee652988eacb49b986fe92c.png&lt;/a&gt;]]></description>
+		<content:encoded><![CDATA[<p>There is another nice graph of relationship of various time functions in Advanced Programming in the Uni Environment:</p>
+<p><a href="http://imagepaste.com/img/dab9a2e71ee652988eacb49b986fe92c.png" rel="nofollow">http://imagepaste.com/img/dab9a2e71ee652988eacb49b986fe92c.png</a></p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: danvk</title>
+		<link>http://www.danvk.org/wp/2009-02-24/chart-of-timeh-functions/comment-page-1/#comment-17632</link>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+		<pubDate>Wed, 25 Feb 2009 06:41:49 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=459#comment-17632</guid>
+		<description><![CDATA[Thanks for the info, Johannes, I&#039;d forgotten about the Java Date API. It looks like .NET also avoided the historical baggage of the C Standard Library.
+
+As you say, my alternative wouldn&#039;t be quite as efficient. The existing time.h functions are all quite simple to implement (maybe with the exception of strptime). But I think we&#039;re at the point where that complexity is tiny compared with the developer cost of a confusing API. If an application like crond needs the speed, they can work something out.
+
+time.h has certainly evolved too: witness the new critters like asctime_r, ctime_r, gmtime_r and localtime_r.]]></description>
+		<content:encoded><![CDATA[<p>Thanks for the info, Johannes, I&#8217;d forgotten about the Java Date API. It looks like .NET also avoided the historical baggage of the C Standard Library.</p>
+<p>As you say, my alternative wouldn&#8217;t be quite as efficient. The existing time.h functions are all quite simple to implement (maybe with the exception of strptime). But I think we&#8217;re at the point where that complexity is tiny compared with the developer cost of a confusing API. If an application like crond needs the speed, they can work something out.</p>
+<p>time.h has certainly evolved too: witness the new critters like asctime_r, ctime_r, gmtime_r and localtime_r.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Johannes</title>
+		<link>http://www.danvk.org/wp/2009-02-24/chart-of-timeh-functions/comment-page-1/#comment-17631</link>
+		<dc:creator><![CDATA[Johannes]]></dc:creator>
+		<pubDate>Wed, 25 Feb 2009 06:32:31 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=459#comment-17631</guid>
+		<description><![CDATA[Nice rant. To actually implement parsetime / formattime, you might need to split up the time_t value into its components, which you&#039;d then interpret according to timezone etc. to make time_t. And in case your application (e.g. crond) needs to do hour/day/... arithmetic, your splittime implementation will need to undo that interpretation, so your proposal doesn&#039;t let you write the fastest code possible (or perhaps I&#039;m a bit confused). Maybe not critically important these days, but as you note, the original library has been around.
+
+It might be interesting (or amusing, depending on your perspective) to look at how Java ended up providing this functionality:
+&lt;a href=&quot;http://java.sun.com/javase/6/docs/api/java/util/Date.html&quot; rel=&quot;nofollow&quot;&gt;Date&lt;/a&gt; - represents a specific instant in time, with millisecond precision.
+&lt;a href=&quot;http://java.sun.com/javase/6/docs/api/java/text/DateFormat.html&quot; rel=&quot;nofollow&quot;&gt;DateFormat&lt;/a&gt; - converts back and forth between Date and Strings, considering language, locale, and type of calendar used.
+&lt;a href=&quot;http://java.sun.com/javase/6/docs/api/java/util/Calendar.html&quot; rel=&quot;nofollow&quot;&gt;Calendar&lt;/a&gt; - lets you do arithmetic with split-up dates, e.g. help answer the question &quot;Is this the second Saturday of the month?&quot;&lt;/a&gt;.
+Of course since it&#039;s Java there are more classes beyond this, and in practice the JVM still picks up some environmental settings from the OS. As far as problems and bugs with go, it should be about even with Python etc. in this area, but it sure is a bit more complicated. Witness the amount of deprecation in java.util.Date and the comments at the top; perhaps this demonstrates that it&#039;s actually somewhat nontrivial to make a nice API for dealing with time.]]></description>
+		<content:encoded><![CDATA[<p>Nice rant. To actually implement parsetime / formattime, you might need to split up the time_t value into its components, which you&#8217;d then interpret according to timezone etc. to make time_t. And in case your application (e.g. crond) needs to do hour/day/&#8230; arithmetic, your splittime implementation will need to undo that interpretation, so your proposal doesn&#8217;t let you write the fastest code possible (or perhaps I&#8217;m a bit confused). Maybe not critically important these days, but as you note, the original library has been around.</p>
+<p>It might be interesting (or amusing, depending on your perspective) to look at how Java ended up providing this functionality:<br />
+<a href="http://java.sun.com/javase/6/docs/api/java/util/Date.html" rel="nofollow">Date</a> &#8211; represents a specific instant in time, with millisecond precision.<br />
+<a href="http://java.sun.com/javase/6/docs/api/java/text/DateFormat.html" rel="nofollow">DateFormat</a> &#8211; converts back and forth between Date and Strings, considering language, locale, and type of calendar used.<br />
+<a href="http://java.sun.com/javase/6/docs/api/java/util/Calendar.html" rel="nofollow">Calendar</a> &#8211; lets you do arithmetic with split-up dates, e.g. help answer the question &#8220;Is this the second Saturday of the month?&#8221;.<br />
+Of course since it&#8217;s Java there are more classes beyond this, and in practice the JVM still picks up some environmental settings from the OS. As far as problems and bugs with go, it should be about even with Python etc. in this area, but it sure is a bit more complicated. Witness the amount of deprecation in java.util.Date and the comments at the top; perhaps this demonstrates that it&#8217;s actually somewhat nontrivial to make a nice API for dealing with time.</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

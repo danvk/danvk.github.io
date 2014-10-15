@@ -1,0 +1,586 @@
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<!-- Mirrored from www.danvk.org/wp/2008-06-12/draggable-table-columns/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Oct 2014 03:11:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="generator" content="WordPress 3.9.2" /> <!-- leave this for stats please -->
+	<title>danvk.org &raquo; Draggable Table Columns</title>
+	<style type="text/css" media="screen">
+		@import url( ../../wp-content/themes/ocadia/style.css);
+			</style>
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="../../feed/index.html" />
+	<link rel="alternate" type="text/xml" title="RSS .92" href="../../feed/rss/index.html" />
+	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="../../feed/atom/index.html" />
+	<link rel="pingback" href="../../xmlrpc.php" />
+    	<link rel='archives' title='October 2014' href='../../2014/10/index.html' />
+	<link rel='archives' title='August 2014' href='../../2014/08/index.html' />
+	<link rel='archives' title='July 2014' href='../../2014/07/index.html' />
+	<link rel='archives' title='June 2014' href='../../2014/06/index.html' />
+	<link rel='archives' title='March 2014' href='../../2014/03/index.html' />
+	<link rel='archives' title='February 2014' href='../../2014/02/index.html' />
+	<link rel='archives' title='January 2014' href='../../2014/01/index.html' />
+	<link rel='archives' title='August 2013' href='../../2013/08/index.html' />
+	<link rel='archives' title='June 2013' href='../../2013/06/index.html' />
+	<link rel='archives' title='April 2013' href='../../2013/04/index.html' />
+	<link rel='archives' title='March 2013' href='../../2013/03/index.html' />
+	<link rel='archives' title='February 2013' href='../../2013/02/index.html' />
+	<link rel='archives' title='January 2013' href='../../2013/01/index.html' />
+	<link rel='archives' title='December 2012' href='../../2012/12/index.html' />
+	<link rel='archives' title='September 2012' href='../../2012/09/index.html' />
+	<link rel='archives' title='August 2012' href='../../2012/08/index.html' />
+	<link rel='archives' title='July 2012' href='../../2012/07/index.html' />
+	<link rel='archives' title='June 2012' href='../../2012/06/index.html' />
+	<link rel='archives' title='May 2012' href='../../2012/05/index.html' />
+	<link rel='archives' title='April 2012' href='../../2012/04/index.html' />
+	<link rel='archives' title='February 2012' href='../../2012/02/index.html' />
+	<link rel='archives' title='January 2012' href='../../2012/01/index.html' />
+	<link rel='archives' title='December 2011' href='../../2011/12/index.html' />
+	<link rel='archives' title='November 2011' href='../../2011/11/index.html' />
+	<link rel='archives' title='August 2011' href='../../2011/08/index.html' />
+	<link rel='archives' title='March 2011' href='../../2011/03/index.html' />
+	<link rel='archives' title='June 2010' href='../../2010/06/index.html' />
+	<link rel='archives' title='March 2010' href='../../2010/03/index.html' />
+	<link rel='archives' title='December 2009' href='../../2009/12/index.html' />
+	<link rel='archives' title='November 2009' href='../../2009/11/index.html' />
+	<link rel='archives' title='October 2009' href='../../2009/10/index.html' />
+	<link rel='archives' title='September 2009' href='../../2009/09/index.html' />
+	<link rel='archives' title='August 2009' href='../../2009/08/index.html' />
+	<link rel='archives' title='June 2009' href='../../2009/06/index.html' />
+	<link rel='archives' title='May 2009' href='../../2009/05/index.html' />
+	<link rel='archives' title='March 2009' href='../../2009/03/index.html' />
+	<link rel='archives' title='February 2009' href='../../2009/02/index.html' />
+	<link rel='archives' title='January 2009' href='../../2009/01/index.html' />
+	<link rel='archives' title='December 2008' href='../../2008/12/index.html' />
+	<link rel='archives' title='November 2008' href='../../2008/11/index.html' />
+	<link rel='archives' title='October 2008' href='../../2008/10/index.html' />
+	<link rel='archives' title='September 2008' href='../../2008/09/index.html' />
+	<link rel='archives' title='August 2008' href='../../2008/08/index.html' />
+	<link rel='archives' title='June 2008' href='../../2008/06/index.html' />
+	<link rel='archives' title='May 2008' href='../../2008/05/index.html' />
+	<link rel='archives' title='February 2008' href='../../2008/02/index.html' />
+	<link rel='archives' title='January 2008' href='../../2008/01/index.html' />
+	<link rel='archives' title='December 2007' href='../../2007/12/index.html' />
+	<link rel='archives' title='November 2007' href='../../2007/11/index.html' />
+	<link rel='archives' title='October 2007' href='../../2007/10/index.html' />
+	<link rel='archives' title='September 2007' href='../../2007/09/index.html' />
+	<link rel='archives' title='August 2007' href='../../2007/08/index.html' />
+	<link rel='archives' title='July 2007' href='../../2007/07/index.html' />
+	<link rel='archives' title='June 2007' href='../../2007/06/index.html' />
+	<link rel='archives' title='May 2007' href='../../2007/05/index.html' />
+	<link rel='archives' title='April 2007' href='../../2007/04/index.html' />
+	<link rel='archives' title='March 2007' href='../../2007/03/index.html' />
+	<link rel='archives' title='February 2007' href='../../2007/02/index.html' />
+	<link rel='archives' title='January 2007' href='../../2007/01/index.html' />
+	<link rel='archives' title='December 2006' href='../../2006/12/index.html' />
+	<link rel='archives' title='November 2006' href='../../2006/11/index.html' />
+	<link rel='archives' title='October 2006' href='../../2006/10/index.html' />
+	<link rel='archives' title='September 2006' href='../../2006/09/index.html' />
+	<link rel="alternate" type="application/rss+xml" title="danvk.org &raquo; Draggable Table Columns Comments Feed" href="feed/index.html" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../../xmlrpc0db0.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../../wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='When You Miss out on the News' href='../../2008-05-27/when-you-miss-out-on-the-news/index.html' />
+<link rel='next' title='Onion Crossword Puzzle' href='../../2008-06-21/onion-crossword-puzzle/index.html' />
+<meta name="generator" content="WordPress 3.9.2" />
+<link rel='canonical' href='index.html' />
+<link rel='shortlink' href='../../index07ee.html?p=297' />
+<style type="text/css">
+/* <![CDATA[ */
+img.latex { vertical-align: middle; border: none; }
+/* ]]> */
+</style>
+<style type="text/css" id="syntaxhighlighteranchor"></style>
+</head>
+	
+<body>
+
+<div id="wrapper">
+
+<div id="header">
+<h1><a href="http://www.danvk.org/wp">danvk.org</a></h1>
+<p>Keepin&#8217; static like wool fabric since 2006</p>
+</div>
+
+<div id="content">
+
+			
+		<div class="post">
+
+			<h1 class="storydate">06.12.08</h1> 
+			<h2 id="post-297" class="storytitle"><a href="index.html" rel="bookmark" title="Permanent link to Draggable Table Columns">Draggable Table Columns</a></h2>
+			<p class="meta">Posted in <a href="../../category/programming/index.html" title="View all posts in programming" rel="category tag">programming</a>, <a href="../../category/web/index.html" title="View all posts in web" rel="category tag">web</a> at 12:41 am by danvk</p>
+		
+			<p>Inspired by the <a href="http://www.kryogenix.org/code/browser/sorttable/">sorttable</a> library, I&#8217;ve done some Javascript hacking over the last day and created <a href="../../dragtable/index.html">dragtable</a>, a complementary library which lets you drag column headers around to rearrange HTML tables. A demo will make everything clear:</p>
+<table width=100%>
+<tr>
+<td align=center>
+<table id=table class="thin draggable" cellpadding=2>
+<tr>
+<th>Name</th>
+<th>Date</th>
+<th>Favorite Color</th>
+</tr>
+<tr>
+<td>Dan</td>
+<td>1984-07-12</td>
+<td>Blue</td>
+</tr>
+<tr>
+<td>Alice</td>
+<td>1980-07-22</td>
+<td>Green</td>
+</tr>
+<tr>
+<td>Ryan</td>
+<td>1990-09-23</td>
+<td>Orange</td>
+</tr>
+<tr>
+<td>Bob</td>
+<td>1966-04-21</td>
+<td>Red</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>Drag the column headers to rearrange the table. dragtable is incredibly easy to use. To make a table rearrangeable, just add <code>class=draggable</code> to the <code>table</code> tag. And, if you set <code>class="draggable sortable"</code>, you can have a table that&#8217;s simultaneously sortable and rearrangable! For more details and a download link, check out the <a href="../../dragtable/index.html">dragtable</a> page.</p>
+<p>I&#8217;m calling this v0.9 since I&#8217;m sure there are plenty of bugs and tweaks left to make. I&#8217;d love to get some feedback, so take it for a spin and tell me what you think!</p>
+<p><b>Update:</b> I&#8217;ve added full-column dragging and bumped the version to 1.0. Head on over to the <a href="http://www.danvk.org/dragtable/">dragtable</a>, grab a copy, and let me know what you think!</p>
+<p><script type=text/javascript src="http://www.danvk.org/dragtable/sorttable.js"></script><br />
+<script type=text/javascript src="http://www.danvk.org/dragtable/dragtable.js"></script></p>
+<style type=text/css>
+  /* Sortable tables */
+  table.sortable thead {
+    background-color:#eee;
+    color:#666666;
+    font-weight: bold;
+    cursor: default;
+  }
+  table.thin, table.thin td, table.thin tr, table.thin th {
+    border: thin solid black;
+    border-collapse: collapse;
+  }
+</style>
+			
+			<p class="feedback">
+			<a href="index.html" rel="bookmark" title="Permanent link to Draggable Table Columns" class="permalink">Permalink</a>
+						</p>
+		
+		</div>
+			
+		
+<!-- You can start editing here. -->
+
+
+	<h2 id="comments">
+		15 Comments			</h2> 
+
+	<ol id="commentlist">
+
+	
+		<li class="commentalt" id="comment-10588">
+			<p class="commentauthor"><a href='http://trikyguy.wordpress.com/' rel='external nofollow' class='url'>Craig</a> said,</p>
+			<p class="commentmeta">June 12, 2008 at <a href="#comment-10588" title="Permanent link to this comment">5:34 am</a> </p>
+			
+			<p>Very cool. Live updating would be sweet, and is sort of what I expected as I dragged.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-10589">
+			<p class="commentauthor"><a href='http://danvk.org/' rel='external nofollow' class='url'>danvk</a> said,</p>
+			<p class="commentmeta">June 12, 2008 at <a href="#comment-10589" title="Permanent link to this comment">8:58 am</a> </p>
+			
+			<p>Yeah, I wanted to start with something functional. Next up will be dragging the whole column (rather than just the header) and then maybe some kind of live updating.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-10590">
+			<p class="commentauthor"><a href='http://moultano.blogspot.com/' rel='external nofollow' class='url'>Ryan</a> said,</p>
+			<p class="commentmeta">June 12, 2008 at <a href="#comment-10590" title="Permanent link to this comment">10:25 am</a> </p>
+			
+			<p>I wouldn&#8217;t make the whole column draggable, people will want to be able to select the text.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-10591">
+			<p class="commentauthor"><a href='http://danvk.org/' rel='external nofollow' class='url'>danvk</a> said,</p>
+			<p class="commentmeta">June 12, 2008 at <a href="#comment-10591" title="Permanent link to this comment">10:40 am</a> </p>
+			
+			<p>I should have been clearer &#8212; you&#8217;ll still drag the header. But instead of just showing the header floating around the page as you drag, it will show the entire column moving. The ultimate goal would be something like what Craig described. People have done live updates before &#8212; <a href="http://tool-man.org/examples/sorting.html" rel="nofollow">http://tool-man.org/examples/sorting.html</a> is similar, only with lists instead of columns.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-10694">
+			<p class="commentauthor">Martin said,</p>
+			<p class="commentmeta">June 23, 2008 at <a href="#comment-10694" title="Permanent link to this comment">8:32 am</a> </p>
+			
+			<p>Loved the example, just what I am looking for.<br />
+The only problem is the js file is not there to download.<br />
+Any idea what&#8217;s happened?</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-10695">
+			<p class="commentauthor"><a href='http://danvk.org/' rel='external nofollow' class='url'>danvk</a> said,</p>
+			<p class="commentmeta">June 23, 2008 at <a href="#comment-10695" title="Permanent link to this comment">8:50 am</a> </p>
+			
+			<p>Thanks for the catch, Martin! I&#8217;ve fixed the link, you should be able to download dragtable.js now.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-10735">
+			<p class="commentauthor">Martin said,</p>
+			<p class="commentmeta">June 26, 2008 at <a href="#comment-10735" title="Permanent link to this comment">12:24 pm</a> </p>
+			
+			<p>Using this code, works a treat, so far.<br />
+I notice the underlying html is not modified so that when the page is refreshed it reverts to the original column layout.<br />
+Is there a way of preserving the new layout when a page is refreshed or you move to a new page (for printing for example), perhaps by giving each column a unique identifier and the storing the order they are put in and those variable checked first when the page refreshes/changes else going to the default layout?</p>
+<p>Javscript is not my strongest area so maybe I&#8217;m not seeing the wood for the trees but I can&#8217;t pick out where the column references are in the code.</p>
+<p>Any ideas?</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-10736">
+			<p class="commentauthor"><a href='http://danvk.org/' rel='external nofollow' class='url'>danvk</a> said,</p>
+			<p class="commentmeta">June 26, 2008 at <a href="#comment-10736" title="Permanent link to this comment">12:46 pm</a> </p>
+			
+			<p>Martin &#8212; you&#8217;re right, this is certainly a drawback of dragtable (and sorttable). The right solution is to store a cookie for each table that remembers the column ordering and the sorting. I think this is more of a version 1.5 or 2.0 kind of feature, but I&#8217;ve gone ahead and created an issue for it on my google code page: <a href="http://code.google.com/p/dragtable/issues/detail?id=3" rel="nofollow">http://code.google.com/p/dragtable/issues/detail?id=3</a></p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-10764">
+			<p class="commentauthor">Colin said,</p>
+			<p class="commentmeta">June 28, 2008 at <a href="#comment-10764" title="Permanent link to this comment">7:11 pm</a> </p>
+			
+			<p>This is very good. How do you get the column to visually follow the mouse?<br />
+On my table when I drag a column nothing changes visually until I release the mouse button.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-10795">
+			<p class="commentauthor">Colin said,</p>
+			<p class="commentmeta">June 30, 2008 at <a href="#comment-10795" title="Permanent link to this comment">4:39 pm</a> </p>
+			
+			<p>I have a table with 8 columns and everything drags correctly.<br />
+On another page I have a table with 11 columns and it seems that the drag result is often random &#8211; and I can&#8217;t drag column 11 at all.<br />
+Is there a limit to the number of columns I can have in my table?</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-14651">
+			<p class="commentauthor">Cyril said,</p>
+			<p class="commentmeta">November 17, 2008 at <a href="#comment-14651" title="Permanent link to this comment">4:16 am</a> </p>
+			
+			<p>Hi,<br />
+This is a very smooth and easy to use, but when the table is long &amp; hidden in scrolling DIV the Drag does not work. :(<br />
+Can i find any solution here.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-15307">
+			<p class="commentauthor">Brad said,</p>
+			<p class="commentmeta">December 8, 2008 at <a href="#comment-15307" title="Permanent link to this comment">2:12 pm</a> </p>
+			
+			<p>I have the same issue- works great, except when the table is wide enough that I need to scroll. Then if I try to grab the rightmost column, it instead selects whatever column occupied that space before I scrolled. </p>
+<p>Does that make sense? If your table scrolls horizontally, the javascript doesn&#8217;t detect that the columns have moved, so you end up dragging the column that used to be there.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-15629">
+			<p class="commentauthor">Erwin said,</p>
+			<p class="commentmeta">December 17, 2008 at <a href="#comment-15629" title="Permanent link to this comment">6:17 pm</a> </p>
+			
+			<p>Hi,</p>
+<p>I have added a fix for the horizontal scroll of table when the total table width is greater than the screen size. I&#8217;m not sure if I have done it perfectly, but so far it seems to be working just fine.</p>
+<p>I added this code to dragMove (You can get the getPosition() from this site: <a href="http://hartshorne.ca/2006/01/23/javascript_cursor_position/" rel="nofollow">http://hartshorne.ca/2006/01/23/javascript_cursor_position/</a>):</p>
+<p>// erwin (scroll page horizontally) START<br />
+var cursorObject = getPosition(event);<br />
+var cursorPosX = cursorObject.x;</p>
+<p>var windowOffsetX = screen.width + document.body.scrollLeft;</p>
+<p>if ((windowOffsetX-cursorPosX) &lt;= 100)<br />
+	document.body.scrollLeft += 5;<br />
+else if ((cursorPosX-document.body.scrollLeft) &lt;= 100)<br />
+	document.body.scrollLeft -= 5;<br />
+// erwin (scroll page horizontally) END</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-82057">
+			<p class="commentauthor">LePirlouit said,</p>
+			<p class="commentmeta">May 23, 2011 at <a href="#comment-82057" title="Permanent link to this comment">12:57 am</a> </p>
+			
+			<p>Hi danvk,</p>
+<p>I want to contribute to this project,</p>
+<p>I have solved issue nr 23 about the colspan.</p>
+<p>please add me to the project developpers.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-116024">
+			<p class="commentauthor"><a href='http://listfield.com/' rel='external nofollow' class='url'>brad</a> said,</p>
+			<p class="commentmeta">October 25, 2011 at <a href="#comment-116024" title="Permanent link to this comment">7:44 pm</a> </p>
+			
+			<p>two things i am after:</p>
+<p>1. is it possible to lock down one column?<br />
+2. how would u add a visual indicator to show where the new column is while being dragged (perhaps something like highlighting the border between the two columns )</p>
+<p>otherwise it works great! thanks!</p>
+		</li>
+
+		
+	
+	</ol>
+
+
+	
+	
+</div>
+
+<div id="sidebar">
+<ul>
+
+	<li id="search">
+		<form method="get" id="searchform" action="http://www.danvk.org/wp/index.php">
+<p>
+<input type="text" value="" name="s" id="s" /><br />
+<input type="submit" id="searchsubmit" value="Search" />
+</p>
+</form>	</li> 
+
+<!-- I want more control than this gives me: wp_list_pages('title_li=<h2>' . __('Pages') . '</h2>' ); -->
+
+	<li class="pagenav">
+		<ul>
+			<!--<li class="page_item"><a href="http://www.danvk.org/wp/?page_id=2" title="About">About</a></li>-->
+			<li>Dan across the web
+				<ul>
+					<li class="social">
+					<a href="https://github.com/danvk"><img src="https://github.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://twitter.com/danvdk"><img src="https://twitter.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://www.facebook.com/danvdk"><img src="https://facebook.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://plus.google.com/+DanVanderkam"><img src="https://plus.google.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://www.linkedin.com/profile/view?id=340204755"><img src="https://www.linkedin.com/favicon.ico" width=16 height=16 border=0></a>
+					<script data-gittip-username="danvdk" data-gittip-widget="button" src="http://gttp.co/v1.js"></script>
+				</ul>
+
+			<li>Dan's projects
+				<ul class="projects">
+					<li><a href="http://dygraphs.com/">dygraphs</a>
+					<li><a href="http://oldsf.org/">OldSF</a>
+					<li><a href="http://comparea.org/">Comparea</a>
+					<li><a href="https://github.com/danvk/webdiff">git webdiff</a>
+				</ul>
+
+			<li>Features on this site
+				<ul class="features">
+					<li><a href="http://www.danvk.org/boggle.php" title="Boggle Solver">Online Boggle Solver</a></li>
+					<li><a href="../../beals-conjecture/index.html" title="Beal&#039;s Conjecture">Beal's Conjecture</a></li>
+					<li><a href="../../gw-basic-program-decoder/index.html" title="GW-BASIC Program Decoder">GW-BASIC Program Decoder</a></li>
+					<li><a href="http://www.danvk.org/tower/nstower.html">NS-Tower in your Browser</a></li>
+				</ul>
+		</ul>
+	</li>
+
+	<!--
+	<li id="twitter_sidebar">
+		<div id="twitter_div">
+		<a href="http://twitter.com/danvdk" target="_blank"><h2 class="sidebar-title">Follow me on Twitter</h2></a>
+		<ul id="twitter_update_list" style="padding-right:30px"></ul>
+		
+		</div>
+		<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+		<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/danvdk.json?callback=twitterCallback2&amp;count=5"></script>
+	</li>
+	-->
+
+	<li id="archives">
+		<h2>Archives</h2>
+		<ul>
+			<li><a href='../../2014/10/index.html'>October 2014</a></li>
+	<li><a href='../../2014/08/index.html'>August 2014</a></li>
+	<li><a href='../../2014/07/index.html'>July 2014</a></li>
+	<li><a href='../../2014/06/index.html'>June 2014</a></li>
+	<li><a href='../../2014/03/index.html'>March 2014</a></li>
+	<li><a href='../../2014/02/index.html'>February 2014</a></li>
+	<li><a href='../../2014/01/index.html'>January 2014</a></li>
+	<li><a href='../../2013/08/index.html'>August 2013</a></li>
+	<li><a href='../../2013/06/index.html'>June 2013</a></li>
+	<li><a href='../../2013/04/index.html'>April 2013</a></li>
+	<li><a href='../../2013/03/index.html'>March 2013</a></li>
+	<li><a href='../../2013/02/index.html'>February 2013</a></li>
+	<li><a href='../../2013/01/index.html'>January 2013</a></li>
+	<li><a href='../../2012/12/index.html'>December 2012</a></li>
+	<li><a href='../../2012/09/index.html'>September 2012</a></li>
+	<li><a href='../../2012/08/index.html'>August 2012</a></li>
+	<li><a href='../../2012/07/index.html'>July 2012</a></li>
+	<li><a href='../../2012/06/index.html'>June 2012</a></li>
+	<li><a href='../../2012/05/index.html'>May 2012</a></li>
+	<li><a href='../../2012/04/index.html'>April 2012</a></li>
+	<li><a href='../../2012/02/index.html'>February 2012</a></li>
+	<li><a href='../../2012/01/index.html'>January 2012</a></li>
+	<li><a href='../../2011/12/index.html'>December 2011</a></li>
+	<li><a href='../../2011/11/index.html'>November 2011</a></li>
+	<li><a href='../../2011/08/index.html'>August 2011</a></li>
+	<li><a href='../../2011/03/index.html'>March 2011</a></li>
+	<li><a href='../../2010/06/index.html'>June 2010</a></li>
+	<li><a href='../../2010/03/index.html'>March 2010</a></li>
+	<li><a href='../../2009/12/index.html'>December 2009</a></li>
+	<li><a href='../../2009/11/index.html'>November 2009</a></li>
+	<li><a href='../../2009/10/index.html'>October 2009</a></li>
+	<li><a href='../../2009/09/index.html'>September 2009</a></li>
+	<li><a href='../../2009/08/index.html'>August 2009</a></li>
+	<li><a href='../../2009/06/index.html'>June 2009</a></li>
+	<li><a href='../../2009/05/index.html'>May 2009</a></li>
+	<li><a href='../../2009/03/index.html'>March 2009</a></li>
+	<li><a href='../../2009/02/index.html'>February 2009</a></li>
+	<li><a href='../../2009/01/index.html'>January 2009</a></li>
+	<li><a href='../../2008/12/index.html'>December 2008</a></li>
+	<li><a href='../../2008/11/index.html'>November 2008</a></li>
+	<li><a href='../../2008/10/index.html'>October 2008</a></li>
+	<li><a href='../../2008/09/index.html'>September 2008</a></li>
+	<li><a href='../../2008/08/index.html'>August 2008</a></li>
+	<li><a href='../../2008/06/index.html'>June 2008</a></li>
+	<li><a href='../../2008/05/index.html'>May 2008</a></li>
+	<li><a href='../../2008/02/index.html'>February 2008</a></li>
+	<li><a href='../../2008/01/index.html'>January 2008</a></li>
+	<li><a href='../../2007/12/index.html'>December 2007</a></li>
+	<li><a href='../../2007/11/index.html'>November 2007</a></li>
+	<li><a href='../../2007/10/index.html'>October 2007</a></li>
+	<li><a href='../../2007/09/index.html'>September 2007</a></li>
+	<li><a href='../../2007/08/index.html'>August 2007</a></li>
+	<li><a href='../../2007/07/index.html'>July 2007</a></li>
+	<li><a href='../../2007/06/index.html'>June 2007</a></li>
+	<li><a href='../../2007/05/index.html'>May 2007</a></li>
+	<li><a href='../../2007/04/index.html'>April 2007</a></li>
+	<li><a href='../../2007/03/index.html'>March 2007</a></li>
+	<li><a href='../../2007/02/index.html'>February 2007</a></li>
+	<li><a href='../../2007/01/index.html'>January 2007</a></li>
+	<li><a href='../../2006/12/index.html'>December 2006</a></li>
+	<li><a href='../../2006/11/index.html'>November 2006</a></li>
+	<li><a href='../../2006/10/index.html'>October 2006</a></li>
+	<li><a href='../../2006/09/index.html'>September 2006</a></li>
+		</ul>
+	</li>
+
+		
+	<li id="categories">
+		<h2>Categories</h2>
+		<ul>
+			<li class="cat-item cat-item-21"><a href="../../category/astronomy/index.html" title="View all posts filed under astronomy">astronomy</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="../../category/boggle/index.html" title="View all posts filed under boggle">boggle</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="../../category/books/index.html" title="View all posts filed under books">books</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="../../category/finance/index.html" title="View all posts filed under finance">finance</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="../../category/javascript/index.html" title="View all posts filed under javascript">javascript</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="../../category/math/index.html" title="View all posts filed under math">math</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="../../category/meta/index.html" title="View all posts filed under meta">meta</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="../../category/movies/index.html" title="View all posts filed under movies">movies</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="../../category/music/index.html" title="View all posts filed under music">music</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="../../category/news/index.html" title="View all posts filed under news">news</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="../../category/personal/index.html" title="View all posts filed under personal">personal</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="../../category/politics/index.html" title="View all posts filed under politics">politics</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="../../category/programming/index.html" title="View all posts filed under programming">programming</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="../../category/reviews/index.html" title="View all posts filed under reviews">reviews</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="../../category/san-francisco/index.html" title="View all posts filed under san francisco">san francisco</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="../../category/science/index.html" title="View all posts filed under science">science</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="../../category/space/index.html" title="View all posts filed under space">space</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="../../category/sports/index.html" title="View all posts filed under sports">sports</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="../../category/tennis/index.html" title="View all posts filed under tennis">tennis</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="../../category/travel/index.html" title="View all posts filed under travel">travel</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="../../category/tv/index.html" title="View all posts filed under tv">tv</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="../../category/uncategorized/index.html" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="../../category/web/index.html" title="View all posts filed under web">web</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="../../category/wikipedia/index.html" title="View all posts filed under wikipedia">wikipedia</a>
+</li>
+ 
+		</ul>
+	</li>
+	
+			
+	
+	<li id="meta">
+		<h2>Meta</h2>
+		<ul>
+				<li><a href="../../wp-login.html">Log in</a></li>
+		<li><a href="../../feed/index.html" title="Syndicate this site using RSS">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+		<li><a href="../../comments/feed/index.html" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+		<li><a href="http://wordpress.org/" title="Powered by Wordpress, state-of-the-art semantic personal publishing platform.">Wordpress</a></li>
+				</ul>
+	</li>
+	
+</ul>
+</div>
+
+<div id="footer">
+
+<!--<p>
+
+
+Design by <a href="http://ravenkeller.com">Raven Keller</a> and <a href="http://weblogs.us" title="Theme sponsored by Weblogs.us">Weblogs.us</a>
+&#183;
+<a href="http://validator.w3.org/check/referer" title="This page validates as XHTML 1.0 Transitional"><abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a>
+&#183;
+<a href="http://jigsaw.w3.org/css-validator/check/referer" title="This page validates as CSS"><abbr title="Cascading Style Sheets">CSS</abbr></a>
+<img src='http://counter.dreamhost.com/cgi-bin/Count.cgi?df=danvk-maincounter.dat&pad=F&ft=0&dd=copper&istrip=T' align=right />
+</p>-->
+
+
+</div>
+
+
+<!-- Google Analytics -->
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-769809-1";
+urchinTracker();
+</script>
+
+</body>
+
+<!-- Mirrored from www.danvk.org/wp/2008-06-12/draggable-table-columns/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Oct 2014 03:11:39 GMT -->
+</html>	
+
+
+
+<!--<footer class="container"></footer>-->
+

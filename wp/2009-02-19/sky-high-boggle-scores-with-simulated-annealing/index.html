@@ -1,0 +1,1113 @@
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<!-- Mirrored from www.danvk.org/wp/2009-02-19/sky-high-boggle-scores-with-simulated-annealing/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Oct 2014 03:10:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="generator" content="WordPress 3.9.2" /> <!-- leave this for stats please -->
+	<title>danvk.org &raquo; Sky-High Boggle Scores with Simulated Annealing</title>
+	<style type="text/css" media="screen">
+		@import url( ../../wp-content/themes/ocadia/style.css);
+			</style>
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="../../feed/index.html" />
+	<link rel="alternate" type="text/xml" title="RSS .92" href="../../feed/rss/index.html" />
+	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="../../feed/atom/index.html" />
+	<link rel="pingback" href="../../xmlrpc.php" />
+    	<link rel='archives' title='October 2014' href='../../2014/10/index.html' />
+	<link rel='archives' title='August 2014' href='../../2014/08/index.html' />
+	<link rel='archives' title='July 2014' href='../../2014/07/index.html' />
+	<link rel='archives' title='June 2014' href='../../2014/06/index.html' />
+	<link rel='archives' title='March 2014' href='../../2014/03/index.html' />
+	<link rel='archives' title='February 2014' href='../../2014/02/index.html' />
+	<link rel='archives' title='January 2014' href='../../2014/01/index.html' />
+	<link rel='archives' title='August 2013' href='../../2013/08/index.html' />
+	<link rel='archives' title='June 2013' href='../../2013/06/index.html' />
+	<link rel='archives' title='April 2013' href='../../2013/04/index.html' />
+	<link rel='archives' title='March 2013' href='../../2013/03/index.html' />
+	<link rel='archives' title='February 2013' href='../../2013/02/index.html' />
+	<link rel='archives' title='January 2013' href='../../2013/01/index.html' />
+	<link rel='archives' title='December 2012' href='../../2012/12/index.html' />
+	<link rel='archives' title='September 2012' href='../../2012/09/index.html' />
+	<link rel='archives' title='August 2012' href='../../2012/08/index.html' />
+	<link rel='archives' title='July 2012' href='../../2012/07/index.html' />
+	<link rel='archives' title='June 2012' href='../../2012/06/index.html' />
+	<link rel='archives' title='May 2012' href='../../2012/05/index.html' />
+	<link rel='archives' title='April 2012' href='../../2012/04/index.html' />
+	<link rel='archives' title='February 2012' href='../../2012/02/index.html' />
+	<link rel='archives' title='January 2012' href='../../2012/01/index.html' />
+	<link rel='archives' title='December 2011' href='../../2011/12/index.html' />
+	<link rel='archives' title='November 2011' href='../../2011/11/index.html' />
+	<link rel='archives' title='August 2011' href='../../2011/08/index.html' />
+	<link rel='archives' title='March 2011' href='../../2011/03/index.html' />
+	<link rel='archives' title='June 2010' href='../../2010/06/index.html' />
+	<link rel='archives' title='March 2010' href='../../2010/03/index.html' />
+	<link rel='archives' title='December 2009' href='../../2009/12/index.html' />
+	<link rel='archives' title='November 2009' href='../../2009/11/index.html' />
+	<link rel='archives' title='October 2009' href='../../2009/10/index.html' />
+	<link rel='archives' title='September 2009' href='../../2009/09/index.html' />
+	<link rel='archives' title='August 2009' href='../../2009/08/index.html' />
+	<link rel='archives' title='June 2009' href='../../2009/06/index.html' />
+	<link rel='archives' title='May 2009' href='../../2009/05/index.html' />
+	<link rel='archives' title='March 2009' href='../../2009/03/index.html' />
+	<link rel='archives' title='February 2009' href='../../2009/02/index.html' />
+	<link rel='archives' title='January 2009' href='../../2009/01/index.html' />
+	<link rel='archives' title='December 2008' href='../../2008/12/index.html' />
+	<link rel='archives' title='November 2008' href='../../2008/11/index.html' />
+	<link rel='archives' title='October 2008' href='../../2008/10/index.html' />
+	<link rel='archives' title='September 2008' href='../../2008/09/index.html' />
+	<link rel='archives' title='August 2008' href='../../2008/08/index.html' />
+	<link rel='archives' title='June 2008' href='../../2008/06/index.html' />
+	<link rel='archives' title='May 2008' href='../../2008/05/index.html' />
+	<link rel='archives' title='February 2008' href='../../2008/02/index.html' />
+	<link rel='archives' title='January 2008' href='../../2008/01/index.html' />
+	<link rel='archives' title='December 2007' href='../../2007/12/index.html' />
+	<link rel='archives' title='November 2007' href='../../2007/11/index.html' />
+	<link rel='archives' title='October 2007' href='../../2007/10/index.html' />
+	<link rel='archives' title='September 2007' href='../../2007/09/index.html' />
+	<link rel='archives' title='August 2007' href='../../2007/08/index.html' />
+	<link rel='archives' title='July 2007' href='../../2007/07/index.html' />
+	<link rel='archives' title='June 2007' href='../../2007/06/index.html' />
+	<link rel='archives' title='May 2007' href='../../2007/05/index.html' />
+	<link rel='archives' title='April 2007' href='../../2007/04/index.html' />
+	<link rel='archives' title='March 2007' href='../../2007/03/index.html' />
+	<link rel='archives' title='February 2007' href='../../2007/02/index.html' />
+	<link rel='archives' title='January 2007' href='../../2007/01/index.html' />
+	<link rel='archives' title='December 2006' href='../../2006/12/index.html' />
+	<link rel='archives' title='November 2006' href='../../2006/11/index.html' />
+	<link rel='archives' title='October 2006' href='../../2006/10/index.html' />
+	<link rel='archives' title='September 2006' href='../../2006/09/index.html' />
+	<link rel="alternate" type="application/rss+xml" title="danvk.org &raquo; Sky-High Boggle Scores with Simulated Annealing Comments Feed" href="feed/index.html" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../../xmlrpc0db0.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../../wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='All A-Twitter' href='../../2009-02-16/all-a-twitter/index.html' />
+<link rel='next' title='Why You Invest When the Market Goes Down' href='../../2009-02-22/why-you-invest-when-the-market-goes-down/index.html' />
+<meta name="generator" content="WordPress 3.9.2" />
+<link rel='canonical' href='index.html' />
+<link rel='shortlink' href='../../index5604.html?p=412' />
+<style type="text/css">
+/* <![CDATA[ */
+img.latex { vertical-align: middle; border: none; }
+/* ]]> */
+</style>
+<style type="text/css" id="syntaxhighlighteranchor"></style>
+</head>
+	
+<body>
+
+<div id="wrapper">
+
+<div id="header">
+<h1><a href="http://www.danvk.org/wp">danvk.org</a></h1>
+<p>Keepin&#8217; static like wool fabric since 2006</p>
+</div>
+
+<div id="content">
+
+			
+		<div class="post">
+
+			<h1 class="storydate">02.19.09</h1> 
+			<h2 id="post-412" class="storytitle"><a href="index.html" rel="bookmark" title="Permanent link to Sky-High Boggle Scores with Simulated Annealing">Sky-High Boggle Scores with Simulated Annealing</a></h2>
+			<p class="meta">Posted in <a href="../../category/boggle/index.html" title="View all posts in boggle" rel="category tag">boggle</a> at 1:09 am by danvk</p>
+		
+			<p>Don&#8217;t let the <a href="../../2007-10-09/a-java-surprise/index.html">sixteen month hiatus</a> fool you. There&#8217;s just no end to Boggle posts on danvk.org!</p>
+<p>In case you&#8217;d forgot, we&#8217;ve developed a <a href="../../2007-02-10/one-last-boggle-boost/index.html">blazing fast boggle solver</a> capable of scoring 10,000 Boggle boards a second. What to do with this? Other than some <a href="../../2007-02-11/some-boggle-statistics/index.html">interesting analyses</a>, the most interesting question is:</p>
+<p><b>What is the highest-scoring Boggle Board?</b></p>
+<p>In this post, we&#8217;ll try to answer that question using <a href="http://en.wikipedia.org/wiki/Simulated_Annealing">Simulated Annealing</a>. Here&#8217;s a sneak peak at one of the exceptionally word-rich boards we&#8217;ll find:</p>
+<style type="text/css">
+.board { text-align: center; border-collapse: collapse; }
+.board tbody td { border: 1px solid black; border-collapse: collapse; padding: 4px 8px 4px 8px; }
+.board tbody td { font-weight: bold; }
+.notable { color: red; }
+.change td { padding: 2px 5px 2px 5px; }
+.mb { font-family: monospace; padding: 0px 4px 0px 4px; }
+</style>
+<p><center></p>
+<table class="board">
+<tr>
+<td>p</td>
+<td>e</td>
+<td>r</td>
+<td>s</td>
+</tr>
+<tr>
+<td>l</td>
+<td>a</td>
+<td>t</td>
+<td>g</td>
+</tr>
+<tr>
+<td>s</td>
+<td>i</td>
+<td>n</td>
+<td>e</td>
+</tr>
+<tr>
+<td>t</td>
+<td>e</td>
+<td>r</td>
+<td>s</td>
+</tr>
+<tfoot>
+<tr>
+<td colspan=4><a href="http://www.danvk.org/boggle.php?quick=perslatgsineters">3625 points</a></td>
+</tr>
+</tfoot>
+</table>
+<p></center></p>
+<p>Follow me past the fold for more&#8230;</p>
+<p><span id="more-412"></span></p>
+<p>Here&#8217;s the basic idea of Simulated Annealing:</p>
+<ol>
+<li>Generate a random board.</li>
+<li>Score it.</li>
+<li>Change the board somehow.</li>
+<li>Score it.</li>
+<li>Based on the scores, decide whether to keep the old board or the new one.</li>
+<li>Repeat from step 3.</li>
+</ol>
+<p>If we make good decisions in step #5, the boards we keep will be progressively higher scoring.</p>
+<p>The big decisions come in steps #3 and #5. What does it mean to change a board?</p>
+<p>I decided to use two basic permutations to change the board: re-rolling a die:</p>
+<p><center></p>
+<table class="change">
+<tr>
+<td>
+<table class="board">
+<tr>
+<td>a</td>
+<td>b</td>
+<td>c</td>
+<td>d</td>
+</tr>
+<tr>
+<td>e</td>
+<td>f</td>
+<td>g</td>
+<td>h</td>
+</tr>
+<tr>
+<td>i</td>
+<td>j</td>
+<td>k</td>
+<td>l</td>
+</tr>
+<tr>
+<td>m</td>
+<td>n</td>
+<td>o</td>
+<td>p</td>
+</tr>
+<tfoot>
+<tr>
+<td colspan=4><a href="http://www.danvk.org/boggle.php?quick=abcdefghijklmnop">18 points</a></td>
+</tr>
+</tfoot>
+</table>
+</td>
+<td> &rarr; </td>
+<td>
+<table class="board">
+<tr>
+<td>a</td>
+<td>b</td>
+<td>c</td>
+<td>d</td>
+</tr>
+<tr>
+<td>e</td>
+<td>f</td>
+<td>g</td>
+<td>h</td>
+</tr>
+<tr>
+<td>i</td>
+<td class="notable">r</td>
+<td>k</td>
+<td>l</td>
+</tr>
+<tr>
+<td>m</td>
+<td>n</td>
+<td>o</td>
+<td>p</td>
+</tr>
+<tfoot>
+<tr>
+<td colspan=4><a href="http://www.danvk.org/boggle.php?quick=abcdefghirklmnop">76 points</a></td>
+</tr>
+</tfoot>
+</table>
+</td>
+</tr>
+</table>
+<p></center></p>
+<p>and swapping two dice:</p>
+<p><center></p>
+<table class="change">
+<tr>
+<td>
+<table class="board">
+<tr>
+<td>a</td>
+<td>b</td>
+<td>c</td>
+<td>d</td>
+</tr>
+<tr>
+<td>e</td>
+<td>f</td>
+<td>g</td>
+<td>h</td>
+</tr>
+<tr>
+<td>i</td>
+<td>r</td>
+<td>k</td>
+<td>l</td>
+</tr>
+<tr>
+<td>m</td>
+<td>n</td>
+<td>o</td>
+<td>p</td>
+</tr>
+<tfoot>
+<tr>
+<td colspan=4><a href="http://www.danvk.org/boggle.php?quick=abcdefghirklmnop">76 points</a></td>
+</tr>
+</tfoot>
+</table>
+</td>
+<td> &rarr; </td>
+<td>
+<table class="board">
+<tr>
+<td>a</td>
+<td>b</td>
+<td>c</td>
+<td class="notable">r</td>
+</tr>
+<tr>
+<td>e</td>
+<td>f</td>
+<td>g</td>
+<td>h</td>
+</tr>
+<tr>
+<td>i</td>
+<td class="notable">d</td>
+<td>k</td>
+<td>l</td>
+</tr>
+<tr>
+<td>m</td>
+<td>n</td>
+<td>o</td>
+<td>p</td>
+</tr>
+<tfoot>
+<tr>
+<td colspan=4><a href="http://www.danvk.org/boggle.php?quick=abcdefghirklmnop">55 points</a></td>
+</tr>
+</tfoot>
+</table>
+</td>
+</tr>
+</table>
+<p></center></p>
+<p>Clearly one of these changes was beneficial and the other was not.</p>
+<p>Generally speaking, we should accept the changes that increase the score in step #5 and reject the changes that don&#8217;t. This is a perfectly reasonable strategy. It&#8217;s called <a href="http://en.wikipedia.org/wiki/Gradient_Descent">Gradient Descent</a> and is widely-used.</p>
+<p>With Simulated Annealing, we sometimes go with the lower-scoring board. The idea is to not get stuck in a rut. Maybe our board is pretty good. It&#8217;s scores higher than all the boards around it. But there are lots of boards a little more distant that are even higher-scoring. With Simulated Annealing, we can take a short-term loss for a long-term gain.</p>
+<p>The exact details aren&#8217;t too interesting. If they interest you, take a look at my <a href="http://code.google.com/p/performance-boggle/source/browse/trunk/anneal.cc">code</a>.</p>
+<p>Now for the fun part! Here are the results of a sample run. I&#8217;ve concatenated the letters on each row of the board so that they&#8217;ll fit on a single line.</p>
+<table>
+<tr>
+<th>Gen.</th>
+<th>Score</th>
+<th>Reign</th>
+<th>Board</th>
+<tr>
+<td align=right>0</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=kqiqwhyyjthdsibk">19</a></td>
+<td align=right>1</td>
+<td class=mb>kqiqwhyyjthdsibk</td>
+</tr>
+<tr>
+<td align=right>1</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=iqiqjhyywthdskbk">4</a></td>
+<td align=right>1</td>
+<td class=mb><span class="notable">i</span>qiq<span class="notable">j</span>hyy<span class="notable">w</span>thds<span class="notable">k</span>bk</td>
+</tr>
+<tr>
+<td align=right>2</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=ibiqjhyywthdskqk">5</a></td>
+<td align=right>1</td>
+<td class=mb>i<span class="notable">b</span>iqjhyywthdsk<span class="notable">q</span>k</td>
+</tr>
+<tr>
+<td align=right>3</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=ibiqjhcywthdskqk">9</a></td>
+<td align=right>1</td>
+<td class=mb>ibiqjh<span class="notable">c</span>ywthdskqk</td>
+</tr>
+<tr>
+<td align=right>4</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=ibiqjychsthdwkqk">10</a></td>
+<td align=right>1</td>
+<td class=mb>ibiqj<span class="notable">y</span>c<span class="notable">hs</span>thd<span class="notable">w</span>kqk</td>
+</tr>
+<tr>
+<td align=right>5</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=ibicjyqhsthdwkqk">8</a></td>
+<td align=right>1</td>
+<td class=mb>ibi<span class="notable">c</span>jy<span class="notable">q</span>hsthdwkqk</td>
+</tr>
+<tr>
+<td align=right>6</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=ibicjyqdsthywkqk">9</a></td>
+<td align=right>1</td>
+<td class=mb>ibicjyq<span class="notable">d</span>sth<span class="notable">y</span>wkqk</td>
+</tr>
+<tr>
+<td align=right>7</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=ibicjygdhtsywkqk">23</a></td>
+<td align=right>1</td>
+<td class=mb>ibicjy<span class="notable">g</span>d<span class="notable">h</span>t<span class="notable">s</span>ywkqk</td>
+</tr>
+<tr>
+<td align=right>8</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=ibncjygdhtsywkqa">16</a></td>
+<td align=right>1</td>
+<td class=mb>ib<span class="notable">n</span>cjygdhtsywkq<span class="notable">a</span></td>
+</tr>
+<tr>
+<td align=right>9</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=ibncyygdhtsymkqa">15</a></td>
+<td align=right>1</td>
+<td class=mb>ibnc<span class="notable">y</span>ygdhtsy<span class="notable">m</span>kqa</td>
+</tr>
+<tr>
+<td align=right>10</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=ibncyygwhtsytkda">15</a></td>
+<td align=right>1</td>
+<td class=mb>ibncyyg<span class="notable">w</span>htsy<span class="notable">t</span>k<span class="notable">d</span>a</td>
+</tr>
+<tr>
+<td align=right>11</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=ibncyygahtsyhkdw">38</a></td>
+<td align=right>1</td>
+<td class=mb>ibncyyg<span class="notable">a</span>htsy<span class="notable">h</span>kd<span class="notable">w</span></td>
+</tr>
+<tr>
+<td align=right>12</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=ibscyogahtnyhkdw">146</a></td>
+<td align=right>2</td>
+<td class=mb>ib<span class="notable">s</span>cy<span class="notable">o</span>gaht<span class="notable">n</span>yhkdw</td>
+</tr>
+<tr>
+<td align=right>14</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=ibscyogahtnbhkdw">140</a></td>
+<td align=right>4</td>
+<td class=mb>ibscyogahtn<span class="notable">b</span>hkdw</td>
+</tr>
+<tr>
+<td align=right>18</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=ibbcyogahtnshkdw">165</a></td>
+<td align=right>2</td>
+<td class=mb>ib<span class="notable">b</span>cyogahtn<span class="notable">s</span>hkdw</td>
+</tr>
+<tr>
+<td align=right>20</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=ibbcdogahynshktw">159</a></td>
+<td align=right>1</td>
+<td class=mb>ibbc<span class="notable">d</span>ogah<span class="notable">y</span>nshk<span class="notable">t</span>w</td>
+</tr>
+<tr>
+<td align=right>21</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=ibbcdogahynshmtw">169</a></td>
+<td align=right>1</td>
+<td class=mb>ibbcdogahynsh<span class="notable">m</span>tw</td>
+</tr>
+<tr>
+<td align=right>22</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=ibbcdogahynshbtw">151</a></td>
+<td align=right>4</td>
+<td class=mb>ibbcdogahynsh<span class="notable">b</span>tw</td>
+</tr>
+<tr>
+<td align=right>26</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=hbbcdogaiynshbtw">150</a></td>
+<td align=right>3</td>
+<td class=mb><span class="notable">h</span>bbcdoga<span class="notable">i</span>ynshbtw</td>
+</tr>
+<tr>
+<td align=right>29</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=hbbcdogagynshbtw">142</a></td>
+<td align=right>2</td>
+<td class=mb>hbbcdoga<span class="notable">g</span>ynshbtw</td>
+</tr>
+<tr>
+<td align=right>31</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=hbbcdogaygnshbtw">148</a></td>
+<td align=right>1</td>
+<td class=mb>hbbcdoga<span class="notable">yg</span>nshbtw</td>
+</tr>
+<tr>
+<td align=right>32</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=hbbqdogaygnshbtw">151</a></td>
+<td align=right>1</td>
+<td class=mb>hbb<span class="notable">q</span>dogaygnshbtw</td>
+</tr>
+<tr>
+<td align=right>33</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=hbtmdogaygnshbtw">174</a></td>
+<td align=right>7</td>
+<td class=mb>hb<span class="notable">tm</span>dogaygnshbtw</td>
+</tr>
+<tr>
+<td align=right>40</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=hdtmbogaygnshbtw">175</a></td>
+<td align=right>2</td>
+<td class=mb>h<span class="notable">d</span>tm<span class="notable">b</span>ogaygnshbtw</td>
+</tr>
+<tr>
+<td align=right>42</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=hdtmbogaygnstbtw">172</a></td>
+<td align=right>3</td>
+<td class=mb>hdtmbogaygns<span class="notable">t</span>btw</td>
+</tr>
+<tr>
+<td align=right>45</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=hdtmbogaygnetbtw">165</a></td>
+<td align=right>1</td>
+<td class=mb>hdtmbogaygn<span class="notable">e</span>tbtw</td>
+</tr>
+<tr>
+<td align=right>46</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=hdtmbogaygnetbts">274</a></td>
+<td align=right>1</td>
+<td class=mb>hdtmbogaygnetbt<span class="notable">s</span></td>
+</tr>
+<tr>
+<td align=right>47</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=hdtmbogabgnetyts">298</a></td>
+<td align=right>5</td>
+<td class=mb>hdtmboga<span class="notable">b</span>gnet<span class="notable">y</span>ts</td>
+</tr>
+<tr>
+<td align=right>52</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=hdtmbogabgnswyte">296</a></td>
+<td align=right>8</td>
+<td class=mb>hdtmbogabgn<span class="notable">sw</span>yt<span class="notable">e</span></td>
+</tr>
+<tr>
+<td align=right>60</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=hdtmboeabgnswytg">387</a></td>
+<td align=right>1</td>
+<td class=mb>hdtmbo<span class="notable">e</span>abgnswyt<span class="notable">g</span></td>
+</tr>
+<tr>
+<td align=right>61</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=hdtgboeabmnswytg">403</a></td>
+<td align=right>7</td>
+<td class=mb>hdt<span class="notable">g</span>boeab<span class="notable">m</span>nswytg</td>
+</tr>
+<tr>
+<td align=right>68</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=hdtpboeabmnswytg">409</a></td>
+<td align=right>3</td>
+<td class=mb>hdt<span class="notable">p</span>boeabmnswytg</td>
+</tr>
+<tr>
+<td align=right>71</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=hdtpboeabmnsgytg">413</a></td>
+<td align=right>6</td>
+<td class=mb>hdtpboeabmns<span class="notable">g</span>ytg</td>
+</tr>
+<tr>
+<td align=right>77</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=hptdboeabmnsgytg">419</a></td>
+<td align=right>3</td>
+<td class=mb>h<span class="notable">p</span>t<span class="notable">d</span>boeabmnsgytg</td>
+</tr>
+<tr>
+<td align=right>80</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=hptdbaeobmnsgytg">416</a></td>
+<td align=right>8</td>
+<td class=mb>hptdb<span class="notable">a</span>e<span class="notable">o</span>bmnsgytg</td>
+</tr>
+<tr>
+<td align=right>88</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=phtdbaeobmnsgytg">421</a></td>
+<td align=right>9</td>
+<td class=mb><span class="notable">ph</span>tdbaeobmnsgytg</td>
+</tr>
+<tr>
+<td align=right>97</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=phtdbaeoymnsgytg">449</a></td>
+<td align=right>40</td>
+<td class=mb>phtdbaeo<span class="notable">y</span>mnsgytg</td>
+</tr>
+<tr>
+<td align=right>137</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=phtsbaeoymnsgytg">454</a></td>
+<td align=right>2</td>
+<td class=mb>pht<span class="notable">s</span>baeoymnsgytg</td>
+</tr>
+<tr>
+<td align=right>139</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=phtseaeoymnsgytg">463</a></td>
+<td align=right>11</td>
+<td class=mb>phts<span class="notable">e</span>aeoymnsgytg</td>
+</tr>
+<tr>
+<td align=right>150</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=phtsmaeoyensgstg">581</a></td>
+<td align=right>3</td>
+<td class=mb>phts<span class="notable">m</span>aeoy<span class="notable">e</span>nsg<span class="notable">s</span>tg</td>
+</tr>
+<tr>
+<td align=right>153</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=yhtsmaeopensgstg">662</a></td>
+<td align=right>26</td>
+<td class=mb><span class="notable">y</span>htsmaeo<span class="notable">p</span>ensgstg</td>
+</tr>
+<tr>
+<td align=right>179</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=yhtsmaespenogstg">690</a></td>
+<td align=right>1</td>
+<td class=mb>yhtsmae<span class="notable">s</span>pen<span class="notable">o</span>gstg</td>
+</tr>
+<tr>
+<td align=right>180</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=lhtsmaespenogstg">734</a></td>
+<td align=right>2</td>
+<td class=mb><span class="notable">l</span>htsmaespenogstg</td>
+</tr>
+<tr>
+<td align=right>182</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=lctsoaespenogstg">754</a></td>
+<td align=right>13</td>
+<td class=mb>l<span class="notable">c</span>ts<span class="notable">o</span>aespenogstg</td>
+</tr>
+<tr>
+<td align=right>195</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=lctsoasepenogstg">849</a></td>
+<td align=right>1</td>
+<td class=mb>lctsoa<span class="notable">se</span>penogstg</td>
+</tr>
+<tr>
+<td align=right>196</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=lctseasepenogstg">912</a></td>
+<td align=right>39</td>
+<td class=mb>lcts<span class="notable">e</span>asepenogstg</td>
+</tr>
+<tr>
+<td align=right>235</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=lctseasepenoistg">974</a></td>
+<td align=right>10</td>
+<td class=mb>lctseasepeno<span class="notable">i</span>stg</td>
+</tr>
+<tr>
+<td align=right>245</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=lctseasedenoistg">978</a></td>
+<td align=right>10</td>
+<td class=mb>lctsease<span class="notable">d</span>enoistg</td>
+</tr>
+<tr>
+<td align=right>255</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=lctseasedsnoietg">1046</a></td>
+<td align=right>25</td>
+<td class=mb>lctseased<span class="notable">s</span>noi<span class="notable">e</span>tg</td>
+</tr>
+<tr>
+<td align=right>280</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=lctseasedsrointg">1281</a></td>
+<td align=right>53</td>
+<td class=mb>lctseaseds<span class="notable">r</span>oi<span class="notable">n</span>tg</td>
+</tr>
+<tr>
+<td align=right>333</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=lctseasedsronitg">1511</a></td>
+<td align=right>2</td>
+<td class=mb>lctseasedsro<span class="notable">ni</span>tg</td>
+</tr>
+<tr>
+<td align=right>335</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=lctseasedsronitg">1511</a></td>
+<td align=right>8</td>
+<td class=mb>lctseasedsronitg</td>
+</tr>
+<tr>
+<td align=right>343</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=lctseaiedsronitg">1515</a></td>
+<td align=right>17</td>
+<td class=mb>lctsea<span class="notable">i</span>edsronitg</td>
+</tr>
+<tr>
+<td align=right>360</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=lctseaiedsronitp">1537</a></td>
+<td align=right>2</td>
+<td class=mb>lctseaiedsronit<span class="notable">p</span></td>
+</tr>
+<tr>
+<td align=right>362</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=lctseaiedtronisp">1643</a></td>
+<td align=right>32</td>
+<td class=mb>lctseaied<span class="notable">t</span>roni<span class="notable">s</span>p</td>
+</tr>
+<tr>
+<td align=right>394</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=lstseaiedtronisp">1708</a></td>
+<td align=right>21</td>
+<td class=mb>l<span class="notable">s</span>tseaiedtronisp</td>
+</tr>
+<tr>
+<td align=right>415</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=lstseiaedtronisp">1727</a></td>
+<td align=right>46</td>
+<td class=mb>lstse<span class="notable">ia</span>edtronisp</td>
+</tr>
+<tr>
+<td align=right>461</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=lstseiaedtrinosp">1744</a></td>
+<td align=right>40</td>
+<td class=mb>lstseiaedtr<span class="notable">i</span>n<span class="notable">o</span>sp</td>
+</tr>
+<tr>
+<td align=right>501</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=lstseiaentrinosp">1873</a></td>
+<td align=right>36</td>
+<td class=mb>lstseiae<span class="notable">n</span>trinosp</td>
+</tr>
+<tr>
+<td align=right>537</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=lstseiaentrisosp">2053</a></td>
+<td align=right>9</td>
+<td class=mb>lstseiaentri<span class="notable">s</span>osp</td>
+</tr>
+<tr>
+<td align=right>546</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=lstseiaentrigosp">2162</a></td>
+<td align=right>13</td>
+<td class=mb>lstseiaentri<span class="notable">g</span>osp</td>
+</tr>
+<tr>
+<td align=right>559</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=sltseiaentrigosp">2445</a></td>
+<td align=right>42</td>
+<td class=mb><span class="notable">sl</span>tseiaentrigosp</td>
+</tr>
+<tr>
+<td align=right>601</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=sltseiaentrigosp">2445</a></td>
+<td align=right>21</td>
+<td class=mb>sltseiaentrigosp</td>
+</tr>
+<tr>
+<td align=right>622</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=sltseiaentrigesp">2524</a></td>
+<td align=right>58</td>
+<td class=mb>sltseiaentrig<span class="notable">e</span>sp</td>
+</tr>
+<tr>
+<td align=right>680</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=stlseiaentrigesp">2597</a></td>
+<td align=right>37</td>
+<td class=mb>s<span class="notable">tl</span>seiaentrigesp</td>
+</tr>
+<tr>
+<td align=right>717</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=stlseiaentragesp">2614</a></td>
+<td align=right>232</td>
+<td class=mb>stlseiaentr<span class="notable">a</span>gesp</td>
+</tr>
+<tr>
+<td align=right>949</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=stlseiaentrpgesa">3090</a></td>
+<td align=right>276</td>
+<td class=mb>stlseiaentr<span class="notable">p</span>ges<span class="notable">a</span></td>
+</tr>
+<tr>
+<td align=right>1225</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=stlseiaentrpdesa">3151</a></td>
+<td align=right>26</td>
+<td class=mb>stlseiaentrp<span class="notable">d</span>esa</td>
+</tr>
+<tr>
+<td align=right>1251</td>
+<td align=right><a href="http://www.danvk.org/boggle.php?quick=stlseiaentrpdeso">3182</a></td>
+<td align=right>n/a</td>
+<td class=mb>stlseiaentrpdes<span class="notable">o</span></td>
+</tr>
+</table>
+<p>Some fun words on that last board: &#8220;desperate&#8221;, &#8220;entreaties&#8221;, &#8220;operated&#8221; and &#8220;serenest&#8221;. No shortage of 11-pointers on this board!</p>
+<p>That&#8217;s all for now. Next time we&#8217;ll look at some of the highest-scoring boards that simulated annealing finds.</p>
+<p>As usual, you can find all the source code for this project on the <a href="http://code.google.com/p/performance-boggle/">performance-boggle</a> project at Google Code.</p>
+			
+			<p class="feedback">
+			<a href="index.html" rel="bookmark" title="Permanent link to Sky-High Boggle Scores with Simulated Annealing" class="permalink">Permalink</a>
+						</p>
+		
+		</div>
+			
+		
+<!-- You can start editing here. -->
+
+
+	<h2 id="comments">
+		9 Comments			</h2> 
+
+	<ol id="commentlist">
+
+	
+		<li class="commentalt" id="comment-17440">
+			<p class="commentauthor"><a href='http://trikyguy.wordpress.com/' rel='external nofollow' class='url'>Craig Fratrik</a> said,</p>
+			<p class="commentmeta">February 19, 2009 at <a href="#comment-17440" title="Permanent link to this comment">10:09 am</a> </p>
+			
+			<p>Very cool dan.</p>
+<p>The way I way I learned simulated annealing, as time went on, you were less likely to take the lesser board. Like steel particles as they cool during annealing.</p>
+<p>Also, I seem to remember that you considered all boards that were one move away, and typically, you took the best one of those. The annealing part was that sometimes you just took a random choice.</p>
+<p>Finally, it&#8217;s a good thing I came to comment. The color of the text didn&#8217;t come across in google reader.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-17441">
+			<p class="commentauthor"><a href='http://gregable.com/' rel='external nofollow' class='url'>Greg</a> said,</p>
+			<p class="commentmeta">February 19, 2009 at <a href="#comment-17441" title="Permanent link to this comment">10:38 am</a> </p>
+			
+			<p>Thats a pretty fun little analysis.  I could see it being useful too.  Imagine someone wanted to create a software-based boggle game for people to play online or whatnot.  It would be more fun in general to play on high-scoring boards than low scoring ones, so weighting the algorithm for generating boards to be a little less random could improve the playability of the game.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-17447">
+			<p class="commentauthor"><a href='http://danvk.org/' rel='external nofollow' class='url'>danvk</a> said,</p>
+			<p class="commentmeta">February 19, 2009 at <a href="#comment-17447" title="Permanent link to this comment">12:41 pm</a> </p>
+			
+			<p>Craig: that&#8217;s one of the details that interested readers will find in my code (<a href="http://code.google.com/p/performance-boggle/source/browse/trunk/anneal.cc" rel="nofollow">http://code.google.com/p/performance-boggle/source/browse/trunk/anneal.cc</a> &#8212; only 150 lines!). I use the metallurgy analogy. There&#8217;s an ambient temperature that decreases over time. At lower temperatures, I&#8217;m less likely to choose a lower-scoring board. You can see this in the board progression. At first, it&#8217;s pretty random. Then it starts to only improve.</p>
+<p>Craig paragraph 2: That&#8217;s not an approach I&#8217;d considered, but I like it. My code is fast enough that I can easily consider all boards at a distance <= 2. (more on that in a later post)</p>
+<p>Craig paragraph 3: Reader must strip my CSS.</p>
+<p>Greg: Sounds like an idea for a startup! =) It only took about two seconds to do the full annealing run I included in this post, so it would be completely feasible. You could even imagine requesting a low-, medium- or high-scoring board. Or a high-scoring board with a &#8220;qu&#8221; on it.</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-17455">
+			<p class="commentauthor"><a href='http://gregable.com/' rel='external nofollow' class='url'>Greg</a> said,</p>
+			<p class="commentmeta">February 19, 2009 at <a href="#comment-17455" title="Permanent link to this comment">2:51 pm</a> </p>
+			
+			<p>I recall a story of two slot machines that had the exact same payout structure and frequency (ie: if you were blind, they were identical machines), but one would earn the casino far more money.</p>
+<p>The difference was that one of them would show far more &#8220;almost wins&#8221; where the user was one click of one of the wheels away from winning alot of spare change.  The psychological &#8220;near miss&#8221; kept people at the machine longer.  Debatably, they enjoyed the experience more.</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-18236">
+			<p class="commentauthor"><a href='http://shiftleft.org/' rel='external nofollow' class='url'>Mike</a> said,</p>
+			<p class="commentmeta">March 15, 2009 at <a href="#comment-18236" title="Permanent link to this comment">9:28 pm</a> </p>
+			
+			<p>Awesome stuff, Dan!</p>
+<p>We should definitely get lunch together at some point&#8230; haven&#8217;t seen you in at least a year&#8230;</p>
+<p>Also, as a security guy, I present for your amusement: <a href="http://tinyurl.com/danvk-boggled" rel="nofollow">cross-site boggling</a></p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-23368">
+			<p class="commentauthor"><a href='../../2009-08-04/solving-boggle-by-taking-option-three/index.html' rel='external nofollow' class='url'>danvk.org &raquo; Solving Boggle by Taking Option Three</a> said,</p>
+			<p class="commentmeta">August 4, 2009 at <a href="#comment-23368" title="Permanent link to this comment">6:18 pm</a> </p>
+			
+			<p>[...] we spoke about Boggle, we used Simulated Annealing to get at the question &#8220;what is the highest-scoring [...]</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-23504">
+			<p class="commentauthor"><a href='../../2009-08-08/breaking-3x3-boggle/index.html' rel='external nofollow' class='url'>danvk.org &raquo; Breaking 3&#215;3 Boggle</a> said,</p>
+			<p class="commentmeta">August 8, 2009 at <a href="#comment-23504" title="Permanent link to this comment">10:51 am</a> </p>
+			
+			<p>[...] Find a very high-scoring board (maybe this way) [...]</p>
+		</li>
+
+		
+	
+		<li class="comment" id="comment-29581">
+			<p class="commentauthor"><a href='http://www.pathcom.com/~vadco/deep.html' rel='external nofollow' class='url'>JohnPaul Adamovsky</a> said,</p>
+			<p class="commentmeta">February 22, 2010 at <a href="#comment-29581" title="Permanent link to this comment">12:04 am</a> </p>
+			
+			<p>10,000 Boards/second is impressive.</p>
+<p>Question:  How does it scale on multi-core shared memory CPU&#8217;s?</p>
+<p>In November 2009, deepsearch.c was capable of scoring 70,000 random 5&#215;5 boards per second with the TWL06 lexicon on a Core2 Q9450 @ 3GHZ.</p>
+<p>How?  An immutable finite state automaton operating as a perfect and complete hash table.  That&#8217;s how.</p>
+<p>RSLCS<br />
+DEIAE<br />
+GNTRP<br />
+SMIDR</p>
+<p>This board is the best Best 5&#215;5 Boggle board for TWL06.  It&#8217;s worth 10,769 points.  The word list is mind boggling.</p>
+<p>search &#8220;Boggle deepsearch&#8221; on Google.  <a href="http://www.pathcom.com/~vadco/deep.html" rel="nofollow">http://www.pathcom.com/~vadco/deep.html</a></p>
+<p>Final question:  Why bother changing more than one tile, when the smallest change possible will lead to the best board every time?  Does your algorithm guarantee the highest possible board in a period of time shorter than over night?</p>
+		</li>
+
+		
+	
+		<li class="commentalt" id="comment-29582">
+			<p class="commentauthor"><a href='http://www.pathcom.com/~vadco/deep.html' rel='external nofollow' class='url'>JohnPaul Adamovsky</a> said,</p>
+			<p class="commentmeta">February 22, 2010 at <a href="#comment-29582" title="Permanent link to this comment">12:12 am</a> </p>
+			
+			<p>Whoops, missed a line in that board.</p>
+<p>RSLCS<br />
+DEIAE<br />
+GNTRP<br />
+ATESE<br />
+SMIDR</p>
+<p>That&#8217;s the one,  I&#8217;d love to be able to edit my comment.</p>
+<p>All the very best,</p>
+<p>JohnPaul Adamovsky</p>
+		</li>
+
+		
+	
+	</ol>
+
+
+	
+	
+</div>
+
+<div id="sidebar">
+<ul>
+
+	<li id="search">
+		<form method="get" id="searchform" action="http://www.danvk.org/wp/index.php">
+<p>
+<input type="text" value="" name="s" id="s" /><br />
+<input type="submit" id="searchsubmit" value="Search" />
+</p>
+</form>	</li> 
+
+<!-- I want more control than this gives me: wp_list_pages('title_li=<h2>' . __('Pages') . '</h2>' ); -->
+
+	<li class="pagenav">
+		<ul>
+			<!--<li class="page_item"><a href="http://www.danvk.org/wp/?page_id=2" title="About">About</a></li>-->
+			<li>Dan across the web
+				<ul>
+					<li class="social">
+					<a href="https://github.com/danvk"><img src="https://github.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://twitter.com/danvdk"><img src="https://twitter.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://www.facebook.com/danvdk"><img src="https://facebook.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://plus.google.com/+DanVanderkam"><img src="https://plus.google.com/favicon.ico" width=16 height=16 border=0></a>
+					<a href="https://www.linkedin.com/profile/view?id=340204755"><img src="https://www.linkedin.com/favicon.ico" width=16 height=16 border=0></a>
+					<script data-gittip-username="danvdk" data-gittip-widget="button" src="http://gttp.co/v1.js"></script>
+				</ul>
+
+			<li>Dan's projects
+				<ul class="projects">
+					<li><a href="http://dygraphs.com/">dygraphs</a>
+					<li><a href="http://oldsf.org/">OldSF</a>
+					<li><a href="http://comparea.org/">Comparea</a>
+					<li><a href="https://github.com/danvk/webdiff">git webdiff</a>
+				</ul>
+
+			<li>Features on this site
+				<ul class="features">
+					<li><a href="http://www.danvk.org/boggle.php" title="Boggle Solver">Online Boggle Solver</a></li>
+					<li><a href="../../beals-conjecture/index.html" title="Beal&#039;s Conjecture">Beal's Conjecture</a></li>
+					<li><a href="../../gw-basic-program-decoder/index.html" title="GW-BASIC Program Decoder">GW-BASIC Program Decoder</a></li>
+					<li><a href="http://www.danvk.org/tower/nstower.html">NS-Tower in your Browser</a></li>
+				</ul>
+		</ul>
+	</li>
+
+	<!--
+	<li id="twitter_sidebar">
+		<div id="twitter_div">
+		<a href="http://twitter.com/danvdk" target="_blank"><h2 class="sidebar-title">Follow me on Twitter</h2></a>
+		<ul id="twitter_update_list" style="padding-right:30px"></ul>
+		
+		</div>
+		<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+		<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/danvdk.json?callback=twitterCallback2&amp;count=5"></script>
+	</li>
+	-->
+
+	<li id="archives">
+		<h2>Archives</h2>
+		<ul>
+			<li><a href='../../2014/10/index.html'>October 2014</a></li>
+	<li><a href='../../2014/08/index.html'>August 2014</a></li>
+	<li><a href='../../2014/07/index.html'>July 2014</a></li>
+	<li><a href='../../2014/06/index.html'>June 2014</a></li>
+	<li><a href='../../2014/03/index.html'>March 2014</a></li>
+	<li><a href='../../2014/02/index.html'>February 2014</a></li>
+	<li><a href='../../2014/01/index.html'>January 2014</a></li>
+	<li><a href='../../2013/08/index.html'>August 2013</a></li>
+	<li><a href='../../2013/06/index.html'>June 2013</a></li>
+	<li><a href='../../2013/04/index.html'>April 2013</a></li>
+	<li><a href='../../2013/03/index.html'>March 2013</a></li>
+	<li><a href='../../2013/02/index.html'>February 2013</a></li>
+	<li><a href='../../2013/01/index.html'>January 2013</a></li>
+	<li><a href='../../2012/12/index.html'>December 2012</a></li>
+	<li><a href='../../2012/09/index.html'>September 2012</a></li>
+	<li><a href='../../2012/08/index.html'>August 2012</a></li>
+	<li><a href='../../2012/07/index.html'>July 2012</a></li>
+	<li><a href='../../2012/06/index.html'>June 2012</a></li>
+	<li><a href='../../2012/05/index.html'>May 2012</a></li>
+	<li><a href='../../2012/04/index.html'>April 2012</a></li>
+	<li><a href='../../2012/02/index.html'>February 2012</a></li>
+	<li><a href='../../2012/01/index.html'>January 2012</a></li>
+	<li><a href='../../2011/12/index.html'>December 2011</a></li>
+	<li><a href='../../2011/11/index.html'>November 2011</a></li>
+	<li><a href='../../2011/08/index.html'>August 2011</a></li>
+	<li><a href='../../2011/03/index.html'>March 2011</a></li>
+	<li><a href='../../2010/06/index.html'>June 2010</a></li>
+	<li><a href='../../2010/03/index.html'>March 2010</a></li>
+	<li><a href='../../2009/12/index.html'>December 2009</a></li>
+	<li><a href='../../2009/11/index.html'>November 2009</a></li>
+	<li><a href='../../2009/10/index.html'>October 2009</a></li>
+	<li><a href='../../2009/09/index.html'>September 2009</a></li>
+	<li><a href='../../2009/08/index.html'>August 2009</a></li>
+	<li><a href='../../2009/06/index.html'>June 2009</a></li>
+	<li><a href='../../2009/05/index.html'>May 2009</a></li>
+	<li><a href='../../2009/03/index.html'>March 2009</a></li>
+	<li><a href='../../2009/02/index.html'>February 2009</a></li>
+	<li><a href='../../2009/01/index.html'>January 2009</a></li>
+	<li><a href='../../2008/12/index.html'>December 2008</a></li>
+	<li><a href='../../2008/11/index.html'>November 2008</a></li>
+	<li><a href='../../2008/10/index.html'>October 2008</a></li>
+	<li><a href='../../2008/09/index.html'>September 2008</a></li>
+	<li><a href='../../2008/08/index.html'>August 2008</a></li>
+	<li><a href='../../2008/06/index.html'>June 2008</a></li>
+	<li><a href='../../2008/05/index.html'>May 2008</a></li>
+	<li><a href='../../2008/02/index.html'>February 2008</a></li>
+	<li><a href='../../2008/01/index.html'>January 2008</a></li>
+	<li><a href='../../2007/12/index.html'>December 2007</a></li>
+	<li><a href='../../2007/11/index.html'>November 2007</a></li>
+	<li><a href='../../2007/10/index.html'>October 2007</a></li>
+	<li><a href='../../2007/09/index.html'>September 2007</a></li>
+	<li><a href='../../2007/08/index.html'>August 2007</a></li>
+	<li><a href='../../2007/07/index.html'>July 2007</a></li>
+	<li><a href='../../2007/06/index.html'>June 2007</a></li>
+	<li><a href='../../2007/05/index.html'>May 2007</a></li>
+	<li><a href='../../2007/04/index.html'>April 2007</a></li>
+	<li><a href='../../2007/03/index.html'>March 2007</a></li>
+	<li><a href='../../2007/02/index.html'>February 2007</a></li>
+	<li><a href='../../2007/01/index.html'>January 2007</a></li>
+	<li><a href='../../2006/12/index.html'>December 2006</a></li>
+	<li><a href='../../2006/11/index.html'>November 2006</a></li>
+	<li><a href='../../2006/10/index.html'>October 2006</a></li>
+	<li><a href='../../2006/09/index.html'>September 2006</a></li>
+		</ul>
+	</li>
+
+		
+	<li id="categories">
+		<h2>Categories</h2>
+		<ul>
+			<li class="cat-item cat-item-21"><a href="../../category/astronomy/index.html" title="View all posts filed under astronomy">astronomy</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="../../category/boggle/index.html" title="View all posts filed under boggle">boggle</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="../../category/books/index.html" title="View all posts filed under books">books</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="../../category/finance/index.html" title="View all posts filed under finance">finance</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="../../category/javascript/index.html" title="View all posts filed under javascript">javascript</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="../../category/math/index.html" title="View all posts filed under math">math</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="../../category/meta/index.html" title="View all posts filed under meta">meta</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="../../category/movies/index.html" title="View all posts filed under movies">movies</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="../../category/music/index.html" title="View all posts filed under music">music</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="../../category/news/index.html" title="View all posts filed under news">news</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="../../category/personal/index.html" title="View all posts filed under personal">personal</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="../../category/politics/index.html" title="View all posts filed under politics">politics</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="../../category/programming/index.html" title="View all posts filed under programming">programming</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="../../category/reviews/index.html" title="View all posts filed under reviews">reviews</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="../../category/san-francisco/index.html" title="View all posts filed under san francisco">san francisco</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="../../category/science/index.html" title="View all posts filed under science">science</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="../../category/space/index.html" title="View all posts filed under space">space</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="../../category/sports/index.html" title="View all posts filed under sports">sports</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="../../category/tennis/index.html" title="View all posts filed under tennis">tennis</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="../../category/travel/index.html" title="View all posts filed under travel">travel</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="../../category/tv/index.html" title="View all posts filed under tv">tv</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="../../category/uncategorized/index.html" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="../../category/web/index.html" title="View all posts filed under web">web</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="../../category/wikipedia/index.html" title="View all posts filed under wikipedia">wikipedia</a>
+</li>
+ 
+		</ul>
+	</li>
+	
+			
+	
+	<li id="meta">
+		<h2>Meta</h2>
+		<ul>
+				<li><a href="../../wp-login.html">Log in</a></li>
+		<li><a href="../../feed/index.html" title="Syndicate this site using RSS">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+		<li><a href="../../comments/feed/index.html" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+		<li><a href="http://wordpress.org/" title="Powered by Wordpress, state-of-the-art semantic personal publishing platform.">Wordpress</a></li>
+				</ul>
+	</li>
+	
+</ul>
+</div>
+
+<div id="footer">
+
+<!--<p>
+
+
+Design by <a href="http://ravenkeller.com">Raven Keller</a> and <a href="http://weblogs.us" title="Theme sponsored by Weblogs.us">Weblogs.us</a>
+&#183;
+<a href="http://validator.w3.org/check/referer" title="This page validates as XHTML 1.0 Transitional"><abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a>
+&#183;
+<a href="http://jigsaw.w3.org/css-validator/check/referer" title="This page validates as CSS"><abbr title="Cascading Style Sheets">CSS</abbr></a>
+<img src='http://counter.dreamhost.com/cgi-bin/Count.cgi?df=danvk-maincounter.dat&pad=F&ft=0&dd=copper&istrip=T' align=right />
+</p>-->
+
+
+</div>
+
+
+<!-- Google Analytics -->
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-769809-1";
+urchinTracker();
+</script>
+
+</body>
+
+<!-- Mirrored from www.danvk.org/wp/2009-02-19/sky-high-boggle-scores-with-simulated-annealing/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Oct 2014 03:10:09 GMT -->
+</html>	
+
+
+
+<!--<footer class="container"></footer>-->
+

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Draggable Table Columns</title>
+	<atom:link href="http://www.danvk.org/wp/2008-06-12/draggable-table-columns/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.danvk.org/wp/2008-06-12/draggable-table-columns/</link>
+	<description>Keepin' static like wool fabric since 2006</description>
+	<lastBuildDate>Wed, 08 Oct 2014 14:33:23 +0000</lastBuildDate>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.9.2</generator>
+	<item>
+		<title>By: brad</title>
+		<link>http://www.danvk.org/wp/2008-06-12/draggable-table-columns/comment-page-1/#comment-116024</link>
+		<dc:creator><![CDATA[brad]]></dc:creator>
+		<pubDate>Wed, 26 Oct 2011 02:44:42 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/2008-06-12/draggable-table-columns/#comment-116024</guid>
+		<description><![CDATA[two things i am after:
+
+1. is it possible to lock down one column?
+2. how would u add a visual indicator to show where the new column is while being dragged (perhaps something like highlighting the border between the two columns )
+
+otherwise it works great! thanks!]]></description>
+		<content:encoded><![CDATA[<p>two things i am after:</p>
+<p>1. is it possible to lock down one column?<br />
+2. how would u add a visual indicator to show where the new column is while being dragged (perhaps something like highlighting the border between the two columns )</p>
+<p>otherwise it works great! thanks!</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: LePirlouit</title>
+		<link>http://www.danvk.org/wp/2008-06-12/draggable-table-columns/comment-page-1/#comment-82057</link>
+		<dc:creator><![CDATA[LePirlouit]]></dc:creator>
+		<pubDate>Mon, 23 May 2011 07:57:51 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/2008-06-12/draggable-table-columns/#comment-82057</guid>
+		<description><![CDATA[Hi danvk,
+
+I want to contribute to this project,
+
+I have solved issue nr 23 about the colspan.
+
+please add me to the project developpers.]]></description>
+		<content:encoded><![CDATA[<p>Hi danvk,</p>
+<p>I want to contribute to this project,</p>
+<p>I have solved issue nr 23 about the colspan.</p>
+<p>please add me to the project developpers.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Erwin</title>
+		<link>http://www.danvk.org/wp/2008-06-12/draggable-table-columns/comment-page-1/#comment-15629</link>
+		<dc:creator><![CDATA[Erwin]]></dc:creator>
+		<pubDate>Thu, 18 Dec 2008 01:17:31 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/2008-06-12/draggable-table-columns/#comment-15629</guid>
+		<description><![CDATA[Hi,
+
+I have added a fix for the horizontal scroll of table when the total table width is greater than the screen size. I&#039;m not sure if I have done it perfectly, but so far it seems to be working just fine.
+
+I added this code to dragMove (You can get the getPosition() from this site: http://hartshorne.ca/2006/01/23/javascript_cursor_position/):
+
+// erwin (scroll page horizontally) START
+var cursorObject = getPosition(event);
+var cursorPosX = cursorObject.x;
+
+var windowOffsetX = screen.width + document.body.scrollLeft;
+
+if ((windowOffsetX-cursorPosX) &lt;= 100)
+	document.body.scrollLeft += 5;
+else if ((cursorPosX-document.body.scrollLeft) &lt;= 100)
+	document.body.scrollLeft -= 5;
+// erwin (scroll page horizontally) END]]></description>
+		<content:encoded><![CDATA[<p>Hi,</p>
+<p>I have added a fix for the horizontal scroll of table when the total table width is greater than the screen size. I&#8217;m not sure if I have done it perfectly, but so far it seems to be working just fine.</p>
+<p>I added this code to dragMove (You can get the getPosition() from this site: <a href="http://hartshorne.ca/2006/01/23/javascript_cursor_position/" rel="nofollow">http://hartshorne.ca/2006/01/23/javascript_cursor_position/</a>):</p>
+<p>// erwin (scroll page horizontally) START<br />
+var cursorObject = getPosition(event);<br />
+var cursorPosX = cursorObject.x;</p>
+<p>var windowOffsetX = screen.width + document.body.scrollLeft;</p>
+<p>if ((windowOffsetX-cursorPosX) &lt;= 100)<br />
+	document.body.scrollLeft += 5;<br />
+else if ((cursorPosX-document.body.scrollLeft) &lt;= 100)<br />
+	document.body.scrollLeft -= 5;<br />
+// erwin (scroll page horizontally) END</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Brad</title>
+		<link>http://www.danvk.org/wp/2008-06-12/draggable-table-columns/comment-page-1/#comment-15307</link>
+		<dc:creator><![CDATA[Brad]]></dc:creator>
+		<pubDate>Mon, 08 Dec 2008 21:12:49 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/2008-06-12/draggable-table-columns/#comment-15307</guid>
+		<description><![CDATA[I have the same issue- works great, except when the table is wide enough that I need to scroll. Then if I try to grab the rightmost column, it instead selects whatever column occupied that space before I scrolled. 
+
+Does that make sense? If your table scrolls horizontally, the javascript doesn&#039;t detect that the columns have moved, so you end up dragging the column that used to be there.]]></description>
+		<content:encoded><![CDATA[<p>I have the same issue- works great, except when the table is wide enough that I need to scroll. Then if I try to grab the rightmost column, it instead selects whatever column occupied that space before I scrolled. </p>
+<p>Does that make sense? If your table scrolls horizontally, the javascript doesn&#8217;t detect that the columns have moved, so you end up dragging the column that used to be there.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Cyril</title>
+		<link>http://www.danvk.org/wp/2008-06-12/draggable-table-columns/comment-page-1/#comment-14651</link>
+		<dc:creator><![CDATA[Cyril]]></dc:creator>
+		<pubDate>Mon, 17 Nov 2008 11:16:17 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/2008-06-12/draggable-table-columns/#comment-14651</guid>
+		<description><![CDATA[Hi,
+This is a very smooth and easy to use, but when the table is long &amp; hidden in scrolling DIV the Drag does not work. :(
+Can i find any solution here.]]></description>
+		<content:encoded><![CDATA[<p>Hi,<br />
+This is a very smooth and easy to use, but when the table is long &amp; hidden in scrolling DIV the Drag does not work. :(<br />
+Can i find any solution here.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Colin</title>
+		<link>http://www.danvk.org/wp/2008-06-12/draggable-table-columns/comment-page-1/#comment-10795</link>
+		<dc:creator><![CDATA[Colin]]></dc:creator>
+		<pubDate>Mon, 30 Jun 2008 23:39:34 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/2008-06-12/draggable-table-columns/#comment-10795</guid>
+		<description><![CDATA[I have a table with 8 columns and everything drags correctly.
+On another page I have a table with 11 columns and it seems that the drag result is often random - and I can&#039;t drag column 11 at all.
+Is there a limit to the number of columns I can have in my table?]]></description>
+		<content:encoded><![CDATA[<p>I have a table with 8 columns and everything drags correctly.<br />
+On another page I have a table with 11 columns and it seems that the drag result is often random &#8211; and I can&#8217;t drag column 11 at all.<br />
+Is there a limit to the number of columns I can have in my table?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Colin</title>
+		<link>http://www.danvk.org/wp/2008-06-12/draggable-table-columns/comment-page-1/#comment-10764</link>
+		<dc:creator><![CDATA[Colin]]></dc:creator>
+		<pubDate>Sun, 29 Jun 2008 02:11:06 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/2008-06-12/draggable-table-columns/#comment-10764</guid>
+		<description><![CDATA[This is very good. How do you get the column to visually follow the mouse?
+On my table when I drag a column nothing changes visually until I release the mouse button.]]></description>
+		<content:encoded><![CDATA[<p>This is very good. How do you get the column to visually follow the mouse?<br />
+On my table when I drag a column nothing changes visually until I release the mouse button.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: danvk</title>
+		<link>http://www.danvk.org/wp/2008-06-12/draggable-table-columns/comment-page-1/#comment-10736</link>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+		<pubDate>Thu, 26 Jun 2008 19:46:14 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/2008-06-12/draggable-table-columns/#comment-10736</guid>
+		<description><![CDATA[Martin -- you&#039;re right, this is certainly a drawback of dragtable (and sorttable). The right solution is to store a cookie for each table that remembers the column ordering and the sorting. I think this is more of a version 1.5 or 2.0 kind of feature, but I&#039;ve gone ahead and created an issue for it on my google code page: http://code.google.com/p/dragtable/issues/detail?id=3]]></description>
+		<content:encoded><![CDATA[<p>Martin &#8212; you&#8217;re right, this is certainly a drawback of dragtable (and sorttable). The right solution is to store a cookie for each table that remembers the column ordering and the sorting. I think this is more of a version 1.5 or 2.0 kind of feature, but I&#8217;ve gone ahead and created an issue for it on my google code page: <a href="http://code.google.com/p/dragtable/issues/detail?id=3" rel="nofollow">http://code.google.com/p/dragtable/issues/detail?id=3</a></p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Martin</title>
+		<link>http://www.danvk.org/wp/2008-06-12/draggable-table-columns/comment-page-1/#comment-10735</link>
+		<dc:creator><![CDATA[Martin]]></dc:creator>
+		<pubDate>Thu, 26 Jun 2008 19:24:51 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/2008-06-12/draggable-table-columns/#comment-10735</guid>
+		<description><![CDATA[Using this code, works a treat, so far.
+I notice the underlying html is not modified so that when the page is refreshed it reverts to the original column layout.
+Is there a way of preserving the new layout when a page is refreshed or you move to a new page (for printing for example), perhaps by giving each column a unique identifier and the storing the order they are put in and those variable checked first when the page refreshes/changes else going to the default layout?
+
+Javscript is not my strongest area so maybe I&#039;m not seeing the wood for the trees but I can&#039;t pick out where the column references are in the code.
+
+Any ideas?]]></description>
+		<content:encoded><![CDATA[<p>Using this code, works a treat, so far.<br />
+I notice the underlying html is not modified so that when the page is refreshed it reverts to the original column layout.<br />
+Is there a way of preserving the new layout when a page is refreshed or you move to a new page (for printing for example), perhaps by giving each column a unique identifier and the storing the order they are put in and those variable checked first when the page refreshes/changes else going to the default layout?</p>
+<p>Javscript is not my strongest area so maybe I&#8217;m not seeing the wood for the trees but I can&#8217;t pick out where the column references are in the code.</p>
+<p>Any ideas?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: danvk</title>
+		<link>http://www.danvk.org/wp/2008-06-12/draggable-table-columns/comment-page-1/#comment-10695</link>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+		<pubDate>Mon, 23 Jun 2008 15:50:24 +0000</pubDate>
+		<guid isPermaLink="false">http://www.danvk.org/wp/2008-06-12/draggable-table-columns/#comment-10695</guid>
+		<description><![CDATA[Thanks for the catch, Martin! I&#039;ve fixed the link, you should be able to download dragtable.js now.]]></description>
+		<content:encoded><![CDATA[<p>Thanks for the catch, Martin! I&#8217;ve fixed the link, you should be able to download dragtable.js now.</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>danvk.org &#187; finance</title>
+	<atom:link href="http://www.danvk.org/wp/category/finance/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.danvk.org/wp</link>
+	<description>Keepin' static like wool fabric since 2006</description>
+	<lastBuildDate>Thu, 09 Oct 2014 15:59:51 +0000</lastBuildDate>
+	<language>en-US</language>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.9.2</generator>
+	<item>
+		<title>Why You Invest When the Market Goes Down</title>
+		<link>http://www.danvk.org/wp/2009-02-22/why-you-invest-when-the-market-goes-down/</link>
+		<comments>http://www.danvk.org/wp/2009-02-22/why-you-invest-when-the-market-goes-down/#comments</comments>
+		<pubDate>Sun, 22 Feb 2009 21:51:07 +0000</pubDate>
+		<dc:creator><![CDATA[danvk]]></dc:creator>
+				<category><![CDATA[finance]]></category>
+		<category><![CDATA[math]]></category>
+
+		<guid isPermaLink="false">http://www.danvk.org/wp/?p=441</guid>
+		<description><![CDATA[The S&#38;P 500 certainly hasn&#8217;t made anyone rich over the last year: Most people see this and think &#8220;an investment one year ago would have lost 45% of its value&#8221;. Others think &#8220;great, now stocks are all cheaper!&#8221; In reality, most ordinary people invest portions of their paychecks, either through their 401(k) or a personal [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>The S&amp;P 500 certainly hasn&#8217;t made anyone rich over the last year:</p>
+<p><img src="http://www.danvk.org/wp/wp-content/uploads/2009/02/sp500.png" alt="S&#038;P 500 dropping 40% over the last year" title="sp500" class="size-full wp-image-442" width="450" /></p>
+<p>Most people see this and think &#8220;an investment one year ago would have lost 45% of its value&#8221;. Others think &#8220;great, now stocks are all cheaper!&#8221;</p>
+<p>In reality, most ordinary people invest portions of their paychecks, either through their <a href="http://en.wikipedia.org/wiki/401(k)">401(k)</a> or a personal account. This means they&#8217;re doing <i>time averaging</i>. Sure, investments when the market was up aren&#8217;t doing well. But investments when the market was down are doing just fine.</p>
+<p>This is all kind of wishy-washy, though. Let&#8217;s try to quantify it. Suppose a market drop and recovery looks like a parabola:</p>
+<p><img src="http://www.danvk.org/wp/wp-content/uploads/2009/02/market-model.png" alt="market-model" title="market-model" width="361" height="192" class="aligncenter size-full wp-image-444" /></p>
+<p>The prices here are parabolas<br />
+<img class="tex" alt="P(t) = a(1-2t)^2 + (1-a)\," src="/wp/wp-content/uploads/2009/02/eq-parabolas.png" /></p>
+<p>for various values of a. a=0 means the market is flat. a=0.5 means the market loses 50% of its value.</p>
+<p>If you invest <i>dt</i> dollars in this market at each point in time, you can work out a nasty integral and show that the number of shares you have at time <i>t</i> is:</p>
+<p><img class="tex" alt="S(t) = \int_{x=0}^{x=t} \frac{dx}{a(1-2x)^2+(1-a)}" src="/wp/wp-content/uploads/2009/02/eq-integral.png" /></p>
+<p><img class="tex" alt="= \frac{1}{2a \sqrt{1/a - 1}} \left(atan \frac{1}{\sqrt{1/a - 1}}  - atan \frac{1-2t}{\sqrt{1/a - 1}} \right)" src="/wp/wp-content/uploads/2009/02/eq-indefinite.png" /></p>
+<p>and hence the value of your shares at the end is:</p>
+<p><img class="tex" alt="S(1) = \frac{1}{a \sqrt{1/a - 1}} atan \frac{1}{\sqrt{1/a - 1}}" src="/wp/wp-content/uploads/2009/02/eq-definite.png" /></p>
+<p>Here&#8217;s what that looks like:</p>
+<p><img src="http://www.danvk.org/wp/wp-content/uploads/2009/02/return-averaging.png" alt="return-averaging" title="return-averaging" width="517" height="267" class="aligncenter size-full wp-image-443" /></p>
+<p>The x-axis is <i>a</i>, the fraction by which the market drops. The y-axis is your total return on investment. If the market drops by 50% (a=0.5) then your total return on investment is around 55%. With time-averaging, <b>the more the market drops, the better you do.</b> </p>
+<p>This makes a lot of sense if you think about it. Say the market drops 99.9% and then recovers. The shares you bought when it was at its bottom earned you a return of 1000x. Investing at the bottom is important! You should keep investing, even as the market drops. If you don&#8217;t, you&#8217;ll miss that bottom.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.danvk.org/wp/2009-02-22/why-you-invest-when-the-market-goes-down/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+	</channel>
+</rss>
