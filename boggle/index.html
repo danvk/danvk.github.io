@@ -1,0 +1,207 @@
+---
+title: Boggle Solver
+layout: nil
+---
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//fb.me/react-0.11.2.js"></script>
+<script src="//fb.me/JSXTransformer-0.11.2.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+
+<script type="text/jsx;harmony=true">
+/** @jsx React.DOM */
+var ENDPOINT = 'http://webboggle.herokuapp.com/';
+function getSolution(letters) {
+  return $.get(ENDPOINT + letters);
+}
+
+var ARROWS = {
+  UP_LEFT: "arrows/upleft.png",
+  LEFT: "arrows/left.png",
+  DOWN_LEFT: "arrows/downleft.png",
+  UP: "arrows/up.png",
+  BLANK: "arrows/blank.png",
+  DOWN: "arrows/down.png",
+  UP_RIGHT: "arrows/upright.png",
+  RIGHT: "arrows/right.png",
+  DOWN_RIGHT: "arrows/downright.png",
+  UP_LEFT_RIGHT: "arrows/upleftright.png",
+  DOWN_LEFT_RIGHT: "arrows/downleftright.png",
+  LEFT_UP_DOWN: "arrows/leftupdown.png",
+  RIGHT_UP_DOWN: "arrows/rightupdown.png"
+};
+
+var BogglePage = React.createClass({
+  getInitialState: function() {
+    return {
+      board: [
+                'pers'.split(''),
+                'latg'.split(''),
+                'sine'.split(''),
+                'ters'.split('')
+             ],
+      // Array of (row, col)
+      path: [[0, 0], [0, 1], [0, 2], [1, 2], [2, 2], [3, 3], [2, 3], [3, 2]]
+    }
+  },
+  render: function() {
+    return <BoggleBoard board={this.state.board}
+                        selectedPath={this.state.path} />;
+  }
+});
+
+
+var BoggleBoard = React.createClass({
+  propTypes: {
+    board: React.PropTypes.arrayOf(React.PropTypes.arrayOf(React.PropTypes.string)).isRequired,
+    selectedPath: React.PropTypes.array
+  },
+  render: function() {
+    var bd = this.props.board;
+    var path = this.props.selectedPath;
+    var pathPairs = _.zip(path, _.rest(path));
+    pathPairs.pop();
+
+    var inRowArrows = _.range(4).map(() => []);
+    var betweenRowArrows = _.range(3).map(() => []);
+    pathPairs.forEach(function(pair) {
+      var beforeRow = pair[0][0], afterRow = pair[1][0];
+      if (beforeRow == afterRow) {
+        inRowArrows[beforeRow].push(pair);
+      } else {
+        betweenRowArrows[Math.min(beforeRow, afterRow)].push(pair);
+      }
+    });
+
+    return (
+      <table className="boggle-board">
+        <BoggleLetterRow row={0} letters={bd[0]} selectedPath={inRowArrows[0]} />
+        <BoggleArrowRow rowAbove={0} selectedPath={betweenRowArrows[0]} />
+        <BoggleLetterRow row={1} letters={bd[1]} selectedPath={inRowArrows[1]} />
+        <BoggleArrowRow rowAbove={1} selectedPath={betweenRowArrows[1]} />
+        <BoggleLetterRow row={2} letters={bd[2]} selectedPath={inRowArrows[2]} />
+        <BoggleArrowRow rowAbove={2} selectedPath={betweenRowArrows[2]} />
+        <BoggleLetterRow row={3} letters={bd[3]} selectedPath={inRowArrows[3]} />
+      </table>
+    );
+  }
+});
+
+var BoggleLetterRow = React.createClass({
+  propTypes: {
+    row: React.PropTypes.number.isRequired,
+    letters: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
+    selectedPath: React.PropTypes.array  // array of (beforeCell, afterCell) in this row.
+  },
+  render: function() {
+    var lets = this.props.letters;
+    var arrows = _.range(3).map(() => ARROWS.BLANK);
+    this.props.selectedPath.forEach(function(pair) {
+      var beforeCol = pair[0][1], afterCol = pair[1][1];
+      var c = Math.min(beforeCol, afterCol);
+      if (beforeCol < afterCol) {
+        arrows[c] = ARROWS.RIGHT;
+      } else {
+        arrows[c] = ARROWS.LEFT;
+      }
+    });
+
+    return (
+      <tr>
+        <td><div>{lets[0]}</div></td>
+        <td><img src={arrows[0]} /></td>
+        <td><div>{lets[1]}</div></td>
+        <td><img src={arrows[1]} /></td>
+        <td><div>{lets[2]}</div></td>
+        <td><img src={arrows[2]} /></td>
+        <td><div>{lets[3]}</div></td>
+      </tr>
+    );
+  }
+});
+
+function makeDiagArrow(oldArrow, pair) {
+  var beforeCol = pair[0][1], beforeRow = pair[0][0],
+      afterCol = pair[1][1], afterRow = pair[1][0];
+  var A = ARROWS;
+  var arrow;
+  if (beforeCol < afterCol) {
+    if (beforeRow < afterRow) {
+      arrow = A.DOWN_RIGHT;
+    } else {
+      arrow = A.UP_RIGHT;
+    }
+  } else {
+    if (beforeRow < afterRow) {
+      arrow = A.DOWN_LEFT;
+    } else {
+      arrow = A.UP_LEFT;
+    }
+  }
+
+  if (oldArrow != A.BLANK) {
+    // merge arrows
+    var p = [oldArrow, arrow];
+    function eq(pair) {
+      return _.isEqual(_.sortBy(p), _.sortBy(pair));
+    }
+
+    if (eq([A.UP_LEFT, A.UP_RIGHT])) {
+      arrow = A.UP_LEFT_RIGHT;
+    } else if (eq([A.DOWN_LEFT, A.DOWN_RIGHT])) {
+      arrow = A.DOWN_LEFT_RIGHT;
+    } else if (eq([A.UP_LEFT, A.DOWN_LEFT])) {
+      arrow = LEFT_UP_DOWN;
+    } else if (eq([A.UP_RIGHT, A.DOWN_RIGHT])) {
+      arrow = RIGHT_UP_DOWN;
+    } else {
+      throw "Invalid arrow merge: " + p;
+    }
+  }
+  return arrow;
+}
+
+var BoggleArrowRow = React.createClass({
+  propTypes: {
+    rowAbove: React.PropTypes.number.isRequired,
+    selectedPath: React.PropTypes.array
+  }, 
+  render: function() {
+    var vertArrows = _.range(4).map(() => ARROWS.BLANK);
+    var diagArrows = _.range(3).map(() => ARROWS.BLANK);
+    this.props.selectedPath.forEach(function(pair) {
+      var beforeCol = pair[0][1], beforeRow = pair[0][0],
+          afterCol = pair[1][1], afterRow = pair[1][0];
+      var c = Math.min(beforeCol, afterCol);
+      if (beforeCol == afterCol) {
+        if (beforeRow < afterRow) {
+          vertArrows[c] = ARROWS.DOWN;
+        } else {
+          vertArrows[c] = ARROWS.UP;
+        }
+      } else {
+        diagArrows[c] = makeDiagArrow(diagArrows[c], pair);
+      }
+    });
+    return (
+      <tr>
+        <td><img src={vertArrows[0]} /></td>
+        <td><img src={diagArrows[0]} /></td>
+        <td><img src={vertArrows[1]} /></td>
+        <td><img src={diagArrows[1]} /></td>
+        <td><img src={vertArrows[2]} /></td>
+        <td><img src={diagArrows[2]} /></td>
+        <td><img src={vertArrows[3]} /></td>
+      </tr>
+    );
+  }
+});
+</script>
+
+<div id="boggle-page">
+</div>
+
+<script type="text/jsx;harmony=true">
+/** @jsx React.DOM */
+bogglePage = React.renderComponent(<BogglePage />, $('#boggle-page').get(0));
+</script>
