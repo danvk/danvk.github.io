@@ -3,8 +3,28 @@ title: Boggle Solver
 layout: nil
 ---
 
+<style>
+/* CSS arithmetic! */
+.arrow { width: 15px; height: 15px; }
+
+.arrow.up    { background-image: url(arrows/up.png); }
+.arrow.down  { background-image: url(arrows/down.png); }
+.arrow.left  { background-image: url(arrows/left.png); }
+.arrow.right { background-image: url(arrows/right.png); }
+
+.arrow.up.left     { background-image: url(arrows/upleft.png); }
+.arrow.down.left   { background-image: url(arrows/downleft.png); }
+.arrow.up.right    { background-image: url(arrows/upright.png); }
+.arrow.down.right  { background-image: url(arrows/downright.png); }
+
+.arrow.left.right.up   { background-image: url(arrows/upleftright.png); }
+.arrow.left.right.down { background-image: url(arrows/downleftright.png); }
+.arrow.up.down.left    { background-image: url(arrows/leftupdown.png); }
+.arrow.up.down.right   { background-image: url(arrows/rightupdown.png); }
+</style>
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="//fb.me/react-0.11.2.js"></script>
+<script src="//fb.me/react-with-addons-0.11.2.js"></script>
 <script src="//fb.me/JSXTransformer-0.11.2.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
 
@@ -15,20 +35,14 @@ function getSolution(letters) {
   return $.get(ENDPOINT + letters);
 }
 
+var cx = React.addons.classSet;
+
+
 var ARROWS = {
-  UP_LEFT: "arrows/upleft.png",
-  LEFT: "arrows/left.png",
-  DOWN_LEFT: "arrows/downleft.png",
-  UP: "arrows/up.png",
-  BLANK: "arrows/blank.png",
-  DOWN: "arrows/down.png",
-  UP_RIGHT: "arrows/upright.png",
-  RIGHT: "arrows/right.png",
-  DOWN_RIGHT: "arrows/downright.png",
-  UP_LEFT_RIGHT: "arrows/upleftright.png",
-  DOWN_LEFT_RIGHT: "arrows/downleftright.png",
-  LEFT_UP_DOWN: "arrows/leftupdown.png",
-  RIGHT_UP_DOWN: "arrows/rightupdown.png"
+  UP: 'up',
+  LEFT: 'left',
+  DOWN: 'down',
+  RIGHT: 'right',
 };
 
 var BogglePage = React.createClass({
@@ -95,70 +109,50 @@ var BoggleLetterRow = React.createClass({
   },
   render: function() {
     var lets = this.props.letters;
-    var arrows = _.range(3).map(() => ARROWS.BLANK);
+    var arrows = _.range(3).map(() => ({arrow:true}));
     this.props.selectedPath.forEach(function(pair) {
       var beforeCol = pair[0][1], afterCol = pair[1][1];
       var c = Math.min(beforeCol, afterCol);
       if (beforeCol < afterCol) {
-        arrows[c] = ARROWS.RIGHT;
+        arrows[c][ARROWS.RIGHT] = true;
       } else {
-        arrows[c] = ARROWS.LEFT;
+        arrows[c][ARROWS.LEFT] = true;
       }
     });
 
     return (
       <tr>
         <td><div>{lets[0]}</div></td>
-        <td><img src={arrows[0]} /></td>
+        <td><div className={cx(arrows[0])} /></td>
         <td><div>{lets[1]}</div></td>
-        <td><img src={arrows[1]} /></td>
+        <td><div className={cx(arrows[1])} /></td>
         <td><div>{lets[2]}</div></td>
-        <td><img src={arrows[2]} /></td>
+        <td><div className={cx(arrows[2])} /></td>
         <td><div>{lets[3]}</div></td>
       </tr>
     );
   }
 });
 
-function makeDiagArrow(oldArrow, pair) {
+function makeDiagArrow(pair, arrow) {
   var beforeCol = pair[0][1], beforeRow = pair[0][0],
       afterCol = pair[1][1], afterRow = pair[1][0];
   var A = ARROWS;
-  var arrow;
   if (beforeCol < afterCol) {
+    arrow[A.RIGHT] = true;
     if (beforeRow < afterRow) {
-      arrow = A.DOWN_RIGHT;
+      arrow[A.DOWN] = true;
     } else {
-      arrow = A.UP_RIGHT;
+      arrow[A.UP] = true;
     }
   } else {
+    arrow[A.LEFT] = true;
     if (beforeRow < afterRow) {
-      arrow = A.DOWN_LEFT;
+      arrow[A.DOWN] = true;
     } else {
-      arrow = A.UP_LEFT;
+      arrow[A.UP] = true;
     }
   }
-
-  if (oldArrow != A.BLANK) {
-    // merge arrows
-    var p = [oldArrow, arrow];
-    function eq(pair) {
-      return _.isEqual(_.sortBy(p), _.sortBy(pair));
-    }
-
-    if (eq([A.UP_LEFT, A.UP_RIGHT])) {
-      arrow = A.UP_LEFT_RIGHT;
-    } else if (eq([A.DOWN_LEFT, A.DOWN_RIGHT])) {
-      arrow = A.DOWN_LEFT_RIGHT;
-    } else if (eq([A.UP_LEFT, A.DOWN_LEFT])) {
-      arrow = LEFT_UP_DOWN;
-    } else if (eq([A.UP_RIGHT, A.DOWN_RIGHT])) {
-      arrow = RIGHT_UP_DOWN;
-    } else {
-      throw "Invalid arrow merge: " + p;
-    }
-  }
-  return arrow;
 }
 
 var BoggleArrowRow = React.createClass({
@@ -167,31 +161,32 @@ var BoggleArrowRow = React.createClass({
     selectedPath: React.PropTypes.array
   }, 
   render: function() {
-    var vertArrows = _.range(4).map(() => ARROWS.BLANK);
-    var diagArrows = _.range(3).map(() => ARROWS.BLANK);
+    var vertArrows = _.range(4).map(() => ({arrow:true}));
+    var diagArrows = _.range(3).map(() => ({arrow:true}));
     this.props.selectedPath.forEach(function(pair) {
       var beforeCol = pair[0][1], beforeRow = pair[0][0],
           afterCol = pair[1][1], afterRow = pair[1][0];
       var c = Math.min(beforeCol, afterCol);
       if (beforeCol == afterCol) {
         if (beforeRow < afterRow) {
-          vertArrows[c] = ARROWS.DOWN;
+          vertArrows[c][ARROWS.DOWN] = true;
         } else {
-          vertArrows[c] = ARROWS.UP;
+          vertArrows[c][ARROWS.UP] = true;
         }
       } else {
-        diagArrows[c] = makeDiagArrow(diagArrows[c], pair);
+        // TODO(danvk): validate that this is a plausible combination of arrows.
+        makeDiagArrow(pair, diagArrows[c]);
       }
     });
     return (
       <tr>
-        <td><img src={vertArrows[0]} /></td>
-        <td><img src={diagArrows[0]} /></td>
-        <td><img src={vertArrows[1]} /></td>
-        <td><img src={diagArrows[1]} /></td>
-        <td><img src={vertArrows[2]} /></td>
-        <td><img src={diagArrows[2]} /></td>
-        <td><img src={vertArrows[3]} /></td>
+        <td><div className={cx(vertArrows[0])} /></td>
+        <td><div className={cx(diagArrows[0])} /></td>
+        <td><div className={cx(vertArrows[1])} /></td>
+        <td><div className={cx(diagArrows[1])} /></td>
+        <td><div className={cx(vertArrows[2])} /></td>
+        <td><div className={cx(diagArrows[2])} /></td>
+        <td><div className={cx(vertArrows[3])} /></td>
       </tr>
     );
   }
