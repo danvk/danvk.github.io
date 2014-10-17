@@ -21,6 +21,13 @@ layout: nil
 .arrow.left.right.down { background-image: url(arrows/downleftright.png); }
 .arrow.up.down.left    { background-image: url(arrows/leftupdown.png); }
 .arrow.up.down.right   { background-image: url(arrows/rightupdown.png); }
+
+/* General styles */
+.boggle-board {
+  position: fixed;
+  left: 200px;
+  top: 20px;
+}
 </style>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -31,9 +38,6 @@ layout: nil
 <script type="text/jsx;harmony=true">
 /** @jsx React.DOM */
 var ENDPOINT = 'http://webboggle.herokuapp.com/';
-function getSolution(letters) {
-  return $.get(ENDPOINT + letters);
-}
 
 var cx = React.addons.classSet;
 
@@ -45,7 +49,25 @@ var ARROWS = {
   RIGHT: 'right',
 };
 
+// Cache & retrieval
+class DataStore {
+  constructor() {
+    this.serverResponses = {};
+  }
+
+  getWords(letters) {
+    if (letters in this.serverResponses) {
+      return $.when(this.serverResponses[letters]);
+    }
+    return $.get(ENDPOINT + letters).then(function(response) {
+      this.serverResponses[letters] = response;
+      return response;
+    }.bind(this));
+  }
+}
+
 var BogglePage = React.createClass({
+  store: new DataStore(),
   getInitialState: function() {
     return {
       board: [
@@ -54,13 +76,77 @@ var BogglePage = React.createClass({
                 'sine'.split(''),
                 'ters'.split('')
              ],
+      words: null,  // null = "loading"
       // Array of (row, col)
-      path: [[0, 0], [0, 1], [0, 2], [1, 2], [2, 2], [3, 3], [2, 3], [3, 2]]
+      selectedPath: [[0, 0], [0, 1], [0, 2], [1, 2], [2, 2], [3, 3], [2, 3], [3, 2]],
+      selectedWord: null
     }
   },
+  componentWillMount: function() {
+    this.setBoard(this.state.board);
+  },
+  setBoard: function(board) {
+    this.setState({board: board, words: null});
+    var letters = board.map((row) => row.join('')).join('');
+    this.store.getWords(letters)
+      .done((words) => { 
+        var wordList = _.map(words, (v, k) => [k, v]);
+        wordList.sort();
+        this.setState({words: wordList});
+      })
+      .fail((error) => { console.error(error); });
+  },
+  handleCellChanged: function(row, col, letter) {
+    // TODO: validate letter
+    var board = this.state.board;
+    board[row][col] = letter;
+    this.setBoard(board);
+  },
+  handleSelectWord: function(wordInfo) {
+    var [word, strPath] = wordInfo;
+    var path = strPath.split(' ').map((v) => v.split('').map(Number));
+    this.setState({selectedPath: path, selectedWord: word});
+  },
   render: function() {
-    return <BoggleBoard board={this.state.board}
-                        selectedPath={this.state.path} />;
+    return (
+      <div>
+        <BoggleWordList words={this.state.words}
+                        selectedWord={this.state.selectedWord}
+                        onSelectWord={this.handleSelectWord} />
+        <BoggleBoard board={this.state.board}
+                     selectedPath={this.state.selectedPath}
+                     onCellChanged={this.handleCellChanged} />
+      </div>
+    );
+  }
+});
+
+
+var BoggleWordList = React.createClass({
+  propTypes: {
+    words: React.PropTypes.array,
+    selectedWord: React.PropTypes.string,
+    onSelectWord: React.PropTypes.func
+  },
+  onHover: function(e) {
+    var idx = e.target.getAttribute('data-idx');
+    this.props.onSelectWord(this.props.words[idx]);
+  },
+  render: function() {
+    var words = this.props.words;
+    if (words === null) {
+      return <div>Loading…</div>;
+    }
+
+    var wordList = words.map((word, idx) => {
+      var classes = cx({'selected': word == this.props.selectedWord});
+      return <li onMouseOver={this.onHover} className={classes} data-idx={idx} key={idx}>{word[0]}</li>;
+    });
+    return (
+      <ul className="word-list">
+        {wordList}
+      </ul>
+    );
   }
 });
 
@@ -68,7 +154,8 @@ var BogglePage = React.createClass({
 var BoggleBoard = React.createClass({
   propTypes: {
     board: React.PropTypes.arrayOf(React.PropTypes.arrayOf(React.PropTypes.string)).isRequired,
-    selectedPath: React.PropTypes.array
+    selectedPath: React.PropTypes.array,
+    onCellChanged: React.PropTypes.func
   },
   render: function() {
     var bd = this.props.board;
@@ -89,13 +176,13 @@ var BoggleBoard = React.createClass({
 
     return (
       <table className="boggle-board">
-        <BoggleLetterRow row={0} letters={bd[0]} selectedPath={inRowArrows[0]} />
+        <BoggleLetterRow row={0} letters={bd[0]} selectedPath={inRowArrows[0]} onCellChanged={this.props.onCellChanged}/>
         <BoggleArrowRow rowAbove={0} selectedPath={betweenRowArrows[0]} />
-        <BoggleLetterRow row={1} letters={bd[1]} selectedPath={inRowArrows[1]} />
+        <BoggleLetterRow row={1} letters={bd[1]} selectedPath={inRowArrows[1]} onCellChanged={this.props.onCellChanged}/>
         <BoggleArrowRow rowAbove={1} selectedPath={betweenRowArrows[1]} />
-        <BoggleLetterRow row={2} letters={bd[2]} selectedPath={inRowArrows[2]} />
+        <BoggleLetterRow row={2} letters={bd[2]} selectedPath={inRowArrows[2]} onCellChanged={this.props.onCellChanged}/>
         <BoggleArrowRow rowAbove={2} selectedPath={betweenRowArrows[2]} />
-        <BoggleLetterRow row={3} letters={bd[3]} selectedPath={inRowArrows[3]} />
+        <BoggleLetterRow row={3} letters={bd[3]} selectedPath={inRowArrows[3]} onCellChanged={this.props.onCellChanged}/>
       </table>
     );
   }
@@ -105,7 +192,14 @@ var BoggleLetterRow = React.createClass({
   propTypes: {
     row: React.PropTypes.number.isRequired,
     letters: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
-    selectedPath: React.PropTypes.array  // array of (beforeCell, afterCell) in this row.
+    selectedPath: React.PropTypes.array,  // array of (beforeCell, afterCell) in this row.
+    onCellChanged: React.PropTypes.func
+  },
+  changeLetter: function(e) {
+    var col = e.target.getAttribute('data-col'),
+        row = this.props.row,
+        letter = e.target.value;
+    this.props.onCellChanged(row, col, letter);
   },
   render: function() {
     var lets = this.props.letters;
@@ -122,13 +216,13 @@ var BoggleLetterRow = React.createClass({
 
     return (
       <tr>
-        <td><div>{lets[0]}</div></td>
+        <td><input type="text" data-col="0" value={lets[0]} size="2" onChange={this.changeLetter} /></td>
         <td><div className={cx(arrows[0])} /></td>
-        <td><div>{lets[1]}</div></td>
+        <td><input type="text" data-col="1" value={lets[1]} size="2" onChange={this.changeLetter} /></td>
         <td><div className={cx(arrows[1])} /></td>
-        <td><div>{lets[2]}</div></td>
+        <td><input type="text" data-col="2" value={lets[2]} size="2" onChange={this.changeLetter} /></td>
         <td><div className={cx(arrows[2])} /></td>
-        <td><div>{lets[3]}</div></td>
+        <td><input type="text" data-col="3" value={lets[3]} size="2" onChange={this.changeLetter} /></td>
       </tr>
     );
   }
