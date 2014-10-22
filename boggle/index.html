@@ -113,6 +113,7 @@ var BogglePage = React.createClass({
         var wordList = _.map(words, (v, k) => [k, v]);
         wordList.sort();
         this.setState({words: wordList});
+        this.props.onBoardChange(letters);
       })
       .fail((error) => { console.error(error); });
   },
@@ -320,9 +321,19 @@ function getParameterByName(name) {
 }
 
 var initialBoard = getParameterByName('board');
+
+function setUrlParams(letters) {
+  if (history && history.replaceState) {
+    history.replaceState({}, document.title,
+        window.location.pathname + '?board=' + letters);
+  }
+}
 </script>
 
 <script type="text/jsx;harmony=true">
 /** @jsx React.DOM */
-bogglePage = React.renderComponent(<BogglePage initialBoard={initialBoard} />, $('#boggle-page').get(0));
+bogglePage = React.renderComponent(
+  <BogglePage initialBoard={initialBoard}
+              onBoardChange={setUrlParams} />,
+  $('#boggle-page').get(0));
 </script>
