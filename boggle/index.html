@@ -1,6 +1,6 @@
 ---
 title: Boggle Solver
-layout: nil
+layout: comments
 ---
 
 <style>
@@ -23,10 +23,21 @@ layout: nil
 .arrow.up.down.right   { background-image: url(arrows/rightupdown.png); }
 
 /* General styles */
+#boggle-page {
+  min-height: 300px;
+}
 .boggle-board {
   position: fixed;
-  left: 200px;
-  top: 20px;
+  left: 400px;
+  top: 80px;
+}
+
+.word-list {
+  display: table;
+  min-width: 200px;
+}
+.selected {
+  background: lightyellow;
 }
 </style>
 
@@ -139,7 +150,7 @@ var BoggleWordList = React.createClass({
     }
 
     var wordList = words.map((word, idx) => {
-      var classes = cx({'selected': word == this.props.selectedWord});
+      var classes = cx({'selected': word[0] == this.props.selectedWord});
       return <li onMouseOver={this.onHover} className={classes} data-idx={idx} key={idx}>{word[0]}</li>;
     });
     return (
