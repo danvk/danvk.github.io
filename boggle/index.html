@@ -1,6 +1,7 @@
 ---
 title: Boggle Solver
 layout: comments
+disqus_id: boggle
 ---
 
 <style>
@@ -29,7 +30,7 @@ layout: comments
 .boggle-board {
   position: fixed;
   left: 400px;
-  top: 80px;
+  top: 120px;
 }
 
 .word-list {
@@ -77,16 +78,24 @@ class DataStore {
   }
 }
 
+// Maps 'abcdefghijlklmnop' -> [['a', 'b', 'c', 'd'], ['e', 'f', ...], ...]
+function parseBoard(letters) {
+  if (letters.length != 16 || letters.indexOf('q') >= 0) {
+    throw "invalid board";
+  }
+
+  return [letters.substr( 0, 4).split(''),
+          letters.substr( 4, 4).split(''),
+          letters.substr( 8, 4).split(''),
+          letters.substr(12, 4).split('')];
+}
+
 var BogglePage = React.createClass({
   store: new DataStore(),
   getInitialState: function() {
+    var defaultBoard = 'perslatgsineters';
     return {
-      board: [
-                'pers'.split(''),
-                'latg'.split(''),
-                'sine'.split(''),
-                'ters'.split('')
-             ],
+      board: parseBoard(this.props.initialBoard || 'abcdefghijklmnop'),
       words: null,  // null = "loading"
       // Array of (row, col)
       selectedPath: [[0, 0], [0, 1], [0, 2], [1, 2], [2, 2], [3, 3], [2, 3], [3, 2]],
@@ -298,10 +307,22 @@ var BoggleArrowRow = React.createClass({
 });
 </script>
 
+<p id="about">This solver uses the <a href="http://everything2.com/title/ENABLE+word+list">Enable2K</a> word list, which is based on the Scrabble dictionary. Learn more about my boggle efforts <a href="http://www.danvk.org/wp/2012-07-03/updated-online-boggle-solver/">here</a>.</p>
+
 <div id="boggle-page">
 </div>
 
+<script>
+// From http://stackoverflow.com/a/5158301/388951
+function getParameterByName(name) {
+    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
+var initialBoard = getParameterByName('board');
+</script>
+
 <script type="text/jsx;harmony=true">
 /** @jsx React.DOM */
-bogglePage = React.renderComponent(<BogglePage />, $('#boggle-page').get(0));
+bogglePage = React.renderComponent(<BogglePage initialBoard={initialBoard} />, $('#boggle-page').get(0));
 </script>
