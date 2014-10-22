@@ -15,7 +15,8 @@ layout: default
 
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'danvk'; // required: replace example with your forum shortname
-    var disqus_identifier = getDisqusId(document.location.pathname);  // agnostic to host, SSL
+    var layout_id = {% if page.disqus_id %}"{{page.disqus_id}}"{% else %}null{%endif%};
+    var disqus_identifier = layout_id || getDisqusId(document.location.pathname);  // agnostic to host, SSL
     var disqus_url = 'https://danvk.github.io/' + disqus_identifier;
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
