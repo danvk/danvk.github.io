@@ -67,6 +67,20 @@ h3[id] {
     text-align: right;
   }
 }
+@media (max-width: 768px) {
+  .post-spacer {
+    display: none;
+  }
+  .post-date {
+    display: inline-block;
+  }
+  .post-time {
+    display: inline-block;
+  }
+  .blog-post {
+    margin-bottom: 25px;
+  }
+}
 
 /* code & syntax highlighting */
 code {

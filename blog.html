@@ -5,10 +5,10 @@ title: danvk.org &raquo; blog
 
 <div id="blog">
   {% for post in site.posts %}
-  <div class="row">
+  <div class="row blog-post">
     <div class="col-sm-3">
-      <div>
-        <span class="post-title">&nbsp;</span> <!-- force vert align w/ title -->
+      <div class="post-date">
+        <span class="post-spacer post-title">&nbsp;</span> <!-- force vert align w/ title -->
         {{ post.date | date_to_long_string }}
       </div>
       {% if post.time %}
@@ -25,8 +25,33 @@ title: danvk.org &raquo; blog
       {% else %}
         {{ post.content | truncatewords:50 | strip_html }}
       {% endif %}
+      <br><a href="{{post.url}}">Read More</a>
       </p>
     </div>
   </div>
   {% endfor %}
+
+  <p>Here are some highlights from my <a href="http://www.danvk.org/wp/">old blog</a> (2006&ndash;2014):</p>
+
+  <ul>
+    <li>{{'2014-01-25' | date_to_string }} &raquo; <a href="http://www.danvk.org/wp/2014-01-25/what-up-with-boggle/">boggle survey</a>
+    <li>{{'2013-02-23' | date_to_string }} &raquo; <a href="http://www.danvk.org/wp/2013-02-23/how-many-living-people-were-born-in-the-1800s/">How many living people were born in the 1800s?</a>
+    <li>{{'2013-03-03' | date_to_string }} &raquo; <a href="http://www.danvk.org/wp/2013-03-03/keep-your-html-in-your-html/">Keep your HTML in your HTML</a>
+    <li>{{'2013-02-09' | date_to_string }} &raquo; <a href="http://www.danvk.org/wp/2013-02-09/finding-pictures-in-pictures/">Finding Pictures in Pictures</a>
+    <li>{{'2013-01-21' | date_to_string }} &raquo; <a href="http://www.danvk.org/wp/2013-01-21/developing-the-oldsf-slideshow/">Developing the OldSF Slideshow</a>
+    <li>{{'2012-05-21' | date_to_string }} &raquo; <a href="http://www.danvk.org/wp/2012-05-21/reading-clarisworks-3-documents-in-mac-os-x/">Reading ClarisWorks 3 Documents in Mac OS X</a>
+    <li>{{'2012-05-14' | date_to_string }} &raquo; <a href="http://www.danvk.org/wp/2012-05-14/horizontal-and-vertical-centering-with-css/">Horizontal and Vertical Centering with CSS</a>
+    <li>{{'2012-01-20' | date_to_string }} &raquo; <a href="http://www.danvk.org/wp/2012-01-20/accurate-hexadecimal-to-decimal-conversion-in-javascript/">Accurate hexadecimal to decimal conversion in JavaScript</a>
+    <li>{{'2012-01-14' | date_to_string }} &raquo; <a href="http://www.danvk.org/wp/2012-01-14/whats-going-on-with-twin-rates/">What’s Going on with Twin Rates?</a>
+    <li>{{'2011-12-19' | date_to_string }} &raquo; <a href="http://www.danvk.org/wp/2011-12-19/takeaways-stanfords-machine-learning-class/">Takeaways from Stanford’s Machine Learning Class</a>
+    <li>{{'2009-12-26' | date_to_string }} &raquo; <a href="http://www.danvk.org/wp/2009-12-26/crossword-word-frequency/">Crossword Word Frequency</a>
+    <li>{{'2009-12-04' | date_to_string }} &raquo; <a href="http://www.danvk.org/wp/2009-12-04/a-new-view-on-minards-napoleon/">A new view on Minard’s Napoleon</a>
+    <li>{{'2009-02-22' | date_to_string }} &raquo; <a href="http://www.danvk.org/wp/2009-02-22/why-you-invest-when-the-market-goes-down/">Why You Invest When the Market Goes Down</a>
+    <li>{{'2008-12-31' | date_to_string }} &raquo; <a href="http://www.danvk.org/wp/2008-12-31/a-minus-times-a-minus/">A Minus Times a Minus</a>
+    <li>{{'2008-12-02' | date_to_string }} &raquo; <a href="http://www.danvk.org/wp/2008-12-02/now-and-then/">Now and Then</a>
+    <li>{{'2007-09-05' | date_to_string }} &raquo; <a href="http://www.danvk.org/wp/2007-09-05/a-sculptural-salute/">A Sculptural Salute</a>
+    <li>{{'2007-05-24' | date_to_string }} &raquo; <a href="http://www.danvk.org/wp/2007-05-24/beals-conjecture/">Beal’s Conjecture</a>
+    <li>{{'2007-04-06' | date_to_string }} &raquo; <a href="http://www.danvk.org/wp/2007-04-06/nebulabrot/">Nebulabrot</a>
+  </ul>
+
 </div>

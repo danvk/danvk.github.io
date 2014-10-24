@@ -16,10 +16,10 @@ title: danvk.org
 
     <div id="blog">
       {% for post in site.posts %}
-      <div class="row">
+      <div class="row blog-post">
         <div class="col-sm-3">
-          <div>
-            <span class="post-title">&nbsp;</span> <!-- force vert align w/ title -->
+          <div class="post-date">
+            <span class="post-spacer post-title">&nbsp;</span> <!-- force vert align w/ title -->
             {{ post.date | date_to_long_string }}
           </div>
           {% if post.time %}
