@@ -66,7 +66,7 @@ Here are a few other things I've found notable:
 
 - **sysadmin knowledge**<br>
   borg meant that I never had to learn any systems administration. It's a
-  particular bind spot for me. For example, [upstart][7] was released over eight
+  particular blind spot for me. For example, [upstart][7] was released over eight
   years ago, just after I joined Google. It's incredibly widely used. I'd never
   heard of it.
 
