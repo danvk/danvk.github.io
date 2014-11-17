@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "JavaScript String splice, substr, substring: which to use?"
+title: "JavaScript String slice, substr, substring: which to use?"
 time: 01:57PM EST
 ---
 
