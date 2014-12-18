@@ -39,11 +39,15 @@ var Root = React.createClass({displayName: 'Root',
   },
   handleImage: function(imageDataUri) {
     var im = new Image();
+    im.onload = function()  {
+      // image height is only available in onload in FF/Safari
+      console.log(im.height);
+      this.setState({
+        imageDataUri:imageDataUri,
+        imageHeight: im.height
+      });
+    }.bind(this);
     im.src = imageDataUri;
-    this.setState({
-      imageDataUri:imageDataUri,
-      imageHeight: im.height
-    });
   },
   handleBox: function(boxData) {
     this.setState({boxData:boxData});
@@ -221,10 +225,10 @@ var ImageView = React.createClass({displayName: 'ImageView',
   handleKeyPress: function(e) {
     if (document.activeElement != document.body) return;
     var c = String.fromCharCode(e.charCode);
-    if (e.altKey && /^[0-9]$/.match(c)) {
-      e.preventDefault();
-      this.props.onSplit(Number(c));
-    }
+    // if (e.altKey && /^[0-9]$/.match(c)) {
+    //   e.preventDefault();
+    //   this.props.onSplit(Number(c));
+    // }
 
     if (e.altKey || e.ctrlKey || e.metaKey) return;
     // TODO: use a blacklist instead of a whitelist?
@@ -352,7 +356,7 @@ var Help = React.createClass({displayName: 'Help',
     return (
       React.createElement("div", {className: "help"}, 
         React.createElement("p", null, "To get going, drag a box file and an image onto this page:"), 
-        React.createElement("img", {src: "https://raw.githubusercontent.com/danvk/boxedit/master/screenshots/drag-and-drop.png"}), 
+        React.createElement("img", {width: "936", height: "488", src: "https://raw.githubusercontent.com/danvk/boxedit/master/screenshots/drag-and-drop.png"}), 
         React.createElement("p", null, "Read more about how to use boxedit ", React.createElement("a", {href: "https://github.com/danvk/boxedit/blob/master/README.md"}, "on GitHub"), ", or check out a pre-loaded ", React.createElement("a", {href: "demo.html"}, "demo"), ".")
       )
     );
