@@ -1,0 +1,63 @@
+.drop-zone {
+  width: 100px;
+  height: 20px;
+  border: 1px dashed #777;
+  display: inline-block;
+}
+
+.receiving-drag {
+  background-color: hotpink;
+}
+
+.upload {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 24px;
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+}
+
+.text-view {
+  position: fixed;
+  left: 0;
+  width: 250px;
+  top: 42px;
+  bottom: 0;
+  padding: 5px;
+}
+
+.text-view textarea {
+  width: 100%;
+  height: 100%;
+  font-family: Courier, monospace;
+  font-size: 16px;
+}
+
+.image-viewer {
+  position: fixed;
+  top: 42px;
+  left: 260px;
+  right: 0;
+  bottom: 0;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+.image-viewer.drag-hover {
+  border: 4px dashed gray;
+}
+
+.box {
+  border: 1px solid blue;
+  color: red;
+  font-size: 32px;
+}
+.box.selected {
+  border: 2px solid red;
+}
+
+.help {
+  margin: 20px;
+  font-size: large;
+}
