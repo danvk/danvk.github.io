@@ -17,11 +17,15 @@
 }
 
 #post {
-  max-width: 700px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   font-size: medium;
   line-height: 1.8;
+}
+
+.post-page {
+  max-width: 700px;
+  margin: 0 auto;  /* center when max-width applies */
 }
 
 .post-page .date {
@@ -87,4 +91,10 @@ code {
   background-color: rgba(0,0,0,0.04);
   color: black;
   font-weight: normal;
+}
+
+/* for centering images */
+.center {
+  text-align: center;
+  margin: 1em auto;
 }
