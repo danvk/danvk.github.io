@@ -13,6 +13,8 @@ title: danvk.org &raquo; blog
       </div>
       {% if post.time %}
       <div class="post-time">@ {{ post.time }}</div>
+      {% else %}
+      <div class="post-time">@ {{ post.date | date: "%I:%M %p %Z"}}</div>
       {% endif %}
     </div>
     <div class="col-sm-9">
