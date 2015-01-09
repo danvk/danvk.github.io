@@ -98,3 +98,7 @@ code {
   text-align: center;
   margin: 1em auto;
 }
+
+blockquote {
+  font-size: small;
+}
