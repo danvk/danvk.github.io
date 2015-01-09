@@ -2,6 +2,7 @@
 layout: post
 title: Extracting text from an image using Ocropus
 date: 2015-01-09 05:45PM EST
+summary: "A walkthrough of how to run the Ocropus OCR pipeline: binarization, segmentation and character recognition using a Recurrent Neural Net. Features fancy visualizations of all of these steps!"
 ---
 
 <style>
