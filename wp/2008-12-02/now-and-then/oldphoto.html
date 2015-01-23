@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>Webster and Waller: Now and Then</title>
+</head>
+<body>
+
+<style type="text/css">
+#images   { position: relative; }
+#imageA   { position: absolute; top: 30px;    left: 0px; }    
+#imageB   { position: absolute; top: 30px;    left: 0px; -moz-opacity: 0.0; }
+#slider   { position: fixed; top: 3px; left: 53px;  width: 250px; height: 20px; }
+#text1945 { position: fixed; top: 3px;  left: 8px;   font-weight: bold; }
+#text2008 { position: fixed; top: 3px;  left: 310px; font-weight: bold; }
+</style>
+
+<div id="images">
+	<!--
+  <img id=imageA src="webster1945.jpg" width=1251 height=800 /><br/>
+  <img id=imageB src="webster2008.jpg" width=1251 height=800 /><br/>
+	-->
+  <img id=imageA src="webster1945.jpg" width=1600 height=1023 /><br/>
+  <img id=imageB src="webster2008.jpg" width=1600 height=1022 /><br/>
+  <div id="text1945">1945</div>
+  <div id="text2008">2008</div>
+  <input id="slider" type="range" min=0 max=100 value=100>
+</div>
+<script type="text/javascript">
+  var s = document.getElementById("slider");
+  s.oninput = function() {
+    var v = s.value;
+    var vs = [{id: "imageA", v: 100-v}, {id: "imageB", v: v}];
+    for (var i = 0; i < 2; i++) {	
+      var el = document.getElementById(vs[i].id);
+      el.style.opacity = vs[i].v / 100.0;
+      el.style.MozOpacity = vs[i].v / 100.0;
+      el.style.filter = "alpha(opacity=" + vs[i].v + ")";
+    }
+  };
+  s.oninput();
+</script>
+</body>
+</html>

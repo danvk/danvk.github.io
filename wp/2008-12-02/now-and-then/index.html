@@ -94,7 +94,7 @@ img.latex { vertical-align: middle; border: none; }
 </style>
 <style type="text/css" id="syntaxhighlighteranchor"></style>
 </head>
-	
+
 <body>
 
 <div id="wrapper">
@@ -113,8 +113,7 @@ img.latex { vertical-align: middle; border: none; }
 			<h2 id="post-356" class="storytitle"><a href="index.html" rel="bookmark" title="Permanent link to Now and Then">Now and Then</a></h2>
 			<p class="meta">Posted in <a href="../../category/san-francisco/index.html" title="View all posts in san francisco" rel="category tag">san francisco</a> at 11:06 pm by danvk</p>
 		
-			<p><script type="text/javascript" src="http://www.danvk.org/js/range.js"></script>	<script type="text/javascript" src="http://www.danvk.org/js/timer.js"></script>	<script type="text/javascript" src="http://www.danvk.org/js/slider.js"></script>
-<link type="text/css" rel="StyleSheet" href="http://www.danvk.org/css/winclassic.css" />
+			<p>
 <style type="text/css">		#images {			position: relative;			width: 492px;			height: 325px;		}		
 #imageA {			position: absolute;			top: 0px;			left: 0px;		}		
 #imageB {			position: absolute;			top: 0px;			left: 0px;			-moz-opacity: 0.0;		}
@@ -126,9 +125,25 @@ img.latex { vertical-align: middle; border: none; }
 <div id="images">	  <img id=imageA src="http://www.danvk.org/1945.jpg" width=476 height=300 /><br/>	  <img id=imageB src="http://www.danvk.org/2008.jpg" width=476 height=300 /><br/>
 <div id="text1945">1945</div>
 <div id="text2008">2008</div>
-<div class="slider" id="slider">		<input class="slider-input" id="slider-input"/>	</div>
+<input id="slider" type="range" min=0 max=100 value=100>
 </div>
-<p>			<script type="text/javascript">	var s = new Slider(document.getElementById("slider"), 					   document.getElementById("slider-input"));	s.onchange = function() {	var v = s.getValue();	var vs = [{id: "imageA", v: 100-v}, {id: "imageB", v: v}];	for (var i = 0; i < 2; i++) {		var el = document.getElementById(vs[i].id);		el.style.opacity = vs[i].v / 100.0;		el.style.MozOpacity = vs[i].v / 100.0;		el.style.filter = "alpha(opacity=" + vs[i].v + ")";	}};s.setValue(0);s.onchange();</script>
+<script type="text/javascript">
+  var s = document.getElementById("slider");
+  s.oninput = function() {
+    var v = s.value;
+    var vs = [{id: "imageA", v: 100-v}, {id: "imageB", v: v}];
+    for (var i = 0; i < 2; i++) {	
+      var el = document.getElementById(vs[i].id);
+      el.style.opacity = vs[i].v / 100.0;
+      el.style.MozOpacity = vs[i].v / 100.0;
+      el.style.filter = "alpha(opacity=" + vs[i].v + ")";
+    }
+  };
+  s.oninput();
+</script>
+
+<p><i>Update (2014): check out a <a href="oldphoto.html">high-resolution before/after</a>!</i></p>
+
 <p>There are more trees now, more cars and more power lines, but one less cable car. But the coolest difference is only noticeable if you look at the tall building in the upper right. It hasn't shrunk. No, the trees in <a href="http://en.wikipedia.org/wiki/Buena_Vista_Park">Buena Vista Park</a> have grown!</p>
 			
 			<p class="feedback">
