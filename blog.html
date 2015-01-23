@@ -4,9 +4,11 @@ title: danvk.org &raquo; blog
 ---
 
 <div id="blog">
+  <h3>Blog Posts</h3>
+  <p>You can also find highlights from my <a href="#old-blog">old blog</a> below.</p>
   {% for post in site.posts %}
   <div class="row blog-post">
-    <div class="col-sm-3">
+    <div class="col-sm-3 col-md-2">
       <div class="post-date">
         <span class="post-spacer post-title">&nbsp;</span> <!-- force vert align w/ title -->
         {{ post.date | date_to_long_string }}
@@ -17,7 +19,7 @@ title: danvk.org &raquo; blog
       <div class="post-time">@ {{ post.date | date: "%I:%M %p %Z"}}</div>
       {% endif %}
     </div>
-    <div class="col-sm-9">
+    <div class="col-sm-9 col-md-10">
       <div class="post-title"><a href="{{post.url}}">{{ post.title }}</a></div>
       <p class="post-summary">
       {% if post.summary %}
@@ -33,6 +35,7 @@ title: danvk.org &raquo; blog
   </div>
   {% endfor %}
 
+  <h3 id="old-blog">Highlights from the old danvk.org</h3>
   <p>Here are some highlights from my <a href="http://www.danvk.org/wp/">old blog</a> (2006&ndash;2014):</p>
 
   <ul>
@@ -55,5 +58,7 @@ title: danvk.org &raquo; blog
     <li>{{'2007-05-24' | date_to_string }} &raquo; <a href="http://www.danvk.org/wp/2007-05-24/beals-conjecture/">Beal’s Conjecture</a>
     <li>{{'2007-04-06' | date_to_string }} &raquo; <a href="http://www.danvk.org/wp/2007-04-06/nebulabrot/">Nebulabrot</a>
   </ul>
+
+  <div style="height: 400px;">&nbsp;</div> <!-- spacer -->
 
 </div>

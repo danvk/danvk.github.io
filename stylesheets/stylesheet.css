@@ -66,6 +66,9 @@ h3[id] {
 #blog .post-time {
   font-size: x-small;
 }
+#blog .post-summary {
+  max-width: 700px;
+}
 @media (min-width: 768px) {
   #blog .col-sm-3 {
     text-align: right;
