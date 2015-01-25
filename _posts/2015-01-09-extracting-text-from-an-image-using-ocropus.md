@@ -166,8 +166,7 @@ regions as masks before extracting rectangular lines:
 <img class="bordered" src="/images/ocropus/line3.png" width="233" height="24"><br>
 <img class="bordered" src="/images/ocropus/line4.png" width="208" height="27">
 
-Here's the command I used (I have no idea what the `g` in `ocropus-gpageseg`
-stands for):
+Here's the command I used (the `g` in `ocropus-gpageseg` stands for "gradient"):
 
 ```bash
 ocropus-gpageseg -n --maxcolseps 0 book/0001.bin.png
@@ -259,7 +258,7 @@ This is passable, but not great. The Ocropus site explains why:
 > future release, and, of course, you are welcome to contribute new, trained
 > models.
 
-We'll fix this in the next post by training our own model.
+We'll fix this in the [next post][trainpost] by training our own model.
 
 The command to make predictions is:
 
@@ -320,7 +319,7 @@ Congrats on making it this far! We've walked through the steps of running the
 Ocropus pipeline.
 
 The overall results aren't good (~10% of characters are incorrect), at least
-not yet. In the next post, I'll show how to train a new LSTM model that
+not yet. In the [next post][trainpost], I'll show how to train a new LSTM model that
 completely destroys this problem.
 
 [xtext]: http://www.danvk.org/2015/01/07/finding-blocks-of-text-in-an-image-using-python-opencv-and-numpy.html
@@ -341,3 +340,4 @@ completely destroys this problem.
 [extract]: https://github.com/danvk/oldnyc/blob/master/ocr/tess/extract_ocropy_text.py
 [adaptthresh]: http://docs.opencv.org/trunk/doc/py_tutorials/py_imgproc/py_thresholding/py_thresholding.html#adaptive-thresholding
 [gaussian]: http://www.cs.cornell.edu/courses/CS6670/2011sp/lectures/lec02_filter.pdf
+[trainpost]: http://www.danvk.org/2015/01/11/training-an-ocropus-ocr-model.html
