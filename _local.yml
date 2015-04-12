@@ -1,2 +1,2 @@
 # Exclude a few directories to speed up local serving.
-exclude: ['wp']
+exclude: ['wp', 'whm2']
