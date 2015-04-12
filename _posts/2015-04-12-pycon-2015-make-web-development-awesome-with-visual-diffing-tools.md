@@ -8,7 +8,11 @@ Here's my talk from [PyCon 2015][1], "Make web development awesome with visual d
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/jUUTqgzNR3M" frameborder="0" allowfullscreen></iframe>
 
-Here are the [slides][2] for the talk. The two tools referenced are:
+Here are the [slides][2] for the talk:
+
+<iframe src="https://docs.google.com/presentation/embed?id=1C6TcdHSBQNcLEIH6SFmmAOLJ7cy1gvIbmCj3cyd7fxE&amp;start=false&amp;loop=false&amp; frameborder="0" width="520" height="405"></iframe>
+
+The two tools referenced are:
 
   * [dpxdt][3] for generating screenshots
   * [webdiff][4] for viewing image diffs
