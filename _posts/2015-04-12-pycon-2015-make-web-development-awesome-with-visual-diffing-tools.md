@@ -4,7 +4,7 @@ title: "PyCon 2015: Make web development awesome with visual diffing tools"
 date: 2015-04-12 11:05AM EDT
 ---
 
-Here's my talk from [PyCon 2015][1], "Make web development awesome with visual diffing tools":
+Here's the [video][9] of my talk from PyCon 2015, [Make web development awesome with visual diffing tools][1]:
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/jUUTqgzNR3M" frameborder="0" allowfullscreen></iframe>
 
@@ -31,3 +31,4 @@ It goes into more depth on how screenshots can facilitate rapid deployment.
 [6]: http://www.dygraphs.com/
 [7]: https://www.youtube.com/watch?v=1wHr-O6gEfc
 [8]: http://www.onebigfluke.com/
+[9]: https://youtu.be/jUUTqgzNR3M
