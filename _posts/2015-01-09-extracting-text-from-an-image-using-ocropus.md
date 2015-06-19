@@ -338,6 +338,6 @@ completely destroys this problem.
 [metadata]: https://github.com/tmbdev/ocropy/issues/16
 [hocr]: http://en.wikipedia.org/wiki/HOCR
 [extract]: https://github.com/danvk/oldnyc/blob/master/ocr/tess/extract_ocropy_text.py
-[adaptthresh]: http://docs.opencv.org/trunk/doc/py_tutorials/py_imgproc/py_thresholding/py_thresholding.html#adaptive-thresholding
+[adaptthresh]: http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_thresholding/py_thresholding.html
 [gaussian]: http://www.cs.cornell.edu/courses/CS6670/2011sp/lectures/lec02_filter.pdf
 [trainpost]: http://www.danvk.org/2015/01/11/training-an-ocropus-ocr-model.html
