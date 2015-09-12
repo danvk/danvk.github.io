@@ -138,3 +138,7 @@ function updateRankings(players, matches, winner) {
   return players;
 }
 
+// Return the player ID of the winner of a particular match (or null).
+function getWinnerId(matches, roundIndex, slot) {
+  return matches[roundIndex + 1][Math.floor(slot / 2)][slot % 2];
+}

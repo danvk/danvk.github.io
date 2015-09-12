@@ -54,7 +54,8 @@ var RankingTable = React.createClass({
 var Match = React.createClass({
   propTypes: {
     players: React.PropTypes.array.isRequired,
-    winner: React.PropTypes.number,  // player ID
+    definitePlayerIds: React.PropTypes.array.isRequired,  // actual results
+    winnerId: React.PropTypes.number,  // player ID of the winner
     round: React.PropTypes.number,
     slot: React.PropTypes.number,
     onClick: React.PropTypes.func.isRequired
@@ -63,14 +64,19 @@ var Match = React.createClass({
     this.props.onClick(this.props.round, this.props.slot, i, this.props.players[i].index);
   },
   render: function() {
-    var players = this.props.players;
-    var playerSpans = players.map((p, i) => <span onClick={() => this.click(i)}>{p ? p.name : '\u00a0'}</span>);
-    var winner = this.props.winner;
-    if (winner !== null && winner !== undefined) {
+    var {players, definitePlayerIds} = this.props;
+
+    var classes = [[], []];
+    var winnerId = this.props.winnerId;
+    if (winnerId !== null && winnerId !== undefined) {
       players.forEach((p, i) => {
-        if (p && p.index == winner) playerSpans[i] = <b>{playerSpans[i]}</b>;
+        if (p && p.index == winnerId) classes[i].push('winner');
+        if (p.index !== definitePlayerIds[i]) classes[i].push('speculative');
       });
     }
+
+    var playerSpans = players.map((p, i) => <span className={classes[i].join(' ')} onClick={() => this.click(i)}>{p ? p.name : '\u00a0'}</span>);
+
     return (
       <div className="match">
         {playerSpans[0]}
@@ -84,6 +90,7 @@ var Match = React.createClass({
 var Bracket = React.createClass({
   propTypes: {
     matches: React.PropTypes.array.isRequired,
+    origMatches: React.PropTypes.array.isRequired,
     players: React.PropTypes.array.isRequired,
     winner: React.PropTypes.number,
     startRound: React.PropTypes.number,
@@ -100,12 +107,15 @@ var Bracket = React.createClass({
       var factor = 1;
       for (var i = 0; i < matches.length; i++, factor *= 2) {
         if (idx % factor == 0) {
-          var match = matches[i][idx / factor];
-          var winner = i == matches.length - 1 ? this.props.winner : null;
+          var slot = idx / factor;
+          var match = matches[i][slot];
+          var origMatch = this.props.origMatches[i][slot];
+          var winner = i == matches.length - 1 ? this.props.winner : getWinnerId(matches, i, slot);
           row_cells.push(<td className="match-cell" key={i} rowSpan={factor}>
             {i > 0 ? <div className="connector"></div> : null}
             <Match players={match.map(x => players[x])}
-                   winner={winner}
+                   definitePlayerIds={origMatch}
+                   winnerId={winner}
                    round={i + startRound}
                    slot={idx/factor}
                    onClick={this.handleClick} />
@@ -161,6 +171,7 @@ var Root = React.createClass({
       <div>
         <button onClick={this.resetModifications}>Reset</button><br/>
         <Bracket matches={matches.slice(3)}
+                 origMatches={this.props.data.matches.slice(3)}
                  winner={winner}
                  players={players}
                  startRound={3}

@@ -12,11 +12,17 @@ body {
   position: relative;
 }
 .connector {
-  background: black;
+  background: #888;
   position: absolute;
   top: 25%;
   bottom: 25%;
   width: 2px;
+}
+.winner {
+  font-weight: bold;
+}
+.speculative {
+  color: red;
 }
 
 .rank-improve {
