@@ -15,6 +15,8 @@
 
   display: inline-block;
   margin: 1px;
+
+  cursor: pointer;
 }
 .card.facedown {
   background-color:white;
@@ -91,3 +93,15 @@ table.trick td {
   margin: 2px;
 }
 
+.dd-matrix td {
+  text-align: center;
+  cursor: pointer;
+}
+.dd-matrix .down {
+  color: gray;
+  font-size: small;
+}
+.dd-matrix .selected {
+  font-weight: bold;
+  background: lightblue;
+}

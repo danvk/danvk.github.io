@@ -543,6 +543,63 @@ class Deal extends React.Component {
   }
 }
 
+/**
+ * props:
+ *   matrix: Output of calcDDTable()
+ *   strain: currently selected strain
+ *   declarer: currently selected declarer
+ *   onClick: (strain: string, declarer: string) => void
+ */
+class DDMatrix extends React.Component {
+  handleClick(strain: string, player: string) {
+    if (this.props.onClick) {
+      this.props.onClick(strain, player);
+    }
+  }
+
+  render() {
+    var m = this.props.matrix;
+    var ud = num => (num >= 7 ? 'up' : 'down');
+    var makeCell = (strain, player) => {
+      var tricks = m[strain][player];
+      var selected = strain == this.props.strain && player == this.props.declarer;
+      var className = [ud(tricks)].concat(selected ? ['selected'] : []).join(' ');
+      var clickFn = this.handleClick.bind(this, strain, player);
+      return (
+        <td key={strain+player} className={className} onClick={clickFn}>
+          {tricks}
+        </td>
+      );
+    };
+
+    var rows = ['N', 'S', 'E', 'W'].map(player => (
+          <tr key={player}>
+            <td>{player}</td>
+            {makeCell('N', player)}
+            {makeCell('S', player)}
+            {makeCell('H', player)}
+            {makeCell('D', player)}
+            {makeCell('C', player)}
+          </tr>));
+
+    return (
+      <table className="dd-matrix">
+        <tbody>
+          <tr>
+            <th>{' '}</th>
+            <th className="suit suit-N">NT</th>
+            <th className="suit suit-S">♠</th>
+            <th className="suit suit-H">♥</th>
+            <th className="suit suit-D">♦</th>
+            <th className="suit suit-C">♣</th>
+          </tr>
+          {rows}
+        </tbody>
+      </table>
+    );
+  }
+}
+
 class Explorer extends React.Component {
   constructor(props) {
     super(props);
@@ -575,8 +632,6 @@ class Explorer extends React.Component {
         play.score = 13 - play.score;
       }
     });
-
-    console.log('rerender', board.strain, data);
 
     return {
       [player]: makingPlays
@@ -641,10 +696,12 @@ class Root extends React.Component {
   handleFormSubmit(e: SyntheticEvent) {
     e.preventDefault();
     this.setState({
-      pbn: this.refs.pbn.value,
-      strain: this.refs.strain.value,
-      declarer: this.refs.declarer.value
+      pbn: this.refs.pbn.value
     });
+  }
+
+  handleDDClick(strain: string, declarer: string) {
+    this.setState({ strain, declarer });
   }
 
   makeBoard(state) {
@@ -665,8 +722,6 @@ class Root extends React.Component {
 
   updateUI() {
     this.refs.pbn.value = this.state.pbn;
-    this.refs.strain.value = this.state.strain;
-    this.refs.declarer.value = this.state.declarer;
   }
 
   render() {
@@ -675,24 +730,11 @@ class Root extends React.Component {
       <div>
         <form onSubmit={handleFormSubmit}>
           PBN: <input type="text" size="90" ref="pbn" />
-          <br/>
-          Suit:
-          <select ref="strain" onChange={handleFormSubmit}>
-            <option value="N">No Trump</option>
-            <option value="S">Spades</option>
-            <option value="H">Hearts</option>
-            <option value="D">Diamonds</option>
-            <option value="C">Clubs</option>
-          </select>
-          <br/>
-          Declarer:
-          <select ref="declarer" onChange={handleFormSubmit}>
-            <option value="N">North</option>
-            <option value="E">East</option>
-            <option value="S">South</option>
-            <option value="W">West</option>
-          </select>
         </form>
+        <DDMatrix matrix={calcDDTable(this.state.pbn)}
+                  declarer={this.state.declarer} 
+                  strain={this.state.strain}
+                  onClick={this.handleDDClick.bind(this)} />
         <Explorer board={this.board} />
       </div>
     );
@@ -713,3 +755,6 @@ ddsReady.then(() => {
 
 window.parsePBN = parsePBN;
 window.Board = Board;
+
+// to make the page load faster during development
+calcDDTable.cache = {"N:T843.K4.KT853.73 J97.J763.642.KJ5 Q52.Q982.QJ.9862 AK6.AT5.A97.AQT4":{"N":{"N":3,"S":3,"E":9,"W":9},"S":{"N":5,"S":5,"E":8,"W":8},"H":{"N":3,"S":3,"E":9,"W":9},"D":{"N":6,"S":6,"E":7,"W":7},"C":{"N":3,"S":3,"E":9,"W":9}}};
