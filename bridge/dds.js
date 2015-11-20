@@ -1,26 +1,18 @@
-var solveBoard, _calcDDTable;
-var Module = {};
-var ddsReady = new Promise(function(resolve, reject) {
-  Module['onRuntimeInitialized'] = function() {
-    resolve();
-  };
-
-  var memoryInitializer = 'out.js.mem';
-  var xhr = Module['memoryInitializerRequest'] = new XMLHttpRequest();
-  xhr.open('GET', memoryInitializer, true);
-  xhr.responseType = 'arraybuffer';
-  xhr.send(null);
-  var script = document.createElement('script');
-  script.src = "out.js";
-  document.body.appendChild(script);
-});
-
-ddsReady = ddsReady.then(function() {
-  solveBoard = Module.cwrap('solve',
-                            'string',
-                            ['string', 'string', 'number', 'number']);
-  _calcDDTable = Module.cwrap('generateDDTable', 'string', ['string']);
-});
+/**
+ * JavaScript wrapper for libdds, the bridge double dummy solver.
+ *
+ * To use:
+ *
+ *   <script>
+ *   var Module = {};
+ *   </script>
+ *   <script src="out.js"></script>
+ *   <script src="dds.js"></script>
+ */
+var _solveBoard = Module.cwrap('solve',
+                              'string',
+                              ['string', 'string', 'number', 'number']);
+var _calcDDTable = Module.cwrap('generateDDTable', 'string', ['string']);
 
 var SUITS = {'S': 0, 'H': 1, 'D': 2, 'C': 3};
 var RANKS = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6,
@@ -52,8 +44,10 @@ function nextPlays(board, trump, plays) {
   var cacheValue = nextPlays.cache[cacheKey];
   if (cacheValue) return cacheValue;
 
+  console.time('SolveBoard');
   var playsPtr = packPlays(plays);
-  var o = JSON.parse(solveBoard(board, trump, plays.length, playsPtr));
+  var o = JSON.parse(_solveBoard(board, trump, plays.length, playsPtr));
+  console.timeEnd('SolveBoard');
   // ... free(playsPtr)
   nextPlays.cache[cacheKey] = o;
   // console.log(cacheKey, cacheValue);
@@ -69,7 +63,9 @@ nextPlays.cache = {};
 function calcDDTable(board) {
   var v = calcDDTable.cache[board];
   if (v) return v;
+  console.time('CalcDDTable');
   v = JSON.parse(_calcDDTable(board));
+  console.timeEnd('CalcDDTable');
   calcDDTable.cache[board] = v;
   return v;
 }
