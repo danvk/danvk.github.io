@@ -1228,12 +1228,12 @@ var Root = (function (_React$Component7) {
           "form",
           { onSubmit: handleFormSubmit },
           "PBN: ",
-          React.createElement("input", { type: "text", size: "90", ref: "pbn" })
+          React.createElement("input", { type: "text", size: "70", ref: "pbn" })
         ),
         React.createElement(
           "form",
           { onChange: handleUpload },
-          "Upload iBridgeBaron Screenshot: ",
+          "iBridgeBaron: ",
           React.createElement("input", { ref: "ibb", type: "file", accept: "image/*" })
         ),
         React.createElement(DDMatrix, { matrix: calcDDTable(this.state.pbn),
@@ -1251,13 +1251,13 @@ var Root = (function (_React$Component7) {
 window.parsePBN = parsePBN;
 window.rotatePBN = rotatePBN;
 window.Board = Board;
+window.Root = Root;
 
 var root = document.getElementById('root');
 if (root) {
   var pbn = 'N:T843.K4.KT853.73 J97.J763.642.KJ5 Q52.Q982.QJ.9862 AK6.AT5.A97.AQT4';
   var strain = 'N';
   var declarer = 'W';
-  var board = new Board(pbn, strain);
 
   ReactDOM.render(React.createElement(Root, { initialPBN: pbn, initialStrain: strain, initialDeclarer: declarer }), root);
 }
@@ -1774,3 +1774,5 @@ _.extend(window, { ibb: {
     loadReferenceData: loadReferenceData,
     recognizeHand: recognizeHand
   } });
+
+//# sourceMappingURL=all.es5.js.map
