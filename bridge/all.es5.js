@@ -892,6 +892,12 @@ var DDMatrix = (function (_React$Component5) {
     _get(Object.getPrototypeOf(DDMatrix.prototype), "constructor", this).apply(this, arguments);
   }
 
+  /**
+   * props:
+   * - board
+   * - onChange
+   */
+
   _createClass(DDMatrix, [{
     key: "handleClick",
     value: function handleClick(strain, player) {
@@ -1004,12 +1010,14 @@ var Explorer = (function (_React$Component6) {
       var board = this.props.board;
       board.play(player, suit, rank);
       this.forceUpdate();
+      if (this.props.onChange) this.props.onChange();
     }
   }, {
     key: "handleUndo",
     value: function handleUndo(player, suit, rank) {
       this.props.board.undoToCard(suit, rank);
       this.forceUpdate();
+      if (this.props.onChange) this.props.onChange();
     }
 
     // Returns a {player -> [{suit, rank, score}, ...]} object.
@@ -1135,6 +1143,7 @@ function loadUploadedImage(file) {
  *   initialPBN
  *   initialDeclarer
  *   initialStrain
+ *   initialPlays
  */
 
 var Root = (function (_React$Component7) {
@@ -1150,7 +1159,33 @@ var Root = (function (_React$Component7) {
       declarer: props.initialDeclarer
     };
     this.board = this.makeBoard(this.state);
+    var _iteratorNormalCompletion4 = true;
+    var _didIteratorError4 = false;
+    var _iteratorError4 = undefined;
+
+    try {
+      for (var _iterator4 = props.initialPlays[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+        var play = _step4.value;
+
+        this.board.play(this.board.player, play.suit, play.rank);
+      }
+    } catch (err) {
+      _didIteratorError4 = true;
+      _iteratorError4 = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion4 && _iterator4["return"]) {
+          _iterator4["return"]();
+        }
+      } finally {
+        if (_didIteratorError4) {
+          throw _iteratorError4;
+        }
+      }
+    }
   }
+
+  // Via http://stackoverflow.com/a/2880929/388951
 
   // Update in response to form changes.
 
@@ -1215,6 +1250,34 @@ var Root = (function (_React$Component7) {
     key: "updateUI",
     value: function updateUI() {
       this.refs.pbn.value = this.state.pbn;
+      this.setURL();
+    }
+  }, {
+    key: "setURL",
+    value: function setURL() {
+      var board = this.board;
+      var plays = _.flatten(board.tricks.map(function (t) {
+        return t.plays;
+      }).concat(board.plays));
+      var params = {
+        strain: this.state.strain,
+        declarer: this.state.declarer,
+        plays: plays.map(function (_ref8) {
+          var suit = _ref8.suit;
+          var rank = _ref8.rank;
+          return rankToText(rank) + suit;
+        }).join(','),
+        deal: this.state.pbn
+      };
+      var queryString = _.map(params, function (v, k) {
+        return k + '=' + v;
+      }).join('&');
+      history.replaceState({}, '', '?' + queryString.replace(/ /g, '+'));
+    }
+  }, {
+    key: "boardDidUpdate",
+    value: function boardDidUpdate() {
+      this.setURL();
     }
   }, {
     key: "render",
@@ -1240,13 +1303,41 @@ var Root = (function (_React$Component7) {
           declarer: this.state.declarer,
           strain: this.state.strain,
           onClick: this.handleDDClick.bind(this) }),
-        React.createElement(Explorer, { board: this.board })
+        React.createElement(Explorer, { board: this.board,
+          onChange: this.boardDidUpdate.bind(this) })
       );
     }
   }]);
 
   return Root;
 })(React.Component);
+
+function parseQueryString() {
+  var match,
+      pl = /\+/g,
+      // Regex for replacing addition symbol with a space
+  search = /([^&=]+)=?([^&]*)/g,
+      decode = function decode(s) {
+    return decodeURIComponent(s.replace(pl, " "));
+  },
+      query = window.location.search.substring(1);
+
+  var urlParams = {};
+  while (match = search.exec(query)) {
+    urlParams[decode(match[1])] = decode(match[2]);
+  }
+  return urlParams;
+}
+
+function parsePlays(playsStr) {
+  if (!playsStr) return [];
+  return playsStr.split(',').map(function (play) {
+    return {
+      rank: textToRank(play[0]),
+      suit: play[1]
+    };
+  });
+}
 
 window.parsePBN = parsePBN;
 window.rotatePBN = rotatePBN;
@@ -1255,11 +1346,18 @@ window.Root = Root;
 
 var root = document.getElementById('root');
 if (root) {
-  var pbn = 'N:T843.K4.KT853.73 J97.J763.642.KJ5 Q52.Q982.QJ.9862 AK6.AT5.A97.AQT4';
-  var strain = 'N';
-  var declarer = 'W';
+  var params = parseQueryString();
+  var pbn = 'N:T843.K4.KT853.73 J97.J763.642.KJ5 Q52.Q982.QJ.9862 AK6.AT5.A97.AQT4' || params.deal.replace(/\+/g, ' ');
+  var strain = 'N' || params.strain;
+  var declarer = 'W' || params.declarer;
+  var plays = parsePlays(params.plays) || [];
+  console.log(params);
+  console.log(plays);
 
-  ReactDOM.render(React.createElement(Root, { initialPBN: pbn, initialStrain: strain, initialDeclarer: declarer }), root);
+  ReactDOM.render(React.createElement(Root, { initialPBN: pbn,
+    initialStrain: strain,
+    initialDeclarer: declarer,
+    initialPlays: plays }), root);
 }
 /**
  * Load the image at `path` (relative to the current page).
