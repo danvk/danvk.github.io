@@ -37,6 +37,11 @@ var Board = (function () {
     value: function leader() {
       return this.plays.length ? this.plays[0].player : this.player;
     }
+  }, {
+    key: "isCompleted",
+    value: function isCompleted() {
+      return this.ew_tricks + this.ns_tricks == 13;
+    }
 
     // Play a card
   }, {
@@ -434,6 +439,49 @@ var SUIT_SYMBOLS = {
   'C': '♣'
 };
 
+var SUIT_RANKS = { 'S': 0, 'H': 1, 'D': 2, 'C': 3 };
+
+// Comparator for card ranks.
+function compareCards(a, b) {
+  if (a.suit != b.suit) {
+    return SUIT_RANKS[a.suit] - SUIT_RANKS[b.suit];
+  } else {
+    return a.rank - b.rank;
+  }
+}
+
+/**
+ * Play out all remaining tricks on a board using min/max.
+ * This is done asynchronously. Calls the callback after each play.
+ * Returns a Promise which is resolved after the last play is completed.
+ */
+function _autoPlay(b, cb) {
+  return new Promise(function (resolve, reject) {
+    var declarer = b.getDeclarer();
+    var iterate = function iterate() {
+      if (b.isCompleted()) {
+        resolve();
+        return;
+      }
+
+      var plays = b.nextPlays().plays.map(function (x) {
+        return _.extend({}, x, { rank: textToRank(x.rank) });
+      });
+      plays.sort(function (a, b) {
+        return -compareCards(a, b);
+      });
+      plays = _.sortBy(plays, function (p) {
+        return -p.score;
+      });
+      var p = plays[0];
+      b.play(b.player, p.suit, p.rank);
+      cb();
+      window.requestAnimationFrame(iterate);
+    };
+    window.requestAnimationFrame(iterate);
+  });
+}
+
 /**
  * props:
  *   suit: {'S', 'H', 'D', 'C'}
@@ -537,6 +585,7 @@ var Hand = (function (_React$Component2) {
    *   lead: 'W' | ...
    *   winner: null | 'W' | ...
    *   showArrow: true | false
+   *   isPositiveTrick: true | false | undefined
    *   onClick: (suit: string, rank: number) => void
    */
 
@@ -687,10 +736,12 @@ var Trick = (function (_React$Component3) {
       }
 
       var arrow = this.props.showArrow ? PLAYER_TO_ARROW[player] : ' ';
+      var isPositiveTrick = this.props.isPositiveTrick,
+          backgroundClass = isPositiveTrick === true ? 'positive' : isPositiveTrick === false ? 'negative' : '';
 
       return React.createElement(
         "table",
-        { className: "trick" },
+        { className: 'trick ' + backgroundClass },
         React.createElement(
           "tbody",
           null,
@@ -1027,7 +1078,7 @@ var Explorer = (function (_React$Component6) {
     value: function getMaking(board) {
       var data = board.nextPlays();
       var player = data.player;
-      var makingPlays = _.flatten(data.plays.map(function (_ref5) {
+      var makingPlays = _.flatten((data.plays || []).map(function (_ref5) {
         var suit = _ref5.suit;
         var rank = _ref5.rank;
         var score = _ref5.score;
@@ -1063,6 +1114,7 @@ var Explorer = (function (_React$Component6) {
           plays: trick.plays,
           leader: trick.leader,
           winner: trick.winner,
+          isPositiveTrick: onSameTeam(trick.winner, board.getDeclarer()),
           onClick: handleUndo });
       });
       var legalPlays = board.legalPlays();
@@ -1070,18 +1122,18 @@ var Explorer = (function (_React$Component6) {
       var legalSuit = legalSuits.length == 1 ? legalSuits[0] : 'all';
 
       var making = this.getMaking(board);
+      var deal = board.isCompleted() ? null : React.createElement(Deal, { deal: board.cards,
+        plays: board.plays,
+        leader: board.leader(),
+        legalSuit: legalSuit,
+        making: making,
+        onClick: this.handleClick.bind(this),
+        onUndo: handleUndo });
 
       return React.createElement(
         "div",
         null,
-        React.createElement(Deal, { deal: board.cards,
-          plays: board.plays,
-          leader: board.leader(),
-          legalSuit: legalSuit,
-          making: making,
-          onClick: this.handleClick.bind(this),
-          onUndo: handleUndo
-        }),
+        deal,
         React.createElement(
           "div",
           { className: "score" },
@@ -1239,7 +1291,9 @@ var Root = (function (_React$Component7) {
   }, {
     key: "componentWillUpdate",
     value: function componentWillUpdate(nextProps, nextState) {
-      this.board = this.makeBoard(nextState);
+      if (!_.isEqual(this.state, nextState)) {
+        this.board = this.makeBoard(nextState);
+      }
     }
   }, {
     key: "componentDidUpdate",
@@ -1280,6 +1334,15 @@ var Root = (function (_React$Component7) {
       this.setURL();
     }
   }, {
+    key: "autoPlay",
+    value: function autoPlay() {
+      var _this5 = this;
+
+      _autoPlay(this.board, function () {
+        _this5.forceUpdate();
+      }).then(function () {});
+    }
+  }, {
     key: "render",
     value: function render() {
       var handleFormSubmit = this.handleFormSubmit.bind(this),
@@ -1298,6 +1361,11 @@ var Root = (function (_React$Component7) {
           { onChange: handleUpload },
           "iBridgeBaron: ",
           React.createElement("input", { ref: "ibb", type: "file", accept: "image/*" })
+        ),
+        React.createElement(
+          "button",
+          { onClick: this.autoPlay.bind(this) },
+          "Autoplay"
         ),
         React.createElement(DDMatrix, { matrix: calcDDTable(this.state.pbn),
           declarer: this.state.declarer,
@@ -1347,12 +1415,10 @@ window.Root = Root;
 var root = document.getElementById('root');
 if (root) {
   var params = parseQueryString();
-  var pbn = 'N:T843.K4.KT853.73 J97.J763.642.KJ5 Q52.Q982.QJ.9862 AK6.AT5.A97.AQT4' || params.deal.replace(/\+/g, ' ');
-  var strain = 'N' || params.strain;
-  var declarer = 'W' || params.declarer;
+  var pbn = params.deal ? params.deal.replace(/\+/g, ' ') : 'N:T843.K4.KT853.73 J97.J763.642.KJ5 Q52.Q982.QJ.9862 AK6.AT5.A97.AQT4';
+  var strain = params.strain || 'N';
+  var declarer = params.declarer || 'W';
   var plays = parsePlays(params.plays) || [];
-  console.log(params);
-  console.log(plays);
 
   ReactDOM.render(React.createElement(Root, { initialPBN: pbn,
     initialStrain: strain,
