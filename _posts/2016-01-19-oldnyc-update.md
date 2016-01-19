@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Extending the Grid to Add 1,000 Photos to OldNYC
-date: 2016-01-19 12:36PM EST
+time: 12:36PM EST
 summary: "A walkthrough of how I added about 1,000 new images to OldNYC.org by building a Manhattan Grid geocoder. This includes photos from intersections which no longer exist, e.g. in areas like the old Gaslight District, which was destroyed to create Stuytown."
 ---
 
