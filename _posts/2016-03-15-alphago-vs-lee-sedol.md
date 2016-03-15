@@ -48,7 +48,7 @@ program had defeated a professional. What happened next is suggestive.
 > human, to be a better player. He sees things he didn’t see before. And that
 > makes him happy. “So beautiful,” he says. “So beautiful.”
 
-We learn most quickly from our betters -- people who can review your work, say
+We learn most quickly from our betters—people who can review your work, say
 what you did well and point out what would have been better. But if you're the
 best Go player in the world, who do you learn from? I wouldn't be surprised if
 this result prompts humans to discover new styles of play. Computers may get
