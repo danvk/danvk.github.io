@@ -166,6 +166,19 @@ $(function(){
   $(document).mousewheel(function(e) {
     e.preventDefault();
   });
+  
+  function getCenter() {
+    return {
+      x: $svgHolder.width() / 2,
+      y: $svgHolder.height() / 2
+    };
+  }
+  $('#zoom-in').on('click', function(e) {
+    zoomImage(viewer, getCenter(), +1);
+  });
+  $('#zoom-out').on('click', function(e) {
+    zoomImage(viewer, getCenter(), -1);
+  });
 
   $('#slider').slider({
     range: false,

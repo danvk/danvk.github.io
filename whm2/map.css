@@ -94,3 +94,16 @@ body {
   font-size: large;
   font-weight: bold;
 }
+
+#controls {
+  position: absolute;
+  left: 10px;
+  top: 90px;
+}
+#controls button {
+  display: block;
+  width: 24px;
+  height: 24px;
+  font-weight: bold;
+  font-size: 16px;
+}
