@@ -15,15 +15,7 @@ function nameToId(name) {
 }
 
 function countryMouseOver(e) {
-  // var x = e.pageX, y = e.pageY;
   $('#highlighted-country').html(e.target.getAttribute('readableName'));
-  // $('#highlighted-country').offset({ top: y + 20, left: x - 50 })
-  // var centerOfMass = computeCenterOfMass(e.target);
-  // console.log(centerOfMass);
-  // $('#highlighted-country').offset({
-  //   top: centerOfMass.y,
-  //   left: centerOfMass.x
-  // });
 
   // TODO(danvk): use the center of mass, but transform to screen coords.
   var r = e.target.getBoundingClientRect();
@@ -31,7 +23,7 @@ function countryMouseOver(e) {
     top: 0.5 * (r.top + r.bottom),
     left: 0.5 * (r.left + r.right)
   });
-  
+
   e.target.setAttribute('stroke-width', 20);
 }
 function countryMouseOut(e) {
@@ -166,7 +158,7 @@ $(function(){
   $(document).mousewheel(function(e) {
     e.preventDefault();
   });
-  
+
   function getCenter() {
     return {
       x: $svgHolder.width() / 2,
@@ -188,9 +180,6 @@ $(function(){
     slide: function(e, ui) {
       slideToYear(ui.value);
     }
-    // change: function(event, ui) {
-    //   // ...
-    // }
   });
 
   slideToYear(-100);
@@ -199,7 +188,6 @@ $(function(){
 function makeSvgMatchImageViewer(xy) {
   // These coords are relative to the top-left corner of the un-tiled overlay.
   var x = xy.x, y = xy.y;
-  // console.log(x, y);
 
   var zoom = viewer.dimensions.zoomLevel;
   var zoomPow = Math.pow(2, zoom - 7);
@@ -207,7 +195,6 @@ function makeSvgMatchImageViewer(xy) {
   y = (kExpandedBackgroundSize - kOriginalBackgroundHeight)/2 * zoomPow - y;
 
   // These coordinates are in the original SVG space.
-  // console.log('translate: ' + x + ', ' + y + '  scale: ' + zoomPow);
   $("#ctry").attr("transform", "translate(" + x + "," + y + ") scale(" + zoomPow + ")");
 }
 
@@ -240,4 +227,27 @@ function computeCenterOfMass(path, numSamples) {
     x: cx / (6.0 * A),
     y: cy / (6.0 * A)
   };
+}
+
+var viewer;
+function init() {
+  viewer = document.getElementById("container");
+  prepareViewer(viewer, 'tiles2', 256);
+  var shift_w = (kExpandedBackgroundSize - kOriginalBackgroundWidth)/2;
+  var shift_h = (kExpandedBackgroundSize - kOriginalBackgroundHeight)/2;
+  var zoomPow = Math.pow(2, startZoom - maxZoom);
+  var zoomStartX = (startX + shift_w) * zoomPow;
+  var zoomStartY = (startY + shift_h) * zoomPow;
+  panAndZoomTo(viewer, zoomStartX, zoomStartY, startZoom);
+  viewer.movedTiles = makeSvgMatchImageViewer;
+
+  var waitFn = () => {
+    var ctry = $('#ctry').length;
+    if (ctry) {
+      makeSvgMatchImageViewer({x: zoomStartX, y: zoomStartY});
+    } else {
+      window.requestAnimationFrame(waitFn);
+    }
+  };
+  waitFn();
 }

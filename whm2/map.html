@@ -20,12 +20,6 @@
 
 <!-- svg tags cannot be absolutely positioned, hence the holder -->
 <div id="svg-holder">
-  <!--
-<svg id="svg-el">
-  <g id="ctry" stroke="#999999" stroke-width="1" stroke-miterlimit="1" stroke-linejoin="round" stroke-linecap="round">
-  </g>
-</svg>
--->
 </div>
 
 <div class="imageViewer" id="container">
@@ -41,16 +35,7 @@
 
 <script src="map.js" type="text/javascript"></script>
 <script type="text/javascript">
-  var viewer = document.getElementById("container");
-  prepareViewer(viewer, 'tiles2', 256);
-  var shift_w = (kExpandedBackgroundSize - kOriginalBackgroundWidth)/2;
-  var shift_h = (kExpandedBackgroundSize - kOriginalBackgroundHeight)/2;
-  var zoomPow = Math.pow(2, startZoom - maxZoom);
-  var zoomStartX = (startX + shift_w) * zoomPow;
-  var zoomStartY = (startY + shift_h) * zoomPow;
-  panAndZoomTo(viewer, zoomStartX, zoomStartY, startZoom);
-  viewer.movedTiles = makeSvgMatchImageViewer;
-  makeSvgMatchImageViewer({x: zoomStartX, y: zoomStartY});
+  init();
 </script>
 
 <div id="highlighted-country"></div>
