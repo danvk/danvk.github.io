@@ -3,7 +3,7 @@
 <head>
   <link rel="stylesheet" href="pikaday.css" />
 <style>
-  #output, #datepicker-text, #loading, #error {
+  #datepicker-text, #loading, #error {
     display: none;
   }
   #datepicker {
@@ -19,6 +19,12 @@
   #selector {
     max-width: 600px;
   }
+  .is-dragover {
+    background-color: gray;
+  }
+  html, body {
+    height: 90%;
+  }
 </style>
 </head>
 
@@ -27,12 +33,12 @@
   <h1>Bridge Self-Duplicator</h1>
   <div id="error"></div>
   <div id="loading">Loading&hellip;</div>
-  <p>Use this app to play hands from bridge clubs with four people.</p>
+  <p>Use this app to play hands from bridge clubs with only four people.</p>
   <p>
     After you've loaded the boards, print them and give each player his or
     her sheet. You'll need four decks of cards, one for each player. At the
     start of each hand, each player selects the appropriate cards from his
-    or her hands. Make sure you get the right cards! 
+    or her deck. Make sure you get the right cards! 
   </p>
   <p>
     Drag a PBN file onto this page or select a date from
@@ -42,8 +48,6 @@
   <div id="datepicker"></div>
 </div>  <!-- #selector -->
 
-<div id="output"></div>
-
-<script src="splitter-ui.bundle.js"></script>
+<script src="splitter-ui.min.js"></script>
 </body>
 </html>
