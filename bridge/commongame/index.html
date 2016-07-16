@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" href="pikaday.css" />
+<style>
+  #output, #datepicker-text, #loading, #error {
+    display: none;
+  }
+  #datepicker {
+    display: inline-block;
+  }
+  #error {
+    border: 1px solid red;
+    background: #ffdddd;
+    padding: 5px;
+    border-radius: 2px;
+    margin: 10px;
+  }
+  #selector {
+    max-width: 600px;
+  }
+</style>
+</head>
+
+<body>
+<div id="selector">
+  <h1>Bridge Self-Duplicator</h1>
+  <div id="error"></div>
+  <div id="loading">Loading&hellip;</div>
+  <p>Use this app to play hands from bridge clubs with four people.</p>
+  <p>
+    After you've loaded the boards, print them and give each player his or
+    her sheet. You'll need four decks of cards, one for each player. At the
+    start of each hand, each player selects the appropriate cards from his
+    or her hands. Make sure you get the right cards! 
+  </p>
+  <p>
+    Drag a PBN file onto this page or select a date from
+    <a href="http://thecommongame.com/">The Common Game</a>'s archives:
+  </p>
+  <input type="text" id="datepicker-text">
+  <div id="datepicker"></div>
+</div>  <!-- #selector -->
+
+<div id="output"></div>
+
+<script src="splitter-ui.bundle.js"></script>
+</body>
+</html>
