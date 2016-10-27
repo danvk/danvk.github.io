@@ -144,7 +144,17 @@ img.latex { vertical-align: middle; border: none; }
 <li>It still works well when the photos are slightly rotated.</li>
 <li>It works for any background color (lighting conditions vary for each image).</li>
 </ol>
-<p>There&#8217;s still some tweaking to do, but I&#8217;m really happy with how this algorithm has performed! You can find the source code <a href="https://github.com/danvk/sfhistory/blob/master/nyc/find-pictures.py">here</a>.</p>
+<p>There&#8217;s still some tweaking to do, but I&#8217;m really happy with how this algorithm has performed! You can find the source code <a href="https://github.com/danvk/oldnyc/blob/0998e185b17033686720c75a2dbddeb88d4f611f/nyc/find-pictures.py">here</a>.</p>
+
+<p><i><b>Update:</b></i> After writing this post, I <a href="http://dsp.stackexchange.com/questions/7960/detecting-individual-photos-on-a-scanned-page">asked about the approach</a> on the Signal Processing Stack Exchange. This was very educational! The approach laid out in this post was reasonable but could be better expressed using a few old-school computer vision primitives:</p>
+
+<ul>
+  <li>After binarization, morphological operations can be used to remove small features from the image.</li>
+  <li>Find connected components in the resulting image. The ones which are large (say, &gt; 150x150) and have a high solidity (ratio of a region's area to that of its convex hull). These are readily found and computed using OpenCV.</li>
+</ul>
+
+<p>In practice, this works well and is much faster than my ad-hoc approach. Check out <a href="https://github.com/danvk/oldnyc/blob/11d10a1e899dcad310bab19d82914d0cabe8bb62/nyc/find_pictures.py">the final code</a> for details.</p>
+
 			
 			<p class="feedback">
 			<a href="index.html" rel="bookmark" title="Permanent link to Finding Pictures in Pictures" class="permalink">Permalink</a>
