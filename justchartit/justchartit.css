@@ -6,6 +6,17 @@ html {
 body {
   height: 100%;
   overflow: auto;
+  margin: 0;
+}
+
+.error {
+  z-index: 1;
+  position: absolute;
+  background: red;
+  left: 50%;
+  width: 200px;
+  margin-left: -100px;
+  padding: 5px;
 }
 
 .editor, .panel {
@@ -20,36 +31,47 @@ body {
 
 .table-panel {
   position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 50%;
-  padding: 5px;
   overflow: hidden;
 
   font-family: arial, sans-serif;
   font-size: small;
+  padding: 5px;
 }
 
-.editors {
+.editors-panel {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  right: 0;
-  bottom: 0;
   padding: 5px;
 }
 
 .output-panel {
   position: absolute;
-  left: 50%;
-  top: 0;
-  right: 0;
-  bottom: 50%;
   padding: 5px;
   overflow: auto;
 }
 
-.tab-chooser > * {
-  margin: auto 5px;
+.tabs, .tab {
+  height: 100%;
+}
+
+.output-panel {
+  left: 50%;
+  top: 64px;
+  right: 0;
+  bottom: 50%;
+}
+
+.layout-default .table-panel,
+.layout-data-primary .editors-panel {
+  left: 50%;
+  top: 50%;
+  right: 0;
+  bottom: 0;
+}
+
+.layout-default .editors-panel,
+.layout-data-primary .table-panel {
+  left: 0;
+  top: 64px;
+  bottom: 0;
+  right: 50%;
 }
