@@ -38,10 +38,9 @@ While there, I worked primarily on visualizations, frontend tooling and software
 
   * Blogging and Speeches
 
-    I wrote extensively about my work at Hammer Lab and spoke at PyCon in
-    2015. See a [roundup of my posts][hammerlab-posts] and a [video][pycon-video]
+    I wrote extensively about my work at Hammer Lab and spoke at PyCon in 2015.
+    See a [roundup of my posts][hammerlab-posts] and a [video][pycon-video]
     of [my talk at PyCon 2015][pycon-talk].
-
 
 ### Google (August 14, 2006–April 25, 2014)
 
@@ -178,7 +177,7 @@ post][comparea-blog].
 [dygraphs-r]: https://rstudio.github.io/dygraphs/
 [dygraphs-influx]: https://influxdb.com/blog/2015/07/07/Announcing-Chronograf-a-data-visualization-tool-for-InfluxDB.html
 [dygraphs-github]: https://github.com/danvk/dygraphs
-[dygraphs-talk]: https://www.youtube.com/watch?v=I6E5e1HBFi0 
+[dygraphs-talk]: https://www.youtube.com/watch?v=I6E5e1HBFi0
 [flow]: http://www.flowmobility.io/
 [cityblock]: https://www.cityblock.com/
 [transit-ex]: https://transit.sidewalklabs.com/
