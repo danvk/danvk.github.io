@@ -44,36 +44,40 @@ While there, I worked primarily on visualizations, frontend tooling and software
 
 ### Google (August 14, 2006–April 25, 2014)
 
-I was as a Software Engineer at Google for approximately eight years. I
+I worked as a Software Engineer at Google for approximately eight years. I
 worked primarily in Search: ranking, features and projects relating to search
 logs analysis.
 
-  * Tech Lead, Tufte Team (August 2012–April 2014)
-    * Finance Answer Card: [[GOOG]][tufte-fac]
-    * Statistics Knowledge Panel: [[life expectancy south africa]][tufte-statskp]
-      * This was [featured][statskp-googleio] in the keynote at Google I/O in 2013.
-    * Fact Comparisons: [[brad pitt height]][tufte-facts]
-    * March Madness: \[march madness\] (defunct); see [coverage][mm-avc]
-  * Google Correlate (October 2010–December 2011)
-    * Built an early proof-of-concept demo
-    * Designed large portions of the infrastructure
-    * Extensive exploration of approximate/exact Nearest Neighbors search,
-      see [Nearest Neighbors Search in Google Correlate][correlate-tech].
-    * Streamlined and narrowed the vision for our product
-    * Conceived of and implemented the [search by Drawing feature][correlate-drawing],
-      which garnered [significant attention][correlate-reddit] in its own right.
-  * Google Flu Trends (January 2009 - October 2009)
-    * Responsible for query time series infrastructure
-    * [Emergency Mexico Launch][flu-mx]
-    * [Flu Trends Australia/New Zealand][flu-anz]
-    * [Flu Trends International][flu-intl]
-  * Webspam (August 2006 - March 2009)
-    * Worked on core site quality ranking signals
-    * Metrics and dashboards
-  * Miscellaneous Projects
-    * [Sunrise/Sunset onebox][sunrise]
-    * G%gle (Percent Server), a tool which shows how many Googlers joined after you.
-    * Shuttlesheet, a tool for navigating Google Shuttle schedules.
+#### Tech Lead, Tufte Team (August 2012–April 2014)
+  * Finance Answer Card: [[GOOG]][tufte-fac]
+  * Statistics Knowledge Panel: [[life expectancy south africa]][tufte-statskp]
+    * This was [featured][statskp-googleio] in the keynote at Google I/O in 2013.
+  * Fact Comparisons: [[brad pitt height]][tufte-facts]
+  * March Madness: \[march madness\] (defunct); see [coverage][mm-avc]
+
+#### Google Correlate (October 2010–December 2011)
+  * Built an early proof-of-concept demo
+  * Designed large portions of the infrastructure
+  * Extensive exploration of approximate/exact Nearest Neighbors search,
+    see [Nearest Neighbors Search in Google Correlate][correlate-tech].
+  * Streamlined and narrowed the vision for our product
+  * Conceived of and implemented the [search by Drawing feature][correlate-drawing],
+    which garnered [significant attention][correlate-reddit] in its own right.
+
+#### Google Flu Trends (January 2009 - October 2009)
+  * Responsible for query time series infrastructure
+  * [Emergency Mexico Launch][flu-mx]
+  * [Flu Trends Australia/New Zealand][flu-anz]
+  * [Flu Trends International][flu-intl]
+
+#### Webspam (August 2006 - March 2009)
+  * Worked on core site quality ranking signals
+  * Metrics and dashboards
+
+#### Miscellaneous Google Projects
+  * [Sunrise/Sunset onebox][sunrise]
+  * G%gle (Percent Server), a tool which shows how many Googlers joined after you.
+  * Shuttlesheet, a tool for navigating Google Shuttle schedules.
 
 ## Other Projects
 
@@ -104,6 +108,15 @@ Greenland, really?" or "how large would Alaska be if it were in the contiguous U
 been popular [amongst school teachers][comparea-writeup]. Read more about it in [this blog
 post][comparea-blog].
 
+## Publications
+
+  * [pileup.js][pileup-paper]
+    Dan Vanderkam, B. Arman Aksoy, Isaac Hodes, Jaclyn Perrone, and Jeff Hammerbacher
+  * [Google Correlate Whitepaper][correlate-whitepaper]
+    Matt Mohebbi, Dan Vanderkam, Julia Kodysh, Rob Schonberger, Hyunyoung Choi & Sanjiv Kumar
+  * [Nearest Neighbor Search in Google Correlate][correlate-tech]
+    Dan Vanderkam, Robert Schonberger, Henry Rowley, Sanjiv Kumar
+
 ## Education
 
 ### Rice University
@@ -126,15 +139,6 @@ post][comparea-blog].
     Designed and developed a new mechanism for rolling out features on the MSN
     Shopping website (shopping.msn.com). Implemented this mechanism using
     C#/ASP.NET and Microsoft SQL Server 2000.
-
-## Publications
-
-  * [pileup.js][pileup-paper]
-    Dan Vanderkam, B. Arman Aksoy, Isaac Hodes, Jaclyn Perrone, and Jeff Hammerbacher
-  * [Google Correlate Whitepaper][correlate-whitepaper]
-    Matt Mohebbi, Dan Vanderkam, Julia Kodysh, Rob Schonberger, Hyunyoung Choi & Sanjiv Kumar
-  * [Nearest Neighbor Search in Google Correlate][correlate-tech]
-    Dan Vanderkam, Robert Schonberger, Henry Rowley, Sanjiv Kumar
 
 [swl]: https://www.sidewalklabs.com/
 [Hammer Lab]: http://www.hammerlab.org/
