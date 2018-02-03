@@ -5,7 +5,7 @@ summary: My latest and greatest side project, which places 40,000 images from th
 date: 2015-06-03 07:24PM PDT
 ---
 
-<a href="http://www.oldnyc.org/"><img src="/images/oldnyc-big.jpg" width=300 height=236 style="float:right; margin-left: 20px;"></a>
+<a href="http://www.oldnyc.org/"><img src="/images/oldnyc-big.jpg" width="300" height="236" style="float:right; margin-left: 20px;"></a>
 Two weeks ago I [launched][1] my latest side project, [OldNYC][2]. It's a
 collaboration with NYPL Labs which places around 40,000 historical photos of
 New York City on a map.  Avid readers of this blog know that I've been [working

@@ -10,7 +10,7 @@ I was dimly aware of the [ongoing competition between AlphaGo and Lee
 Sedol][wiki], but I hadn't paid much attention until I saw this chart [on
 reddit][]:
 
-<img src="http://i.imgur.com/3HcJKbk.png" border=0 width=700 alt="time per move during game 4">
+<img src="http://i.imgur.com/3HcJKbk.png" border=0 width="700" alt="time per move during game 4">
 
 It's hard to read "Lee Sedol's brilliant attack (78th)" and not get curious!
 This led me into a deep dive on the competition. You can read more about [the
@@ -22,7 +22,7 @@ American Go player. Even if you don't understand how to play Go (I barely do),
 it's fun to watch [the experts react][commentary] to this move: "Oh, this [is]
 very creative."
 
-<img src="/images/alphago.png" width=231 height=190 style="float: right; margin-left: 1em;">
+<img src="/images/alphago.png" width="231" height="190" style="float: right; margin-left: 1em;">
 [Lee Sedol][]'s win in the fourth match is being celebrated as a victory for
 humankind. But it's surprising that we're here at all. AlphaGo, Google
 DeepMind's computer Go program, had already won the first three games and hence

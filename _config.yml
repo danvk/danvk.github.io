@@ -5,6 +5,7 @@ kramdown:
   auto_ids: true
   syntax_highlighter: rouge
   html_to_native: true
+  remove_block_html_tags: false
 
 gems:
   - jekyll-redirect-from

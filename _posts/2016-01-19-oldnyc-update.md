@@ -10,7 +10,7 @@ I recently added around 1,000 new photos to the map on OldNYC. Read on to find
 out how!
 
 <div class="center">
-<img src="/images/stuytown-update.gif" width=300 height=275 alt="OldNYC update around Stuytown">
+<img src="/images/stuytown-update.gif" width="300" height="275" alt="OldNYC update around Stuytown"/>
 </div>
 
 At its core, OldNYC is based on [geocoding][]: the process of going from
@@ -25,7 +25,7 @@ it is an assumption, and it doesn't always pan out.
 Two of the most noticeable problem spots are Stuytown and Park Avenue South:
 
 <div class="center">
-<img src="/images/stuytown-pas-missing.png" width=600 height=550 alt="Stuytown and Park Avenue South have no images">
+<img src="/images/stuytown-pas-missing.png" width="600" height="550" alt="Stuytown and Park Avenue South have no images">
 </div>
 
 The lettered Avenues (A, B, C, D) used to continue above 14th street. This was
@@ -53,7 +53,7 @@ and Avenue A are evenly spaced and then find where the 18th street intersection
 would fall:
 
 <div class="center">
-<img src="/images/extrapolation.png" width=552 height=428 alt="Extrapolation of intersections">
+<img src="/images/extrapolation.png" width="552" height="428" alt="Extrapolation of intersections">
 </div>
 
 Mathematically, you fit linear regressions from cross-street to latitude and
@@ -65,7 +65,7 @@ the results using a different technique: continuing the straight lines of the
 streets until they intersected:
 
 <div class="center">
-<img src="/images/continued-lines.png" width=403 height=329 alt="Extrapolation of streets">
+<img src="/images/continued-lines.png" width="403" height="329" alt="Extrapolation of streets">
 </div>
 
 Mathematically, this means that you fit a linear regression to the
@@ -83,13 +83,13 @@ While Stuytown and Park Avenue South were clear winners, new photos appeared
 all over the map:
 
 <div class="center">
-<img src="/images/oldnyc-update.gif" width=400 height=400 alt="Update for lower Manhattan">
+<img src="/images/oldnyc-update.gif" width="400" height="400" alt="Update for lower Manhattan">
 </div>
 
 It even helped uptown:
 
 <div class="center">
-<img src="/images/oldnyc-uptown-update.gif" width=640 height=400 alt="Update for Uptown">
+<img src="/images/oldnyc-uptown-update.gif" width="640" height="400" alt="Update for Uptown">
 </div>
 
 All told, there are about 1,000 new images on the map. Go check them out and!
@@ -99,13 +99,13 @@ didn't run on the new images, so they're sorely lacking descriptions.
 Here are a few favorites:
 
 <div class="center">
-<a href="https://www.oldnyc.org/#716426f-a"><img src="/images/716426f-a.jpg" width=600 height=421></a>
+<a href="https://www.oldnyc.org/#716426f-a"><img src="/images/716426f-a.jpg" width="600" height="421"></a>
 <br>
 <i>Looking down Avenue B from 15th to 17th Street. This Avenue no longer exists.</i>
 </div>
 
 <div class="center">
-<a href="https://www.oldnyc.org/#708194f-a"><img src="/images/708194f-a.jpg" width=482 height=348></a>
+<a href="https://www.oldnyc.org/#708194f-a"><img src="/images/708194f-a.jpg" width="482" height="348"></a>
 <br>
 <i>The Everett House hotel at Union Square in 1906. This building no longer
 exists, but there's a new hotel (the W) at the same location.</i>
