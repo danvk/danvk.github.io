@@ -10,7 +10,7 @@ Here's the [video][9] of my talk from PyCon 2015, [Make web development awesome 
 
 Here are the [slides][2] for the talk:
 
-<iframe src="https://docs.google.com/presentation/embed?id=1C6TcdHSBQNcLEIH6SFmmAOLJ7cy1gvIbmCj3cyd7fxE&amp;start=false&amp;loop=false&amp; frameborder="0" width="520" height="405"></iframe>
+<iframe src="https://docs.google.com/presentation/embed?id=1C6TcdHSBQNcLEIH6SFmmAOLJ7cy1gvIbmCj3cyd7fxE&amp;start=false&amp;loop=false&amp;" frameborder="0" width="520" height="405"></iframe>
 
 The two tools referenced are:
 

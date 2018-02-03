@@ -10,7 +10,7 @@ I was dimly aware of the [ongoing competition between AlphaGo and Lee
 Sedol][wiki], but I hadn't paid much attention until I saw this chart [on
 reddit][]:
 
-<img src="http://i.imgur.com/3HcJKbk.png" border=0 width="700" alt="time per move during game 4">
+<img src="http://i.imgur.com/3HcJKbk.png" border="0" width="700" alt="time per move during game 4">
 
 It's hard to read "Lee Sedol's brilliant attack (78th)" and not get curious!
 This led me into a deep dive on the competition. You can read more about [the
