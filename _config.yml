@@ -4,6 +4,7 @@ kramdown:
   input: GFM
   auto_ids: true
   syntax_highlighter: rouge
+  html_to_native: true
 
 gems:
   - jekyll-redirect-from
