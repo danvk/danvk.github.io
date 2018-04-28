@@ -8,9 +8,8 @@ title: 'GW-Basic Decoder'
 <H2>GW-Basic Binary Program Decoder</H2>
 <p><a href="http://en.wikipedia.org/wiki/GW-BASIC">GW-BASIC</a> (aka GWBASIC or Gee-Whiz Basic) was a BASIC interpreter developed by Microsoft and bundled with MS-DOS until the advent of <a href="http://en.wikipedia.org/wiki/QBASIC">QBASIC</a> with MS-DOS 5.0. GW-BASIC stored programs in memory at a time when memory was very scarce. Hence it used a compact, binary representation of code. It used this same binary format for code saved on disk, which makes it hard to read GW-BASIC programs nowadays.</p>
 
-<p>Or at least it used to. Thanks to <a href="http://www.chebucto.ns.ca/~af380/GW-BASIC-tokens.html">this site</a>, I was able to write a decoder in Python. Upload your .BAS file below and you'll get a human-readable version of the program back out. Enjoy!</p>
+<p>Or at least it used to. Thanks to <a
+  href="http://www.chebucto.ns.ca/~af380/GW-BASIC-tokens.html">this site</a>, I was able to write a
+decoder in Python. You can find it on GitHub: <a
+  href="https://github.com/danvk/gwbasic-decoder">danvk/gwbasic-decoder</a>.</p>
 
-<form action="test.py" method="post" enctype="multipart/form-data">
-  <b>Upload .BAS file:</b> <input type="file" name="basfile" size=50 />
-  <input type=submit value="Convert" />
-</form>
