@@ -5,11 +5,37 @@ title: danvk.org
 
 <div id="home">
   <section id="main_content" class="inner">
-    <p>I'm Dan, a Software Engineer at <a href="https://www.sidewalklabs.com/">Sidewalk Labs</a>,
-    formerly at Mt. Sinai's <a href="http://hammerlab.org">Hammerlab</a> and Google.</p>
-    <p>I use computers to solve problems.</p>
+    <a href="https://www.amazon.com/Effective-TypeScript-Specific-Ways-Improve/dp/1492053740">
+      <img src="/images/ets-cover.png" width="187" height="245" border=0 style="float: left; margin-right: 15px;">
+    </a>
 
-    <div id="blog">
+    <p>I'm Dan, a Software Engineer at <a href="https://www.sidewalklabs.com/">Sidewalk Labs</a>,
+    formerly at Mt. Sinai's <a href="http://hammerlab.org">Hammerlab</a> and Google. I use computers to solve problems.</p>
+
+    <p>
+      I wrote a book! <i>Effective TypeScript</i> (O'Reilly 2019). You can read more about it on
+      <a href="https://www.amazon.com/Effective-TypeScript-Specific-Ways-Improve/dp/1492053740">Amazon</a> and
+      <a href="https://www.goodreads.com/book/show/48570456-effective-typescript">Goodreads</a>,
+      but here are a few choice quotes:
+    </p>
+
+    <blockquote>
+      <p><i>Effective TypeScript</i> explores the most common questions we see when working
+      with TypeScript and provides practical, results-oriented advice. Regardless of your
+      level of TypeScript experience, you can learn something from this book.</p>
+      <footer>Ryan Cavanaugh, <cite>Engineering Lead for TypeScript at Microsoft</cite></footer>
+    </blockquote>
+
+    <blockquote>
+      <p>
+        This book is packed with practical recipes and must be kept on the desk of every
+        TypeScript eveloper. Even if you think you know TypeScript already, get this book and
+        you won't regret it.
+      </p>
+      <footer>Yakov Fain, <cite>Java Champion</cite></footer>
+    </blockquote>
+
+    <div id="blog" style="clear:left">
       <h3>Recent Blog Posts</h3>
       {% for post in site.posts limit: 5 %}
       <div class="row blog-post">
@@ -49,6 +75,24 @@ title: danvk.org
       <div class="col-sm-6">
         <div class="panel panel-info">
           <div class="panel-heading">
+            <h3 class="panel-title"><a href="https://www.amazon.com/Effective-TypeScript-Specific-Ways-Improve/dp/1492053740">Effective TypeScript</a></h3>
+          </div>
+          <div class="panel-body">
+            <a href="https://www.amazon.com/Effective-TypeScript-Specific-Ways-Improve/dp/1492053740"><img src="/images/ets-cover.png" width="98" height="128" border=0></a>
+            <p>
+              I wrote a book!
+            </p>
+            <p>
+              <i>Effective TypeScript</i> is a practical, example-driven guide to having
+              a more productive relationship with the type checker.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="panel panel-info">
+          <div class="panel-heading">
             <h3 class="panel-title"><a href="http://www.oldnyc.org/">OldNYC</a></h3>
           </div>
           <div class="panel-body">
@@ -56,7 +100,7 @@ title: danvk.org
             <p>Mapping historical photos from the NYPL.</p>
             <p>
               Read more in
-              <a href="http://gothamist.com/2015/05/26/old_nyc_photo_map.php">Gothamist</a>, 
+              <a href="http://gothamist.com/2015/05/26/old_nyc_photo_map.php">Gothamist</a>,
               <a href="http://www.theguardian.com/us-news/2015/may/21/new-york-historical-photo-archive-lets-residents-track-changes-to-a-city-in-sepia">The Guardian</a> and
               <a href="http://cityroom.blogs.nytimes.com/2015/05/26/new-york-today-new-views-of-the-past/?_r=0">The New York Times</a>.
             </p>
@@ -112,18 +156,6 @@ title: danvk.org
             <a href="http://www.github.com/danvk/webdiff"><img src="/images/webdiff.png" width=196 height=128 border=0></a>
             <p>Web-based git difftool with syntax highlighting, image support and intra-line diffs.</p>
             <p><a href="http://www.danvk.org/wp/2014-07-03/introducing-git-webdiff/">blog post</a></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6">
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <h3 class="panel-title"><a href="https://puzzleplus.github.io/">Puzzle+</a></h3>
-          </div>
-          <div class="panel-body">
-            <a href="https://puzzleplus.github.io/"><img src="/images/puzzleplus.png" width=200 height=128 border=0></a>
-            <p>Collaborate on crossword puzzles in a Google+ Hangouts video chat.</p>
           </div>
         </div>
       </div>
