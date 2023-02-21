@@ -9,9 +9,12 @@
   mapboxgl.accessToken = 'pk.eyJ1IjoiZGFudmsiLCJhIjoiY2lrZzJvNDR0MDBhNXR4a2xqNnlsbWx3ciJ9.myJhweYd_hrXClbKk8XLgQ';
   var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11',
-    center: [-74.472477, 42.011659],
-    zoom: 10,
+    style: 'mapbox://styles/mapbox/outdoors-v12',
+    center: [
+      -74.36398700976565,
+      42.0922169187148
+    ],
+    zoom: 9,
   });
 
   map.on('load', () => {
