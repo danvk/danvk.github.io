@@ -11,8 +11,16 @@ Things to include:
 ## TODO
 
 - [ ] Collect GPX data for all hikes
+  - [ ] How do I get GPX from eBird? (Lat/Lng seq in `data-maptrack-data`, no times)
 - [ ] Collect photos for all hikes
-- [ ] Collect notes for all hikes
+- [ ] Make a map visualization
+  - [ ] Show which peaks I've hiked and which I haven't
+  - [ ] Show all tracks on a map
+  - [ ] Show photos on the map
+  - [ ] Show notes for each hike
+  - [ ] Organize hikes by type
+  - [ ] Filter hikes by dates (winter, month, etc.)
+- [x] Collect notes for all hikes
 - [x] Make slugged directories for all hikes
 - [x] Make spreadsheet listing of all hikes
 

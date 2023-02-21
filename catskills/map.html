@@ -1,0 +1,47 @@
+<!doctype html>
+<head>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+</head>
+
+<div id='map' style='width: 800px; height: 600px;'></div>
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoiZGFudmsiLCJhIjoiY2lrZzJvNDR0MDBhNXR4a2xqNnlsbWx3ciJ9.myJhweYd_hrXClbKk8XLgQ';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [-74.472477, 42.011659],
+    zoom: 10,
+  });
+
+  map.on('load', () => {
+  map.addSource('route1', {
+    'type': 'geojson',
+    data: '/2023-01-08-winter-panther/track.geojson'
+  });
+  map.addSource('route2', {
+    'type': 'geojson',
+    data: '/2023-02-18-winter-slide/track.geojson'
+  });
+  const style = {'type': 'line',
+'layout': {
+'line-join': 'round',
+'line-cap': 'round'
+},
+'paint': {
+'line-color': 'green',
+'line-width': 4
+}};
+map.addLayer({
+'id': 'route1',
+'source': 'route1',
+    ...style
+});
+map.addLayer({
+'id': 'route2',
+'source': 'route2',
+    ...style
+});
+});
+
+</script>
