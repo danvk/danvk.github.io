@@ -14,7 +14,9 @@ Things to include:
   - [ ] How do I get GPX from eBird? (Lat/Lng seq in `data-maptrack-data`, no times)
 - [ ] Collect photos for all hikes
 - [ ] Make a map visualization
-  - [ ] Write a script to convert GPX -> GeoJSON FeatureCollection
+  - [x] Write a script to convert GPX -> GeoJSON FeatureCollection
+  - [ ] Add all peaks to the Mapbox map
+  - [ ] Add elevation to the Mapbox map
   - [ ] Show which peaks I've hiked and which I haven't
   - [ ] Show all tracks on a map
   - [ ] Show photos on the map

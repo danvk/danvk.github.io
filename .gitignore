@@ -1,3 +1,4 @@
 *.lock
 _site
 _dustshelf
+.DS_Store

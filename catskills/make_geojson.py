@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Make the combined tracks.geojson file from GPX files."""
 
 import glob
 import xml.dom.minidom
