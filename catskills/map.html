@@ -15,33 +15,26 @@
   });
 
   map.on('load', () => {
-  map.addSource('route1', {
-    'type': 'geojson',
-    data: '/2023-01-08-winter-panther/track.geojson'
-  });
-  map.addSource('route2', {
-    'type': 'geojson',
-    data: '/2023-02-18-winter-slide/track.geojson'
-  });
-  const style = {'type': 'line',
-'layout': {
-'line-join': 'round',
-'line-cap': 'round'
-},
-'paint': {
-'line-color': 'green',
-'line-width': 4
-}};
-map.addLayer({
-'id': 'route1',
-'source': 'route1',
-    ...style
-});
-map.addLayer({
-'id': 'route2',
-'source': 'route2',
-    ...style
-});
-});
+    map.addSource('tracks', {
+      'type': 'geojson',
+      data: '/tracks.geojson'
+    });
 
+    const style = {
+      'type': 'line',
+      'layout': {
+        'line-join': 'round',
+        'line-cap': 'round'
+      },
+      'paint': {
+        'line-color': 'green',
+        'line-width': 4
+      }
+    };
+    map.addLayer({
+      'id': 'tracks',
+      'source': 'tracks',
+          ...style
+    });
+  });
 </script>
