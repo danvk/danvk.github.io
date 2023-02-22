@@ -2,9 +2,18 @@
 <head>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+      #map {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+      }
+    </style>
 </head>
 
-<div id='map' style='width: 800px; height: 600px;'></div>
+<div id='map'></div>
 <script>
   mapboxgl.accessToken = 'pk.eyJ1IjoiZGFudmsiLCJhIjoiY2lrZzJvNDR0MDBhNXR4a2xqNnlsbWx3ciJ9.myJhweYd_hrXClbKk8XLgQ';
   var map = new mapboxgl.Map({
@@ -23,7 +32,6 @@
       'type': 'geojson',
       data: '/tracks.geojson'
     });
-
     const style = {
       'type': 'line',
       'layout': {
@@ -39,6 +47,41 @@
       'id': 'tracks',
       'source': 'tracks',
           ...style
+    });
+
+    map.addSource('peaks', {
+      'type': 'geojson',
+      data: '/high-peaks.geojson',
+    });
+    map.addLayer({
+      'id': 'peak-labels',
+      'type': 'symbol',
+      'source': 'peaks',
+      'layout': {
+        'text-field': ['get', 'name'],
+        'text-font': [
+          'Open Sans Semibold',
+          'Arial Unicode MS Bold'
+        ],
+        'text-size': 12,
+        'text-offset': [0, 1.25],
+        'text-anchor': 'top'
+      }
+    });
+
+    map.addLayer({
+      'id': 'peaks',
+      'type': 'symbol',
+      'source': 'peaks',
+      'layout': {
+        // See https://docs.mapbox.com/data/tilesets/reference/mapbox-streets-v8/#maki-text
+        'icon-image': 'marker', // 'mountain', 'marker'
+        'icon-size': 1.0,
+        'icon-allow-overlap': true,
+      },
+      'paint': {
+        'icon-color': 'green',
+      }
     });
   });
 </script>
