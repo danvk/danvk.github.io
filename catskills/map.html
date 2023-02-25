@@ -32,7 +32,9 @@
       'type': 'geojson',
       data: '/tracks.geojson'
     });
-    const style = {
+    map.addLayer({
+      'id': 'tracks',
+      'source': 'tracks',
       'type': 'line',
       'layout': {
         'line-join': 'round',
@@ -42,11 +44,6 @@
         'line-color': 'darkgreen',
         'line-width': 4
       }
-    };
-    map.addLayer({
-      'id': 'tracks',
-      'source': 'tracks',
-          ...style
     });
 
     map.addSource('peaks', {

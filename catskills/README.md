@@ -11,9 +11,9 @@ Things to include:
 ## TODO
 
 - [ ] Collect GPX data for all hikes
-  - [ ] How do I get GPX from eBird? (Lat/Lng seq in `data-maptrack-data`, no times)
+  - [x] How do I get GPX from eBird? (Lat/Lng seq in `data-maptrack-data`, no times)
   - [x] convert to properly-formatted zulu time in `fc_to_track.py`
-  - [ ] Make per-day tracks
+  - [x] Make per-day tracks
   - [ ] Add campsites
   - [ ] Consolidate scripts in one repo (not `danvk.github.io`)
 - [ ] Collect photos for all hikes

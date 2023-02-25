@@ -6,6 +6,21 @@ import xml.dom.minidom
 import json
 
 
+def extract_date(path):
+    return path[:10]
+
+
+def extract_season(date: str) -> str:
+    date = date[5:]
+    if date <= '03-21' or date >= '12-21':
+        return 'winter'
+    elif date <= '06-20':
+        return 'spring'
+    elif date <= '09-21':
+        return 'summer'
+    return 'fall'
+
+
 def dom_to_feature(path: str, dom):
     coords = []
     for pt in dom.getElementsByTagName('trkpt'):
@@ -16,10 +31,13 @@ def dom_to_feature(path: str, dom):
 
         coords.append([lng, lat])
 
+    date = extract_date(path)
     return {
         'type': 'Feature',
         'properties': {
             'path': path,
+            'date': date,
+            'season': extract_season(date)
         },
         'geometry': {
             'type': 'LineString',
