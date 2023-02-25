@@ -1,0 +1,17 @@
+{
+  "type": "Feature",
+  "properties": {
+    "file": "IMG_2661.JPG",
+    "zipfile": "/Users/danvk/Downloads/2016-05-28-29-sugarloaf-twin.zip",
+    "date": "2016:05:28 19:52:48",
+    "type": "campsite",
+    "isMaxMuddy": true
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -74.13275277777777,
+      42.132675
+    ]
+  }
+}
