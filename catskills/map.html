@@ -41,7 +41,15 @@
         'line-cap': 'round'
       },
       'paint': {
-        'line-color': 'darkgreen',
+        'line-color': [
+          'match',
+          ['get', 'season'],
+          'winter', 'white',
+          'spring', 'limegreen',
+          'summer', 'green',
+          'fall', 'orange',
+          'green'
+        ],
         'line-width': 4
       }
     });
