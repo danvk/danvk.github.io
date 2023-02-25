@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1" creator="AllTrails.com" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+<metadata>
+</metadata>
+<trk>
+    <name>&lt;stdin&gt; - 2020-05-14</name>
+    <src>Photos</src>
+    <trkseg>
+         <trkpt lat="42.31285" lon="-74.18963611111111">
+                <time>2020-05-14T17:19:52Z</time>
+            </trkpt>
+                     <trkpt lat="42.310138888888886" lon="-74.18399166666667">
+                <time>2020-05-14T17:27:57Z</time>
+            </trkpt>
+                     <trkpt lat="42.31162777777777" lon="-74.14817777777779">
+                <time>2020-05-14T18:38:56Z</time>
+            </trkpt>
+                     <trkpt lat="42.31293611111111" lon="-74.14611111111111">
+                <time>2020-05-14T18:42:25Z</time>
+            </trkpt>
+                     <trkpt lat="42.31468333333333" lon="-74.14498055555556">
+                <time>2020-05-14T18:47:09Z</time>
+            </trkpt>
+                     <trkpt lat="42.31449444444444" lon="-74.14455277777779">
+                <time>2020-05-14T18:48:17Z</time>
+            </trkpt>
+                     <trkpt lat="42.314499999999995" lon="-74.14453055555556">
+                <time>2020-05-14T18:48:34Z</time>
+            </trkpt>
+                     <trkpt lat="42.31485833333333" lon="-74.14458333333334">
+                <time>2020-05-14T18:50:58Z</time>
+            </trkpt>
+                     <trkpt lat="42.31486944444444" lon="-74.14453888888889">
+                <time>2020-05-14T18:51:26Z</time>
+            </trkpt>
+                     <trkpt lat="42.31496388888888" lon="-74.14249444444445">
+                <time>2020-05-14T18:54:20Z</time>
+            </trkpt>
+                     <trkpt lat="42.314816666666665" lon="-74.14453055555556">
+                <time>2020-05-14T19:18:00Z</time>
+            </trkpt>
+                     <trkpt lat="42.314816666666665" lon="-74.14453055555556">
+                <time>2020-05-14T19:18:00Z</time>
+            </trkpt>
+                     <trkpt lat="42.308705555555555" lon="-74.16623055555556">
+                <time>2020-05-14T19:46:55Z</time>
+            </trkpt>
+                     <trkpt lat="42.308705555555555" lon="-74.16623055555556">
+                <time>2020-05-14T19:46:55Z</time>
+            </trkpt>
+                     <trkpt lat="42.30861944444444" lon="-74.16587777777778">
+                <time>2020-05-14T19:47:00Z</time>
+            </trkpt>
+                     <trkpt lat="42.30861944444444" lon="-74.16587777777778">
+                <time>2020-05-14T19:47:01Z</time>
+            </trkpt>
+                     <trkpt lat="42.30860833333333" lon="-74.16584722222223">
+                <time>2020-05-14T20:24:04Z</time>
+            </trkpt>
+                </trkseg>
+        </trk>
+        </gpx>
+                

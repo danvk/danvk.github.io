@@ -22,8 +22,8 @@ def dom_to_feature(path: str, dom):
             'path': path,
         },
         'geometry': {
-            'type': 'Polygon',
-            'coordinates': [coords]
+            'type': 'LineString',
+            'coordinates': coords
         }
     }
 
