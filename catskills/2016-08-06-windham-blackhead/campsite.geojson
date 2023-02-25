@@ -1,0 +1,33 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "campsite",
+        "date": "2016-08-06"
+      },
+      "geometry": {
+        "coordinates": [
+          -74.101281,
+          42.275939
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "campsite",
+        "date": "2016-08-07"
+      },
+      "geometry": {
+        "coordinates": [
+          -74.173967,
+          42.307228
+        ],
+        "type": "Point"
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "type": "Feature",
+  "properties": {
+    "type": "campsite",
+    "date": "2022-09-27"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -74.370628,
+      42.002267
+    ]
+  }
+}

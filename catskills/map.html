@@ -1,0 +1,103 @@
+<!doctype html>
+<head>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+      #map {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+      }
+    </style>
+</head>
+
+<div id='map'></div>
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoiZGFudmsiLCJhIjoiY2lrZzJvNDR0MDBhNXR4a2xqNnlsbWx3ciJ9.myJhweYd_hrXClbKk8XLgQ';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/outdoors-v12',
+    // style: 'mapbox://styles/mapbox/satellite-streets-v12',
+    center: [
+      -74.36398700976565,
+      42.0922169187148
+    ],
+    zoom: 9,
+  });
+
+  map.on('load', () => {
+    map.addSource('tracks', {
+      'type': 'geojson',
+      data: '/tracks.geojson'
+    });
+    map.addLayer({
+      'id': 'tracks',
+      'source': 'tracks',
+      'type': 'line',
+      'layout': {
+        'line-join': 'round',
+        'line-cap': 'round'
+      },
+      'paint': {
+        'line-color': [
+          'match',
+          ['get', 'season'],
+          'winter', 'white',
+          'spring', 'limegreen',
+          'summer', 'green',
+          'fall', 'orange',
+          'green'
+        ],
+        'line-width': 4
+      }
+    });
+
+    map.addSource('peaks', {
+      'type': 'geojson',
+      data: '/high-peaks.geojson',
+    });
+    map.addLayer({
+      'id': 'peak-labels',
+      'type': 'symbol',
+      'source': 'peaks',
+      'layout': {
+        'text-field': ['get', 'name'],
+        'text-font': [
+          'Open Sans Semibold',
+          'Arial Unicode MS Bold'
+        ],
+        'text-size': 12,
+        'text-offset': [0, 1.25],
+        'text-anchor': 'top',
+      },
+      'paint': {
+        'text-color': [
+          'match',
+          ['get', 'type'],
+          'dec', 'darkgreen',
+          'trail', 'brown',
+          'bushwhack', 'red',
+          'closed', 'pink',
+          'black'
+        ]
+      }
+    });
+
+    map.addLayer({
+      'id': 'peaks',
+      'type': 'symbol',
+      'source': 'peaks',
+      'layout': {
+        // See https://docs.mapbox.com/data/tilesets/reference/mapbox-streets-v8/#maki-text
+        'icon-image': 'marker', // 'mountain', 'marker'
+        'icon-size': 1.0,
+        'icon-allow-overlap': true,
+      },
+      'paint': {
+        'icon-color': 'green',
+      }
+    });
+  });
+</script>

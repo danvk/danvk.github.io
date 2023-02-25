@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1" creator="AllTrails.com" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+<metadata>
+</metadata>
+<trk>
+    <name>&lt;stdin&gt; - 2016-05-29</name>
+    <src>Photos</src>
+    <trkseg>
+         <trkpt lat="42.12889444444445" lon="-74.13288055555554">
+                <time>2016-05-29T13:53:17Z</time>
+            </trkpt>
+                     <trkpt lat="42.128230555555554" lon="-74.13112777777778">
+                <time>2016-05-29T14:10:51Z</time>
+            </trkpt>
+                     <trkpt lat="42.128230555555554" lon="-74.13112777777778">
+                <time>2016-05-29T14:10:51Z</time>
+            </trkpt>
+                     <trkpt lat="42.12818611111111" lon="-74.13147777777777">
+                <time>2016-05-29T14:11:00Z</time>
+            </trkpt>
+                     <trkpt lat="42.12818611111111" lon="-74.13147777777777">
+                <time>2016-05-29T14:11:00Z</time>
+            </trkpt>
+                     <trkpt lat="42.12827222222222" lon="-74.13115555555555">
+                <time>2016-05-29T14:11:12Z</time>
+            </trkpt>
+                     <trkpt lat="42.12528888888889" lon="-74.12937222222222">
+                <time>2016-05-29T14:31:37Z</time>
+            </trkpt>
+                     <trkpt lat="42.12555277777778" lon="-74.12941111111111">
+                <time>2016-05-29T14:40:18Z</time>
+            </trkpt>
+                     <trkpt lat="42.12555833333333" lon="-74.12933333333332">
+                <time>2016-05-29T14:40:20Z</time>
+            </trkpt>
+                     <trkpt lat="42.12558611111111" lon="-74.12936388888889">
+                <time>2016-05-29T14:40:37Z</time>
+            </trkpt>
+                     <trkpt lat="42.12558611111111" lon="-74.12936388888889">
+                <time>2016-05-29T14:40:45Z</time>
+            </trkpt>
+                     <trkpt lat="42.125569444444444" lon="-74.12939444444444">
+                <time>2016-05-29T14:41:25Z</time>
+            </trkpt>
+                     <trkpt lat="42.12210833333334" lon="-74.1267861111111">
+                <time>2016-05-29T14:59:44Z</time>
+            </trkpt>
+                     <trkpt lat="42.122055555555555" lon="-74.12674722222222">
+                <time>2016-05-29T14:59:53Z</time>
+            </trkpt>
+                     <trkpt lat="42.11815555555555" lon="-74.12585555555555">
+                <time>2016-05-29T15:14:58Z</time>
+            </trkpt>
+                     <trkpt lat="42.11819722222222" lon="-74.12589999999999">
+                <time>2016-05-29T15:15:00Z</time>
+            </trkpt>
+                     <trkpt lat="42.11877777777778" lon="-74.12455">
+                <time>2016-05-29T15:37:24Z</time>
+            </trkpt>
+                </trkseg>
+        </trk>
+        </gpx>
+                

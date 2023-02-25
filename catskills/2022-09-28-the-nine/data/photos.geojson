@@ -1,0 +1,1415 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3489.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 15:35:13"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.40576111111112,
+          41.959
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3470.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 13:38:07"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.38881666666667,
+          41.96893611111111
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3488.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 15:35:06"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.40575277777778,
+          41.95900277777778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3465.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 12:35:41"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.37244444444444,
+          41.97237777777778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3464.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 12:35:29"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.3724361111111,
+          41.97239722222223
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3475.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 15:01:25"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.39775833333334,
+          41.95289722222223
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3483.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 15:03:30"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.39809444444445,
+          41.95301111111112
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3474.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 15:01:22"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.39775833333334,
+          41.9529
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3493.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 16:29:09"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.42641388888889,
+          41.965380555555555
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3454.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 09:50:19"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.36090833333333,
+          41.98807222222222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3468.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 13:33:33"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.38925277777778,
+          41.96926944444445
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3495.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 17:13:27"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.43479166666667,
+          41.974894444444445
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3453.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 09:48:51"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.36093888888888,
+          41.988075
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3473.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 14:57:40"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.39775,
+          41.95283888888889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3496.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 17:45:03"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.45259166666666,
+          41.965408333333336
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3482.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 15:03:30"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.39809444444445,
+          41.95301111111112
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3487.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 15:34:24"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.4058138888889,
+          41.95892777777778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3459.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 11:22:53"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.35769722222221,
+          41.97717222222222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3480.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 15:03:17"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.39810833333334,
+          41.95305555555556
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_4590.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 17:05:04"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.43103888888889,
+          41.974247222222225
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3467.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 13:32:37"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.38916666666667,
+          41.96925
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3497.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 18:03:47"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.50699722222222,
+          41.89002222222222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3499.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 18:50:26"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.10700277777777,
+          41.745669444444445
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3469.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 13:37:39"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.38880833333334,
+          41.968916666666665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3498.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 18:03:48"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.50700277777777,
+          41.89002222222222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3455.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 10:05:56"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.36030555555556,
+          41.98733888888889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3486.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 15:03:36"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.39809444444445,
+          41.95301111111112
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3478.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 15:03:08"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.39810833333334,
+          41.953044444444444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3479.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 15:03:14"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.39810833333334,
+          41.95305555555556
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3481.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 15:03:23"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.39811666666667,
+          41.953050000000005
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3460.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 12:11:56"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.36891944444444,
+          41.974491666666665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3492.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 16:29:04"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.42643611111112,
+          41.965333333333334
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3494.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 17:06:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.43109166666667,
+          41.9744
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3476.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 15:03:02"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.39810833333334,
+          41.953044444444444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3485.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 15:03:35"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.39809444444445,
+          41.95301111111112
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3463.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 12:22:26"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.37191666666666,
+          41.973422222222226
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_4591.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 17:05:38"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.43106944444445,
+          41.97420555555556
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3471.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 14:17:47"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.396325,
+          41.96447777777778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_4584.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 14:57:20"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.39777500000001,
+          41.952958333333335
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3456.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 10:06:05"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.36036666666666,
+          41.98736111111111
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3461.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 12:11:59"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.36894166666666,
+          41.974491666666665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3484.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 15:03:34"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.39809444444445,
+          41.95301111111112
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3466.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 13:18:45"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.38567222222223,
+          41.97095
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3491.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 16:29:03"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.42643611111112,
+          41.965333333333334
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3472.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 14:36:23"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.39962777777778,
+          41.959294444444446
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3477.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 15:03:08"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.39810833333334,
+          41.953044444444444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3457.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 10:07:08"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.36045,
+          41.987125
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3449.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 09:36:59"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.36158055555555,
+          41.98885833333333
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3452.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 09:48:29"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.36093888888888,
+          41.98807222222222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_4566.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 09:36:10"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.3616111111111,
+          41.98885277777778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3448.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 09:36:56"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.36158055555555,
+          41.98885277777778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_4572.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 09:38:34"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.36152777777777,
+          41.988822222222225
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3450.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 09:48:21"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.36093888888888,
+          41.988075
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3438.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 16:15:09"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.35559722222222,
+          42.002516666666665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3446.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 08:37:42"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.35987222222222,
+          42.0008
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3444.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 19:10:36"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.37062777777777,
+          42.002266666666664
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_4589.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 17:04:48"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.4310138888889,
+          41.97425555555556
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_4569.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 09:36:28"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.36157222222222,
+          41.98885277777778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3445.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 07:51:46"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.37072777777777,
+          42.002297222222225
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_4571.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 09:38:31"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.36153333333333,
+          41.98882777777778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3441.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 16:46:34"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.34695555555555,
+          42.008247222222224
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3442.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 16:49:20"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.34696944444444,
+          42.00823611111111
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3439.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 16:22:04"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.35568333333333,
+          42.00265
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_4568.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 09:36:25"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.3616111111111,
+          41.98885277777778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3447.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 08:59:37"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.36252499999999,
+          41.99718888888889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3436.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 16:09:26"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.35616388888889,
+          42.001311111111114
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3433.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 13:55:27"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.38368333333334,
+          41.99977777777778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3443.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 16:54:26"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.3467861111111,
+          42.00828611111111
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3434.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 15:13:25"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.37048333333333,
+          42.00233055555555
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3437.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 16:14:49"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.35558333333333,
+          42.00251111111111
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3440.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 16:22:06"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.35571944444443,
+          42.002583333333334
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3435.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 16:03:44"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.35771944444444,
+          42.00158611111111
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3490.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 16:28:32"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.42641388888889,
+          41.965338888888894
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3432.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 13:51:47"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.38373611111112,
+          41.99979722222222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3431.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 13:51:45"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.38374444444445,
+          41.99979444444445
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3429.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 13:35:44"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.3839638888889,
+          41.99910277777778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3428.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 13:35:43"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.3839638888889,
+          41.99910277777778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3430.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 13:35:45"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.3839638888889,
+          41.99910277777778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_4559.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 13:11:02"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.38700833333334,
+          42.00000277777778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_4570.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 09:36:30"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.36157222222222,
+          41.98885277777778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3424.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 13:27:01"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.38515555555556,
+          41.99901666666667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_4558.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 13:10:57"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.387,
+          42.00000277777778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3427.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 13:35:40"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.3839638888889,
+          41.999097222222225
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_4557.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 13:10:56"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.387,
+          42.00000277777778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3421.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 13:04:07"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.38697777777779,
+          41.999966666666666
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3451.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:28 09:48:26"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.36093888888888,
+          41.98807222222222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3423.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 13:10:15"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.38697777777779,
+          41.99996111111111
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3425.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 13:35:37"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.38392777777779,
+          41.99908333333333
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3426.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 13:35:38"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.38392777777779,
+          41.99908333333333
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3422.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 13:04:42"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.38696944444445,
+          42.0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3413.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 10:29:28"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.45246944444445,
+          41.965519444444446
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3419.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 13:01:48"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.38732222222222,
+          42.00026388888889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3420.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 13:01:58"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.38730555555556,
+          42.00027222222222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "IMG_3417.HEIC",
+        "zipfile": "/Users/danvk/Downloads/Photos-001.zip",
+        "date": "2022:09:27 12:01:09"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.41561111111112,
+          41.993766666666666
+        ]
+      }
+    }
+  ]
+}
