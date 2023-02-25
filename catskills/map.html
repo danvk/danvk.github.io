@@ -70,7 +70,18 @@
         ],
         'text-size': 12,
         'text-offset': [0, 1.25],
-        'text-anchor': 'top'
+        'text-anchor': 'top',
+      },
+      'paint': {
+        'text-color': [
+          'match',
+          ['get', 'type'],
+          'dec', 'darkgreen',
+          'trail', 'brown',
+          'bushwhack', 'red',
+          'closed', 'pink',
+          'black'
+        ]
       }
     });
 

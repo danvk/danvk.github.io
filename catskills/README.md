@@ -34,6 +34,7 @@ Things to include:
 - [x] Make slugged directories for all hikes
 - [x] Make spreadsheet listing of all hikes
 - [ ] Do I have Google location data for old hikes?
+      (Do I have Google location data in any form?)
 - [ ] Make the "blog" -- posts for each hike
 - [ ] Make a root page
 - [ ] Make an RSS feed
