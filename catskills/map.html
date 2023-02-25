@@ -30,7 +30,7 @@
   map.on('load', () => {
     map.addSource('tracks', {
       'type': 'geojson',
-      data: '/tracks.geojson'
+      data: 'tracks.geojson'
     });
     map.addLayer({
       'id': 'tracks',
@@ -56,7 +56,7 @@
 
     map.addSource('peaks', {
       'type': 'geojson',
-      data: '/high-peaks.geojson',
+      data: 'high-peaks.geojson',
     });
     map.addLayer({
       'id': 'peak-labels',
