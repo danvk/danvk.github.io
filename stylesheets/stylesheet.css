@@ -63,6 +63,10 @@ h3[id] {
   margin-right: 1em;
 }
 
+.panel-body p:last-of-type {
+  margin-bottom: 0;
+}
+
 #blog .post-title {
   font-size: large;
   font-weight: bold;
