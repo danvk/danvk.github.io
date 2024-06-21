@@ -16,21 +16,33 @@ Because it's running in your browser, you get lots of nice things for free: web 
 
 ![Webdiff showing an image diff](/images/webdiff-images.png)
 
+Installation is as simple as
+
+    pip install webdiff
+
+## Background
+
 The project came out of my experience of [leaving Google] for the first time back in 2014. I was very accustomed to how software was built inside Google, and there were some tools that I missed. In particular, Google's code review tools (Mondrian and later Critique) were light years ahead of GitHub's in 2014. GitHub's PR Review was quite barebones back then: no two-column diffs, no syntax highlighting. webdiff was my attempt both to improve this, and to learn how to build and publish a tool outside the Google ecosystem.
 
 I spent a good chunk of the summer of 2014 building webdiff, and I was happy with how it turned out. I released it that July and [continued to work on it], even giving a [PyCon talk] about it in 2015.
 
 While I haven't worked much on webdiff since 2015, I've continued to be an active user. My years at Google trained me to look at two-column diffs with syntax highlighting in a browser, and I still much prefer this to looking at diffs in a terminal. GitHub's Pull Request UI has [improved significantly] over the years, but I like that I can run `git webdiff` locally (or on a plane) without having to push anything to GitHub. I also prefer the one-file-at-a-time UI, which matches Mondrian/Critique. [VSCode's diff viewer] is another interesting option these days, though I feel some mismatch between diff viewing as an ephemeral process and editing as a more persistent one.
 
+## Realizations
+
 Using webdiff over the years, I had a few realizations. One was that I hadn't understood git very well when I built it in 2014. Most of my experience had been with `git5`, a git wrapper around Perforce in use at Google at the time. In retrospect, this was an incredibly confusing way to learn git! My understanding of git improved while I [worked at Hammerlab] in 2014–2015, then took another big step forward in 2016 when I watched the fantastic [git from the bits up] talk.
 
 The other big realization was that I'd architected `webdiff` in the wrong way. webdiff takes two directories (before and after, or left and right) and tries to match up the files in them. This is usually straightforward, but there are some tricky edge cases, like a [rename+change]. The original webdiff matched files up on its own, then calculated diffs for each file. The realization was that `git` [is already really good at this], and that I should rely on it to do all the diff calculations for me. webdiff should _display_ diffs, never calculate them.
+
+## A wall
 
 This idea kicked around in the back of my head for a few years, until I had some time to work on it in the fall of 2022. I learned about `git diff --no-index`, which lets you use `git-diff` to diff two files or directories outside a git repo. And I learned about `git diff --raw`, which diffs two directories and matches files between them to produce adds, deletes, renames and changes. This all seemed promising! It even let me play around with flags like `git diff -w` which tells `git diff` to ignore whitespace changes.
 
 Then I ran into a wall: if you run `git difftool` from `HEAD`, one of the directories it produces will be filled with symlinks to files in your repo. This makes sense: it's faster to create symlinks to the files than copies. And for webdiff, it meant that you could edit a file, reload the browser window, and see the new diff.
 
 Unfortunately for webdiff, `git diff --no-index` [does not resolve symlinks]. This meant that, in order to produce a diff, I had to run `git difftool --no-symlinks`. This was slower, and it broke an important workflow: reloading the diff after editing a file no longer reflected your changes. This was frustrating, and enough to put me off the project.
+
+## A breakthrough
 
 Fast-forward almost two years and I decided to pick up the project again. What had seemed like a fundamental issue in 2022 now just seemed like a nuisance. Before passing the directories to `git diff --no-index`, I could make a version of the directory that resolved the symlinks. This would let `git` pair up the files for me. Then I could resolve symlinks before running `git diff --no-index` to generate diffs for individual files. Elegant, no, but it let me get through the impasse.
 
@@ -43,6 +55,8 @@ One advantage of stepping away from a project for so long is that you get to ski
 When I ported the code over to React, [the duplication went away]. It was easy to show the additional skipped rows _in the data model_ and trust React to render them appropriately.
 
 I've added quite a few new features and even started to play around with next-generation tooling like the [React Compiler]. But after a few weeks, I can tell that I've hit the point of diminishing returns. I'd like to go back to being a user again.
+
+## What's next
 
 What would I work on next for webdiff? There's a [long-standing, annoying bug] where the terminal process doesn't quit when you close the diff in your browser. I'd like to try to fix that. And now that the diff UI is fully React-ified, [generating it lazily] could make it easier to render diffs for large files like lockfiles (or `checker.ts`). I'd also be excited about a special mode for [diffing minified JSON].
 
