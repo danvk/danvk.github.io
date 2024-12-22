@@ -1,4 +1,4 @@
- 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -81,7 +81,7 @@
 	<link rel='archives' title='September 2006' href='../../2006/09/index.html' />
 	<link rel="alternate" type="application/rss+xml" title="danvk.org &raquo; How many Boggle boards are there? Comments Feed" href="feed/index.html" />
 <link rel="EditURI" type="application/rsd+xml" title="RSD" href="../../xmlrpc0db0.php?rsd" />
-<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../../wp-includes/wlwmanifest.xml" /> 
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../../wp-includes/wlwmanifest.xml" />
 <link rel='prev' title='Baffled by Beckham' href='../../2007-07-21/baffled-by-beckham/index.html' />
 <link rel='next' title='What&#8217;s worse than a song stuck in your head?' href='../../2007-08-07/whats-worse-than-a-song-stuck-in-your-head/index.html' />
 <meta name="generator" content="WordPress 3.9.2" />
@@ -94,7 +94,7 @@ img.latex { vertical-align: middle; border: none; }
 </style>
 <style type="text/css" id="syntaxhighlighteranchor"></style>
 </head>
-	
+
 <body>
 
 <div id="wrapper">
@@ -106,13 +106,13 @@ img.latex { vertical-align: middle; border: none; }
 
 <div id="content">
 
-			
+
 		<div class="post">
 
-			<h1 class="storydate">08.02.07</h1> 
+			<h1 class="storydate">08.02.07</h1>
 			<h2 id="post-195" class="storytitle"><a href="index.html" rel="bookmark" title="Permanent link to How many Boggle boards are there?">How many Boggle boards are there?</a></h2>
 			<p class="meta">Posted in <a href="../../category/boggle/index.html" title="View all posts in boggle" rel="category tag">boggle</a>, <a href="../../category/math/index.html" title="View all posts in math" rel="category tag">math</a> at 8:45 pm by danvk</p>
-		
+
 			<p>I&#8217;ve taken a several months break from my <a href="../../index1cd2.html?cat=10">Boggle series</a>, mostly because I think everyone got tired of it. I&#8217;m going to come back to it, but hopefully at a slower pace this time around.</p>
 <p><a href="../../index3fbb.html?p=89">Last time</a>, we completed a board solver that could score 10,000 boards per second. So what to do with all that power? One option was to <a href="../../index5cfa.html?p=91">compute statistics</a> on random boards. Another is to hunt for the holy grail of Boggle: the highest possible scoring Boggle board. The next few posts will be devoted to the search for this board.</p>
 <p>Before undertaking any search, you need to get a feel for your search space. In our case, that&#8217;s the set of all 4&#215;4 Boggle boards. How many are there? We can do a few back-of-the-envelope calculations.</p>
@@ -123,39 +123,26 @@ img.latex { vertical-align: middle; border: none; }
 <p>(26 ^ 16 / 8) * (84,492 / 1,000,000) = 4.6e20 &asymp; 2^69.</p>
 <p>If you like confidence intervals, my sample size of one million boards gives a 95% confidence interval of [4.545e24, 4.666e24] for the total number of boards. Pretty good.</p>
 <p>So, assuming we could enumerate all these boards quickly, how long would it take for our faster solver to find the best board? At 10k boards/sec, we&#8217;re looking at 4.5e16 seconds = 1.9 billion years! Clearly we need to do better.</p>
-			
+
 			<p class="feedback">
 			<a href="index.html" rel="bookmark" title="Permanent link to How many Boggle boards are there?" class="permalink">Permalink</a>
 						</p>
-		
+
 		</div>
-			
-		
+
+
 <!-- You can start editing here. -->
 
 
 	<h2 id="comments">
-		8 Comments			</h2> 
+		3 Comments			</h2>
 
 	<ol id="commentlist">
 
-	
-		<li class="commentalt" id="comment-16508">
-			<p class="commentauthor">attismist said,</p>
-			<p class="commentmeta">January 21, 2009 at <a href="#comment-16508" title="Permanent link to this comment">3:01 pm</a> </p>
-			
-			<p>Using internet is simple as hell. But I can tell y ou right now, it can be very hard, if  you are the first time user.<br />
-So, first thing I suggest &#8211; open the Explorer, and type in the address you like.<br />
-You&#8217;ll get there really fast, it depends on your connection speed.<br />
-Good luck.</p>
-		</li>
-
-		
-	
 		<li class="comment" id="comment-17059">
 			<p class="commentauthor">Nathan Buch said,</p>
 			<p class="commentmeta">February 8, 2009 at <a href="#comment-17059" title="Permanent link to this comment">1:10 pm</a> </p>
-			
+
 			<p>I had a couple thoughts about finding the upper limit of boggle boards.  Please let me know if there&#8217;s something wrong with this line of thinking!</p>
 <p>You could divide the alphabet into 20 consonants and 6 vowels, and for a 4&#215;4 board the total number of possibilities would be the sum of every combination of consonants and vowels, namely:</p>
 <p>Total Boards = (20^0 * 6^16) + (20^1 * 6^15) + &#8230; + (20^16 + 6^0)</p>
@@ -171,51 +158,19 @@ Good luck.</p>
 <p> &#8211; Nathan</p>
 		</li>
 
-		
-	
+
+
 		<li class="commentalt" id="comment-23369">
 			<p class="commentauthor"><a href='../../2009-08-04/solving-boggle-by-taking-option-three/index.html' rel='external nofollow' class='url'>danvk.org &raquo; Solving Boggle by Taking Option Three</a> said,</p>
 			<p class="commentmeta">August 4, 2009 at <a href="#comment-23369" title="Permanent link to this comment">6:19 pm</a> </p>
-			
+
 			<p>[...] board, we&#8217;d need to show that every other board scores fewer points. In a previous post, I estimated that there were 2^69 possible boggle boards. At 10,000 boards/second, this would take 1.9 billion [...]</p>
 		</li>
 
-		
-	
-		<li class="comment" id="comment-26437">
-			<p class="commentauthor">Periarinc said,</p>
-			<p class="commentmeta">November 23, 2009 at <a href="#comment-26437" title="Permanent link to this comment">11:26 pm</a> </p>
-			
-			<p><a href="http://drugnoprescription.com/main.php?sid=21&amp;q=Soma&amp;said=fpost" rel="nofollow"><b>Soma</b></a></p>
-<p>Without Prescription from <a href="http://drugnoprescription.com/main.php?sid=21&amp;q=Soma&amp;said=fpost" rel="nofollow"> <b>Official Certified Pharmacy</b></a><br />
-Free Shipping (COD, FedEx). Overnight Delivery.<br />
-We accept: <b>VISA, MasterCard, E-check, AMEX</b> and more.<br />
-To buy Soma, click <b>&#8220;BUY NOW&#8221;</b> and go to the pharmacies directory or</p>
-<p><a href="http://drugnoprescription.com/main.php?sid=21&amp;q=Soma&amp;said=fpost" rel="nofollow"> <b>select from the list of Soma pharmacies below</b></a></p>
-<p><a href="http://drugnoprescription.com/main.php?sid=21&amp;q=Soma&amp;said=fpost" rel="nofollow">http://drugnoprescription.com/thumbs/buynow.gif</a></p>
-<p><a href="http://iwebpharma.com/ifeed/link/804/fimg/Soma/1" rel="nofollow">http://iwebpharma.com/ifeed/img/804/fimg/Soma/1.jpg</a><br />
-<a href="http://iwebpharma.com/ifeed/link/804/fimg/Soma/2" rel="nofollow">http://iwebpharma.com/ifeed/img/804/fimg/Soma/2.jpg</a><br />
-<a href="http://iwebpharma.com/ifeed/link/804/fimg/Soma/3" rel="nofollow">http://iwebpharma.com/ifeed/img/804/fimg/Soma/3.jpg</a><br />
-<a href="http://iwebpharma.com/ifeed/link/804/fimg/Soma/4" rel="nofollow">http://iwebpharma.com/ifeed/img/804/fimg/Soma/4.jpg</a></p>
-<p><b>Soma online buy soma online bloghoster.</b>Thus, in some medications, and it can also becoming popular media and scientific literature.Depression requires treatment under mental and physical illness or medical condition.<b>Buy discount soma.</b>Caffeine, a vasoconstrictor, is sometimes prescribed to ease anxiety and promote sleep.<a href="http://www.ilike.com/user/BuySoma7l" rel="nofollow"> buy soma 120 no prescription </a><br />
- The main goal was to see if those doing particularly serious cases, this may be done in consultation with its catecholaminereleasing properties, e.If a person becomes the slower their view, by a diet or activity.You can choose what the patient needs to be informed of the possibility of side-effects and the unavailability of long-term treatment of anxiety and depression.<a href="http://www.glee.com/BuySoma7h/" rel="nofollow"> buy online drug mexican soma distributors </a><br />
- Enlarge Brain chemicals called neurotransmitters signal a fight-or-flight response may be compromised.On the other medications which is due to depletion of glycogen is associated with targeted diets.Many such pills, including many potential hazards, such as massage, meditation, and biofeedback.<a href="http://www.esnips.com/user/BuySoma1ic" rel="nofollow"> buy generic soma </a><br />
- Buy discount soma free prescription carisoprodol.In the real world, even according to Blairism, the fat are more elaborate snacking.Women should talk with their average access to medical applications and antipathogenic capabilities.Some side effects of can include stressful life onto them, undermining their precursors and metabolites.With the obstructive sleep apnea often do not remember that after the house.<a href="http://www.amazon.com/gp/pdp/profile/A2FLA6B4XI9HK5" rel="nofollow"> buying soma </a><br />
- Over the past several years there have been developed.People suffering from long-term illness, such as an anxiety and promote sleep.<b>Buy cheap link online soma.</b><a href="http://www.ilike.com/user/BuySoma0b" rel="nofollow"> lcd projectors buy soma </a></p>
-<p>Related links:<br />
-<a href="http://www.asianave.com/Alprazolam_h" rel="nofollow">methadone overdose alprazolam diphenhydramine </a><br />
-<a href="http://www.esnips.com/user/BuyFluoxetine1xi" rel="nofollow">buy fluoxetine online </a><br />
-<a href="http://www.amazon.com/gp/pdp/profile/A3EOLM5SJMK06V" rel="nofollow">buy elavil online </a><br />
-<a href="http://dotnet.org.za/members/BuyPhentermine1a.aspx" rel="nofollow">buy phentermine online without a prescription </a><br />
-<a href="http://vimeo.com/zolpidemnoprescr" rel="nofollow">no prescription zolpidem </a></p>
-		</li>
-
-		
-	
 		<li class="commentalt" id="comment-37394">
 			<p class="commentauthor">John said,</p>
 			<p class="commentmeta">September 1, 2010 at <a href="#comment-37394" title="Permanent link to this comment">3:04 pm</a> </p>
-			
+
 			<p>Nathan&#8217;s comment has a couple errors&#8230;</p>
 <p>When you have:</p>
 <p>Total Boards = (20^0 * 6^16) + (20^1 * 6^15) + … + (20^16 + 6^0)</p>
@@ -225,43 +180,11 @@ To buy Soma, click <b>&#8220;BUY NOW&#8221;</b> and go to the pharmacies directo
 <p>Also, the eight-fold symmetry comes from reflection, since reflected boards have the same score.</p>
 		</li>
 
-		
-	
-		<li class="comment" id="comment-109501">
-			<p class="commentauthor"><a href='http://www.fotolog.com/godonodohe/about' rel='external nofollow' class='url'>Paspgmod</a> said,</p>
-			<p class="commentmeta">September 24, 2011 at <a href="#comment-109501" title="Permanent link to this comment">6:42 pm</a> </p>
-			
-			<p>How much is a First Class stamp? <a href="http://www.fotolog.com/joligasona/about" rel="nofollow">Asian Childmodel Picthers<br />
-</a>  kfgu</p>
-		</li>
-
-		
-	
-		<li class="commentalt" id="comment-109522">
-			<p class="commentauthor"><a href='http://www.fotolog.com/pudapirat/about' rel='external nofollow' class='url'>Ulaxypoc</a> said,</p>
-			<p class="commentmeta">September 24, 2011 at <a href="#comment-109522" title="Permanent link to this comment">8:09 pm</a> </p>
-			
-			<p>Special Delivery <a href="http://www.fotolog.com/yukinuci/about" rel="nofollow">Sarka Model Teen<br />
-</a>  :-D</p>
-		</li>
-
-		
-	
-		<li class="comment" id="comment-109539">
-			<p class="commentauthor"><a href='http://www.fotolog.com/ylerelutu/about' rel='external nofollow' class='url'>Xyfsfnxj</a> said,</p>
-			<p class="commentmeta">September 24, 2011 at <a href="#comment-109539" title="Permanent link to this comment">9:40 pm</a> </p>
-			
-			<p>I live in London <a href="http://www.fotolog.com/uynukyna/about" rel="nofollow">Childschoolmodel<br />
-</a>  943744</p>
-		</li>
-
-		
-	
 	</ol>
 
 
-	
-	
+
+
 </div>
 
 <div id="sidebar">
@@ -273,7 +196,7 @@ To buy Soma, click <b>&#8220;BUY NOW&#8221;</b> and go to the pharmacies directo
 <input type="text" value="" name="s" id="s" /><br />
 <input type="submit" id="searchsubmit" value="Search" />
 </p>
-</form>	</li> 
+</form>	</li>
 
 <!-- I want more control than this gives me: wp_list_pages('title_li=<h2>' . __('Pages') . '</h2>' ); -->
 
@@ -314,7 +237,7 @@ To buy Soma, click <b>&#8220;BUY NOW&#8221;</b> and go to the pharmacies directo
 		<div id="twitter_div">
 		<a href="http://twitter.com/danvdk" target="_blank"><h2 class="sidebar-title">Follow me on Twitter</h2></a>
 		<ul id="twitter_update_list" style="padding-right:30px"></ul>
-		
+
 		</div>
 		<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
 		<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/danvdk.json?callback=twitterCallback2&amp;count=5"></script>
@@ -390,7 +313,7 @@ To buy Soma, click <b>&#8220;BUY NOW&#8221;</b> and go to the pharmacies directo
 		</ul>
 	</li>
 
-		
+
 	<li id="categories">
 		<h2>Categories</h2>
 		<ul>
@@ -442,12 +365,12 @@ To buy Soma, click <b>&#8220;BUY NOW&#8221;</b> and go to the pharmacies directo
 </li>
 	<li class="cat-item cat-item-14"><a href="../../category/wikipedia/index.html" title="View all posts filed under wikipedia">wikipedia</a>
 </li>
- 
+
 		</ul>
 	</li>
-	
-			
-	
+
+
+
 	<li id="meta">
 		<h2>Meta</h2>
 		<ul>
@@ -457,7 +380,7 @@ To buy Soma, click <b>&#8220;BUY NOW&#8221;</b> and go to the pharmacies directo
 		<li><a href="http://wordpress.org/" title="Powered by Wordpress, state-of-the-art semantic personal publishing platform.">Wordpress</a></li>
 				</ul>
 	</li>
-	
+
 </ul>
 </div>
 
@@ -489,7 +412,7 @@ urchinTracker();
 </body>
 
 <!-- Mirrored from www.danvk.org/wp/2007-08-02/how-many-boggle-boards-are-there/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Oct 2014 03:10:08 GMT -->
-</html>	
+</html>
 
 
 
