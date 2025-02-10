@@ -1,0 +1,125 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="650pt" height="114pt" viewBox="0.00 0.00 650.48 114">
+<g id="graph0" class="graph" transform="translate(4,110) scale(1)" data-name="">
+<polygon fill="white" stroke="none" points="-4,4 -4,-110 646.48,-110 646.48,4 -4,4"/>
+<!-- r -->
+
+<!-- r0_0c -->
+
+<!-- r&#45;&#45;r0_0c -->
+
+<!-- r1_1c -->
+
+<!-- r&#45;&#45;r1_1c -->
+
+<!-- r2_2c -->
+
+<!-- r&#45;&#45;r2_2c -->
+
+<!-- r0_0c0_0t -->
+<g id="node1" class="node" pointer-events="visible" data-name="r0_0c0_0t">
+
+<polygon fill="none" stroke="black" points="54,-74 0,-74 0,-38 54,-38 54,-74"/>
+<text text-anchor="middle" x="27" y="-51.8" font-family="Times,serif" font-size="14.00">0=t</text>
+</g>
+<!-- r0_0c&#45;&#45;r0_0c0_0t -->
+
+<!-- r1_1c0_1a -->
+
+<!-- r1_1c&#45;&#45;r1_1c0_1a -->
+
+<!-- r2_2c0_2r -->
+
+<!-- r2_2c&#45;&#45;r2_2c0_2r -->
+
+<!-- r0_0c0_0t0_1c -->
+<g id="node2" class="node" pointer-events="visible" data-name="r0_0c0_0t0_1c">
+
+<ellipse fill="none" stroke="black" cx="121.69" cy="-83" rx="31.89" ry="18"/>
+<text text-anchor="middle" x="121.69" y="-78.8" font-family="Times,serif" font-size="14.00">1 CH</text>
+</g>
+<!-- r0_0c0_0t&#45;&#45;r0_0c0_0t0_1c -->
+<g id="edge1" class="edge" data-name="r0_0c0_0t--r0_0c0_0t0_1c">
+
+<path fill="none" stroke="black" d="M54.31,-63.66C66.3,-67.16 80.51,-71.29 92.69,-74.84"/>
+</g>
+<!-- r0_0c0_0t1_3c -->
+<g id="node3" class="node" pointer-events="visible" data-name="r0_0c0_0t1_3c">
+
+<ellipse fill="none" stroke="black" cx="121.69" cy="-29" rx="31.89" ry="18"/>
+<text text-anchor="middle" x="121.69" y="-24.8" font-family="Times,serif" font-size="14.00">3 CH</text>
+</g>
+<!-- r0_0c0_0t&#45;&#45;r0_0c0_0t1_3c -->
+<g id="edge2" class="edge" data-name="r0_0c0_0t--r0_0c0_0t1_3c">
+
+<path fill="none" stroke="black" d="M54.31,-48.34C66.3,-44.84 80.51,-40.71 92.69,-37.16"/>
+</g>
+<!-- r0_0c0_0t0_1c0_1a -->
+<g id="node4" class="node" pointer-events="visible" data-name="r0_0c0_0t0_1c0_1a">
+
+<polygon fill="none" stroke="black" points="243.39,-101 189.39,-101 189.39,-65 243.39,-65 243.39,-101"/>
+<text text-anchor="middle" x="216.39" y="-78.8" font-family="Times,serif" font-size="14.00">1=a</text>
+</g>
+<!-- r0_0c0_0t0_1c&#45;&#45;r0_0c0_0t0_1c0_1a -->
+<g id="edge3" class="edge" data-name="r0_0c0_0t0_1c--r0_0c0_0t0_1c0_1a">
+
+<path fill="none" stroke="black" d="M154.08,-83C165.42,-83 178.11,-83 188.98,-83"/>
+</g>
+<!-- r0_0c0_0t1_3c0_3i -->
+<g id="node7" class="node" pointer-events="visible" data-name="r0_0c0_0t1_3c0_3i">
+
+<polygon fill="none" stroke="black" points="243.39,-46 189.39,-46 189.39,-10 243.39,-10 243.39,-46"/>
+<text text-anchor="middle" x="216.39" y="-23.8" font-family="Times,serif" font-size="14.00">3=i</text>
+</g>
+<!-- r0_0c0_0t1_3c&#45;&#45;r0_0c0_0t1_3c0_3i -->
+<g id="edge6" class="edge" data-name="r0_0c0_0t1_3c--r0_0c0_0t1_3c0_3i">
+
+<path fill="none" stroke="black" d="M154.08,-28.66C165.42,-28.54 178.11,-28.4 188.98,-28.28"/>
+</g>
+<g id="node5" class="node" pointer-events="visible" data-name="r0_0c0_0t0_1c0_1a0_2c" data-comment="r0_0c0_0t1_3c--r0_0c0_0t1_3c0_3i">
+
+<ellipse fill="none" stroke="black" cx="311.08" cy="-83" rx="31.89" ry="18"/>
+<text text-anchor="middle" x="311.08" y="-78.8" font-family="Times,serif" font-size="14.00">2 CH</text>
+</g><g id="edge4" class="edge" data-name="r0_0c0_0t0_1c0_1a--r0_0c0_0t0_1c0_1a0_2c" data-comment="r0_0c0_0t1_3c--r0_0c0_0t1_3c0_3i">
+
+<path fill="none" stroke="black" d="M243.7,-83C254.62,-83 267.38,-83 278.77,-83"/>
+</g><g id="node6" class="node" pointer-events="visible" data-name="r0_0c0_0t0_1c0_1a0_2c0_2r" data-comment="r0_0c0_0t1_3c--r0_0c0_0t1_3c0_3i">
+
+<polygon fill="none" stroke="black" points="439.1,-102 383.39,-102 383.39,-66 439.1,-66 439.1,-102"/>
+<polygon fill="none" stroke="black" points="443.13,-106 379.36,-106 379.36,-62 443.13,-62 443.13,-106"/>
+<text text-anchor="middle" x="411.24" y="-79.8" font-family="Times,serif" font-size="14.00">2=r (1)</text>
+</g><g id="edge5" class="edge" data-name="r0_0c0_0t0_1c0_1a0_2c--r0_0c0_0t0_1c0_1a0_2c0_2r" data-comment="r0_0c0_0t1_3c--r0_0c0_0t1_3c0_3i">
+
+<path fill="none" stroke="black" d="M343.41,-83.32C354.75,-83.43 367.54,-83.56 378.88,-83.68"/>
+</g><g id="node8" class="node" pointer-events="visible" data-name="r0_0c0_0t1_3c0_3i0_1c" data-comment="r0_0c0_0t1_3c--r0_0c0_0t1_3c0_3i">
+
+<ellipse fill="none" stroke="black" cx="311.08" cy="-26" rx="31.89" ry="18"/>
+<text text-anchor="middle" x="311.08" y="-21.8" font-family="Times,serif" font-size="14.00">1 CH</text>
+</g><g id="edge7" class="edge" data-name="r0_0c0_0t1_3c0_3i--r0_0c0_0t1_3c0_3i0_1c" data-comment="r0_0c0_0t1_3c--r0_0c0_0t1_3c0_3i">
+
+<path fill="none" stroke="black" d="M243.7,-27.43C254.62,-27.2 267.38,-26.92 278.77,-26.68"/>
+</g><g id="node9" class="node" pointer-events="visible" data-name="r0_0c0_0t1_3c0_3i0_1c0_1e" data-comment="r0_0c0_0t1_3c--r0_0c0_0t1_3c0_3i">
+
+<polygon fill="none" stroke="black" points="439.68,-40 382.81,-40 382.81,-4 439.68,-4 439.68,-40"/>
+<polygon fill="none" stroke="black" points="443.68,-44 378.81,-44 378.81,0 443.68,0 443.68,-44"/>
+<text text-anchor="middle" x="411.24" y="-17.8" font-family="Times,serif" font-size="14.00">1=e (1)</text>
+</g><g id="edge8" class="edge" data-name="r0_0c0_0t1_3c0_3i0_1c--r0_0c0_0t1_3c0_3i0_1c0_1e" data-comment="r0_0c0_0t1_3c--r0_0c0_0t1_3c0_3i">
+
+<path fill="none" stroke="black" d="M343.14,-24.73C354.38,-24.28 367.07,-23.76 378.37,-23.3"/>
+</g><g id="node10" class="node" pointer-events="visible" data-name="r0_0c0_0t1_3c0_3i0_1c0_1e0_2c" data-comment="r0_0c0_0t1_3c--r0_0c0_0t1_3c0_3i">
+
+<ellipse fill="none" stroke="black" cx="511.4" cy="-22" rx="31.89" ry="18"/>
+<text text-anchor="middle" x="511.4" y="-17.8" font-family="Times,serif" font-size="14.00">2 CH</text>
+</g><g id="edge9" class="edge" data-name="r0_0c0_0t1_3c0_3i0_1c0_1e--r0_0c0_0t1_3c0_3i0_1c0_1e0_2c" data-comment="r0_0c0_0t1_3c--r0_0c0_0t1_3c0_3i">
+
+<path fill="none" stroke="black" d="M444.11,-22C455.31,-22 467.87,-22 479.03,-22"/>
+</g><g id="node11" class="node" pointer-events="visible" data-name="r0_0c0_0t1_3c0_3i0_1c0_1e0_2c0_2r" data-comment="r0_0c0_0t1_3c--r0_0c0_0t1_3c0_3i">
+
+<polygon fill="none" stroke="black" points="638.65,-40 582.93,-40 582.93,-4 638.65,-4 638.65,-40"/>
+<polygon fill="none" stroke="black" points="642.67,-44 578.91,-44 578.91,0 642.67,0 642.67,-44"/>
+<text text-anchor="middle" x="610.79" y="-17.8" font-family="Times,serif" font-size="14.00">2=r (1)</text>
+</g><g id="edge10" class="edge" data-name="r0_0c0_0t1_3c0_3i0_1c0_1e0_2c--r0_0c0_0t1_3c0_3i0_1c0_1e0_2c0_2r" data-comment="r0_0c0_0t1_3c--r0_0c0_0t1_3c0_3i">
+
+<path fill="none" stroke="black" d="M543.75,-22C554.87,-22 567.38,-22 578.5,-22"/>
+</g></g>
+</svg>

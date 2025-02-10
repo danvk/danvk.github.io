@@ -1,0 +1,117 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="277pt" height="260pt" viewBox="0.00 0.00 276.75 260">
+<g id="graph0" class="graph" transform="translate(21.46392841471095,251.43107128410588) scale(0.9614830539833177)" data-name="">
+<polygon fill="white" stroke="none" points="-4,4 -4,-256 272.75,-256 272.75,4 -4,4"/>
+<!-- _1c -->
+<g id="node1" class="node" pointer-events="visible" data-name="_4c" data-comment="_1c">
+
+<ellipse fill="none" stroke="black" cx="31.69" cy="-126" rx="31.89" ry="18"/>
+<text text-anchor="middle" x="31.69" y="-121.8" font-family="Times,serif" font-size="14.00">4 CH</text>
+</g>
+<!-- _1c0_0t -->
+<g id="node2" class="node" pointer-events="visible" data-name="_4c0_4a" data-comment="_1c0_0t">
+
+<polygon fill="none" stroke="black" points="153.39,-252 99.39,-252 99.39,-216 153.39,-216 153.39,-252"/>
+<text text-anchor="middle" x="126.39" y="-229.8" font-family="Times,serif" font-size="14.00">4=a</text>
+</g>
+<!-- _1c&#45;&#45;_1c0_0t -->
+<g id="edge1" class="edge" data-name="_4c--_4c0_4a" data-comment="_1c--_1c0_0t">
+
+<path fill="none" stroke="black" d="M46.37,-141.94C63.29,-161.65 92.03,-195.14 109.8,-215.83"/>
+</g>
+<!-- _1c1_0t -->
+<g id="node3" class="node" pointer-events="visible" data-name="_4c1_4e" data-comment="_1c1_0t">
+
+<polygon fill="none" stroke="black" points="153.39,-198 99.39,-198 99.39,-162 153.39,-162 153.39,-198"/>
+<text text-anchor="middle" x="126.39" y="-175.8" font-family="Times,serif" font-size="14.00">4=e</text>
+</g>
+<!-- _1c&#45;&#45;_1c1_0t -->
+<g id="edge2" class="edge" data-name="_4c--_4c1_4e" data-comment="_1c--_1c1_0t">
+
+<path fill="none" stroke="black" d="M54.66,-138.8C67.94,-146.53 84.95,-156.44 98.96,-164.6"/>
+</g>
+<!-- _1c0_0t0_2c -->
+<g id="node4" class="node" pointer-events="visible" data-name="_4c2_4i" data-comment="_1c0_0t0_2c">
+
+<polygon fill="none" stroke="black" points="153.39,-144 99.39,-144 99.39,-108 153.39,-108 153.39,-144"/>
+<text text-anchor="middle" x="126.39" y="-121.8" font-family="Times,serif" font-size="14.00">4=i</text>
+</g>
+<!-- _1c0_0t&#45;&#45;_1c0_0t0_2c -->
+<g id="edge3" class="edge" data-name="_4c--_4c2_4i" data-comment="_1c0_0t--_1c0_0t0_2c">
+
+<path fill="none" stroke="black" d="M64.08,-126C75.42,-126 88.11,-126 98.98,-126"/>
+</g>
+<!-- _1c1_0t0_3c -->
+<g id="node5" class="node" pointer-events="visible" data-name="_4c3_4o" data-comment="_1c1_0t0_3c">
+
+<polygon fill="none" stroke="black" points="153.39,-90 99.39,-90 99.39,-54 153.39,-54 153.39,-90"/>
+<text text-anchor="middle" x="126.39" y="-67.8" font-family="Times,serif" font-size="14.00">4=o</text>
+</g>
+<!-- _1c1_0t&#45;&#45;_1c1_0t0_3c -->
+<g id="edge4" class="edge" data-name="_4c--_4c3_4o" data-comment="_1c1_0t--_1c1_0t0_3c">
+
+<path fill="none" stroke="black" d="M54.66,-113.2C67.94,-105.47 84.95,-95.56 98.96,-87.4"/>
+</g>
+<!-- _1c0_0t0_2c0_2r -->
+<g id="node6" class="node" pointer-events="visible" data-name="_4c4_4u" data-comment="_1c0_0t0_2c0_2r">
+
+<polygon fill="none" stroke="black" points="153.39,-36 99.39,-36 99.39,0 153.39,0 153.39,-36"/>
+<text text-anchor="middle" x="126.39" y="-13.8" font-family="Times,serif" font-size="14.00">4=u</text>
+</g>
+<!-- _1c0_0t0_2c&#45;&#45;_1c0_0t0_2c0_2r -->
+<g id="edge5" class="edge" data-name="_4c--_4c4_4u" data-comment="_1c0_0t0_2c--_1c0_0t0_2c0_2r">
+
+<path fill="none" stroke="black" d="M46.37,-110.06C63.29,-90.35 92.03,-56.86 109.8,-36.17"/>
+</g>
+<!-- s -->
+<g id="node7" class="node" pointer-events="visible" data-name="a_subtree" data-comment="s">
+
+<text text-anchor="middle" x="229.07" y="-229.8" font-family="Times,serif" font-size="14.00">(A subtree)</text>
+</g>
+<!-- _subtree -->
+<g id="node8" class="node" pointer-events="visible" data-name="e_subtree" data-comment="_subtree">
+
+<text text-anchor="middle" x="229.07" y="-175.8" font-family="Times,serif" font-size="14.00">(E subtree)</text>
+</g><g id="edge6" class="edge" data-name="_4c0_4a--a_subtree" data-comment="_subtree">
+
+<path fill="none" stroke="black" d="M153.84,-234C164.68,-234 177.44,-234 189.29,-234" stroke-dasharray="1,5"/>
+</g>
+<!-- _subtree -->
+<g id="node9" class="node" pointer-events="visible" data-name="i_subtree" data-comment="_subtree">
+
+<text text-anchor="middle" x="229.07" y="-121.8" font-family="Times,serif" font-size="14.00">(I subtree)</text>
+</g>
+<!-- _subtree -->
+<!-- _4c2_4i&#45;&#45;i_subtree -->
+<g id="edge8" class="edge" data-name="_4c2_4i--i_subtree">
+
+<path fill="none" stroke="black" d="M153.84,-126C165.61,-126 179.65,-126 192.33,-126" stroke-dasharray="1,5"/>
+</g>
+<!-- o_subtree -->
+<g id="node10" class="node" pointer-events="visible" data-name="o_subtree">
+
+<text text-anchor="middle" x="229.07" y="-67.8" font-family="Times,serif" font-size="14.00">(O subtree)</text>
+</g><g id="edge7" class="edge" data-name="_4c1_4e--e_subtree" data-comment="o_subtree">
+
+<path fill="none" stroke="black" d="M153.84,-180C165.03,-180 178.26,-180 190.44,-180" stroke-dasharray="1,5"/>
+</g>
+<!-- _subtree -->
+
+<!-- _4c3_4o&#45;&#45;o_subtree -->
+<g id="edge9" class="edge" data-name="_4c3_4o--o_subtree">
+
+<path fill="none" stroke="black" d="M153.84,-72C164.68,-72 177.44,-72 189.29,-72" stroke-dasharray="1,5"/>
+</g>
+<!-- u_subtree -->
+<g id="node11" class="node" pointer-events="visible" data-name="u_subtree">
+
+<text text-anchor="middle" x="229.07" y="-13.8" font-family="Times,serif" font-size="14.00">(U subtree)</text>
+</g>
+
+<!-- _4c4_4u&#45;&#45;u_subtree -->
+<g id="edge10" class="edge" data-name="_4c4_4u--u_subtree">
+
+<path fill="none" stroke="black" d="M153.84,-18C164.68,-18 177.44,-18 189.29,-18" stroke-dasharray="1,5"/>
+</g>
+</g>
+</svg>
