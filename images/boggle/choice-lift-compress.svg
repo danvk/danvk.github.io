@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="363pt" height="398pt" viewBox="0.00 0.00 363.17 397.60">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 393.6)">
+<polygon fill="white" stroke="none" points="-4,4 -4,-393.6 359.17,-393.6 359.17,4 -4,4"/>
+<!-- _1c -->
+<g id="node1" class="node">
+<title>_1c</title>
+<ellipse fill="none" stroke="black" cx="46.6" cy="-179.8" rx="46.6" ry="29.42"/>
+<text text-anchor="middle" x="46.6" y="-184" font-family="Times,serif" font-size="14.00">1 CH</text>
+<text text-anchor="middle" x="46.6" y="-167.2" font-family="Times,serif" font-size="14.00">bound=4</text>
+</g>
+<!-- _1c0_0c -->
+<g id="node2" class="node">
+<title>_1c0_0c</title>
+<ellipse fill="none" stroke="black" cx="197.68" cy="-247.8" rx="46.6" ry="29.42"/>
+<text text-anchor="middle" x="197.68" y="-252" font-family="Times,serif" font-size="14.00">0 CH</text>
+<text text-anchor="middle" x="197.68" y="-235.2" font-family="Times,serif" font-size="14.00">bound=3</text>
+</g>
+<!-- _1c&#45;&#45;_1c0_0c -->
+<g id="edge1" class="edge">
+<title>_1c--_1c0_0c</title>
+<path fill="none" stroke="black" d="M84.83,-196.78C107.51,-207.13 136.41,-220.31 159.14,-230.68"/>
+<text text-anchor="middle" x="122.14" y="-222.07" font-family="Times,serif" font-size="14.00">1=x</text>
+</g>
+<!-- _1c1_0c -->
+<g id="node3" class="node">
+<title>_1c1_0c</title>
+<ellipse fill="none" stroke="black" cx="197.68" cy="-141.8" rx="46.6" ry="29.42"/>
+<text text-anchor="middle" x="197.68" y="-146" font-family="Times,serif" font-size="14.00">0 CH</text>
+<text text-anchor="middle" x="197.68" y="-129.2" font-family="Times,serif" font-size="14.00">bound=4</text>
+</g>
+<!-- _1c&#45;&#45;_1c1_0c -->
+<g id="edge2" class="edge">
+<title>_1c--_1c1_0c</title>
+<path fill="none" stroke="black" d="M90.32,-168.91C110.28,-163.82 133.99,-157.78 153.95,-152.69"/>
+<text text-anchor="middle" x="122.14" y="-167.28" font-family="Times,serif" font-size="14.00">1=y</text>
+</g>
+<!-- _1c0_0c0_0a -->
+<g id="node4" class="node">
+<title>_1c0_0c0_0a</title>
+<polygon fill="none" stroke="black" points="351.17,-385.6 285.28,-385.6 285.28,-344 351.17,-344 351.17,-385.6"/>
+<polygon fill="none" stroke="black" points="355.17,-389.6 281.28,-389.6 281.28,-340 355.17,-340 355.17,-389.6"/>
+<text text-anchor="middle" x="318.22" y="-369" font-family="Times,serif" font-size="14.00">0=a (1)</text>
+<text text-anchor="middle" x="318.22" y="-352.2" font-family="Times,serif" font-size="14.00">bound=1</text>
+</g>
+<!-- _1c0_0c&#45;&#45;_1c0_0c0_0a -->
+<g id="edge3" class="edge">
+<title>_1c0_0c--_1c0_0c0_0a</title>
+<path fill="none" stroke="black" d="M223.82,-272.61C243.8,-292.33 271.63,-319.8 291.71,-339.62"/>
+</g>
+<!-- _1c0_0c1_0b -->
+<g id="node5" class="node">
+<title>_1c0_0c1_0b</title>
+<polygon fill="none" stroke="black" points="351.17,-317.6 285.28,-317.6 285.28,-276 351.17,-276 351.17,-317.6"/>
+<polygon fill="none" stroke="black" points="355.17,-321.6 281.28,-321.6 281.28,-272 355.17,-272 355.17,-321.6"/>
+<text text-anchor="middle" x="318.22" y="-301" font-family="Times,serif" font-size="14.00">0=b (2)</text>
+<text text-anchor="middle" x="318.22" y="-284.2" font-family="Times,serif" font-size="14.00">bound=2</text>
+</g>
+<!-- _1c0_0c&#45;&#45;_1c0_0c1_0b -->
+<g id="edge4" class="edge">
+<title>_1c0_0c--_1c0_0c1_0b</title>
+<path fill="none" stroke="black" d="M237.17,-263.71C251.23,-269.52 267.08,-276.07 280.94,-281.8"/>
+</g>
+<!-- _1c0_0c2_0c -->
+<g id="node6" class="node">
+<title>_1c0_0c2_0c</title>
+<polygon fill="none" stroke="black" points="351.17,-249.6 285.28,-249.6 285.28,-208 351.17,-208 351.17,-249.6"/>
+<polygon fill="none" stroke="black" points="355.17,-253.6 281.28,-253.6 281.28,-204 355.17,-204 355.17,-253.6"/>
+<text text-anchor="middle" x="318.22" y="-233" font-family="Times,serif" font-size="14.00">0=c (3)</text>
+<text text-anchor="middle" x="318.22" y="-216.2" font-family="Times,serif" font-size="14.00">bound=3</text>
+</g>
+<!-- _1c0_0c&#45;&#45;_1c0_0c2_0c -->
+<g id="edge5" class="edge">
+<title>_1c0_0c--_1c0_0c2_0c</title>
+<path fill="none" stroke="black" d="M243.16,-240.67C255.64,-238.67 269.06,-236.52 281,-234.61"/>
+</g>
+<!-- _1c1_0c0_0a -->
+<g id="node7" class="node">
+<title>_1c1_0c0_0a</title>
+<polygon fill="none" stroke="black" points="351.17,-181.6 285.28,-181.6 285.28,-140 351.17,-140 351.17,-181.6"/>
+<polygon fill="none" stroke="black" points="355.17,-185.6 281.28,-185.6 281.28,-136 355.17,-136 355.17,-185.6"/>
+<text text-anchor="middle" x="318.22" y="-165" font-family="Times,serif" font-size="14.00">0=a (3)</text>
+<text text-anchor="middle" x="318.22" y="-148.2" font-family="Times,serif" font-size="14.00">bound=3</text>
+</g>
+<!-- _1c1_0c&#45;&#45;_1c1_0c0_0a -->
+<g id="edge6" class="edge">
+<title>_1c1_0c--_1c1_0c0_0a</title>
+<path fill="none" stroke="black" d="M243.16,-148.93C255.64,-150.93 269.06,-153.08 281,-154.99"/>
+</g>
+<!-- _1c1_0c1_0b -->
+<g id="node8" class="node">
+<title>_1c1_0c1_0b</title>
+<polygon fill="none" stroke="black" points="351.17,-113.6 285.28,-113.6 285.28,-72 351.17,-72 351.17,-113.6"/>
+<polygon fill="none" stroke="black" points="355.17,-117.6 281.28,-117.6 281.28,-68 355.17,-68 355.17,-117.6"/>
+<text text-anchor="middle" x="318.22" y="-97" font-family="Times,serif" font-size="14.00">0=b (4)</text>
+<text text-anchor="middle" x="318.22" y="-80.2" font-family="Times,serif" font-size="14.00">bound=4</text>
+</g>
+<!-- _1c1_0c&#45;&#45;_1c1_0c1_0b -->
+<g id="edge7" class="edge">
+<title>_1c1_0c--_1c1_0c1_0b</title>
+<path fill="none" stroke="black" d="M237.17,-125.89C251.23,-120.08 267.08,-113.53 280.94,-107.8"/>
+</g>
+<!-- _1c1_0c2_0c -->
+<g id="node9" class="node">
+<title>_1c1_0c2_0c</title>
+<polygon fill="none" stroke="black" points="351.17,-45.6 285.28,-45.6 285.28,-4 351.17,-4 351.17,-45.6"/>
+<polygon fill="none" stroke="black" points="355.17,-49.6 281.28,-49.6 281.28,0 355.17,0 355.17,-49.6"/>
+<text text-anchor="middle" x="318.22" y="-29" font-family="Times,serif" font-size="14.00">0=c (3)</text>
+<text text-anchor="middle" x="318.22" y="-12.2" font-family="Times,serif" font-size="14.00">bound=3</text>
+</g>
+<!-- _1c1_0c&#45;&#45;_1c1_0c2_0c -->
+<g id="edge8" class="edge">
+<title>_1c1_0c--_1c1_0c2_0c</title>
+<path fill="none" stroke="black" d="M223.82,-116.99C243.8,-97.27 271.63,-69.8 291.71,-49.98"/>
+</g>
+</g>
+</svg>
