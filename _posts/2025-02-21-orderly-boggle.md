@@ -160,6 +160,8 @@ That’s still a bit more than I’m willing to pay (if you feel otherwise, let 
 
 Barring any more surprising insights, the next posts will look at the best 3x4 board, what it can tell us about 4x4 Boggle, and will offer my reflections on this process.
 
+As always, you can find all the code for this post in the <img alt="GitHub Logo" src="/images/github-mark.svg" height="16" style="display:inline-block"> [danvk/hybrid-boggle][repo] repo.
+
 [last post]: https://www.danvk.org/2025/02/13/boggle2025.html
 [2009 approach]: https://www.danvk.org/2025/02/10/boggle34.html#how-did-i-find-the-optimal-3x3-board-in-2009
 [wrote about this]: https://www.danvk.org/wp/2009-08-08/breaking-3x3-boggle/index.html#:~:text=fold%20for%20more%E2%80%A6-,Upper%20Bounds,-Now%20on%20to
@@ -173,3 +175,4 @@ Barring any more surprising insights, the next posts will look at the best 3x4 b
 [full 3x4 Boggle run]: https://www.danvk.org/2025/02/13/boggle2025.html#putting-it-all-together
 [192-core C4]: https://cloud.google.com/compute/docs/general-purpose-machines#c4_series
 [50,000x harder]: https://www.danvk.org/2025/02/10/boggle34.html#how-much-harder-are-3x4-and-4x4-boggle
+[repo]: https://github.com/danvk/hybrid-boggle
