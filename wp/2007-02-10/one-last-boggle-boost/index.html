@@ -1,4 +1,4 @@
- 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -81,7 +81,7 @@
 	<link rel='archives' title='September 2006' href='../../2006/09/index.html' />
 	<link rel="alternate" type="application/rss+xml" title="danvk.org &raquo; One Last Boggle Boost Comments Feed" href="feed/index.html" />
 <link rel="EditURI" type="application/rsd+xml" title="RSD" href="../../xmlrpc0db0.php?rsd" />
-<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../../wp-includes/wlwmanifest.xml" /> 
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../../wp-includes/wlwmanifest.xml" />
 <link rel='prev' title='In which we discover that Tries are awesome' href='../../2007-02-06/in-which-we-discover-that-tries-are-awesome/index.html' />
 <link rel='next' title='Comments should be working again' href='../../2007-02-11/comments-should-be-working-again/index.html' />
 <meta name="generator" content="WordPress 3.9.2" />
@@ -94,7 +94,7 @@ img.latex { vertical-align: middle; border: none; }
 </style>
 <style type="text/css" id="syntaxhighlighteranchor"></style>
 </head>
-	
+
 <body>
 
 <div id="wrapper">
@@ -106,14 +106,14 @@ img.latex { vertical-align: middle; border: none; }
 
 <div id="content">
 
-			
+
 		<div class="post">
 
-			<h1 class="storydate">02.10.07</h1> 
+			<h1 class="storydate">02.10.07</h1>
 			<h2 id="post-89" class="storytitle"><a href="index.html" rel="bookmark" title="Permanent link to One Last Boggle Boost">One Last Boggle Boost</a></h2>
 			<p class="meta">Posted in <a href="../../category/boggle/index.html" title="View all posts in boggle" rel="category tag">boggle</a>, <a href="../../category/programming/index.html" title="View all posts in programming" rel="category tag">programming</a> at 10:24 pm by danvk</p>
-		
-			<p><a href="../../index5d38.html?p=87">Last time</a>, we used Tries to get a 20x speedup of an already-fast Boggle program. This time, we&#8217;ll ferret out the largest remaining bottleneck to produce an even faster Boggler.</p>
+
+			<p><a href="https://www.danvk.org/wp/2007-02-06/in-which-we-discover-that-tries-are-awesome/index.html">Last time</a>, we used Tries to get a 20x speedup of an already-fast Boggle program. This time, we&#8217;ll ferret out the largest remaining bottleneck to produce an even faster Boggler.</p>
 <p>What are the main operations that we perform in solving a Boggle board? There&#8217;s 1) word lookup, 2) checking if we&#8217;ve previously found a word, 3) checking if a letter starts a word and 4) recursion. Here&#8217;s how much time they take:</p>
 <table>
 <tr>
@@ -194,7 +194,7 @@ void Boggler::Solve(int x, int y, int len, Trie* t) {
 				Solve(cx, cy, len, t-&gt;Descend(bd_[cx][cy]));
 		}
 	}
-	
+
 	prev_[x][y] = false;
 }
 int Boggler::Score(const char* letters) {
@@ -230,25 +230,25 @@ Average board score: 141.1734 pts/bd
 <th>Improvement</th>
 </tr>
 <tr>
-<td><a href="../../index7665.html?p=65">Original</a></td>
+<td><a href="https://www.danvk.org/wp/2007-01-30/boggle-2-the-shortest-solver/index.html">Original</a></td>
 <td>.004 b/s</td>
 <td>-</td>
 <td>Really simple Ruby</td>
 </tr>
 <tr>
-<td><a href="../../index4f61.html?p=66">Stems</a></td>
+<td><a href="https://www.danvk.org/wp/2007-01-30/boggle-3-succeed-by-not-being-stupid/index.html">Stems</a></td>
 <td>17.5 b/s</td>
 <td>4000x</td>
 <td>Used stems to prune the DFS</td>
 </tr>
 <tr>
-<td><a href="../../index6213.html?p=86">C++</a></td>
+<td><a href="https://www.danvk.org/wp/2007-02-04/moving-boggle-to-c/index.html">C++</a></td>
 <td>310 b/s</td>
 <td>18x</td>
 <td>Converted Ruby to C++</td>
 </tr>
 <tr>
-<td><a href="../../index5d38.html?p=87">Tries</td>
+<td><a href="https://www.danvk.org/wp/2007-02-06/in-which-we-discover-that-tries-are-awesome/index.html">Tries</td>
 <td>6271 b/s</td>
 <td>20x</td>
 <td>Use Tries instead of hashes</td>
@@ -261,64 +261,64 @@ Average board score: 141.1734 pts/bd
 </tr>
 </table>
 <p>That&#8217;s a factor of six million improvement since our first try. It&#8217;s interesting to note that the final 600x of improvements all came from replacing <i>O(1)</i> operations with other <i>O(1)</i> operations.</p>
-			
+
 			<p class="feedback">
 			<a href="index.html" rel="bookmark" title="Permanent link to One Last Boggle Boost" class="permalink">Permalink</a>
 						</p>
-		
+
 		</div>
-			
-		
+
+
 <!-- You can start editing here. -->
 
 
 	<h2 id="comments">
-		4 Comments			</h2> 
+		4 Comments			</h2>
 
 	<ol id="commentlist">
 
-	
+
 		<li class="commentalt" id="comment-3725">
 			<p class="commentauthor"><a href='../../index78d6.html?p=195' rel='external nofollow' class='url'>danvk.org &raquo; How many Boggle boards are there?</a> said,</p>
 			<p class="commentmeta">August 2, 2007 at <a href="#comment-3725" title="Permanent link to this comment">8:45 pm</a> </p>
-			
+
 			<p>[...] Last time, we completed a board solver that could score 10,000 boards per second. So what to do with all that power? One option was to compute statistics on random boards. Another is to hunt for the holy grail of Boggle: the highest possible scoring Boggle board. The next few posts will be devoted to the search for this board. [...]</p>
 		</li>
 
-		
-	
+
+
 		<li class="comment" id="comment-23370">
 			<p class="commentauthor"><a href='../../2009-08-04/solving-boggle-by-taking-option-three/index.html' rel='external nofollow' class='url'>danvk.org &raquo; Solving Boggle by Taking Option Three</a> said,</p>
 			<p class="commentmeta">August 4, 2009 at <a href="#comment-23370" title="Permanent link to this comment">6:23 pm</a> </p>
-			
+
 			<p>[...] fewer points. In a previous post, I estimated that there were 2^69 possible boggle boards. At 10,000 boards/second, this would take 1.9 billion years of compute [...]</p>
 		</li>
 
-		
-	
+
+
 		<li class="commentalt" id="comment-23501">
 			<p class="commentauthor"><a href='../../2009-08-08/breaking-3x3-boggle/index.html' rel='external nofollow' class='url'>danvk.org &raquo; Breaking 3&#215;3 Boggle</a> said,</p>
 			<p class="commentmeta">August 8, 2009 at <a href="#comment-23501" title="Permanent link to this comment">10:35 am</a> </p>
-			
+
 			<p>[...] there are so many boards to consider: 2^72 for the 4&#215;4 case and 2^40 for the 3&#215;3 case. At 10,000 boards/second former corresponds to about 2 billion years of compute time, and the latter just two years. Just [...]</p>
 		</li>
 
-		
-	
+
+
 		<li class="comment" id="comment-141385">
 			<p class="commentauthor"><a href='http://www.bitwordy.com/' rel='external nofollow' class='url'>Joe Rice</a> said,</p>
 			<p class="commentmeta">February 26, 2012 at <a href="#comment-141385" title="Permanent link to this comment">12:21 pm</a> </p>
-			
+
 			<p>Thanks for the tip about Tries. I am now using them in the solver for the game engine for my Facebook game called BitWordy.  I&#8217;ve included an acknowledgement to &#8220;the person behind danvk.org&#8221; in my about box.  Let me know if you&#8217;d like something more specific.</p>
 		</li>
 
-		
-	
+
+
 	</ol>
 
 
-	
-	
+
+
 </div>
 
 <div id="sidebar">
@@ -330,7 +330,7 @@ Average board score: 141.1734 pts/bd
 <input type="text" value="" name="s" id="s" /><br />
 <input type="submit" id="searchsubmit" value="Search" />
 </p>
-</form>	</li> 
+</form>	</li>
 
 <!-- I want more control than this gives me: wp_list_pages('title_li=<h2>' . __('Pages') . '</h2>' ); -->
 
@@ -371,7 +371,7 @@ Average board score: 141.1734 pts/bd
 		<div id="twitter_div">
 		<a href="http://twitter.com/danvdk" target="_blank"><h2 class="sidebar-title">Follow me on Twitter</h2></a>
 		<ul id="twitter_update_list" style="padding-right:30px"></ul>
-		
+
 		</div>
 		<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
 		<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/danvdk.json?callback=twitterCallback2&amp;count=5"></script>
@@ -447,7 +447,7 @@ Average board score: 141.1734 pts/bd
 		</ul>
 	</li>
 
-		
+
 	<li id="categories">
 		<h2>Categories</h2>
 		<ul>
@@ -499,12 +499,12 @@ Average board score: 141.1734 pts/bd
 </li>
 	<li class="cat-item cat-item-14"><a href="../../category/wikipedia/index.html" title="View all posts filed under wikipedia">wikipedia</a>
 </li>
- 
+
 		</ul>
 	</li>
-	
-			
-	
+
+
+
 	<li id="meta">
 		<h2>Meta</h2>
 		<ul>
@@ -514,7 +514,7 @@ Average board score: 141.1734 pts/bd
 		<li><a href="http://wordpress.org/" title="Powered by Wordpress, state-of-the-art semantic personal publishing platform.">Wordpress</a></li>
 				</ul>
 	</li>
-	
+
 </ul>
 </div>
 
@@ -583,7 +583,7 @@ urchinTracker();
 </body>
 
 <!-- Mirrored from www.danvk.org/wp/2007-02-10/one-last-boggle-boost/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Oct 2014 03:10:00 GMT -->
-</html>	
+</html>
 
 
 
