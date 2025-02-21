@@ -4,6 +4,22 @@ layout: default
 
 {{ content }}
 
+<style>
+.anchorjs-link {
+  color: black;
+  transition: all .1s linear;
+}
+.anchorjs-link:hover {
+  text-decoration: none;
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/anchor-js/anchor.min.js"></script>
+<script>
+  anchors.options = { placement: 'left' };
+  anchors.add('h2:not(.post-title)')
+  anchors.add('h3');
+</script>
+
 <p class='please'>Please leave comments! It's what makes writing worthwhile.</p>
 
 <div id="disqus_thread"></div>
