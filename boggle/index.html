@@ -1,342 +1,48 @@
----
-title: Boggle Solver
-layout: comments
-disqus_id: boggle
-redirect_from:
-  - /boggle.php
-  - /boggle3.php
----
-
-<style>
-/* CSS arithmetic! */
-.arrow { width: 15px; height: 15px; }
-
-.arrow.up    { background-image: url(arrows/up.png); }
-.arrow.down  { background-image: url(arrows/down.png); }
-.arrow.left  { background-image: url(arrows/left.png); }
-.arrow.right { background-image: url(arrows/right.png); }
-
-.arrow.up.left     { background-image: url(arrows/upleft.png); }
-.arrow.down.left   { background-image: url(arrows/downleft.png); }
-.arrow.up.right    { background-image: url(arrows/upright.png); }
-.arrow.down.right  { background-image: url(arrows/downright.png); }
-
-.arrow.left.right.up   { background-image: url(arrows/upleftright.png); }
-.arrow.left.right.down { background-image: url(arrows/downleftright.png); }
-.arrow.up.down.left    { background-image: url(arrows/leftupdown.png); }
-.arrow.up.down.right   { background-image: url(arrows/rightupdown.png); }
-
-/* General styles */
-#boggle-page {
-  min-height: 300px;
-}
-.boggle-board {
-  position: fixed;
-  left: 400px;
-  top: 120px;
-}
-
-.word-list {
-  display: table;
-  min-width: 200px;
-}
-.selected {
-  background: lightyellow;
-}
-</style>
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="//fb.me/react-with-addons-0.11.2.js"></script>
-<script src="//fb.me/JSXTransformer-0.11.2.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
-
-<script type="text/jsx;harmony=true">
-/** @jsx React.DOM */
-var ENDPOINT = '//webboggle.herokuapp.com/';
-
-var cx = React.addons.classSet;
-
-
-var ARROWS = {
-  UP: 'up',
-  LEFT: 'left',
-  DOWN: 'down',
-  RIGHT: 'right',
-};
-
-// Cache & retrieval
-class DataStore {
-  constructor() {
-    this.serverResponses = {};
-  }
-
-  getWords(letters) {
-    if (letters in this.serverResponses) {
-      return $.when(this.serverResponses[letters]);
-    }
-    return $.get(ENDPOINT + letters).then(function(response) {
-      this.serverResponses[letters] = response;
-      return response;
-    }.bind(this));
-  }
-}
-
-// Maps 'abcdefghijlklmnop' -> [['a', 'b', 'c', 'd'], ['e', 'f', ...], ...]
-function parseBoard(letters) {
-  if (letters.length != 16 || letters.indexOf('q') >= 0) {
-    throw "invalid board";
-  }
-
-  return [letters.substr( 0, 4).split(''),
-          letters.substr( 4, 4).split(''),
-          letters.substr( 8, 4).split(''),
-          letters.substr(12, 4).split('')];
-}
-
-var BogglePage = React.createClass({
-  store: new DataStore(),
-  getInitialState: function() {
-    var defaultBoard = 'perslatgsineters';
-    return {
-      board: parseBoard(this.props.initialBoard || 'abcdefghijklmnop'),
-      words: null,  // null = "loading"
-      // Array of (row, col)
-      selectedPath: [[0, 0], [0, 1], [0, 2], [1, 2], [2, 2], [3, 3], [2, 3], [3, 2]],
-      selectedWord: null
-    }
-  },
-  componentWillMount: function() {
-    this.setBoard(this.state.board);
-  },
-  setBoard: function(board) {
-    this.setState({board: board, words: null});
-    var letters = board.map((row) => row.join('')).join('');
-    this.store.getWords(letters)
-      .done((words) => { 
-        var wordList = _.map(words, (v, k) => [k, v]);
-        wordList.sort();
-        this.setState({words: wordList});
-        this.props.onBoardChange(letters);
-      })
-      .fail((error) => { console.error(error); });
-  },
-  handleCellChanged: function(row, col, letter) {
-    // TODO: validate letter
-    var board = this.state.board;
-    board[row][col] = letter;
-    this.setBoard(board);
-  },
-  handleSelectWord: function(wordInfo) {
-    var [word, strPath] = wordInfo;
-    var path = strPath.split(' ').map((v) => v.split('').map(Number));
-    this.setState({selectedPath: path, selectedWord: word});
-  },
-  render: function() {
-    return (
-      <div>
-        <BoggleWordList words={this.state.words}
-                        selectedWord={this.state.selectedWord}
-                        onSelectWord={this.handleSelectWord} />
-        <BoggleBoard board={this.state.board}
-                     selectedPath={this.state.selectedPath}
-                     onCellChanged={this.handleCellChanged} />
-      </div>
-    );
-  }
-});
-
-
-var BoggleWordList = React.createClass({
-  propTypes: {
-    words: React.PropTypes.array,
-    selectedWord: React.PropTypes.string,
-    onSelectWord: React.PropTypes.func
-  },
-  onHover: function(e) {
-    var idx = e.target.getAttribute('data-idx');
-    this.props.onSelectWord(this.props.words[idx]);
-  },
-  render: function() {
-    var words = this.props.words;
-    if (words === null) {
-      return <div>Loading…</div>;
-    }
-
-    var wordList = words.map((word, idx) => {
-      var classes = cx({'selected': word[0] == this.props.selectedWord});
-      return <li onMouseOver={this.onHover} className={classes} data-idx={idx} key={idx}>{word[0]}</li>;
-    });
-    return (
-      <ul className="word-list">
-        {wordList}
-      </ul>
-    );
-  }
-});
-
-
-var BoggleBoard = React.createClass({
-  propTypes: {
-    board: React.PropTypes.arrayOf(React.PropTypes.arrayOf(React.PropTypes.string)).isRequired,
-    selectedPath: React.PropTypes.array,
-    onCellChanged: React.PropTypes.func
-  },
-  render: function() {
-    var bd = this.props.board;
-    var path = this.props.selectedPath;
-    var pathPairs = _.zip(path, _.rest(path));
-    pathPairs.pop();
-
-    var inRowArrows = _.range(4).map(() => []);
-    var betweenRowArrows = _.range(3).map(() => []);
-    pathPairs.forEach(function(pair) {
-      var beforeRow = pair[0][0], afterRow = pair[1][0];
-      if (beforeRow == afterRow) {
-        inRowArrows[beforeRow].push(pair);
-      } else {
-        betweenRowArrows[Math.min(beforeRow, afterRow)].push(pair);
-      }
-    });
-
-    return (
-      <table className="boggle-board">
-        <BoggleLetterRow row={0} letters={bd[0]} selectedPath={inRowArrows[0]} onCellChanged={this.props.onCellChanged}/>
-        <BoggleArrowRow rowAbove={0} selectedPath={betweenRowArrows[0]} />
-        <BoggleLetterRow row={1} letters={bd[1]} selectedPath={inRowArrows[1]} onCellChanged={this.props.onCellChanged}/>
-        <BoggleArrowRow rowAbove={1} selectedPath={betweenRowArrows[1]} />
-        <BoggleLetterRow row={2} letters={bd[2]} selectedPath={inRowArrows[2]} onCellChanged={this.props.onCellChanged}/>
-        <BoggleArrowRow rowAbove={2} selectedPath={betweenRowArrows[2]} />
-        <BoggleLetterRow row={3} letters={bd[3]} selectedPath={inRowArrows[3]} onCellChanged={this.props.onCellChanged}/>
-      </table>
-    );
-  }
-});
-
-var BoggleLetterRow = React.createClass({
-  propTypes: {
-    row: React.PropTypes.number.isRequired,
-    letters: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
-    selectedPath: React.PropTypes.array,  // array of (beforeCell, afterCell) in this row.
-    onCellChanged: React.PropTypes.func
-  },
-  changeLetter: function(e) {
-    var col = e.target.getAttribute('data-col'),
-        row = this.props.row,
-        letter = e.target.value;
-    this.props.onCellChanged(row, col, letter);
-  },
-  render: function() {
-    var lets = this.props.letters;
-    var arrows = _.range(3).map(() => ({arrow:true}));
-    this.props.selectedPath.forEach(function(pair) {
-      var beforeCol = pair[0][1], afterCol = pair[1][1];
-      var c = Math.min(beforeCol, afterCol);
-      if (beforeCol < afterCol) {
-        arrows[c][ARROWS.RIGHT] = true;
-      } else {
-        arrows[c][ARROWS.LEFT] = true;
-      }
-    });
-
-    return (
-      <tr>
-        <td><input type="text" data-col="0" value={lets[0]} size="2" onChange={this.changeLetter} /></td>
-        <td><div className={cx(arrows[0])} /></td>
-        <td><input type="text" data-col="1" value={lets[1]} size="2" onChange={this.changeLetter} /></td>
-        <td><div className={cx(arrows[1])} /></td>
-        <td><input type="text" data-col="2" value={lets[2]} size="2" onChange={this.changeLetter} /></td>
-        <td><div className={cx(arrows[2])} /></td>
-        <td><input type="text" data-col="3" value={lets[3]} size="2" onChange={this.changeLetter} /></td>
-      </tr>
-    );
-  }
-});
-
-function makeDiagArrow(pair, arrow) {
-  var beforeCol = pair[0][1], beforeRow = pair[0][0],
-      afterCol = pair[1][1], afterRow = pair[1][0];
-  var A = ARROWS;
-  if (beforeCol < afterCol) {
-    arrow[A.RIGHT] = true;
-    if (beforeRow < afterRow) {
-      arrow[A.DOWN] = true;
-    } else {
-      arrow[A.UP] = true;
-    }
-  } else {
-    arrow[A.LEFT] = true;
-    if (beforeRow < afterRow) {
-      arrow[A.DOWN] = true;
-    } else {
-      arrow[A.UP] = true;
-    }
-  }
-}
-
-var BoggleArrowRow = React.createClass({
-  propTypes: {
-    rowAbove: React.PropTypes.number.isRequired,
-    selectedPath: React.PropTypes.array
-  }, 
-  render: function() {
-    var vertArrows = _.range(4).map(() => ({arrow:true}));
-    var diagArrows = _.range(3).map(() => ({arrow:true}));
-    this.props.selectedPath.forEach(function(pair) {
-      var beforeCol = pair[0][1], beforeRow = pair[0][0],
-          afterCol = pair[1][1], afterRow = pair[1][0];
-      var c = Math.min(beforeCol, afterCol);
-      if (beforeCol == afterCol) {
-        if (beforeRow < afterRow) {
-          vertArrows[c][ARROWS.DOWN] = true;
-        } else {
-          vertArrows[c][ARROWS.UP] = true;
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/boggle/boggle-solver.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Boggle Solver</title>
+    <script type="module" crossorigin src="/boggle/assets/index-BH3s8cTn.js"></script>
+    <link rel="stylesheet" crossorigin href="/boggle/assets/index-okgR8rX_.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      let moduleResolve, moduleReject;
+      window.modulePromise = new Promise((resolve, reject) => {
+        moduleResolve = resolve;
+        moduleReject = reject;
+      });
+      var Module = {
+        onRuntimeInitialized: function() {
+          console.log('onRuntimeInitialized');
+          moduleResolve(Module);
         }
-      } else {
-        // TODO(danvk): validate that this is a plausible combination of arrows.
-        makeDiagArrow(pair, diagArrows[c]);
+      };
+      window.wordlists = {};
+      async function loadWordlist(networkPath) {
+        if (window.wordlists[networkPath]) {
+          return window.wordlists[networkPath];
+        }
+        const load = async () => {
+          const wasmPath = networkPath.split('/').at(-1);
+          const wordlistReq = await fetch(networkPath);
+          const bytes = await wordlistReq.arrayBuffer();
+          console.log('Loaded', bytes.byteLength, 'bytes');
+          const data = new Uint8Array(bytes);
+          let startMs = performance.now();
+          const m = await window.modulePromise;
+          m['FS_createDataFile']('/', wasmPath, data, true, true, true);
+          return '/' + wasmPath;
+        };
+        // TODO: optimistically create trie
+        return window.wordlists[networkPath] = load();
       }
-    });
-    return (
-      <tr>
-        <td><div className={cx(vertArrows[0])} /></td>
-        <td><div className={cx(diagArrows[0])} /></td>
-        <td><div className={cx(vertArrows[1])} /></td>
-        <td><div className={cx(diagArrows[1])} /></td>
-        <td><div className={cx(vertArrows[2])} /></td>
-        <td><div className={cx(diagArrows[2])} /></td>
-        <td><div className={cx(vertArrows[3])} /></td>
-      </tr>
-    );
-  }
-});
-</script>
-
-<p id="about">This solver uses the <a href="http://everything2.com/title/ENABLE+word+list">Enable2K</a> word list, which is based on the Scrabble dictionary. Learn more about my boggle efforts <a href="http://www.danvk.org/wp/2012-07-03/updated-online-boggle-solver/">here</a>.</p>
-
-<div id="boggle-page">
-</div>
-
-<script>
-// From http://stackoverflow.com/a/5158301/388951
-function getParameterByName(name) {
-    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
-    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
-}
-
-var initialBoard = getParameterByName('board');
-
-function setUrlParams(letters) {
-  if (history && history.replaceState) {
-    history.replaceState({}, document.title,
-        window.location.pathname + '?board=' + letters);
-  }
-}
-</script>
-
-<script type="text/jsx;harmony=true">
-/** @jsx React.DOM */
-bogglePage = React.renderComponent(
-  <BogglePage initialBoard={initialBoard}
-              onBoardChange={setUrlParams} />,
-  $('#boggle-page').get(0));
-</script>
+      loadWordlist('wordlists/enable2k.txt');
+    </script>
+    <script src="/boggle/wasm/boggle.js"></script>
+  </body>
+</html>
