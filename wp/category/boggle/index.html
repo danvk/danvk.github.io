@@ -138,13 +138,13 @@ img.latex { vertical-align: middle; border: none; }
 <pre>P E R
 L A T
 D E S</pre>
-<p>Its longest words include REPLATED and REPASTED. You can see all the words <a href="http://www.danvk.org/boggle3.php?quick=perlatdes">here</a>. This board has more points on it than any other board (using the <a href="http://everything2.com/title/ENABLE+word+list">Enable2K word list</a>) and I&#8217;ve proved it.</p>
+<p>Its longest words include REPLATED and REPASTED. You can see all the words <a href="https://www.danvk.org/boggle/?board=perlatdes">here</a>. This board has more points on it than any other board (using the <a href="http://everything2.com/title/ENABLE+word+list">Enable2K word list</a>) and I&#8217;ve proved it.</p>
 <p>The 4&#215;4 problem is much harder, though, because there are eight billion times more boards to consider! I <a href="../../2009-02-19/sky-high-boggle-scores-with-simulated-annealing/index.html">believe</a> that this board is the best one:</p>
 <pre>P E R S
 L A T G
 S I N E
 T E R S</pre>
-<p>You can see a list of all the words on it <a href="http://www.danvk.org/boggle.php?quick=perslatgsineters">here</a>. The longest word is REPLASTERING. I haven&#8217;t been able to prove it, though, and I haven&#8217;t put any serious time into the problem since 2009.</p>
+<p>You can see a list of all the words on it <a href="http://www.danvk.org/boggle/?board=perslatgsineters">here</a>. The longest word is REPLASTERING. I haven&#8217;t been able to prove it, though, and I haven&#8217;t put any serious time into the problem since 2009.</p>
 <p>You can find all the Boggle-related code I&#8217;ve written <a href="http://github.com/danvk/performance-boggle">on github</a> and learn all about the algorithms and techniques by browsing posts in the <a href="index.html">Boggle Category</a> on this blog.</p>
 			
 			<p class="feedback">
@@ -170,8 +170,8 @@ T E R S</pre>
 			<h2 id="post-924" class="storytitle"><a href="../../2012-07-03/updated-online-boggle-solver/index.html" rel="bookmark" title="Permanent link to Updated Online Boggle Solver">Updated Online Boggle Solver</a></h2>
 			<p class="meta">Posted in <a href="index.html" title="View all posts in boggle" rel="category tag">boggle</a>, <a href="../web/index.html" title="View all posts in web" rel="category tag">web</a> at 10:42 am by danvk</p>
 		
-							<p>See that <a href="http://danvk.org/boggle.php">Online Boggle Solver</a> link on the right? Bet you&#8217;ve never clicked it!</p>
-<p>I built the online solver back in 2006, mostly just for fun. In the six years since, I&#8217;ve wound up using it almost exclusively on my phone during real-life Boggle games. The iPhone didn&#8217;t exist when I built that page, and it is a device for which its fancy design (with hover effects and fixed position elements) is very ill-suited. Minimal designs tend to work better on Mobile, and I&#8217;ve just pushed out a <a href="http://danvk.org/boggle.php">new version</a> for phones which is very minimal indeed.</p>
+							<p>See that <a href="https://www.danvk.org/boggle/">Online Boggle Solver</a> link on the right? Bet you&#8217;ve never clicked it!</p>
+<p>I built the online solver back in 2006, mostly just for fun. In the six years since, I&#8217;ve wound up using it almost exclusively on my phone during real-life Boggle games. The iPhone didn&#8217;t exist when I built that page, and it is a device for which its fancy design (with hover effects and fixed position elements) is very ill-suited. Minimal designs tend to work better on Mobile, and I&#8217;ve just pushed out a <a href="https://www.danvk.org/boggle/">new version</a> for phones which is very minimal indeed.</p>
 <p>The code behind this boggle solver differs from my <a href="https://github.com/danvk/performance-boggle">other boggle code</a> in that it&#8217;s designed for low latency rather than high throughput. This is precisely what you want from a web solver. You&#8217;re only finding the words on a single board, so time spent loading the word list dominates time spent finding words on the board. The current version uses a custom dictionary which can be <a href="http://en.wikipedia.org/wiki/Mmap">MMAPped</a>. This winds up being about 3x faster than reading a dictionary text file and building a Trie on every invocation.</p>
 <p>I haven&#8217;t <a href="index.html">worked on Boggle</a> in the past three years, so the state of the art in finding the highest-scoring boards is still where it was when I made my last blog post about <a href="../../2009-08-08/breaking-3x3-boggle/index.html">breaking 3&#215;3 Boggle</a>. The interesting development then was that you could get something like a 1000x speedup by upper-bounding whole classes of boards rather than scoring each board individually. This is a big enough speed boost to make 3&#215;3 Boggle &#8220;solvable&#8221; in a day on a desktop computer, but not enough to make 3&#215;4 or 4&#215;4 solvable, even on a big cluster of computers. I was optimistic that <a href="http://en.wikipedia.org/wiki/Memoization">memoization</a> could give some more big wins, but when those failed to materialize I got frustrated and stopped working on the project.</p>
 			
@@ -475,7 +475,7 @@ By &#8220;class of boards&#8221;, I mean something like this:</p>
 </tr>
 <tfoot>
 <tr>
-<td colspan=3><a href="http://www.danvk.org/boggle3.php?quick=airdatdes">189 points</a></td>
+<td colspan=3><a href="https://www.danvk.org/boggle/?board=airdatdes">189 points</a></td>
 </tr>
 </tfoot>
 </table>
@@ -500,7 +500,7 @@ By &#8220;class of boards&#8221;, I mean something like this:</p>
 </tr>
 <tfoot>
 <tr>
-<td colspan=3><a href="http://www.danvk.org/boggle3.php?quick=ourfatdet">114 points</a></td>
+<td colspan=3><a href="https://www.danvk.org/boggle/?board=ourfatdet">114 points</a></td>
 </tr>
 </tfoot>
 </table>
@@ -572,7 +572,7 @@ By &#8220;class of boards&#8221;, I mean something like this:</p>
 
 			<li>Features on this site
 				<ul class="features">
-					<li><a href="http://www.danvk.org/boggle.php" title="Boggle Solver">Online Boggle Solver</a></li>
+					<li><a href="https://www.danvk.org/boggle/" title="Boggle Solver">Online Boggle Solver</a></li>
 					<li><a href="../../beals-conjecture/index.html" title="Beal&#039;s Conjecture">Beal's Conjecture</a></li>
 					<li><a href="../../gw-basic-program-decoder/index.html" title="GW-BASIC Program Decoder">GW-BASIC Program Decoder</a></li>
 					<li><a href="http://www.danvk.org/tower/nstower.html">NS-Tower in your Browser</a></li>

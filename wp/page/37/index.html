@@ -135,11 +135,11 @@ img.latex { vertical-align: middle; border: none; }
 			<h2 id="post-67" class="storytitle"><a href="../../2007-01-28/boggle/index.html" rel="bookmark" title="Permanent link to Boggle!">Boggle!</a></h2>
 			<p class="meta">Posted in <a href="../../category/boggle/index.html" title="View all posts in boggle" rel="category tag">boggle</a>, <a href="../../category/programming/index.html" title="View all posts in programming" rel="category tag">programming</a> at 11:17 pm by danvk</p>
 		
-							<p>After showing <a href="http://community.livejournal.com/evan_tech/215395.html">Evan</a> my <a href="http://danvk.org/boggle.php">online boggle solver</a> at work, I was inspired to start writing some blog posts on how that program works. So here goes!</p>
+							<p>After showing <a href="http://community.livejournal.com/evan_tech/215395.html">Evan</a> my <a href="https://www.danvk.org/boggle/">online boggle solver</a> at work, I was inspired to start writing some blog posts on how that program works. So here goes!</p>
 <p><a href="http://www.hasbro.com/default.cfm?page=browse&amp;product_id=9619">Boggle</a> is a game by Hasbro in which you try to find words on a 4&#215;4 grid of letters. There are 16 dice with six letters apiece on them. You roll the dice into the 4&#215;4 slots and connect them to form words. The longer the words you find, the more points you get.</p>
-<p><center><a href="http://danvk.org/boggle.php?quick=plsteaiertnrsges"><img src='../../wp-content/uploads/2007/01/air.png' alt='air.png' /></a></center></p>
+<p><center><a href="http://danvk.org/boggle/?board=plsteaiertnrsges"><img src='../../wp-content/uploads/2007/01/air.png' alt='air.png' /></a></center></p>
 <p>You can use diagonals and you can cross your own path, but you can&#8217;t use the same die twice in forming a word:</p>
-<p><center><a href="http://danvk.org/boggle.php?quick=iecoqnsnetllnyia"><img src='../../wp-content/uploads/2007/01/inconsequentially.png' alt='inconsequentially.png' /></a></center></p>
+<p><center><a href="http://danvk.org/boggle/?board=iecoqnsnetllnyia"><img src='../../wp-content/uploads/2007/01/inconsequentially.png' alt='inconsequentially.png' /></a></center></p>
 <p>As a CS-type, it wasn&#8217;t long before I started thinking about how to write a computer program to quickly find all the words on a Boggle board. The right way to think about the board is as a bidirectional graph:</p>
 <p><center><img src='../../wp-content/uploads/2007/01/graph.png' alt='graph.png' /></center></p>
 <p>To get all sequences of letters in a graph, we can just do a <a href="http://www.rci.rutgers.edu/~cfs/472_html/AI_SEARCH/SearchAnimations.html">depth-first search</a>. There will be a <i>ton</i> of these sequences, but most of them will be phrases like &#8220;aefbg&#8221; that aren&#8217;t real English words. So we&#8217;ll also need a dictionary to filter out the non-words. Then it&#8217;s just a matter of scoring:</p>
@@ -318,7 +318,7 @@ img.latex { vertical-align: middle; border: none; }
 
 			<li>Features on this site
 				<ul class="features">
-					<li><a href="http://www.danvk.org/boggle.php" title="Boggle Solver">Online Boggle Solver</a></li>
+					<li><a href="https://www.danvk.org/boggle/" title="Boggle Solver">Online Boggle Solver</a></li>
 					<li><a href="../../beals-conjecture/index.html" title="Beal&#039;s Conjecture">Beal's Conjecture</a></li>
 					<li><a href="../../gw-basic-program-decoder/index.html" title="GW-BASIC Program Decoder">GW-BASIC Program Decoder</a></li>
 					<li><a href="http://www.danvk.org/tower/nstower.html">NS-Tower in your Browser</a></li>

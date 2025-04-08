@@ -56,13 +56,13 @@
 <pre>P E R
 L A T
 D E S</pre>
-<p>Its longest words include REPLATED and REPASTED. You can see all the words <a href="http://www.danvk.org/boggle3.php?quick=perlatdes">here</a>. This board has more points on it than any other board (using the <a href="http://everything2.com/title/ENABLE+word+list">Enable2K word list</a>) and I&#8217;ve proved it.</p>
+<p>Its longest words include REPLATED and REPASTED. You can see all the words <a href="https://www.danvk.org/boggle/?board=perlatdes">here</a>. This board has more points on it than any other board (using the <a href="http://everything2.com/title/ENABLE+word+list">Enable2K word list</a>) and I&#8217;ve proved it.</p>
 <p>The 4&#215;4 problem is much harder, though, because there are eight billion times more boards to consider! I <a href="http://www.danvk.org/wp/2009-02-19/sky-high-boggle-scores-with-simulated-annealing/">believe</a> that this board is the best one:</p>
 <pre>P E R S
 L A T G
 S I N E
 T E R S</pre>
-<p>You can see a list of all the words on it <a href="http://www.danvk.org/boggle.php?quick=perslatgsineters">here</a>. The longest word is REPLASTERING. I haven&#8217;t been able to prove it, though, and I haven&#8217;t put any serious time into the problem since 2009.</p>
+<p>You can see a list of all the words on it <a href="http://www.danvk.org/boggle/?board=perslatgsineters">here</a>. The longest word is REPLASTERING. I haven&#8217;t been able to prove it, though, and I haven&#8217;t put any serious time into the problem since 2009.</p>
 <p>You can find all the Boggle-related code I&#8217;ve written <a href="http://github.com/danvk/performance-boggle">on github</a> and learn all about the algorithms and techniques by browsing posts in the <a href="http://www.danvk.org/wp/category/boggle/">Boggle Category</a> on this blog.</p>
 ]]></content:encoded>
 			<wfw:commentRss>http://www.danvk.org/wp/2014-01-25/what-up-with-boggle/feed/</wfw:commentRss>
@@ -79,8 +79,8 @@ T E R S</pre>
 
 		<guid isPermaLink="false">http://www.danvk.org/wp/?p=924</guid>
 		<description><![CDATA[See that Online Boggle Solver link on the right? Bet you&#8217;ve never clicked it! I built the online solver back in 2006, mostly just for fun. In the six years since, I&#8217;ve wound up using it almost exclusively on my phone during real-life Boggle games. The iPhone didn&#8217;t exist when I built that page, and [&#8230;]]]></description>
-				<content:encoded><![CDATA[<p>See that <a href="http://danvk.org/boggle.php">Online Boggle Solver</a> link on the right? Bet you&#8217;ve never clicked it!</p>
-<p>I built the online solver back in 2006, mostly just for fun. In the six years since, I&#8217;ve wound up using it almost exclusively on my phone during real-life Boggle games. The iPhone didn&#8217;t exist when I built that page, and it is a device for which its fancy design (with hover effects and fixed position elements) is very ill-suited. Minimal designs tend to work better on Mobile, and I&#8217;ve just pushed out a <a href="http://danvk.org/boggle.php">new version</a> for phones which is very minimal indeed.</p>
+				<content:encoded><![CDATA[<p>See that <a href="https://www.danvk.org/boggle/">Online Boggle Solver</a> link on the right? Bet you&#8217;ve never clicked it!</p>
+<p>I built the online solver back in 2006, mostly just for fun. In the six years since, I&#8217;ve wound up using it almost exclusively on my phone during real-life Boggle games. The iPhone didn&#8217;t exist when I built that page, and it is a device for which its fancy design (with hover effects and fixed position elements) is very ill-suited. Minimal designs tend to work better on Mobile, and I&#8217;ve just pushed out a <a href="https://www.danvk.org/boggle/">new version</a> for phones which is very minimal indeed.</p>
 <p>The code behind this boggle solver differs from my <a href="https://github.com/danvk/performance-boggle">other boggle code</a> in that it&#8217;s designed for low latency rather than high throughput. This is precisely what you want from a web solver. You&#8217;re only finding the words on a single board, so time spent loading the word list dominates time spent finding words on the board. The current version uses a custom dictionary which can be <a href="http://en.wikipedia.org/wiki/Mmap">MMAPped</a>. This winds up being about 3x faster than reading a dictionary text file and building a Trie on every invocation.</p>
 <p>I haven&#8217;t <a href="http://www.danvk.org/wp/category/boggle/">worked on Boggle</a> in the past three years, so the state of the art in finding the highest-scoring boards is still where it was when I made my last blog post about <a href="http://www.danvk.org/wp/2009-08-08/breaking-3x3-boggle/">breaking 3&#215;3 Boggle</a>. The interesting development then was that you could get something like a 1000x speedup by upper-bounding whole classes of boards rather than scoring each board individually. This is a big enough speed boost to make 3&#215;3 Boggle &#8220;solvable&#8221; in a day on a desktop computer, but not enough to make 3&#215;4 or 4&#215;4 solvable, even on a big cluster of computers. I was optimistic that <a href="http://en.wikipedia.org/wiki/Memoization">memoization</a> could give some more big wins, but when those failed to materialize I got frustrated and stopped working on the project.</p>
 ]]></content:encoded>
@@ -356,7 +356,7 @@ By &#8220;class of boards&#8221;, I mean something like this:</p>
 </tr>
 <tfoot>
 <tr>
-<td colspan=3><a href="/boggle3.php?quick=airdatdes">189 points</a></td>
+<td colspan=3><a href="/boggle/?board=airdatdes">189 points</a></td>
 </tr>
 </tfoot>
 </table>
@@ -381,7 +381,7 @@ By &#8220;class of boards&#8221;, I mean something like this:</p>
 </tr>
 <tfoot>
 <tr>
-<td colspan=3><a href="/boggle3.php?quick=ourfatdet">114 points</a></td>
+<td colspan=3><a href="/boggle/?board=ourfatdet">114 points</a></td>
 </tr>
 </tfoot>
 </table>
@@ -464,7 +464,7 @@ The idea of this bound is to find all the words that can possibly occur in a cla
 </tr>
 </table>
 <p></center></p>
-<p>This takes 0.23 seconds to score and results in a bound of 208 points (it contains words like &#8216;crypt&#8217; and &#8216;gypsy&#8217;). We&#8217;ve already <a href="http://www.danvk.org/wp/2009-08-04/solving-boggle-by-taking-option-three/">found</a> a single board that has <a href="/boggle3.php?quick=perlatdes">545 points</a> on it. So we can eliminate this entire class of 794 billion boards. That&#8217;s a speed of over 3 trillion boards/second! Of course, this board class is not typical.</p>
+<p>This takes 0.23 seconds to score and results in a bound of 208 points (it contains words like &#8216;crypt&#8217; and &#8216;gypsy&#8217;). We&#8217;ve already <a href="http://www.danvk.org/wp/2009-08-04/solving-boggle-by-taking-option-three/">found</a> a single board that has <a href="/boggle/?board=perlatdes">545 points</a> on it. So we can eliminate this entire class of 794 billion boards. That&#8217;s a speed of over 3 trillion boards/second! Of course, this board class is not typical.</p>
 <p>It&#8217;s also worth pointing out why this upper bound isn&#8217;t tight. Consider this class of boards:</p>
 <p><center></p>
 <table class="board">
@@ -652,7 +652,7 @@ $ ./3x3/ibucket_breaker --best_score 520 --break_class "bdfgjkmpvwxz a sy iou xy
 		<description><![CDATA[There is exciting news to report in the land of Boggle! Last we spoke about Boggle, we used Simulated Annealing to get at the question &#8220;what is the highest-scoring Boggle board?&#8221; We found a board with 3625 points on it this way. It would have been nice to say that it was the best of [&#8230;]]]></description>
 				<content:encoded><![CDATA[<p>There is exciting news to report in the land of Boggle!</p>
 <p>Last <a href="http://www.danvk.org/wp/2009-02-19/sky-high-boggle-scores-with-simulated-annealing/">we spoke</a> about Boggle, we used <a href="http://en.wikipedia.org/wiki/Simulated_Annealing">Simulated Annealing</a> to get at the question &#8220;what is the highest-scoring Boggle board?&#8221;</p>
-<p>We found a board with <a href="/boggle.php?quick=perslatgsineters">3625 points</a> on it this way. It would have been nice to say that it was the best of all possible boards, but that would have been too rash. While it is a very good board and I have never seen a higher-scoring one, that doesn&#8217;t mean there isn&#8217;t one out there. Maybe I&#8217;ve just been looking in the wrong places.</p>
+<p>We found a board with <a href="/boggle/?board=perslatgsineters">3625 points</a> on it this way. It would have been nice to say that it was the best of all possible boards, but that would have been too rash. While it is a very good board and I have never seen a higher-scoring one, that doesn&#8217;t mean there isn&#8217;t one out there. Maybe I&#8217;ve just been looking in the wrong places.</p>
 <p>To prove that the 3625-pointer is the best board, we&#8217;d need to show that every other board scores fewer points. In a previous post, I <a href="http://www.danvk.org/wp/2007-08-02/how-many-boggle-boards-are-there/">estimated</a> that there were 2^69 possible boggle boards. At <a href="http://www.danvk.org/wp/2007-02-10/one-last-boggle-boost/">10,000 boards/second</a>, this would take 1.9 billion years of compute time!</p>
 <p>When you run up against a computationally intractable problem, there are a few standard ways to deal with it:</p>
 <ol>
@@ -694,7 +694,7 @@ $ ./3x3/ibucket_breaker --best_score 520 --break_class "bdfgjkmpvwxz a sy iou xy
 </tr>
 <tfoot>
 <tr>
-<td colspan=4><a href="/boggle3.php?quick=perlatdes">545 points</a></td>
+<td colspan=4><a href="/boggle/?board=perlatdes">545 points</a></td>
 </tr>
 </tfoot>
 </table>
@@ -730,7 +730,7 @@ $ ./3x3/ibucket_breaker --best_score 520 --break_class "bdfgjkmpvwxz a sy iou xy
 </tr>
 <tfoot>
 <tr>
-<td colspan=4><a href="/boggle.php?quick=perslatgsineters">3625 points</a></td>
+<td colspan=4><a href="/boggle/?board=perslatgsineters">3625 points</a></td>
 </tr>
 </tfoot>
 </table>
@@ -750,211 +750,211 @@ $ ./3x3/ibucket_breaker --best_score 520 --break_class "bdfgjkmpvwxz a sy iou xy
 </tr>
 <tr>
 <td>perlatdes</td>
-<td><a href="/boggle3.php?quick=perlatdes">545</a></td>
+<td><a href="/boggle/?board=perlatdes">545</a></td>
 </tr>
 <tr>
 <td>pelsartes</td>
-<td><a href="/boggle3.php?quick=pelsartes">542</a></td>
+<td><a href="/boggle/?board=pelsartes">542</a></td>
 </tr>
 <tr>
 <td>delratpes</td>
-<td><a href="/boggle3.php?quick=delratpes">540</a></td>
+<td><a href="/boggle/?board=delratpes">540</a></td>
 </tr>
 <tr>
 <td>lepsartes</td>
-<td><a href="/boggle3.php?quick=lepsartes">536</a></td>
+<td><a href="/boggle/?board=lepsartes">536</a></td>
 </tr>
 <tr>
 <td>tepsarles</td>
-<td><a href="/boggle3.php?quick=tepsarles">528</a></td>
+<td><a href="/boggle/?board=tepsarles">528</a></td>
 </tr>
 <tr>
 <td>selratpes</td>
-<td><a href="/boggle3.php?quick=selratpes">528</a></td>
+<td><a href="/boggle/?board=selratpes">528</a></td>
 </tr>
 <tr>
 <td>legsartes</td>
-<td><a href="/boggle3.php?quick=legsartes">527</a></td>
+<td><a href="/boggle/?board=legsartes">527</a></td>
 </tr>
 <tr>
 <td>berlatdes</td>
-<td><a href="/boggle3.php?quick=berlatdes">526</a></td>
+<td><a href="/boggle/?board=berlatdes">526</a></td>
 </tr>
 <tr>
 <td>relsatpes</td>
-<td><a href="/boggle3.php?quick=relsatpes">524</a></td>
+<td><a href="/boggle/?board=relsatpes">524</a></td>
 </tr>
 <tr>
 <td>perlatces</td>
-<td><a href="/boggle3.php?quick=perlatces">523</a></td>
+<td><a href="/boggle/?board=perlatces">523</a></td>
 </tr>
 <tr>
 <td>derlatpes</td>
-<td><a href="/boggle3.php?quick=derlatpes">522</a></td>
+<td><a href="/boggle/?board=derlatpes">522</a></td>
 </tr>
 <tr>
 <td>telsarpes</td>
-<td><a href="/boggle3.php?quick=telsarpes">520</a></td>
+<td><a href="/boggle/?board=telsarpes">520</a></td>
 </tr>
 <tr>
 <td>parletdes</td>
-<td><a href="/boggle3.php?quick=parletdes">520</a></td>
+<td><a href="/boggle/?board=parletdes">520</a></td>
 </tr>
 <tr>
 <td>lersatpes</td>
-<td><a href="/boggle3.php?quick=lersatpes">520</a></td>
+<td><a href="/boggle/?board=lersatpes">520</a></td>
 </tr>
 <tr>
 <td>saltipres</td>
-<td><a href="/boggle3.php?quick=saltipres">518</a></td>
+<td><a href="/boggle/?board=saltipres">518</a></td>
 </tr>
 <tr>
 <td>tepsarled</td>
-<td><a href="/boggle3.php?quick=tepsarled">514</a></td>
+<td><a href="/boggle/?board=tepsarled">514</a></td>
 </tr>
 <tr>
 <td>tegsarles</td>
-<td><a href="/boggle3.php?quick=tegsarles">514</a></td>
+<td><a href="/boggle/?board=tegsarles">514</a></td>
 </tr>
 <tr>
 <td>tedsalrep</td>
-<td><a href="/boggle3.php?quick=tedsalrep">514</a></td>
+<td><a href="/boggle/?board=tedsalrep">514</a></td>
 </tr>
 <tr>
 <td>repsalted</td>
-<td><a href="/boggle3.php?quick=repsalted">514</a></td>
+<td><a href="/boggle/?board=repsalted">514</a></td>
 </tr>
 <tr>
 <td>ledsartep</td>
-<td><a href="/boggle3.php?quick=ledsartep">514</a></td>
+<td><a href="/boggle/?board=ledsartep">514</a></td>
 </tr>
 <tr>
 <td>pelsatres</td>
-<td><a href="/boggle3.php?quick=pelsatres">513</a></td>
+<td><a href="/boggle/?board=pelsatres">513</a></td>
 </tr>
 <tr>
 <td>tegsarlep</td>
-<td><a href="/boggle3.php?quick=tegsarlep">511</a></td>
+<td><a href="/boggle/?board=tegsarlep">511</a></td>
 </tr>
 <tr>
 <td>lepsarteg</td>
-<td><a href="/boggle3.php?quick=lepsarteg">511</a></td>
+<td><a href="/boggle/?board=lepsarteg">511</a></td>
 </tr>
 <tr>
 <td>tapselres</td>
-<td><a href="/boggle3.php?quick=tapselres">510</a></td>
+<td><a href="/boggle/?board=tapselres">510</a></td>
 </tr>
 <tr>
 <td>serlitpas</td>
-<td><a href="/boggle3.php?quick=serlitpas">508</a></td>
+<td><a href="/boggle/?board=serlitpas">508</a></td>
 </tr>
 <tr>
 <td>lecsartep</td>
-<td><a href="/boggle3.php?quick=lecsartep">508</a></td>
+<td><a href="/boggle/?board=lecsartep">508</a></td>
 </tr>
 <tr>
 <td>tedsarleg</td>
-<td><a href="/boggle3.php?quick=tedsarleg">507</a></td>
+<td><a href="/boggle/?board=tedsarleg">507</a></td>
 </tr>
 <tr>
 <td>persatles</td>
-<td><a href="/boggle3.php?quick=persatles">507</a></td>
+<td><a href="/boggle/?board=persatles">507</a></td>
 </tr>
 <tr>
 <td>legsarted</td>
-<td><a href="/boggle3.php?quick=legsarted">507</a></td>
+<td><a href="/boggle/?board=legsarted">507</a></td>
 </tr>
 <tr>
 <td>tepsarleg</td>
-<td><a href="/boggle3.php?quick=tepsarleg">505</a></td>
+<td><a href="/boggle/?board=tepsarleg">505</a></td>
 </tr>
 <tr>
 <td>selratdes</td>
-<td><a href="/boggle3.php?quick=selratdes">505</a></td>
+<td><a href="/boggle/?board=selratdes">505</a></td>
 </tr>
 <tr>
 <td>legsartep</td>
-<td><a href="/boggle3.php?quick=legsartep">505</a></td>
+<td><a href="/boggle/?board=legsartep">505</a></td>
 </tr>
 <tr>
 <td>canretdes</td>
-<td><a href="/boggle3.php?quick=canretdes">505</a></td>
+<td><a href="/boggle/?board=canretdes">505</a></td>
 </tr>
 <tr>
 <td>canretdes</td>
-<td><a href="/boggle3.php?quick=canretdes">505</a></td>
+<td><a href="/boggle/?board=canretdes">505</a></td>
 </tr>
 <tr>
 <td>pinlatres</td>
-<td><a href="/boggle3.php?quick=pinlatres">504</a></td>
+<td><a href="/boggle/?board=pinlatres">504</a></td>
 </tr>
 <tr>
 <td>nirgatres</td>
-<td><a href="/boggle3.php?quick=nirgatres">504</a></td>
+<td><a href="/boggle/?board=nirgatres">504</a></td>
 </tr>
 <tr>
 <td>lecsartes</td>
-<td><a href="/boggle3.php?quick=lecsartes">504</a></td>
+<td><a href="/boggle/?board=lecsartes">504</a></td>
 </tr>
 <tr>
 <td>serlatpes</td>
-<td><a href="/boggle3.php?quick=serlatpes">503</a></td>
+<td><a href="/boggle/?board=serlatpes">503</a></td>
 </tr>
 <tr>
 <td>letrasdep</td>
-<td><a href="/boggle3.php?quick=letrasdep">503</a></td>
+<td><a href="/boggle/?board=letrasdep">503</a></td>
 </tr>
 <tr>
 <td>derlitpas</td>
-<td><a href="/boggle3.php?quick=derlitpas">503</a></td>
+<td><a href="/boggle/?board=derlitpas">503</a></td>
 </tr>
 <tr>
 <td>derlatbes</td>
-<td><a href="/boggle3.php?quick=derlatbes">502</a></td>
+<td><a href="/boggle/?board=derlatbes">502</a></td>
 </tr>
 <tr>
 <td>cerlatpes</td>
-<td><a href="/boggle3.php?quick=cerlatpes">502</a></td>
+<td><a href="/boggle/?board=cerlatpes">502</a></td>
 </tr>
 <tr>
 <td>cerlatpes</td>
-<td><a href="/boggle3.php?quick=cerlatpes">502</a></td>
+<td><a href="/boggle/?board=cerlatpes">502</a></td>
 </tr>
 <tr>
 <td>retgasnil</td>
-<td><a href="/boggle3.php?quick=retgasnil">501</a></td>
+<td><a href="/boggle/?board=retgasnil">501</a></td>
 </tr>
 <tr>
 <td>nilgasret</td>
-<td><a href="/boggle3.php?quick=nilgasret">501</a></td>
+<td><a href="/boggle/?board=nilgasret">501</a></td>
 </tr>
 <tr>
 <td>metparles</td>
-<td><a href="/boggle3.php?quick=metparles">501</a></td>
+<td><a href="/boggle/?board=metparles">501</a></td>
 </tr>
 <tr>
 <td>merpatles</td>
-<td><a href="/boggle3.php?quick=merpatles">501</a></td>
+<td><a href="/boggle/?board=merpatles">501</a></td>
 </tr>
 <tr>
 <td>tedsarlep</td>
-<td><a href="/boggle3.php?quick=tedsarlep">500</a></td>
+<td><a href="/boggle/?board=tedsarlep">500</a></td>
 </tr>
 <tr>
 <td>tapselred</td>
-<td><a href="/boggle3.php?quick=tapselred">500</a></td>
+<td><a href="/boggle/?board=tapselred">500</a></td>
 </tr>
 <tr>
 <td>redseltap</td>
-<td><a href="/boggle3.php?quick=redseltap">500</a></td>
+<td><a href="/boggle/?board=redseltap">500</a></td>
 </tr>
 <tr>
 <td>pecsartes</td>
-<td><a href="/boggle3.php?quick=pecsartes">500</a></td>
+<td><a href="/boggle/?board=pecsartes">500</a></td>
 </tr>
 <tr>
 <td>lepsarted</td>
-<td><a href="/boggle3.php?quick=lepsarted">500</a></td>
+<td><a href="/boggle/?board=lepsarted">500</a></td>
 </tr>
 </table>
 <p>As always, this using the <a href="http://everything2.com/title/ENABLE+word+list">Enable2K word list</a>. Code can be found <a href="http://code.google.com/p/performance-boggle/source/browse/#svn/trunk/3x3">here</a></p>
@@ -1012,7 +1012,7 @@ $ ./3x3/ibucket_breaker --best_score 520 --break_class "bdfgjkmpvwxz a sy iou xy
 </tr>
 <tfoot>
 <tr>
-<td colspan=4><a href="/boggle.php?quick=perslatgsineters">3625 points</a></td>
+<td colspan=4><a href="/boggle/?board=perslatgsineters">3625 points</a></td>
 </tr>
 </tfoot>
 </table>
@@ -1062,7 +1062,7 @@ $ ./3x3/ibucket_breaker --best_score 520 --break_class "bdfgjkmpvwxz a sy iou xy
 </tr>
 <tfoot>
 <tr>
-<td colspan=4><a href="/boggle.php?quick=abcdefghijklmnop">18 points</a></td>
+<td colspan=4><a href="/boggle/?board=abcdefghijklmnop">18 points</a></td>
 </tr>
 </tfoot>
 </table>
@@ -1096,7 +1096,7 @@ $ ./3x3/ibucket_breaker --best_score 520 --break_class "bdfgjkmpvwxz a sy iou xy
 </tr>
 <tfoot>
 <tr>
-<td colspan=4><a href="/boggle.php?quick=abcdefghirklmnop">76 points</a></td>
+<td colspan=4><a href="/boggle/?board=abcdefghirklmnop">76 points</a></td>
 </tr>
 </tfoot>
 </table>
@@ -1136,7 +1136,7 @@ $ ./3x3/ibucket_breaker --best_score 520 --break_class "bdfgjkmpvwxz a sy iou xy
 </tr>
 <tfoot>
 <tr>
-<td colspan=4><a href="/boggle.php?quick=abcdefghirklmnop">76 points</a></td>
+<td colspan=4><a href="/boggle/?board=abcdefghirklmnop">76 points</a></td>
 </tr>
 </tfoot>
 </table>
@@ -1170,7 +1170,7 @@ $ ./3x3/ibucket_breaker --best_score 520 --break_class "bdfgjkmpvwxz a sy iou xy
 </tr>
 <tfoot>
 <tr>
-<td colspan=4><a href="/boggle.php?quick=abcdefghirklmnop">55 points</a></td>
+<td colspan=4><a href="/boggle/?board=abcdefghirklmnop">55 points</a></td>
 </tr>
 </tfoot>
 </table>
@@ -1191,415 +1191,415 @@ $ ./3x3/ibucket_breaker --best_score 520 --break_class "bdfgjkmpvwxz a sy iou xy
 <th>Board</th>
 <tr>
 <td align=right>0</td>
-<td align=right><a href="/boggle.php?quick=kqiqwhyyjthdsibk">19</a></td>
+<td align=right><a href="/boggle/?board=kqiqwhyyjthdsibk">19</a></td>
 <td align=right>1</td>
 <td class=mb>kqiqwhyyjthdsibk</td>
 </tr>
 <tr>
 <td align=right>1</td>
-<td align=right><a href="/boggle.php?quick=iqiqjhyywthdskbk">4</a></td>
+<td align=right><a href="/boggle/?board=iqiqjhyywthdskbk">4</a></td>
 <td align=right>1</td>
 <td class=mb><span class="notable">i</span>qiq<span class="notable">j</span>hyy<span class="notable">w</span>thds<span class="notable">k</span>bk</td>
 </tr>
 <tr>
 <td align=right>2</td>
-<td align=right><a href="/boggle.php?quick=ibiqjhyywthdskqk">5</a></td>
+<td align=right><a href="/boggle/?board=ibiqjhyywthdskqk">5</a></td>
 <td align=right>1</td>
 <td class=mb>i<span class="notable">b</span>iqjhyywthdsk<span class="notable">q</span>k</td>
 </tr>
 <tr>
 <td align=right>3</td>
-<td align=right><a href="/boggle.php?quick=ibiqjhcywthdskqk">9</a></td>
+<td align=right><a href="/boggle/?board=ibiqjhcywthdskqk">9</a></td>
 <td align=right>1</td>
 <td class=mb>ibiqjh<span class="notable">c</span>ywthdskqk</td>
 </tr>
 <tr>
 <td align=right>4</td>
-<td align=right><a href="/boggle.php?quick=ibiqjychsthdwkqk">10</a></td>
+<td align=right><a href="/boggle/?board=ibiqjychsthdwkqk">10</a></td>
 <td align=right>1</td>
 <td class=mb>ibiqj<span class="notable">y</span>c<span class="notable">hs</span>thd<span class="notable">w</span>kqk</td>
 </tr>
 <tr>
 <td align=right>5</td>
-<td align=right><a href="/boggle.php?quick=ibicjyqhsthdwkqk">8</a></td>
+<td align=right><a href="/boggle/?board=ibicjyqhsthdwkqk">8</a></td>
 <td align=right>1</td>
 <td class=mb>ibi<span class="notable">c</span>jy<span class="notable">q</span>hsthdwkqk</td>
 </tr>
 <tr>
 <td align=right>6</td>
-<td align=right><a href="/boggle.php?quick=ibicjyqdsthywkqk">9</a></td>
+<td align=right><a href="/boggle/?board=ibicjyqdsthywkqk">9</a></td>
 <td align=right>1</td>
 <td class=mb>ibicjyq<span class="notable">d</span>sth<span class="notable">y</span>wkqk</td>
 </tr>
 <tr>
 <td align=right>7</td>
-<td align=right><a href="/boggle.php?quick=ibicjygdhtsywkqk">23</a></td>
+<td align=right><a href="/boggle/?board=ibicjygdhtsywkqk">23</a></td>
 <td align=right>1</td>
 <td class=mb>ibicjy<span class="notable">g</span>d<span class="notable">h</span>t<span class="notable">s</span>ywkqk</td>
 </tr>
 <tr>
 <td align=right>8</td>
-<td align=right><a href="/boggle.php?quick=ibncjygdhtsywkqa">16</a></td>
+<td align=right><a href="/boggle/?board=ibncjygdhtsywkqa">16</a></td>
 <td align=right>1</td>
 <td class=mb>ib<span class="notable">n</span>cjygdhtsywkq<span class="notable">a</span></td>
 </tr>
 <tr>
 <td align=right>9</td>
-<td align=right><a href="/boggle.php?quick=ibncyygdhtsymkqa">15</a></td>
+<td align=right><a href="/boggle/?board=ibncyygdhtsymkqa">15</a></td>
 <td align=right>1</td>
 <td class=mb>ibnc<span class="notable">y</span>ygdhtsy<span class="notable">m</span>kqa</td>
 </tr>
 <tr>
 <td align=right>10</td>
-<td align=right><a href="/boggle.php?quick=ibncyygwhtsytkda">15</a></td>
+<td align=right><a href="/boggle/?board=ibncyygwhtsytkda">15</a></td>
 <td align=right>1</td>
 <td class=mb>ibncyyg<span class="notable">w</span>htsy<span class="notable">t</span>k<span class="notable">d</span>a</td>
 </tr>
 <tr>
 <td align=right>11</td>
-<td align=right><a href="/boggle.php?quick=ibncyygahtsyhkdw">38</a></td>
+<td align=right><a href="/boggle/?board=ibncyygahtsyhkdw">38</a></td>
 <td align=right>1</td>
 <td class=mb>ibncyyg<span class="notable">a</span>htsy<span class="notable">h</span>kd<span class="notable">w</span></td>
 </tr>
 <tr>
 <td align=right>12</td>
-<td align=right><a href="/boggle.php?quick=ibscyogahtnyhkdw">146</a></td>
+<td align=right><a href="/boggle/?board=ibscyogahtnyhkdw">146</a></td>
 <td align=right>2</td>
 <td class=mb>ib<span class="notable">s</span>cy<span class="notable">o</span>gaht<span class="notable">n</span>yhkdw</td>
 </tr>
 <tr>
 <td align=right>14</td>
-<td align=right><a href="/boggle.php?quick=ibscyogahtnbhkdw">140</a></td>
+<td align=right><a href="/boggle/?board=ibscyogahtnbhkdw">140</a></td>
 <td align=right>4</td>
 <td class=mb>ibscyogahtn<span class="notable">b</span>hkdw</td>
 </tr>
 <tr>
 <td align=right>18</td>
-<td align=right><a href="/boggle.php?quick=ibbcyogahtnshkdw">165</a></td>
+<td align=right><a href="/boggle/?board=ibbcyogahtnshkdw">165</a></td>
 <td align=right>2</td>
 <td class=mb>ib<span class="notable">b</span>cyogahtn<span class="notable">s</span>hkdw</td>
 </tr>
 <tr>
 <td align=right>20</td>
-<td align=right><a href="/boggle.php?quick=ibbcdogahynshktw">159</a></td>
+<td align=right><a href="/boggle/?board=ibbcdogahynshktw">159</a></td>
 <td align=right>1</td>
 <td class=mb>ibbc<span class="notable">d</span>ogah<span class="notable">y</span>nshk<span class="notable">t</span>w</td>
 </tr>
 <tr>
 <td align=right>21</td>
-<td align=right><a href="/boggle.php?quick=ibbcdogahynshmtw">169</a></td>
+<td align=right><a href="/boggle/?board=ibbcdogahynshmtw">169</a></td>
 <td align=right>1</td>
 <td class=mb>ibbcdogahynsh<span class="notable">m</span>tw</td>
 </tr>
 <tr>
 <td align=right>22</td>
-<td align=right><a href="/boggle.php?quick=ibbcdogahynshbtw">151</a></td>
+<td align=right><a href="/boggle/?board=ibbcdogahynshbtw">151</a></td>
 <td align=right>4</td>
 <td class=mb>ibbcdogahynsh<span class="notable">b</span>tw</td>
 </tr>
 <tr>
 <td align=right>26</td>
-<td align=right><a href="/boggle.php?quick=hbbcdogaiynshbtw">150</a></td>
+<td align=right><a href="/boggle/?board=hbbcdogaiynshbtw">150</a></td>
 <td align=right>3</td>
 <td class=mb><span class="notable">h</span>bbcdoga<span class="notable">i</span>ynshbtw</td>
 </tr>
 <tr>
 <td align=right>29</td>
-<td align=right><a href="/boggle.php?quick=hbbcdogagynshbtw">142</a></td>
+<td align=right><a href="/boggle/?board=hbbcdogagynshbtw">142</a></td>
 <td align=right>2</td>
 <td class=mb>hbbcdoga<span class="notable">g</span>ynshbtw</td>
 </tr>
 <tr>
 <td align=right>31</td>
-<td align=right><a href="/boggle.php?quick=hbbcdogaygnshbtw">148</a></td>
+<td align=right><a href="/boggle/?board=hbbcdogaygnshbtw">148</a></td>
 <td align=right>1</td>
 <td class=mb>hbbcdoga<span class="notable">yg</span>nshbtw</td>
 </tr>
 <tr>
 <td align=right>32</td>
-<td align=right><a href="/boggle.php?quick=hbbqdogaygnshbtw">151</a></td>
+<td align=right><a href="/boggle/?board=hbbqdogaygnshbtw">151</a></td>
 <td align=right>1</td>
 <td class=mb>hbb<span class="notable">q</span>dogaygnshbtw</td>
 </tr>
 <tr>
 <td align=right>33</td>
-<td align=right><a href="/boggle.php?quick=hbtmdogaygnshbtw">174</a></td>
+<td align=right><a href="/boggle/?board=hbtmdogaygnshbtw">174</a></td>
 <td align=right>7</td>
 <td class=mb>hb<span class="notable">tm</span>dogaygnshbtw</td>
 </tr>
 <tr>
 <td align=right>40</td>
-<td align=right><a href="/boggle.php?quick=hdtmbogaygnshbtw">175</a></td>
+<td align=right><a href="/boggle/?board=hdtmbogaygnshbtw">175</a></td>
 <td align=right>2</td>
 <td class=mb>h<span class="notable">d</span>tm<span class="notable">b</span>ogaygnshbtw</td>
 </tr>
 <tr>
 <td align=right>42</td>
-<td align=right><a href="/boggle.php?quick=hdtmbogaygnstbtw">172</a></td>
+<td align=right><a href="/boggle/?board=hdtmbogaygnstbtw">172</a></td>
 <td align=right>3</td>
 <td class=mb>hdtmbogaygns<span class="notable">t</span>btw</td>
 </tr>
 <tr>
 <td align=right>45</td>
-<td align=right><a href="/boggle.php?quick=hdtmbogaygnetbtw">165</a></td>
+<td align=right><a href="/boggle/?board=hdtmbogaygnetbtw">165</a></td>
 <td align=right>1</td>
 <td class=mb>hdtmbogaygn<span class="notable">e</span>tbtw</td>
 </tr>
 <tr>
 <td align=right>46</td>
-<td align=right><a href="/boggle.php?quick=hdtmbogaygnetbts">274</a></td>
+<td align=right><a href="/boggle/?board=hdtmbogaygnetbts">274</a></td>
 <td align=right>1</td>
 <td class=mb>hdtmbogaygnetbt<span class="notable">s</span></td>
 </tr>
 <tr>
 <td align=right>47</td>
-<td align=right><a href="/boggle.php?quick=hdtmbogabgnetyts">298</a></td>
+<td align=right><a href="/boggle/?board=hdtmbogabgnetyts">298</a></td>
 <td align=right>5</td>
 <td class=mb>hdtmboga<span class="notable">b</span>gnet<span class="notable">y</span>ts</td>
 </tr>
 <tr>
 <td align=right>52</td>
-<td align=right><a href="/boggle.php?quick=hdtmbogabgnswyte">296</a></td>
+<td align=right><a href="/boggle/?board=hdtmbogabgnswyte">296</a></td>
 <td align=right>8</td>
 <td class=mb>hdtmbogabgn<span class="notable">sw</span>yt<span class="notable">e</span></td>
 </tr>
 <tr>
 <td align=right>60</td>
-<td align=right><a href="/boggle.php?quick=hdtmboeabgnswytg">387</a></td>
+<td align=right><a href="/boggle/?board=hdtmboeabgnswytg">387</a></td>
 <td align=right>1</td>
 <td class=mb>hdtmbo<span class="notable">e</span>abgnswyt<span class="notable">g</span></td>
 </tr>
 <tr>
 <td align=right>61</td>
-<td align=right><a href="/boggle.php?quick=hdtgboeabmnswytg">403</a></td>
+<td align=right><a href="/boggle/?board=hdtgboeabmnswytg">403</a></td>
 <td align=right>7</td>
 <td class=mb>hdt<span class="notable">g</span>boeab<span class="notable">m</span>nswytg</td>
 </tr>
 <tr>
 <td align=right>68</td>
-<td align=right><a href="/boggle.php?quick=hdtpboeabmnswytg">409</a></td>
+<td align=right><a href="/boggle/?board=hdtpboeabmnswytg">409</a></td>
 <td align=right>3</td>
 <td class=mb>hdt<span class="notable">p</span>boeabmnswytg</td>
 </tr>
 <tr>
 <td align=right>71</td>
-<td align=right><a href="/boggle.php?quick=hdtpboeabmnsgytg">413</a></td>
+<td align=right><a href="/boggle/?board=hdtpboeabmnsgytg">413</a></td>
 <td align=right>6</td>
 <td class=mb>hdtpboeabmns<span class="notable">g</span>ytg</td>
 </tr>
 <tr>
 <td align=right>77</td>
-<td align=right><a href="/boggle.php?quick=hptdboeabmnsgytg">419</a></td>
+<td align=right><a href="/boggle/?board=hptdboeabmnsgytg">419</a></td>
 <td align=right>3</td>
 <td class=mb>h<span class="notable">p</span>t<span class="notable">d</span>boeabmnsgytg</td>
 </tr>
 <tr>
 <td align=right>80</td>
-<td align=right><a href="/boggle.php?quick=hptdbaeobmnsgytg">416</a></td>
+<td align=right><a href="/boggle/?board=hptdbaeobmnsgytg">416</a></td>
 <td align=right>8</td>
 <td class=mb>hptdb<span class="notable">a</span>e<span class="notable">o</span>bmnsgytg</td>
 </tr>
 <tr>
 <td align=right>88</td>
-<td align=right><a href="/boggle.php?quick=phtdbaeobmnsgytg">421</a></td>
+<td align=right><a href="/boggle/?board=phtdbaeobmnsgytg">421</a></td>
 <td align=right>9</td>
 <td class=mb><span class="notable">ph</span>tdbaeobmnsgytg</td>
 </tr>
 <tr>
 <td align=right>97</td>
-<td align=right><a href="/boggle.php?quick=phtdbaeoymnsgytg">449</a></td>
+<td align=right><a href="/boggle/?board=phtdbaeoymnsgytg">449</a></td>
 <td align=right>40</td>
 <td class=mb>phtdbaeo<span class="notable">y</span>mnsgytg</td>
 </tr>
 <tr>
 <td align=right>137</td>
-<td align=right><a href="/boggle.php?quick=phtsbaeoymnsgytg">454</a></td>
+<td align=right><a href="/boggle/?board=phtsbaeoymnsgytg">454</a></td>
 <td align=right>2</td>
 <td class=mb>pht<span class="notable">s</span>baeoymnsgytg</td>
 </tr>
 <tr>
 <td align=right>139</td>
-<td align=right><a href="/boggle.php?quick=phtseaeoymnsgytg">463</a></td>
+<td align=right><a href="/boggle/?board=phtseaeoymnsgytg">463</a></td>
 <td align=right>11</td>
 <td class=mb>phts<span class="notable">e</span>aeoymnsgytg</td>
 </tr>
 <tr>
 <td align=right>150</td>
-<td align=right><a href="/boggle.php?quick=phtsmaeoyensgstg">581</a></td>
+<td align=right><a href="/boggle/?board=phtsmaeoyensgstg">581</a></td>
 <td align=right>3</td>
 <td class=mb>phts<span class="notable">m</span>aeoy<span class="notable">e</span>nsg<span class="notable">s</span>tg</td>
 </tr>
 <tr>
 <td align=right>153</td>
-<td align=right><a href="/boggle.php?quick=yhtsmaeopensgstg">662</a></td>
+<td align=right><a href="/boggle/?board=yhtsmaeopensgstg">662</a></td>
 <td align=right>26</td>
 <td class=mb><span class="notable">y</span>htsmaeo<span class="notable">p</span>ensgstg</td>
 </tr>
 <tr>
 <td align=right>179</td>
-<td align=right><a href="/boggle.php?quick=yhtsmaespenogstg">690</a></td>
+<td align=right><a href="/boggle/?board=yhtsmaespenogstg">690</a></td>
 <td align=right>1</td>
 <td class=mb>yhtsmae<span class="notable">s</span>pen<span class="notable">o</span>gstg</td>
 </tr>
 <tr>
 <td align=right>180</td>
-<td align=right><a href="/boggle.php?quick=lhtsmaespenogstg">734</a></td>
+<td align=right><a href="/boggle/?board=lhtsmaespenogstg">734</a></td>
 <td align=right>2</td>
 <td class=mb><span class="notable">l</span>htsmaespenogstg</td>
 </tr>
 <tr>
 <td align=right>182</td>
-<td align=right><a href="/boggle.php?quick=lctsoaespenogstg">754</a></td>
+<td align=right><a href="/boggle/?board=lctsoaespenogstg">754</a></td>
 <td align=right>13</td>
 <td class=mb>l<span class="notable">c</span>ts<span class="notable">o</span>aespenogstg</td>
 </tr>
 <tr>
 <td align=right>195</td>
-<td align=right><a href="/boggle.php?quick=lctsoasepenogstg">849</a></td>
+<td align=right><a href="/boggle/?board=lctsoasepenogstg">849</a></td>
 <td align=right>1</td>
 <td class=mb>lctsoa<span class="notable">se</span>penogstg</td>
 </tr>
 <tr>
 <td align=right>196</td>
-<td align=right><a href="/boggle.php?quick=lctseasepenogstg">912</a></td>
+<td align=right><a href="/boggle/?board=lctseasepenogstg">912</a></td>
 <td align=right>39</td>
 <td class=mb>lcts<span class="notable">e</span>asepenogstg</td>
 </tr>
 <tr>
 <td align=right>235</td>
-<td align=right><a href="/boggle.php?quick=lctseasepenoistg">974</a></td>
+<td align=right><a href="/boggle/?board=lctseasepenoistg">974</a></td>
 <td align=right>10</td>
 <td class=mb>lctseasepeno<span class="notable">i</span>stg</td>
 </tr>
 <tr>
 <td align=right>245</td>
-<td align=right><a href="/boggle.php?quick=lctseasedenoistg">978</a></td>
+<td align=right><a href="/boggle/?board=lctseasedenoistg">978</a></td>
 <td align=right>10</td>
 <td class=mb>lctsease<span class="notable">d</span>enoistg</td>
 </tr>
 <tr>
 <td align=right>255</td>
-<td align=right><a href="/boggle.php?quick=lctseasedsnoietg">1046</a></td>
+<td align=right><a href="/boggle/?board=lctseasedsnoietg">1046</a></td>
 <td align=right>25</td>
 <td class=mb>lctseased<span class="notable">s</span>noi<span class="notable">e</span>tg</td>
 </tr>
 <tr>
 <td align=right>280</td>
-<td align=right><a href="/boggle.php?quick=lctseasedsrointg">1281</a></td>
+<td align=right><a href="/boggle/?board=lctseasedsrointg">1281</a></td>
 <td align=right>53</td>
 <td class=mb>lctseaseds<span class="notable">r</span>oi<span class="notable">n</span>tg</td>
 </tr>
 <tr>
 <td align=right>333</td>
-<td align=right><a href="/boggle.php?quick=lctseasedsronitg">1511</a></td>
+<td align=right><a href="/boggle/?board=lctseasedsronitg">1511</a></td>
 <td align=right>2</td>
 <td class=mb>lctseasedsro<span class="notable">ni</span>tg</td>
 </tr>
 <tr>
 <td align=right>335</td>
-<td align=right><a href="/boggle.php?quick=lctseasedsronitg">1511</a></td>
+<td align=right><a href="/boggle/?board=lctseasedsronitg">1511</a></td>
 <td align=right>8</td>
 <td class=mb>lctseasedsronitg</td>
 </tr>
 <tr>
 <td align=right>343</td>
-<td align=right><a href="/boggle.php?quick=lctseaiedsronitg">1515</a></td>
+<td align=right><a href="/boggle/?board=lctseaiedsronitg">1515</a></td>
 <td align=right>17</td>
 <td class=mb>lctsea<span class="notable">i</span>edsronitg</td>
 </tr>
 <tr>
 <td align=right>360</td>
-<td align=right><a href="/boggle.php?quick=lctseaiedsronitp">1537</a></td>
+<td align=right><a href="/boggle/?board=lctseaiedsronitp">1537</a></td>
 <td align=right>2</td>
 <td class=mb>lctseaiedsronit<span class="notable">p</span></td>
 </tr>
 <tr>
 <td align=right>362</td>
-<td align=right><a href="/boggle.php?quick=lctseaiedtronisp">1643</a></td>
+<td align=right><a href="/boggle/?board=lctseaiedtronisp">1643</a></td>
 <td align=right>32</td>
 <td class=mb>lctseaied<span class="notable">t</span>roni<span class="notable">s</span>p</td>
 </tr>
 <tr>
 <td align=right>394</td>
-<td align=right><a href="/boggle.php?quick=lstseaiedtronisp">1708</a></td>
+<td align=right><a href="/boggle/?board=lstseaiedtronisp">1708</a></td>
 <td align=right>21</td>
 <td class=mb>l<span class="notable">s</span>tseaiedtronisp</td>
 </tr>
 <tr>
 <td align=right>415</td>
-<td align=right><a href="/boggle.php?quick=lstseiaedtronisp">1727</a></td>
+<td align=right><a href="/boggle/?board=lstseiaedtronisp">1727</a></td>
 <td align=right>46</td>
 <td class=mb>lstse<span class="notable">ia</span>edtronisp</td>
 </tr>
 <tr>
 <td align=right>461</td>
-<td align=right><a href="/boggle.php?quick=lstseiaedtrinosp">1744</a></td>
+<td align=right><a href="/boggle/?board=lstseiaedtrinosp">1744</a></td>
 <td align=right>40</td>
 <td class=mb>lstseiaedtr<span class="notable">i</span>n<span class="notable">o</span>sp</td>
 </tr>
 <tr>
 <td align=right>501</td>
-<td align=right><a href="/boggle.php?quick=lstseiaentrinosp">1873</a></td>
+<td align=right><a href="/boggle/?board=lstseiaentrinosp">1873</a></td>
 <td align=right>36</td>
 <td class=mb>lstseiae<span class="notable">n</span>trinosp</td>
 </tr>
 <tr>
 <td align=right>537</td>
-<td align=right><a href="/boggle.php?quick=lstseiaentrisosp">2053</a></td>
+<td align=right><a href="/boggle/?board=lstseiaentrisosp">2053</a></td>
 <td align=right>9</td>
 <td class=mb>lstseiaentri<span class="notable">s</span>osp</td>
 </tr>
 <tr>
 <td align=right>546</td>
-<td align=right><a href="/boggle.php?quick=lstseiaentrigosp">2162</a></td>
+<td align=right><a href="/boggle/?board=lstseiaentrigosp">2162</a></td>
 <td align=right>13</td>
 <td class=mb>lstseiaentri<span class="notable">g</span>osp</td>
 </tr>
 <tr>
 <td align=right>559</td>
-<td align=right><a href="/boggle.php?quick=sltseiaentrigosp">2445</a></td>
+<td align=right><a href="/boggle/?board=sltseiaentrigosp">2445</a></td>
 <td align=right>42</td>
 <td class=mb><span class="notable">sl</span>tseiaentrigosp</td>
 </tr>
 <tr>
 <td align=right>601</td>
-<td align=right><a href="/boggle.php?quick=sltseiaentrigosp">2445</a></td>
+<td align=right><a href="/boggle/?board=sltseiaentrigosp">2445</a></td>
 <td align=right>21</td>
 <td class=mb>sltseiaentrigosp</td>
 </tr>
 <tr>
 <td align=right>622</td>
-<td align=right><a href="/boggle.php?quick=sltseiaentrigesp">2524</a></td>
+<td align=right><a href="/boggle/?board=sltseiaentrigesp">2524</a></td>
 <td align=right>58</td>
 <td class=mb>sltseiaentrig<span class="notable">e</span>sp</td>
 </tr>
 <tr>
 <td align=right>680</td>
-<td align=right><a href="/boggle.php?quick=stlseiaentrigesp">2597</a></td>
+<td align=right><a href="/boggle/?board=stlseiaentrigesp">2597</a></td>
 <td align=right>37</td>
 <td class=mb>s<span class="notable">tl</span>seiaentrigesp</td>
 </tr>
 <tr>
 <td align=right>717</td>
-<td align=right><a href="/boggle.php?quick=stlseiaentragesp">2614</a></td>
+<td align=right><a href="/boggle/?board=stlseiaentragesp">2614</a></td>
 <td align=right>232</td>
 <td class=mb>stlseiaentr<span class="notable">a</span>gesp</td>
 </tr>
 <tr>
 <td align=right>949</td>
-<td align=right><a href="/boggle.php?quick=stlseiaentrpgesa">3090</a></td>
+<td align=right><a href="/boggle/?board=stlseiaentrpgesa">3090</a></td>
 <td align=right>276</td>
 <td class=mb>stlseiaentr<span class="notable">p</span>ges<span class="notable">a</span></td>
 </tr>
 <tr>
 <td align=right>1225</td>
-<td align=right><a href="/boggle.php?quick=stlseiaentrpdesa">3151</a></td>
+<td align=right><a href="/boggle/?board=stlseiaentrpdesa">3151</a></td>
 <td align=right>26</td>
 <td class=mb>stlseiaentrp<span class="notable">d</span>esa</td>
 </tr>
 <tr>
 <td align=right>1251</td>
-<td align=right><a href="/boggle.php?quick=stlseiaentrpdeso">3182</a></td>
+<td align=right><a href="/boggle/?board=stlseiaentrpdeso">3182</a></td>
 <td align=right>n/a</td>
 <td class=mb>stlseiaentrpdes<span class="notable">o</span></td>
 </tr>
