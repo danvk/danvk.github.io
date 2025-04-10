@@ -1,0 +1,21 @@
+digraph EvalNodeLayout {
+    node [shape=plain, fontname="Helvetica"];
+
+    EvalNode [label=<
+        <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0">
+            <TR><TD COLSPAN="3" BGCOLOR="lightgray"><B>EvalNode</B></TD></TR>
+            <TR><TD ALIGN="RIGHT">0</TD><TD ALIGN="LEFT" COLSPAN="2">int8_t letter_</TD></TR>
+            <TR><TD ALIGN="RIGHT">1</TD><TD ALIGN="LEFT" COLSPAN="2">int8_t cell_</TD></TR>
+            <TR><TD ALIGN="RIGHT">2-3</TD><TD ALIGN="LEFT" COLSPAN="2">uint16_t points_</TD></TR>
+            <TR><TD ALIGN="RIGHT">4</TD><TD ALIGN="LEFT" COLSPAN="2">uint8_t num_children_</TD></TR>
+            <TR><TD ALIGN="RIGHT">5</TD><TD ALIGN="LEFT" COLSPAN="2">uint8_t capacity_</TD></TR>
+            <TR><TD COLSPAN="3"><I>padding (2 bytes)</I></TD></TR>
+            <TR><TD ALIGN="RIGHT">8-11</TD><TD ALIGN="LEFT" COLSPAN="2">uint32_t bound_</TD></TR>
+            <TR><TD COLSPAN="3"><I>padding (4 bytes)</I></TD></TR>
+            <TR><TD ALIGN="RIGHT" ROWSPAN="4" VALIGN="TOP">16-</TD><TD ALIGN="LEFT" COLSPAN="2">EvalNode* children_[]</TD></TR>
+            <TR><TD ALIGN="RIGHT">16-23</TD><TD ALIGN="LEFT">EvalNode* children_[0]</TD></TR>
+            <TR><TD ALIGN="RIGHT">24-31</TD><TD ALIGN="LEFT">EvalNode* children_[1]</TD></TR>
+            <TR><TD COLSPAN="2">...</TD></TR>
+        </TABLE>
+    >];
+}

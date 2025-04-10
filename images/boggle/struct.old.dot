@@ -1,0 +1,33 @@
+digraph EvalNodeLayout {
+    rankdir=LR;
+    node [fontname="Helvetica", penwidth="0"];
+
+    EvalNode [label=<
+        <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0">
+            <TR><TD COLSPAN="3" BGCOLOR="lightgray"><B>EvalNode</B></TD></TR>
+            <TR><TD ALIGN="RIGHT">0</TD><TD COLSPAN="2" ALIGN="LEFT">int8_t letter_</TD></TR>
+            <TR><TD ALIGN="RIGHT">1</TD><TD COLSPAN="2" ALIGN="LEFT">int8_t cell_</TD></TR>
+            <TR><TD ALIGN="RIGHT">2-3</TD><TD COLSPAN="2" ALIGN="LEFT">uint16_t points_</TD></TR>
+            <TR><TD ALIGN="RIGHT">4-7</TD><TD COLSPAN="2" ALIGN="LEFT">uint32_t bound_</TD></TR>
+            <TR><TD ALIGN="RIGHT" ROWSPAN="4" VALIGN="top">8-31</TD><TD COLSPAN="2" ALIGN="LEFT">vector&lt;EvalNode*&gt; children_</TD></TR>
+            <TR><TD ALIGN="RIGHT">8-15</TD><TD ALIGN="LEFT" PORT="data">EvalNode* data</TD></TR>
+            <TR><TD ALIGN="RIGHT">16-23</TD><TD ALIGN="LEFT" PORT="end">EvalNode* end</TD></TR>
+            <TR><TD ALIGN="RIGHT">24-31</TD><TD ALIGN="LEFT" PORT="endcap">EvalNode* end_capacity</TD></TR>
+        </TABLE>
+    >];
+
+    array [label=<
+        <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0">
+            <TR><TD COLSPAN="2" BGCOLOR="lightgray"><B>vector backing array</B></TD></TR>
+            <TR><TD PORT="0">0</TD><TD>EvalNode*</TD></TR>
+            <TR><TD PORT="8">8</TD><TD>EvalNode*</TD></TR>
+            <TR><TD PORT="16">16</TD><TD>EvalNode*</TD></TR>
+            <TR><TD PORT="24">24</TD><TD>EvalNode*</TD></TR>
+            <TR><TD PORT="30" COLSPAN="2">...</TD></TR>
+        </TABLE>
+    >];
+
+    EvalNode:data:e -> array:0:w;
+    EvalNode:end:e -> array:16:w;
+    EvalNode:endcap:e -> array:30:w;
+}
