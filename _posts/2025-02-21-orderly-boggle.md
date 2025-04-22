@@ -7,7 +7,7 @@ summary: "Just as I was ready to wrap up work on Boggle, a thrilling flash of in
 preview_png: /images/boggle/tree-orderly.png
 ---
 
-At the end of my [last post] on Boggle, I’d achieved perhaps a 10x speedup over my [2009 approach] and run my code for 8-9 hours on a 192-core machine to definitively prove that this is the highest-scoring 3x4 Boggle board for the ENABLE2K word list:
+At the end of my [last post] on Boggle, I’d achieved perhaps a 10x speedup over my [2009 approach] and run my code for 8-9 hours on a 192-core machine to definitively prove that, with [1,651 points], this is the highest-scoring 3x4 Boggle board for the ENABLE2K word list:
 
 ```
 S L P
@@ -19,6 +19,8 @@ D E S
 I was happy with the work. All that was left was to write one final blog post reflecting back on the process.
 
 Then I had a thrilling flash of insight that made me dive right back in.
+
+[1,651 points]: https://www.danvk.org/boggle/?board=sindlatepers
 
 ## How bounds are computed
 
@@ -47,7 +49,7 @@ b e   b e   b f   b f
 d g   d h   d g   d h
 ```
 
-Some  have zero points (`bdfh`) while the highest-scoring one has 8 points (`adeg`).
+Some have zero points (`bdfh`) while the highest-scoring one has 8 points (`adeg`).
 
 We’d like to compute an upper bound on the highest-scoring board in this class without enumerating every board in it. To do so, we traverse the board [just like we would] to find the words on a regular Boggle board. We [prune the search] using valid prefixes: a path starting with “ac” is worth exploring, but one starting with “hd” is not.
 
@@ -130,12 +132,14 @@ There are a few things to note straightaway:
 - The tree is much smaller than before.
 - The colors are much more organized, even without lifting: a single blue node on the left, green nodes mostly on the left, brown nodes always on the right.
 - Green nodes always appear to the right of blue nodes. Orange is always to the right of green, and tan is always to the right of orange. This reflects how we sort the cells before adding words.
-- The bound is much tighter than before: 8 vs. 14. In fact, 8 is already the tightest possible bound for this board class since `adeg` scores 8 points.
+- The bound is much tighter than before: 8 vs. 14. In fact, 8 is already the tightest possible bound for this board class since `adeg` [scores 8 points].
 - There are sum nodes only where it’s possible to “skip” a cell in the order.
 
 This seems great! Surely reducing the bound and shrinking the tree will speed up the breaking process. But by how much? It’s not at all clear whether this is a 2x, 10x or a 100x optimization.
 
 You might object: if we sort the cells, how do we distinguish anagrams like ACHE and EACH? Remember from the last post that we’re really playing [Multi-Boggle], where you’re allowed to find the same word twice so long as you find it in a different way. That saves us here. Because ACHE and EACH follow different paths, we add their points twice. They wind up on the same node in the tree, but they do both count.
+
+[scores 8 points]: https://www.danvk.org/boggle/?board=ae..dg..........
 
 ## Orderly Results
 
@@ -144,7 +148,10 @@ This was exciting! A great idea with unknown upside. I [implemented it](https://
 The reduction in bounds was enormous and got bigger for larger and harder board classes:
 
 - A big 3x3 board: 9,359 → 1,449 points (6x fewer)
-- Some 3x4 boards: 36,134 → 3,858 (9x), 51,317 → 4,397 (12x), 194,482 → 9,884 (20x)
+- Some 3x4 boards:
+  - 36,134 → 3,858 (9x)
+  - 51,317 → 4,397 (12x)
+  - 194,482 → 9,884 (20x)
 
 Surely a 20x reduction in bounds would speed up the breaking process, but by how much? On my test set of 50 3x4 board classes, this took me from 333→29s, an 11.5x speedup. Nice!
 
@@ -156,11 +163,10 @@ What about 4x4 Boggle? I estimate that it’s about [50,000x harder] than 3x4 Bo
 
 Orderly Trees are a great illustration of the power of algorithmic advances: one good idea let me do on my laptop what had previously needed a 192-core cloud machine. And it would save $485,000 on the 4x4 run!
 
-That’s still a bit more than I’m willing to pay (if you feel otherwise, let me know!) but we’re getting closer. A few more insights and the general trend towards lower compute costs might just bring it within reach.
-
-Barring any more surprising insights, the next posts will look at the best 3x4 board, what it can tell us about 4x4 Boggle, and will offer my reflections on this process.
+~~That’s still a bit more than I’m willing to pay (if you feel otherwise, let me know!) but we’re getting closer. A few more insights and the general trend towards lower compute costs might just bring it within reach. Barring any more surprising insights, the next posts will look at the best 3x4 board, what it can tell us about 4x4 Boggle, and will offer my reflections on this process.~~ *Update: a [few more optimizations] and a lot of compute did, in fact, bring it within reach.*
 
 As always, you can find all the code for this post in the <img alt="GitHub Logo" src="/images/github-mark.svg" height="16" style="display:inline-block"> [danvk/hybrid-boggle][repo] repo.
+
 
 [last post]: https://www.danvk.org/2025/02/13/boggle2025.html
 [2009 approach]: https://www.danvk.org/2025/02/10/boggle34.html#how-did-i-find-the-optimal-3x3-board-in-2009
@@ -176,3 +182,4 @@ As always, you can find all the code for this post in the <img alt="GitHub Logo"
 [192-core C4]: https://cloud.google.com/compute/docs/general-purpose-machines#c4_series
 [50,000x harder]: https://www.danvk.org/2025/02/10/boggle34.html#how-much-harder-are-3x4-and-4x4-boggle
 [repo]: https://github.com/danvk/hybrid-boggle
+[few more optimizations]: https://www.danvk.org/2025/04/10/following-insight.html

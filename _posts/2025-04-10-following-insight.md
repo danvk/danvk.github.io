@@ -155,6 +155,11 @@ There were two other things I learned from this optimization that I wanted to no
 1. Long ago, I'd learned to use this trick by putting `T* child_[0]` as the last property of a `struct`. This `[0]` form was never standard and has been [obsolete since C99]. It's more correct to write `T* child_[]`. And as of C++11, this saves you from a footgun: `for (auto child : child_)` is valid (but not what you want) with `child_[0]` but is a compile error with `child_[]`.
 2. C and C++ compilers are [not allowed to reorder properties in a class]. So it can pay off to think carefully about alignment and the size of each field.
 
+*Update: I later [split] `EvalNode` into `SumNode` and `ChoiceNode` classes, which let me get both of them [down to 8 bytes] with no waste.*
+
+[split]: https://github.com/danvk/hybrid-boggle/pull/88
+[down to 8 bytes]: https://github.com/danvk/hybrid-boggle/pull/91
+
 ## Variable-depth Switching
 
 To prove that a class of Boggle boards doesn’t contain any individual boards with more than N points, the procedure is:
