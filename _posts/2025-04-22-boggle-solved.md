@@ -12,7 +12,7 @@ Exciting news! This is the best possible [Boggle](https://en.wikipedia.org/wiki/
 
 Boggle is a word search game. You form words by connecting adjacent letters, including along diagonals. Good words on this board include STRANGERS and PLASTERING. After you spend three minutes trying to find as many words as you can, you’ll be struck by just how good computers are at this.
 
-Using the [ENABLE2K word list](https://everything2.com/title/ENABLE+word+list), this board has [3,625 points](http://www.danvk.org/boggle/?board=perslatgsineters) on it coming from 1,045 words. This board has more points than any other. Try any other combination of letters and you’ll get a lower score. While I’ve [long suspected](https://www.danvk.org/wp/2009-02-19/sky-high-boggle-scores-with-simulated-annealing/index.html) this board was the winner, it’s now been proven via exhaustive search. This is a new, first of its kind result for Boggle.
+Using the [ENABLE2K word list](https://everything2.com/title/ENABLE+word+list), this board has [3,625 points](http://www.danvk.org/boggle/?board=perslatgsineters) on it coming from 1,045 words. This board has more points than any other. Try any other combination of letters and you’ll get a lower score. While I’ve [long suspected](https://www.danvk.org/wp/2009-02-19/sky-high-boggle-scores-with-simulated-annealing/index.html) this board was the winner, it’s now been proven via exhaustive search. This is a new, [first of its kind](https://www.gtoal.com/wordgames/boggle.html) [result](http://www.robertgamble.net/2016/01/a-programmers-analysis-of-boggle.html) for Boggle.
 
 To see why this is interesting, let’s go back to the 1980s.
 
@@ -116,7 +116,7 @@ If you’d like to learn more, you can [run the code](https://github.com/danvk/h
 
 ### What tools were used?
 
-The code is a mixture of C++ for performance critical parts and Python for everything else. They’re glued together using [pybind11](https://pybind11.readthedocs.io/en/stable/index.html), which I’m a big fan of.
+The code is a mixture of C++ for performance-critical parts and Python for everything else. They’re glued together using [pybind11](https://pybind11.readthedocs.io/en/stable/index.html), which I’m a big fan of.
 
 If you’d like to run the code or learn more, check out the [GitHub repo](https://github.com/danvk/hybrid-boggle/).
 
