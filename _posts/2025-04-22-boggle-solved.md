@@ -8,11 +8,13 @@ summary: "At long last, the best Boggle board has been found."
 
 Exciting news! This is the best possible [Boggle](https://en.wikipedia.org/wiki/Boggle) board:
 
-![Photo of the best possible Boggle board](/images/boggle/best-board.jpg)
+![Photo of the best possible Boggle board: P E R S / L A T G / S I N E / T E R S](/images/boggle/best-board.jpg)
 
-Boggle is a word search game. You form words by connecting adjacent letters, including along diagonals. Good words on this board include STRANGERS and PLASTERING. After you spend three minutes trying to find as many words as you can, you’ll be struck by just how good computers are at this.
+Boggle is a word search game. You form words by connecting adjacent letters, including along diagonals. Longer words score more points. Good words on this board include STRANGERS and PLASTERING. After you spend three minutes trying to find as many words as you can, you’ll be struck by just how good computers are at this.
 
-Using the [ENABLE2K word list](https://everything2.com/title/ENABLE+word+list), this board has [3,625 points](http://www.danvk.org/boggle/?board=perslatgsineters) on it coming from 1,045 words. This board has more points than any other. Try any other combination of letters and you’ll get a lower score. While I’ve [long suspected](https://www.danvk.org/wp/2009-02-19/sky-high-boggle-scores-with-simulated-annealing/index.html) this board was the winner, it’s now been proven via exhaustive search. This is a new, [first of its kind](https://www.gtoal.com/wordgames/boggle.html) [result](http://www.robertgamble.net/2016/01/a-programmers-analysis-of-boggle.html) for Boggle.
+Using the [ENABLE2K word list](https://everything2.com/title/ENABLE+word+list), this board has [3,625 points](https://www.danvk.org/boggle/?board=perslatgsineters) on it coming from 1,045 words. This board has more points than any other. Try any other combination of letters and you’ll get a lower score. While I’ve [long suspected](https://www.danvk.org/wp/2009-02-19/sky-high-boggle-scores-with-simulated-annealing/index.html) this board was the winner, I've now proven it via exhaustive search.
+
+[Many people](https://www.gtoal.com/wordgames/boggle.html) have searched for [high-scoring boards](http://www.robertgamble.net/2016/01/a-programmers-analysis-of-boggle.html) before, but no one has ever constructed a computational proof that they've found the best one. This is a new, first of its kind result for Boggle.
 
 To see why this is interesting, let’s go back to the 1980s.
 
@@ -22,15 +24,15 @@ With the release of the Apple II (1977) and IBM PC (1981), computers become acce
 
 Here’s what he wrote:
 
-![Article text from 1982](/images/boggle/boggle1982.png)
+![Scan of type-written article from 1982 showing the board G N I S / E T R P / S E A C / D B L S and stating: With the aid of a computer, Steve Root and I have discovered that the array at the right is very likely the highest-scoring one for words from the Official Scrabble Players Dictionary; a score of 2047 was achieved.](/images/boggle/boggle1982.png)
 
 The article goes on to list the 769 words that add up to 2,047 points. You can browse the words on that board using the fifth edition of OSPD here: [gnisetrpseacdbls](https://www.danvk.org/boggle/?board=gnisetrpseacdbls&wordlist=ospd5). (Thanks to the addition of new words, it’s increased to 2,226 points.)
 
 The article doesn’t explain how Alan and Steve came up with this particular board, but I suspect they used a [hill climbing](https://en.wikipedia.org/wiki/Hill_climbing) procedure. The idea is simple: start with a random board and find its score. Tweak a letter and see if the score improves. If so, keep it. If not, discard the change. Repeat until you stall out. You’ll eventually wind up with a high-scoring board.
 
-Unfortunately for Alan and Steve, their board is not “very likely the highest-scoring one.” It’s not even close. The board pictured at the top of this article scores [3,736 points](https://www.danvk.org/boggle/?wordlist=ospd5) using OSPD5, vastly more than theirs.
+Writing a Boggle solver and finding this board was a real achievement in 1982. But unfortunately for Alan and Steve, their board is not “the highest-scoring one.” It’s not even close. The board pictured at the top of this article scores [3,736 points](https://www.danvk.org/boggle/?wordlist=ospd5) using OSPD5, vastly more than theirs.
 
-So what went wrong? The bane of hill climbing is the local maximum:
+So what went wrong? It's hard to say without their code, but I have a hunch. The bane of hill climbing is the local maximum:
 
 ![Chart showing a local and global maximum](/images/boggle/local-global-max.png)
 
@@ -64,39 +66,40 @@ This technique is known as [Branch and Bound](https://en.wikipedia.org/wiki/Bran
 2. An [upper bound](https://www.danvk.org/2025/02/21/orderly-boggle.html#how-bounds-are-computed) that’s fast to compute but still reasonably “tight”
 3. A way to [split board classes](https://www.danvk.org/2025/04/10/following-insight.html#lift--orderly-force--merge) and calculate their upper bounds without repeating work
 
-The latter two required developing a [somewhat novel tree structure](https://www.danvk.org/2025/02/13/boggle2025.html#the-evaluation-tree) tailor-made for Boggle. I developed and tested the search algorithm on 3x3 and 3x4 Boggle, which are [much easier problems](https://www.danvk.org/2025/02/10/boggle34.html#how-much-harder-are-3x4-and-4x4-boggle). Then I ran it on 4x4 Boggle.
+A "board class" contains trillions of individual boards. An example would be boards with a particular consonant/vowel pattern. There are roughly 2^16/8=8192 possible consonant/vowel patterns—vastly fewer than the number of boards. And you can imagine that it's easy to throw out boards with all consonants or all vowels. Other patterns are harder, though. (My search didn't exactly use consonants and vowels, this is just an illustration.) For more on board classes, read [this post](https://www.danvk.org/2025/02/10/boggle34.html#board-classes).
 
-Using a 192-core c4 on Google Cloud, it took about 5 days to check all the 4x4 board classes (~23,000 CPU hours). This is about $1,200 of compute. That’s a lot, but it’s not a crazy amount. (Fortunately I had a friend in BigTech with CPUs to spare.)
+The second and third ideas required developing a [somewhat novel tree structure](https://stackoverflow.com/q/79381817/388951) tailor-made for Boggle. These "sum/choice" trees make it efficient both to calculate upper bounds and to split board classes. You can see examples of these trees and read about how they work in [this post](https://www.danvk.org/2025/02/21/orderly-boggle.html).
 
-### Board Classes
-
-<style>
-    td, th {
-        border: 1px solid #777;
-        padding: 0.25em;
-    }
-    table {
-        margin-bottom: 10px;
-    }
-</style>
-
-Here’s what a “class” of boards looks like:
-
-|`{P,Q,R}`|`{D,E,F}`|`{P,Q,R}`|`{S,T,U}`|
-|`{J,K,L}`|`{A,B,C}`|`{S,T,U}`|`{G,H,I}`|
-|`{S,T,U}`|`{G,H,I}`|`{M,N,O}`|`{D,E,F}`|
-|`{S,T,U}`|`{D,E,F}`|`{P,Q,R}`|`{S,T,U}`|
-
-In this class of boards, each cell can be any of three possible letters. There are 3^16≈43M possible boards in this class. The best board is one of them, but there are many others. The initial upper bound we compute for the score of any individual board in this class is 11,733 — too high!
-
-To get a tighter bound, we have to “branch” by splitting this class up into smaller ones, say by taking each possibility for one of the {A, B, C} cells in sequence. The [sum/choice tree structure](https://www.danvk.org/2025/02/21/orderly-boggle.html) developed for this problem dramatically accelerates these bounding and branching operations.
-
-If you’d like to learn more, you can [run the code](https://github.com/danvk/hybrid-boggle) on your own machine or read some of my previous blog posts about Boggle:
+If you’d like to learn more about the algorithm and data structures, I'd encourage you to [run the code](https://github.com/danvk/hybrid-boggle) on your own machine and read some of my previous blog posts, which go into much greater detail:
 
 - [Boggle Revisited: Finding the Globally-Optimal 3x4 Boggle Board](https://www.danvk.org/2025/02/10/boggle34.html)
 - [Boggle Revisited: New Ideas in 2025](https://www.danvk.org/2025/02/13/boggle2025.html)
 - [Boggle Revisited: A Thrilling Insight and the Power of Algorithms](https://www.danvk.org/2025/02/21/orderly-boggle.html)
 - [Boggle Revisited: Following up on an insight](https://www.danvk.org/2025/04/10/following-insight.html)
+
+### The results
+
+I developed and tested the search algorithm on 3x3 and 3x4 Boggle, which are [much easier problems](https://www.danvk.org/2025/02/10/boggle34.html#how-much-harder-are-3x4-and-4x4-boggle). Then I ran it on 4x4 Boggle.
+
+Using a 192-core c4 on Google Cloud, it took about 5 days to check all the 4x4 board classes (~23,000 CPU hours). This is about $1,200 of compute. That’s a lot, but it’s not a crazy amount. (Fortunately I had a friend in BigTech with CPUs to spare.)
+
+The result was a list of all the Boggle boards (up to symmetry) that score 3500+ points using the ENABLE2K word list. There were 32 of them. Here are the top five:
+
+- [plsteaiertnrsges] (3625 points)
+- [splseaiertnrsges] (3603 points)
+- [gntseaieplrdsees] (3593 points)
+- [dresenilstapares] (3591 points)
+- [dplcseainrtngies] (3591 points)
+
+You can see the rest [here](https://github.com/danvk/hybrid-boggle/blob/main/results/best-boards-4x4.enable2k.txt). These boards are rich in high-value endings like -ING, -ER, -ED, and -S.
+
+The top boards were all ones that I'd previously found by hillclimbing. In other words, if you conduct a deep enough search, you can find the globally max for Boggle using local optimization techniques.
+
+[plsteaiertnrsges]: https://www.danvk.org/boggle/?board=perslatgsineters
+[splseaiertnrsges]: https://www.danvk.org/boggle/?board=splseaiertnrsges
+[gntseaieplrdsees]: https://www.danvk.org/boggle/?board=gntseaieplrdsees
+[dresenilstapares]: https://www.danvk.org/boggle/?board=dresenilstapares
+[dplcseainrtngies]: https://www.danvk.org/boggle/?board=dplcseainrtngies
 
 ### What did we learn about the problem?
 
@@ -106,13 +109,16 @@ If you’d like to learn more, you can [run the code](https://github.com/danvk/h
 ### Questions and Answers
 
 - **Does this use AI?** It’s 2025, and yet this project made very little use of AI. The runtime is classic data structures and algorithms, all CPU and no GPU. GitHub Copilot was helpful for translating parts of the Python prototype to C++ and for small coding tasks.
+- **Can this board be rolled with real Boggle dice?** Yes. (See photo for proof!) All the highest-scoring boards can be rolled with both old ([pre-1987]) and new Boggle dice. My search included all combinations of letters, not just the ones that could actually be rolled.
 - **What are your odds of rolling this board?** Vanishingly low! I believe they’re around 1 in 10^19, which is in the ballpark of the number of stars in the universe. You’re better off playing the lottery.
-- **What about the letter Q?** One of the Boggle dice has a “Qu” on it, and this search allowed any of the cells to be “Qu”. Not surprisingly, the highest-scoring boards had no Qu on it. The best board I’m aware of containing a Qu is [cinglateperssidq](https://www.danvk.org/boggle/?board=cinglateperssidq) (3260 points), where the Qu is a dead cell. The best I know of that actually uses the Qu is [gepsnaletiresedq](https://www.danvk.org/boggle/?board=gepsnaletiresedq) (3199 points), which contains QUEER, QUEEREST, etc.
-- **What are the other high-scoring boards?** Here’s a [complete list](https://github.com/danvk/hybrid-boggle/blob/main/results/best-boards-4x4.enable2k.txt) of boards with 3500+ points. Many of these are one or two letter variations on each other, but some are quite distinct.
-- **What about other wordlists?** The best board depends on the dictionary you use. There are some slight variations, for example the best board for the OSPD Scrabble Dictionary is [splseaiertnrsges](https://www.danvk.org/boggle/?board=splseaiertnrsges&wordlist=ospd5) (3827 points), which is the second-best board for ENABLE2K ([3603 points](https://www.danvk.org/boggle/?board=splseaiertnrsges)).
+- **What about the letter Q?** One of the Boggle dice has a “Qu” on it, and my search allowed any of the cells to be “Qu”. Not surprisingly, the highest-scoring boards had no Qu on it. For ENABLE2K, the best board I’m aware of containing a Qu is [cinglateperssidq](https://www.danvk.org/boggle/?board=cinglateperssidq) (3260 points), where the Qu is a dead cell. The best I know of that actually uses the Qu is [gepsnaletiresedq](https://www.danvk.org/boggle/?board=gepsnaletiresedq) (3199 points), which contains QUEER, QUEEREST, etc.
+- **What about other wordlists?** The best board depends on the dictionary you use. There are some slight variations, for example the best board for the OSPD Scrabble Dictionary is likely[splseaiertnrsges](https://www.danvk.org/boggle/?board=splseaiertnrsges&wordlist=ospd5) (3827 points), which is the second-best board for ENABLE2K ([3603 points](https://www.danvk.org/boggle/?board=splseaiertnrsges)). The GitHub repo has a [breakdown by wordlist](https://github.com/danvk/hybrid-boggle/?tab=readme-ov-file#results-for-other-wordlists). Only the result for ENABLE2K has been proven.
+- **What are the other high-scoring boards?** Here’s a [complete list](https://github.com/danvk/hybrid-boggle/blob/main/results/best-boards-4x4.enable2k.txt) of boards with 3500+ points using ENABLE2K. Many of these are one or two letter variations on each other, but some are quite distinct.
 - **Why did this happen now?** This could have been done at any point in the last 10–20 years. But it was easier today because of the widespread availability of cloud computing. It also helped that I had some free time to devote to this problem.
 - **Can this be GPU accelerated?** People have been [asking me](https://www.danvk.org/wp/2009-08-08/breaking-3x3-boggle/index.html#comment-24202) about this since 2009. While it’s possible that there’s some version of Boggle that can be GPU accelerated, this isn’t it. The algorithm is too tree-y and branchy. There’s lots of coarse parallelism available, but very little fine-grained parallelism.
-- **What about other (human) languages?** I’ve only run this for English, but you’re welcome to try running the code yourself for other languages. I hear Polish Boggle is interesting!
+- **What about other (human) languages?** I’ve only run this for English, but you’re welcome to try running [the code](https://github.com/danvk/hybrid-boggle) yourself for other languages. I hear Polish Boggle is interesting!
+
+[pre-1987]: https://www.bananagrammer.com/2013/10/the-boggle-cube-redesign-and-its-effect.html
 
 ### What tools were used?
 
