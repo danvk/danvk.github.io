@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 'After 20 Years, the Globally Optimal Boggle Board'
-time: 9:00AM EST
-datetime: 2025-04-22 9:00AM EST
-summary: "At long last, the best Boggle board has been found."
+time: 1:30PM EST
+datetime: 2025-04-23 1:30PM EST
+summary: "At long last, we know which Boggle board is the very best."
 ---
 
 Exciting news! This is the best possible [Boggle](https://en.wikipedia.org/wiki/Boggle) board:
