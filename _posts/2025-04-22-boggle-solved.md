@@ -38,9 +38,23 @@ So what went wrong? It's hard to say without their code, but I have a hunch. The
 
 It’s easy for a hill climber to find a local max, rather than the global max. Presumably Alan and Steve’s board is locally optimal, and small changes can’t improve it. But there’s still a much better board out there, you just have to descend your small hill first before you can climb a taller one. Local optimization can always fail in this way. You may just be looking in the wrong neighborhood.
 
-My board was initially found via a [hill climbing procedure](https://www.danvk.org/wp/2009-02-19/sky-high-boggle-scores-with-simulated-annealing/index.html). (I used a lot more CPU than they did in 1982!) So how can I be confident that perslatgsineters isn’t just another local maximum?
+### Deeper searches
 
-The only way to know for sure is via exhaustive search. And unfortunately, at least at first glance, this seems completely impossible.
+I wrote my first Boggle Solver in 2004 and quickly [got interested](https://www.danvk.org/wp/2007-01-28/boggle/index.html) in using hill climbing and simulated annealing to find high-scoring boards. I [wasn't the only one](https://www.gtoal.com/wordgames/boggle.html).
+
+Boggle programs in the 2000s had some major advantage over Alan and Steve's from 1982. Memory was much cheaper, CPUs were much faster, and the internet made it much easier to get word lists.
+
+This meant that you could do "deeper" searches:
+
+- Instead of changing just one cell at a time, expand the search radius by changing 2, 3, or 4.
+- Instead of tracking just a single best board, track hundreds of high-scoring candidates.
+- Instead of doing just a handful of hillclimbing runs, do millions.
+
+Using a [process like this](https://www.danvk.org/wp/2009-02-19/sky-high-boggle-scores-with-simulated-annealing/index.html), I found that, whatever board I started with, I always wound up with one of a handful of high-scoring boards, including our favorite 3,625 pointer.
+
+This suggested that this board might just be the global max. But still, we could be falling into the same trap as before. The true global optimum might just be hard to find this way.
+
+The only way to know _for sure_ is via exhaustive search. And unfortunately, at least at first glance, this seems completely impossible.
 
 ### The Impossibility of Exhaustive Search
 
@@ -52,9 +66,9 @@ There are an astronomically large number of possible Boggle boards. How many? If
 
 possible boards. (The factor of 8 comes from symmetry; not all boards can be rolled with real Boggle dice, but this is [within an order of magnitude](https://www.danvk.org/wp/2007-08-02/how-many-boggle-boards-are-there/index.html).)
 
-It’s possible to find all the words on a Boggle board [very quickly](https://www.danvk.org/wp/2007-02-06/in-which-we-discover-that-tries-are-awesome/index.html) using a [Trie data structure](https://en.wikipedia.org/wiki/Trie). On my M2 Macbook, I can score around 200,000 boards/sec. At that pace, testing every board would take around 800 million years!
+It’s possible to find all the words on a Boggle board [very quickly](https://www.danvk.org/wp/2007-02-06/in-which-we-discover-that-tries-are-awesome/index.html) using a [Trie data structure](https://en.wikipedia.org/wiki/Trie). On my M2 Macbook, I can score around 200,000 boards/sec. Still, at that pace, testing every board would take around 800 million years!
 
-Fortunately, there’s a more clever way to structure the search: Branch and Bound (B&B).
+Fortunately, there’s a more clever way to structure the search.
 
 ### Branch and Bound
 
@@ -66,11 +80,11 @@ This technique is known as [Branch and Bound](https://en.wikipedia.org/wiki/Bran
 2. An [upper bound](https://www.danvk.org/2025/02/21/orderly-boggle.html#how-bounds-are-computed) that’s fast to compute but still reasonably “tight”
 3. A way to [split board classes](https://www.danvk.org/2025/04/10/following-insight.html#lift--orderly-force--merge) and calculate their upper bounds without repeating work
 
-A "board class" contains trillions of individual boards. An example would be boards with a particular consonant/vowel pattern. There are roughly 2^16/8=8192 possible consonant/vowel patterns—vastly fewer than the number of boards. And you can imagine that it's easy to throw out boards with all consonants or all vowels. Other patterns are harder, though. (My search didn't exactly use consonants and vowels, this is just an illustration.) For more on board classes, read [this post](https://www.danvk.org/2025/02/10/boggle34.html#board-classes).
+A "board class" might contain trillions of individual boards. An example would be boards with a particular consonant/vowel pattern. There are roughly 2^16/8=8192 possible consonant/vowel patterns—vastly fewer than the number of boards. And you can imagine that it's easy to rule out boards with all consonants or all vowels. Other patterns are much harder, though. (My search didn't exactly use consonants and vowels, this is just an illustration.) For more on board classes, read [this post](https://www.danvk.org/2025/02/10/boggle34.html#board-classes).
 
 The second and third ideas required developing a [somewhat novel tree structure](https://stackoverflow.com/q/79381817/388951) tailor-made for Boggle. These "sum/choice" trees make it efficient both to calculate upper bounds and to split board classes. You can see examples of these trees and read about how they work in [this post](https://www.danvk.org/2025/02/21/orderly-boggle.html).
 
-If you’d like to learn more about the algorithm and data structures, I'd encourage you to [run the code](https://github.com/danvk/hybrid-boggle) on your own machine and read some of my previous blog posts, which go into much greater detail:
+If you’d like to learn more about these algorithm and data structures, I'd encourage you to [run the code](https://github.com/danvk/hybrid-boggle) on your own machine and read some of my previous blog posts, which go into much greater detail:
 
 - [Boggle Revisited: Finding the Globally-Optimal 3x4 Boggle Board](https://www.danvk.org/2025/02/10/boggle34.html)
 - [Boggle Revisited: New Ideas in 2025](https://www.danvk.org/2025/02/13/boggle2025.html)
@@ -81,7 +95,7 @@ If you’d like to learn more about the algorithm and data structures, I'd encou
 
 I developed and tested the search algorithm on 3x3 and 3x4 Boggle, which are [much easier problems](https://www.danvk.org/2025/02/10/boggle34.html#how-much-harder-are-3x4-and-4x4-boggle). Then I ran it on 4x4 Boggle.
 
-Using a 192-core c4 on Google Cloud, it took about 5 days to check all the 4x4 board classes (~23,000 CPU hours). This is about $1,200 of compute. That’s a lot, but it’s not a crazy amount. (Fortunately I had a friend in BigTech with CPUs to spare.)
+Using a 192-core c4 on Google Cloud, it took about 5 days to check around 1 million 4x4 board classes (~23,000 CPU hours). This is about $1,200 of compute. That’s a lot, but it’s not a crazy amount. (Fortunately I had a friend in BigTech with CPUs to spare.)
 
 The result was a list of all the Boggle boards (up to symmetry) that score 3500+ points using the ENABLE2K word list. There were 32 of them. Here are the top five:
 
@@ -93,7 +107,7 @@ The result was a list of all the Boggle boards (up to symmetry) that score 3500+
 
 You can see the rest [here](https://github.com/danvk/hybrid-boggle/blob/main/results/best-boards-4x4.enable2k.txt). These boards are rich in high-value endings like -ING, -ER, -ED, and -S.
 
-The top boards were all ones that I'd previously found by hillclimbing. In other words, if you conduct a deep enough search, you can find the globally max for Boggle using local optimization techniques.
+The top boards were all ones that I'd previously found by hillclimbing.
 
 [plsteaiertnrsges]: https://www.danvk.org/boggle/?board=perslatgsineters
 [splseaiertnrsges]: https://www.danvk.org/boggle/?board=splseaiertnrsges
@@ -103,7 +117,7 @@ The top boards were all ones that I'd previously found by hillclimbing. In other
 
 ### What did we learn about the problem?
 
-- **Hill Climbing Works**. If you search deeply enough, the globally optimal Boggle board *can* be found via hill climbing and simulated annealing. This doesn’t come as a huge surprise: the space of Boggle boards is “smooth” in that similar boards tend to have similar scores. But now we know for sure!
+- **Hill Climbing Works**. If you search deeply enough, the globally optimal Boggle board _can_ be found via hill climbing and simulated annealing. This doesn’t come as a huge surprise: the space of Boggle boards is “smooth” in that making small changes to one high-scoring board tends to give you another high-scoring board. But this is hand-wavy, and now we know for sure!
 - **This is NP-Hard.** Finding the highest-scoring board in a board class is [likely an NP-Hard problem](https://stackoverflow.com/a/79413715/388951). Fortunately, N is small (4x4=16) and the tailor-made code is able to solve this [orders of magnitude faster](https://stackoverflow.com/questions/79422270/why-is-my-z3-and-or-tools-formulation-of-a-problem-slower-than-brute-force-in-py) than general ILP solvers.
 
 ### Questions and Answers
@@ -130,10 +144,10 @@ If you’d like to run the code or learn more, check out the [GitHub repo](https
 
 I’d cry. 😭 While I’d never rule out the possibility of a bug, there several reasons to believe that this computational proof is correct:
 
-1. It matches the highest-scoring boards found by exhaustive search on 2x2 and 2x3 Boggle.
+1. It matches the highest-scoring boards found by exhaustive search on 2x2 and 2x3 Boggle, where this is feasible.
 2. It matches the highest-scoring boards found by exhaustive search within a single board class for 3x4 Boggle.
-3. It finds all the best boards that I’ve found via hill climbing for 3x3, 3x4 and 4x4 Boggle, plus a few more.
-4. The tree operations [preserve an invariant](https://github.com/danvk/hybrid-boggle/blob/8f9f22e2c1d9ce423613f22e9d8fc681973a6d59/boggle/orderly_tree_test.py#L342) that makes them valid.
+3. It finds all the best boards that I’ve found via hill climbing for 3x3, 3x4 and 4x4 Boggle.
+4. The tree operations [preserve an invariant](https://github.com/danvk/hybrid-boggle/blob/8f9f22e2c1d9ce423613f22e9d8fc681973a6d59/boggle/orderly_tree_test.py#L342) on the score that suggests they are valid.
 
 ### What’s next?
 
@@ -141,4 +155,4 @@ I have a few more ideas for [incremental optimizations](https://github.com/danvk
 
 I do intend to write a paper explaining what I’ve done more formally, as well as another post with my thoughts on this whole experience.
 
-Hasbro also sells 5x5 and 6x6 versions of Boggle. These are astronomically harder problems than 4x4 Boggle, and will likely have to wait for another generation of computers and tools. The best board I’ve found via hillclimbing for 5x5 Boggle is `sepesdsracietilmanesligdr`. The results of this exploration suggest that this is likely the global optimum.
+The top-scoring boards for other word lists still need to be proven. Hasbro also sells a [5x5](https://amzn.to/3YN79b5) and [6x6 version](https://amzn.to/4jDPqLa) of Boggle. These are astronomically harder problems than 4x4 Boggle, and will likely have to wait for another generation of computers and tools. The best board I’ve found via hillclimbing for 5x5 Boggle is `sepesdsracietilmanesligdr`. The results of this exploration suggest there's a good chance this is also the global optimum.
