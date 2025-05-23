@@ -84,7 +84,7 @@ A "board class" might contain trillions of individual boards. An example would b
 
 The second and third ideas required developing a [somewhat novel tree structure](https://stackoverflow.com/q/79381817/388951) tailor-made for Boggle. These "sum/choice" trees make it efficient both to calculate upper bounds and to split board classes. You can see examples of these trees and read about how they work in [this post](https://www.danvk.org/2025/02/21/orderly-boggle.html).
 
-If you’d like to learn more about these algorithm and data structures, I'd encourage you to [run the code](https://github.com/danvk/hybrid-boggle) on your own machine and read some of my previous blog posts, which go into much greater detail:
+If you’d like to learn more about these algorithm and data structures, I'd encourage you to [run the code](https://github.com/danvk/hybrid-boggle) on your own machine, read the [work-in-progress paper][paper] about this result and methodology, and read some of my previous blog posts:
 
 - [Boggle Revisited: Finding the Globally-Optimal 3x4 Boggle Board](https://www.danvk.org/2025/02/10/boggle34.html)
 - [Boggle Revisited: New Ideas in 2025](https://www.danvk.org/2025/02/13/boggle2025.html)
@@ -153,6 +153,8 @@ I’d cry. 😭 While I’d never rule out the possibility of a bug, there seve
 
 I have a few more ideas for [incremental optimizations](https://github.com/danvk/hybrid-boggle/issues?q=is%3Aissue%20state%3Aopen%20label%3Aperformance). But I’ve been hacking away at this problem for at least three months, and this seems like a good place to stop. I wasn’t sure that 4x4 Boggle would ever be “solved” in this way, and it’s immensely satisfying to knock out a problem that’s been in the back of my mind for [nearly 20 years](https://www.danvk.org/wp/2007-01-28/boggle/index.html).
 
-I do intend to write a paper explaining what I’ve done more formally, as well as another post with my thoughts on this whole experience.
+I do intend to write a paper explaining what I’ve done more formally, as well as another post with my thoughts on this whole experience. You can find an [in-progress draft of the paper][paper] in the GitHub repo.
 
 The top-scoring boards for other word lists still need to be proven. Hasbro also sells a [5x5](https://amzn.to/3YN79b5) and [6x6 version](https://amzn.to/4jDPqLa) of Boggle. These are astronomically harder problems than 4x4 Boggle, and will likely have to wait for another generation of computers and tools. The best board I’ve found via hillclimbing for 5x5 Boggle is `sepesdsracietilmanesligdr`. The results of this exploration suggest there's a good chance this is also the global optimum.
+
+[paper]: https://github.com/danvk/hybrid-boggle/tree/main/paper
