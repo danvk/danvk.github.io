@@ -136,7 +136,7 @@ The top boards were all ones that I'd previously found by hillclimbing.
 
 ### What tools were used?
 
-The code is a mixture of C++ for performance-critical parts and Python for everything else. They’re glued together using [pybind11](https://pybind11.readthedocs.io/en/stable/index.html), which I’m a big fan of.
+The code is a mixture of C++ for performance-critical parts and Python for everything else. They’re glued together using [pybind11](https://pybind11.readthedocs.io/en/stable/index.html), which I’m a [big fan](/2025/09/11/pybind11.html) of.
 
 If you’d like to run the code or learn more, check out the [GitHub repo](https://github.com/danvk/hybrid-boggle/).
 
