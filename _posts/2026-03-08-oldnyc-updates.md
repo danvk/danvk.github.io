@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'AI adds 10,000 more photos to OldNYC'
+title: 'AI helps add 10,000 more photos to OldNYC'
 time: 11:30AM EST
 datetime: 2026-03-01 12:34AM EST
 summary: "To view the past, we must embrace the future."
@@ -96,7 +96,7 @@ Overall, tools like OpenAI mean that OCR is a much easier problem in 2024 than i
 
 ## Moving from Google Maps to OpenStreetMap
 
-When OldNYC launched, Google Maps was the default choice for web mapping, and it was free to use. But over time, Google’s pricing model changed. In late 2024 they replaced their $200/month free credit with separate quotas for individual APIs. Under the new system, rather than being free, OldNYC would have cost about **$35/month**.
+When OldNYC launched, Google Maps was the default choice for web mapping, and it was free to use. But over time, Google’s pricing model changed. In late 2024 they replaced their $200/month free credit with separate quotas for individual APIs. Under the new system, rather than being **free**, OldNYC would have cost about **$35/month**.
 
 Instead of paying Google indefinitely for a hobby project, I migrated the site to [OpenStreetMap vector tiles] and [MapLibre].
 
@@ -120,11 +120,12 @@ There’s still plenty to improve.
 
 AI could extract additional information from images—identifying people, buildings, or indoor/outdoor scenes. I’d also like to incorporate photographs from other collections.
 
-I've also started contributing to OpenHistoricalMap
-, the history-focused cousin of OpenStreetMap. If it eventually includes full historical street grids for NYC, locating photos could become dramatically easier.
+I've also started contributing to [OpenHistoricalMap][ohm], the history-focused cousin of OpenStreetMap. If it eventually includes full historical street grids for NYC, locating photos could become dramatically easier.
 
 Finally, I’d love to make it easier for developers to build OldNYC-style sites for other cities. If you're interested, please reach out.
 
 📪 If you'd like to be informed of OldNYC updates, please subscribe to the new mailing list! If you subscribed before 2026, you'll need to subscribe again. Sorry, MailChimp deleted the old list. 😡
+
+<script async src="https://eomail5.com/form/02556c9a-1a3a-11f1-a60c-37a450a1d5e5.js" data-form="02556c9a-1a3a-11f1-a60c-37a450a1d5e5"></script>
 
 [ohm]: https://www.openhistoricalmap.org/
