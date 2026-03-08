@@ -2,7 +2,7 @@
 layout: post
 title: 'AI helps add 10,000 more photos to OldNYC'
 time: 11:30AM EST
-datetime: 2026-03-01 12:34AM EST
+datetime: 2026-03-08 9:55AM EST
 summary: "To view the past, we must embrace the future."
 ---
 
