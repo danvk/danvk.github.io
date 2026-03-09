@@ -20,6 +20,10 @@ layout: default
   anchors.add('h3');
 </script>
 
+
+{% if page.nocomments %}
+<p class='please'>Please <a href="https://www.danvk.org/#contact">reach out</a> if you have any feedback.</p>
+{% else %}
 <p class='please'>Please leave comments! It's what makes writing worthwhile.</p>
 
 <div id="disqus_thread"></div>
@@ -44,4 +48,4 @@ layout: default
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
+{% endif %}

@@ -4,6 +4,7 @@ title: 'AI helps add 10,000 more photos to OldNYC'
 time: 9:55AM EDT
 datetime: 2026-03-08 9:55AM EDT
 summary: "To view the past, we must embrace the future."
+nocomments: true
 ---
 
 Over the past two years I've quietly rebuilt major parts of the [OldNYC photo viewer][oldnyc]. The result: **10,000 additional historic photos on the map**, more accurate locations, and a site that's cheaper and easier to run—thanks to modern AI tools and the OpenStreetMap ecosystem.
