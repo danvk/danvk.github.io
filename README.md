@@ -4,6 +4,10 @@ To get started:
     bundle install
     bundle exec jekyll serve --drafts --config _config.yml,_local.yml
 
+or:
+
+    /opt/homebrew/opt/ruby@3.1/bin/bundle exec jekyll serve --drafts --config _config.yml,_local.yml
+
 The `_local.yml` bit excludes some large directories which you're unlikely to change.
 
 To write a new post, put it in `_posts/YYYY-MM-DD-post-title.md`. The front
