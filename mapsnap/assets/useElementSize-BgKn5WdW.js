@@ -1,0 +1,1 @@
+import{r}from"./loadImage-CfsSKZtv.js";function f(){const[i,u]=r.useState({width:0,height:0}),t=r.useRef(null);return[r.useCallback(e=>{if(t.current?.disconnect(),t.current=null,!e)return;const s=()=>u({width:e.offsetWidth,height:e.offsetHeight});s();const n=new ResizeObserver(s);n.observe(e),t.current=n},[]),i]}export{f as u};
